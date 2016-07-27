@@ -13,17 +13,11 @@ FEATURED_PROGRAMMES = ['13610', '13510', '16301', '15321', '15210', '23103', '23
 OVERVIEW_INCOME_NODES = [
                           {
                             'nodes': [['11', '113']],
-                            'label.es': 'Impuesto a bienes inmuebles de naturaleza urbana',
-                            'label.en': 'Impuesto a bienes inmuebles de naturaleza urbana',
+                            'label.es': 'Impuesto sobre bienes inmuebles de naturaleza urbana',
+                            'label.en': 'Impuesto sobre bienes inmuebles de naturaleza urbana',
                             'link_id': '11'
                           },
-                          '42', '29',
-                          {
-                            'nodes': [['11', '115']],
-                            'label.es': 'Impuesto sobre vehículos de tracción mecánica',
-                            'label.en': 'Impuesto sobre vehículos de tracción mecánica',
-                            'link_id': '11'
-                          },
+                          '42',
                           {
                             'nodes': [['11', '116']],
                             'label.es': 'Impuesto sobre incremento del valor de terrenos',
@@ -31,17 +25,23 @@ OVERVIEW_INCOME_NODES = [
                             'link_id': '11'
                           },
                           {
-                            'nodes': [['30', '302']],
-                            'label.es': 'Servicio de recogida de basuras',
-                            'label.en': 'Servicio de recogida de basuras',
+                            'nodes': ['33'],
+                            'label.es': 'Tasas por la utilización del dominio público',
+                            'label.en': 'Tasas por la utilización del dominio público',
+                            'link_id': '33'
+                          },
+                          {
+                            'nodes': [['30', '303']],
+                            'label.es': 'Servicio de tratamiento de residuos',
+                            'label.en': 'Servicio de tratamiento de residuos',
                             'link_id': '30'
                           },
                         ]
-OVERVIEW_EXPENSE_NODES = ['92', '13', '16', '22', '33', '17', '34', '32', '15']
+OVERVIEW_EXPENSE_NODES = ['13', '16', '15', '23', '92', '17', '33', '34', '01']
 
 # How aggresive should the Sankey diagram reorder the nodes. Default: 0.79 (Optional)
 # Note: 0.5 usually leaves nodes ordered as defined. 0.95 sorts by size (decreasing).
-OVERVIEW_RELAX_FACTOR = 0.95
+OVERVIEW_RELAX_FACTOR = 0.5
 
 # Show Payments section in menu & home options. Default: False.
 # SHOW_PAYMENTS           = True
@@ -62,7 +62,7 @@ OVERVIEW_RELAX_FACTOR = 0.95
 # ADJUST_INFLATION_IN_OVERVIEW = False
 
 # Show Subtotals panel in Overview. Default: False
-# SHOW_OVERVIEW_SUBTOTALS = True
+SHOW_OVERVIEW_SUBTOTALS = True
 
 # Calculate budget indicators (True), or show/hide the ones hardcoded in HTML (False). Default: True.
 # CALCULATE_BUDGET_INDICATORS = False
