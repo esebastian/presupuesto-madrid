@@ -86,9 +86,11 @@
 2,4,1,01,Empleo
 2,4,1,02,Formación profesional para el empleo
 2,4,1,03,Políticas activas de empleo municipales
+2,4,1,04,Programa Empleo de Proximidad
 2,4,1,05,Fomento del empleo - U.E.
 2,4,1,06,Programas mixtos escuelas taller/es empleo
 2,4,1,07,Fomento del empleo para la corporación local
+2,4,1,08,Programa Integrado de Empleo
 2,4,1,09,Intermediación laboral
 3,1,1,00,Direc. y gestión admtva. Madrid Salud
 3,1,1,01,Salubridad pública
@@ -103,6 +105,7 @@
 3,3,2,20,Archivos
 3,3,3,01,Museos
 3,3,4,01,Actividades culturales
+3,3,4,02,Proyectos culturales
 3,3,4,04,Participación empresarial
 3,3,4,05,Banda sinfónica municipal
 3,3,4,09,Calidad del paisaje urbano
@@ -128,12 +131,14 @@
 9,1,2,92,Vicealcaldía
 9,1,2,03,Área gob. Coordinación Territorial y Asociaciones
 9,1,2,04,"Área gob. Portavoz, Coord. Junta Gob. y Rel. Pleno"
+9,1,2,94,Área de coordinación territorial
 9,1,2,05,"Área gob. Particip. Ciudadana, Transparencia y Gobierno Abierto"
 9,1,2,06,Área de gobierno de Desarrollo Urbano Sostenible
 9,1,2,07,Área delegada de Participación Ciudadana
 9,1,2,08,"Área de gob. de Equidad, Derechos Sociales y Empleo"
 9,1,2,09,Área de gob. de Economía y Hacienda
 9,1,2,10,Área de gob. de Economía, Empleo y Part. Ciudadana
+9,1,2,11,Área de gob. de Seguridad
 9,1,2,12,Área de gob. de M. Ambiente y Movilidad
 9,1,2,13,Área de gob. Cultura y Deportes
 9,1,2,16,Presidencia del Pleno
@@ -150,6 +155,7 @@
 9,2,0,04,Formación de personal
 9,2,0,05,Relaciones laborales
 9,2,0,06,Fomento de la transparencia
+9,2,0,06,Protocolo y actos públicos
 9,2,0,07,Gestión de personal
 9,2,0,08,Planificación interna e inspección de servicios
 9,2,0,09,Asesoría jurídica
@@ -161,6 +167,7 @@
 9,2,2,04,Relaciones internacionales y patrocinios
 9,2,2,05,Relaciones administrativas
 9,2,2,06,Coordinación general de la alcaldía
+9,2,2,96,Protocolo y actos públicos
 9,2,2,07,Relaciones institucionales
 9,2,2,08,Relaciones con los distritos
 9,2,2,09,Planif. y desarrollo descentralización municipal

@@ -42,6 +42,11 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             '92701': '92202',   # MEDIOS DE COMUNICACIÓN
             '92301': '92310',   # ESTADÍSTICA
         }
+        programme_mapping_2012 = {
+            # old programme: new programme
+            '91204': '91294',   # ÁREA DE COORDINACIÓN TERRITORIAL
+            '92206': '92296',   # PROTOCOLO Y ACTOS PÚBLICOS
+        }
         programme_mapping_2013 = {
             # old programme: new programme
             '91202': '91292',   # Vicealcaldía
@@ -61,6 +66,8 @@ class MadridBudgetLoader(SimpleBudgetLoader):
 
             # Some years require some amendments
             year = re.search('municipio/(\d+)/', filename).group(1)
+            if int(year) == 2012:
+                fc_code = programme_mapping_2012.get(fc_code, fc_code)
             if int(year) == 2013:
                 fc_code = programme_mapping_2013.get(fc_code, fc_code)
             if int(year) == 2015:
