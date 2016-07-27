@@ -79,6 +79,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             ec_code = line[8]
             ic_code = self.get_institution_code(line[0]) + line[2]
 
+            # Ignore transfers to dependent organisations
+            if ec_code[:-2]=='410' or ec_code[:-2]=='710':
+                return None
+
             # The department codes are not totally consistent across years. We are a bit
             # flexible with the precise names, but sometimes it's too much and needs fixing.
             if year == '2011' and (ic_code=='0013' or ic_code=='0014'):
@@ -112,6 +116,11 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0]) + '00'
+
+            # Ignore transfers from parent organisation
+            if ec_code[:-2]=='400' or ec_code[:-2]=='700':
+                return None
+
             return {
                 'is_expense': False,
                 'is_actual': is_actual,
