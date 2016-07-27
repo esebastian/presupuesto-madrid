@@ -42,6 +42,11 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             '92701': '92202',   # MEDIOS DE COMUNICACIÓN
             '92301': '92310',   # ESTADÍSTICA
         }
+        programme_mapping_2013 = {
+            # old programme: new programme
+            '91202': '91292',   # Vicealcaldía
+            '33404': '33409',   # Calidad del paisaje urbano
+        }
         programme_mapping_2015 = {
             # old programme: new programme
             '23104': '23200'    # Planes de barrio
@@ -54,12 +59,16 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             ec_code = line[8]
             ic_code = self.get_institution_code(line[0]) + line[2]
 
-            # For years before 2015 we check whether we need to amend the programme code
+            # Some years require some amendments
             year = re.search('municipio/(\d+)/', filename).group(1)
+            if int(year) == 2013:
+                fc_code = programme_mapping_2013.get(fc_code, fc_code)
+            if int(year) == 2015:
+                fc_code = programme_mapping_2015.get(fc_code, fc_code)
+
+            # For years before 2015 we check whether we need to amend the programme code
             if int(year) < 2015:
                 fc_code = programme_mapping.get(fc_code, fc_code)
-            else:
-                fc_code = programme_mapping_2015.get(fc_code, fc_code)
 
             return {
                 'is_expense': True,

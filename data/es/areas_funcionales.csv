@@ -87,6 +87,7 @@
 2,4,1,02,Formación profesional para el empleo
 2,4,1,03,Políticas activas de empleo municipales
 2,4,1,05,Fomento del empleo - U.E.
+2,4,1,06,Programas mixtos escuelas taller/es empleo
 2,4,1,07,Fomento del empleo para la corporación local
 2,4,1,09,Intermediación laboral
 3,1,1,00,Direc. y gestión admtva. Madrid Salud
@@ -104,11 +105,13 @@
 3,3,4,01,Actividades culturales
 3,3,4,04,Participación empresarial
 3,3,4,05,Banda sinfónica municipal
+3,3,4,09,Calidad del paisaje urbano
 3,3,6,01,Patrimonio cultural y paisaje urbano
 3,3,7,01,Juventud
 3,4,1,01,Actuaciones deportivas en distritos
 3,4,1,02,Coordinación y fomento del deporte
 3,4,2,01,Instalaciones deportivas
+4,3,0,00,Direc. y gest. admtva. Economía, Empleo y Part. Ciud.
 4,3,1,10,Comercio y desarrollo económico
 4,3,1,20,Mercados y comercio
 4,3,1,40,Promoción comercial y emprendimiento
@@ -117,20 +120,25 @@
 4,6,2,00,Innovación y ciudad inteligente
 4,9,3,00,Consumo
 4,9,1,01,Servicios informáticos y comunicaciones
+4,9,1,02,Innovación y tecnología
 9,1,1,00,Secretaría General del Pleno
 9,1,2,00,Oficina del secretario de la Junta de Gobierno
 9,1,2,01,Alcaldía
 9,1,2,02,Gabinete de la Alcaldía
-9,1,2,03,Área gob. coordinación territorial y asociaciones
-9,1,2,04,"Área gob. portavoz, coord. junta gob. y rel. Pleno"
-9,1,2,05,"Área gob. particip. ciudadana, transparencia y gobierno abierto"
-9,1,2,06,Área de gobierno de desarrollo urbano sostenible
-9,1,2,08,"Área de gob. de equidad, derechos sociales y empleo"
-9,1,2,09,Área de gob. de economía y hacienda
-9,1,2,12,Área de gob. de m. ambiente y movilidad
-9,1,2,13,Área de gob.cultura y deportes
+9,1,2,92,Vicealcaldía
+9,1,2,03,Área gob. Coordinación Territorial y Asociaciones
+9,1,2,04,"Área gob. Portavoz, Coord. Junta Gob. y Rel. Pleno"
+9,1,2,05,"Área gob. Particip. Ciudadana, Transparencia y Gobierno Abierto"
+9,1,2,06,Área de gobierno de Desarrollo Urbano Sostenible
+9,1,2,07,Área delegada de Participación Ciudadana
+9,1,2,08,"Área de gob. de Equidad, Derechos Sociales y Empleo"
+9,1,2,09,Área de gob. de Economía y Hacienda
+9,1,2,10,Área de gob. de Economía, Empleo y Part. Ciudadana
+9,1,2,12,Área de gob. de M. Ambiente y Movilidad
+9,1,2,13,Área de gob. Cultura y Deportes
 9,1,2,16,Presidencia del Pleno
-9,1,2,18,"Área de gob. de salud, seguridad y emergencias"
+9,1,2,17,Área de Comunicación
+9,1,2,18,"Área de gob. de Salud, Seguridad y Emergencias"
 9,1,2,19,Área delegada de Deportes
 9,1,2,20,Concejalía-Presidencia del distrito
 9,1,2,30,Secretaría general del Pleno
@@ -149,6 +157,9 @@
 9,2,0,11,"Dir. gst. admv. portavoz, coord. junta gob. y rel. Pleno"
 9,2,2,01,Relaciones con el pleno
 9,2,2,02,Medios de comunicación
+9,2,2,03,Coordinación general de estudios
+9,2,2,04,Relaciones internacionales y patrocinios
+9,2,2,05,Relaciones administrativas
 9,2,2,06,Coordinación general de la alcaldía
 9,2,2,07,Relaciones institucionales
 9,2,2,08,Relaciones con los distritos
@@ -166,6 +177,7 @@
 9,3,1,05,Sector público
 9,3,2,00,Gestión tributaria
 9,3,2,01,Reclamaciones económico-administrativas
+9,3,2,02,Gestión y defensa del contribuyente
 9,3,3,01,Gestión y defensa del patrimonio
 9,3,3,02,Edificios
 9,3,3,03,I.F.S. Gestión del patrimonio
