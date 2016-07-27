@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-18 12:14+0100\n"
-"PO-Revision-Date: 2016-07-27 01:24+0200\n"
+"PO-Revision-Date: 2016-07-28 01:09+0200\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,3 +68,7 @@ msgstr "¿Cómo y en qué gasta el Ayuntamiento de Madrid?"
 #: templates/welcome/index.html:42
 msgid "Para que tengas una idea general de los ingresos y gastos del Gobierno de Aragón"
 msgstr "Para que tengas una idea general de los ingresos y gastos del Ayuntamiento de Madrid"
+
+#: templates/shared/data_sources.html:15
+msgid "La tasa de inflación anual es la media de la tasa interanual de los doce meses del año."
+msgstr "La tasa de inflación anual es la tasa interanual de diciembre."
