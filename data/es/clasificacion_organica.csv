@@ -1,0 +1,69 @@
+#Institución,Sección,Nombre
+0,,,Ayuntamiento de Madrid
+0,0,0,Ayuntamiento de Madrid
+0,0,02,Presidencia del Pleno
+0,0,10,Alcaldía
+0,0,12,Coordinación General de la Alcaldía
+0,0,15,Medio Ambiente y Movilidad
+0,0,16,Gerencia de la Ciudad
+0,0,25,Economía y Hacienda
+0,0,27,"Equidad, Derechos Sociales y Empleo"
+0,0,32,"Salud, Seguridad y Emergencias"
+0,0,33,Coordinación Territorial y Asociaciones
+0,0,35,Desarrollo Urbano Sostenible
+0,0,37,Coordinación Territorial y Asociaciones
+0,0,41,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
+0,0,47,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
+0,0,57,Economía y Hacienda
+0,0,65,Cultura y Deportes
+0,0,67,"Salud, Seguridad y Emergencias"
+0,0,71,"Particip. Ciudadana, Transp. y Gob. Abierto"
+0,0,77,"Particip. Ciudadana, Transp. y Gob. Abierto"
+0,0,85,"Equidad, Derechos Sociales y Empleo"
+0,0,87,Desarrollo Urbano Sostenible
+0,0,97,Medio Ambiente y Movilidad
+0,0,98,Cultura y Deportes
+0,1,00,Endeudamiento
+0,1,10,Créditos Globales y Fondo Contingencia
+0,1,20,Tribunal Económico-administrativo
+0,2,01,Distrito de Centro
+0,2,02,Distrito de Arganzuela
+0,2,03,Distrito de Retiro
+0,2,04,Distrito de Salamanca
+0,2,05,Distrito de Chamartín
+0,2,06,Distrito de Tetuán
+0,2,07,Distrito de Chamberí
+0,2,08,Distrito de Fuencarral-El Pardo
+0,2,09,Distrito de Moncloa-aravaca
+0,2,10,Distrito de Latina
+0,2,11,Distrito de Carabanchel
+0,2,12,Distrito de Usera
+0,2,13,Distrito de Puente de Vallecas
+0,2,14,Distrito de Moratalaz
+0,2,15,Distrito de Ciudad Lineal
+0,2,16,Distrito de Hortaleza
+0,2,17,Distrito de Villaverde
+0,2,18,Distrito de Villa de Vallecas
+0,2,19,Distrito de Vicálvaro
+0,2,20,Distrito de San Blas-canillejas
+0,2,21,Distrito de Barajas
+1,,,Informática del Ayuntamiento de Madrid
+1,0,0,Informática del Ayuntamiento de Madrid
+1,0,16,Gerencia de la Ciudad
+1,0,25,Economía y Hacienda
+3,,,Agencia para el Empleo de Madrid
+3,0,0,Agencia para el Empleo de Madrid
+3,0,27,"Equidad, Derechos Sociales y Empleo"
+3,0,25,Economía y Hacienda
+6,,,Agencia Tributaria Madrid
+6,0,0,Agencia Tributaria Madrid
+6,0,25,Economía y Hacienda
+6,0,57,Economía y Hacienda
+8,,,Madrid Salud
+8,0,0,Madrid Salud
+8,0,32,"Salud, Seguridad y Emergencias"
+8,0,67,"Salud, Seguridad y Emergencias"
+9,,,Agencia de Actividades
+9,0,0,Agencia de Actividades
+9,0,32,"Salud, Seguridad y Emergencias"
+9,0,87,Desarrollo Urbano Sostenible
