@@ -74,19 +74,24 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
         if is_expense:
+            year = re.search('municipio/(\d+)/', filename).group(1)
             fc_code = line[4]
             ec_code = line[8]
             ic_code = self.get_institution_code(line[0]) + line[2]
 
+            # The department codes are not totally consistent across years. We are a bit
+            # flexible with the precise names, but sometimes it's too much and needs fixing.
+            if year == '2011' and (ic_code=='0013' or ic_code=='0014'):
+                ic_code = ic_code+'b'
+
             # Some years require some amendments
-            year = re.search('municipio/(\d+)/', filename).group(1)
-            if int(year) == 2011:
+            if year == '2011':
                 fc_code = programme_mapping_2011.get(fc_code, fc_code)
-            if int(year) == 2012:
+            if year == '2012':
                 fc_code = programme_mapping_2012.get(fc_code, fc_code)
-            if int(year) == 2013:
+            if year == '2013':
                 fc_code = programme_mapping_2013.get(fc_code, fc_code)
-            if int(year) == 2015:
+            if year == '2015':
                 fc_code = programme_mapping_2015.get(fc_code, fc_code)
 
             # For years before 2015 we check whether we need to amend the programme code
