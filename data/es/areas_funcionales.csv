@@ -40,6 +40,7 @@
 1,3,2,01,Seguridad
 1,3,3,01,Tráfico
 1,3,3,02,Gestión de aparcamientos
+1,3,3,92,Estacionamiento
 1,3,4,02,Planificación de la movilidad
 1,3,4,03,Instalaciones de gestión de la movilidad
 1,3,4,04,Gestión de la movilidad
@@ -50,25 +51,34 @@
 1,5,1,02,Gestión urbanística
 1,5,1,03,Ejecución y control de la edificación
 1,5,1,04,Estrategia urbana
+1,5,1,94,Oficina del centro
 1,5,1,05,Gestion del patrimonio municipal del suelo
 1,5,1,08,Revisión del Plan General Ordenación Urbana Madrid
 1,5,1,09,Gestión de licencias de actividades
+1,5,1,10,Programa refuerzo para tramitación de licencias
 1,5,2,10,Promoción y gestión de vivienda
 1,5,2,20,Conservación y rehabilitación vivienda
 1,5,3,21,Vías públicas
 1,5,3,22,Otras actuaciones en vías públicas
 1,5,3,40,Infraestructuras urbanas
 1,5,3,41,Infraestructuras eléctricas
+1,5,5,00,Direc. y gest.admtva. de obras y espacios públicos
+1,5,5,03,Proyectos singulares
+1,5,5,05,Planificación urbana
+1,5,5,06,Evaluación urbana
+1,5,5,07,Ingeniería ambiental urbana
 1,6,0,01,Ingeniería del agua
 1,6,1,02,Suministro hídrico
 1,6,2,10,Gestión ambiental urbana
 1,6,2,30,Parque tecnológico de Valdemingómez
 1,6,3,01,Limpieza viaria
 1,6,5,01,Equipamientos urbanos
+1,6,6,01,Mobiliario urbano
 1,7,0,00,Dir. y gest. adv. medio ambiente y movilidad
 1,7,1,01,Patrimonio verde
 1,7,1,02,Zonas verdes
 1,7,2,03,"Coordinación, educación ambiental y bienes urbanos"
+1,7,2,04,"Sostenibilidad, planificación y calidad ambiental"
 1,7,2,11,Sostenibilidad
 1,7,2,12,Control ambiental
 2,2,1,01,Acción social para empleados
@@ -77,11 +87,13 @@
 2,3,1,01,Igualdad entre mujeres y hombres
 2,3,1,02,Familia e infancia
 2,3,1,03,Personas mayores
+2,3,1,93,Atención a personas sin hogar
 2,3,1,05,Atención convivencial a personas con adicciones
 2,3,1,06,Atención e inclusión social y att. a la emergencia
 2,3,1,07,Atención a la inmigración
 2,3,2,00,Planes de barrio
 2,3,2,90,Cooperación internacional y fondos europeos
+2,3,3,02,Centros de mayores
 2,4,1,00,Direc. y gestión admtva. Ag. Empleo de Madrid
 2,4,1,01,Empleo
 2,4,1,02,Formación profesional para el empleo
@@ -118,6 +130,7 @@
 4,3,1,10,Comercio y desarrollo económico
 4,3,1,20,Mercados y comercio
 4,3,1,40,Promoción comercial y emprendimiento
+4,3,2,01,Turismo
 4,3,3,01,Promoción económica y desarrollo empresarial
 4,4,1,10,"Promoción, control y desarrollo del transporte"
 4,6,2,00,Innovación y ciudad inteligente
@@ -131,8 +144,9 @@
 9,1,2,92,Vicealcaldía
 9,1,2,03,Área gob. Coordinación Territorial y Asociaciones
 9,1,2,04,"Área gob. Portavoz, Coord. Junta Gob. y Rel. Pleno"
-9,1,2,94,Área de coordinación territorial
+9,1,2,94,Área de Coordinación Territorial
 9,1,2,05,"Área gob. Particip. Ciudadana, Transparencia y Gobierno Abierto"
+9,1,2,95,Área De Coordinación y Relaciones Externas
 9,1,2,06,Área de gobierno de Desarrollo Urbano Sostenible
 9,1,2,07,Área delegada de Participación Ciudadana
 9,1,2,08,"Área de gob. de Equidad, Derechos Sociales y Empleo"
@@ -141,6 +155,8 @@
 9,1,2,11,Área de gob. de Seguridad
 9,1,2,12,Área de gob. de M. Ambiente y Movilidad
 9,1,2,13,Área de gob. Cultura y Deportes
+9,1,2,14,Área de gobierno de Obras y Espacios Públicos
+9,1,2,15,Area delegada de licencias de actividades
 9,1,2,16,Presidencia del Pleno
 9,1,2,17,Área de Comunicación
 9,1,2,18,"Área de gob. de Salud, Seguridad y Emergencias"
@@ -161,7 +177,8 @@
 9,2,0,09,Asesoría jurídica
 9,2,0,10,Oficina de la Presidencia del Pleno
 9,2,0,11,"Dir. gst. admv. portavoz, coord. junta gob. y rel. Pleno"
-9,2,2,01,Relaciones con el pleno
+9,2,2,01,Relaciones con el Pleno
+9,2,2,91,Relaciones institucionales
 9,2,2,02,Medios de comunicación
 9,2,2,03,Coordinación general de estudios
 9,2,2,04,Relaciones internacionales y patrocinios
@@ -180,6 +197,7 @@
 9,3,1,00,Dir. y gest. admv. de economía y hacienda
 9,3,1,01,Programación y presupuestación
 9,3,1,02,Control interno y contabilidad
+9,3,1,03,Contabilidad
 9,3,1,04,Colaboración público privada
 9,3,1,05,Sector público
 9,3,2,00,Gestión tributaria

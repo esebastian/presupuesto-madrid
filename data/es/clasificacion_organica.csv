@@ -16,7 +16,9 @@
 0,0,35,Desarrollo Urbano Sostenible
 0,0,37,Coordinación Territorial y Asociaciones
 0,0,41,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
+0,0,45,Seguridad
 0,0,47,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
+0,0,55,Obras y Espacios Públicos
 0,0,57,Economía y Hacienda
 0,0,65,Cultura y Deportes
 0,0,67,"Salud, Seguridad y Emergencias"
@@ -27,6 +29,7 @@
 0,0,87,Desarrollo Urbano Sostenible
 0,0,97,Medio Ambiente y Movilidad
 0,0,98,Cultura y Deportes
+0,0,99,Licencias de Actividades
 0,1,00,Endeudamiento
 0,1,10,Créditos Globales y Fondo Contingencia
 0,1,20,Tribunal Económico-Administrativo
@@ -61,17 +64,22 @@
 3,0,27,"Equidad, Derechos Sociales y Empleo"
 3,0,25,Economía y Hacienda
 3,0,75,"Economía, Empleo y Participación Ciudadana"
+4,,,Patronato de Turismo de Madrid
+4,0,0,Patronato de Turismo de Madrid
+4,0,75,"Economía, Empleo y Participación Ciudadana"
 6,,,Agencia Tributaria Madrid
 6,0,0,Agencia Tributaria Madrid
 6,0,25,Economía y Hacienda
 6,0,57,Economía y Hacienda
 8,,,Madrid Salud
 8,0,0,Madrid Salud
+8,0,15,Medio Ambiente y Movilidad
 8,0,32,"Salud, Seguridad y Emergencias"
 8,0,67,"Salud, Seguridad y Emergencias"
-8,0,15,Medio Ambiente y Movilidad
+8,0,45,Seguridad
 9,,,Agencia de Actividades
 9,0,0,Agencia de Actividades
 9,0,32,"Salud, Seguridad y Emergencias"
 9,0,75,"Economía, Empleo y Participación Ciudadana"
 9,0,87,Desarrollo Urbano Sostenible
+9,0,99,Licencias de Actividades

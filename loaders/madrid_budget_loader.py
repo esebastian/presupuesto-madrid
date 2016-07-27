@@ -42,6 +42,20 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             '92701': '92202',   # MEDIOS DE COMUNICACIÓN
             '92301': '92310',   # ESTADÍSTICA
         }
+        programme_mapping_2011 = {
+            # old programme: new programme
+            '13302': '13392',   # ESTACIONAMIENTO
+            '13303': '13302',   # GESTIÓN Y PLANIFICACIÓN DE APARCAMIENTOS
+            '15104': '15194',   # OFICINA DEL CENTRO
+            '17202': '17211',   # SOSTENIBILIDAD Y AGENDA 21
+            '23201': '23202',   # PROM. IGUALDAD AT. SOCIAL A MUJERES, EMPL.Y CONCIL
+            '23101': '23290',   # COOPERACIÓN AL DESARROLLO
+            '23103': '23193',   # ATENCIÓN A PERSONAS SIN HOGAR
+            '23104': '23106',   # EMERGENCIA SOCIAL
+            '23105': '23107',   # INMIGRACIÓN
+            '91205': '91295',   # ÁREA DE COORDINACIÓN Y RELACIONES EXTERNAS
+            '92201': '92291',   # RELACIONES INSTITUCIONALES
+        }
         programme_mapping_2012 = {
             # old programme: new programme
             '91204': '91294',   # ÁREA DE COORDINACIÓN TERRITORIAL
@@ -66,6 +80,8 @@ class MadridBudgetLoader(SimpleBudgetLoader):
 
             # Some years require some amendments
             year = re.search('municipio/(\d+)/', filename).group(1)
+            if int(year) == 2011:
+                fc_code = programme_mapping_2011.get(fc_code, fc_code)
             if int(year) == 2012:
                 fc_code = programme_mapping_2012.get(fc_code, fc_code)
             if int(year) == 2013:

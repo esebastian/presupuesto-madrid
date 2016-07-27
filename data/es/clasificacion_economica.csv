@@ -558,10 +558,12 @@ G,4,8,0,A fundaciones
 G,4,8,1,A grupos políticos municipales
 G,4,8,2,"Becas, premios y atenciones benéficas"
 G,4,8,9,Otras transferencias a familias e instituciones sin fines de lucro
+G,4,9,0,Al exterior
 G,6,0,1,Señalización vial
 G,6,0,2,Mobiliario urbano
 G,6,0,3,"Hidrantes, fuentes y alcantarillado"
 G,6,0,4,Alumbrado público
+G,6,0,5,Parques y jardines
 G,6,0,6,Urbanización
 G,6,1,1,Viales
 G,6,1,3,"Hidrantes, fuentes y alcantarillado"
@@ -572,5 +574,6 @@ G,7,0,0,A la Administración General de la entidad local
 G,7,4,5,A sociedades mercantiles de la entidad local
 G,7,4,6,Al Club de Campo Villa de Madrid
 G,7,7,9,Otras subvenciones a empresas privadas
+G,7,8,0,A fundaciones
 G,7,8,2,"Becas, premios y atenciones benéficas"
 G,7,8,9,Otras transferencias a familias e instituciones sin fines de lucro
