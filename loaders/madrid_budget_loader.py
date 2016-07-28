@@ -110,7 +110,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
                 'description': line[9],
-                'amount': self._parse_amount(line[15 if is_actual else 10])
+                'amount': self._parse_amount(line[15 if is_actual else 12])
             }
 
         else:
@@ -128,7 +128,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
                 'description': line[5],
-                'amount': self._parse_amount(line[9 if is_actual else 6])
+                'amount': self._parse_amount(line[9 if is_actual else 8])
             }
 
     # We expect the organization code to be one digit, but Madrid has a 3-digit code.
