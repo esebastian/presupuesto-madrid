@@ -6391,14 +6391,16 @@ label {
     margin-bottom: 10px; }
   .data-panel .panel-content .total-budgeted b {
     font-weight: 400; }
-.data-panel .panel.indicators .panel-content > p, .data-panel .indicators.panel-downloads .panel-content > p, .data-panel .home-content .options .option > div.indicators .panel-content > p, .home-content .options .data-panel .option > div.indicators .panel-content > p, .data-panel .budget-intro .indicators.budget-step .panel-content > p, .budget-intro .data-panel .indicators.budget-step .panel-content > p, .data-panel .indicators.policies-chart .panel-content > p, .data-panel .tax-receipt-content .indicators.form-user-incomings .panel-content > p, .tax-receipt-content .data-panel .indicators.form-user-incomings .panel-content > p, .data-panel .tax-receipt-content .indicators#tax-amount .panel-content > p, .tax-receipt-content .data-panel .indicators#tax-amount .panel-content > p {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #99b1fb; }
-  .data-panel .panel.indicators .panel-content > p:last-child, .data-panel .indicators.panel-downloads .panel-content > p:last-child, .data-panel .home-content .options .option > div.indicators .panel-content > p:last-child, .home-content .options .data-panel .option > div.indicators .panel-content > p:last-child, .data-panel .budget-intro .indicators.budget-step .panel-content > p:last-child, .budget-intro .data-panel .indicators.budget-step .panel-content > p:last-child, .data-panel .indicators.policies-chart .panel-content > p:last-child, .data-panel .tax-receipt-content .indicators.form-user-incomings .panel-content > p:last-child, .tax-receipt-content .data-panel .indicators.form-user-incomings .panel-content > p:last-child, .data-panel .tax-receipt-content .indicators#tax-amount .panel-content > p:last-child, .tax-receipt-content .data-panel .indicators#tax-amount .panel-content > p:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border: none; }
+.data-panel .panel.indicators, .data-panel .indicators.panel-downloads, .data-panel .home-content .options .option > div.indicators, .home-content .options .data-panel .option > div.indicators, .data-panel .budget-intro .indicators.budget-step, .budget-intro .data-panel .indicators.budget-step, .data-panel .indicators.policies-chart, .data-panel .tax-receipt-content .indicators.form-user-incomings, .tax-receipt-content .data-panel .indicators.form-user-incomings, .data-panel .tax-receipt-content .indicators#tax-amount, .tax-receipt-content .data-panel .indicators#tax-amount {
+  margin-bottom: 15px; }
+  .data-panel .panel.indicators .panel-content > p, .data-panel .indicators.panel-downloads .panel-content > p, .data-panel .home-content .options .option > div.indicators .panel-content > p, .home-content .options .data-panel .option > div.indicators .panel-content > p, .data-panel .budget-intro .indicators.budget-step .panel-content > p, .budget-intro .data-panel .indicators.budget-step .panel-content > p, .data-panel .indicators.policies-chart .panel-content > p, .data-panel .tax-receipt-content .indicators.form-user-incomings .panel-content > p, .tax-receipt-content .data-panel .indicators.form-user-incomings .panel-content > p, .data-panel .tax-receipt-content .indicators#tax-amount .panel-content > p, .tax-receipt-content .data-panel .indicators#tax-amount .panel-content > p {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #99b1fb; }
+    .data-panel .panel.indicators .panel-content > p:last-child, .data-panel .indicators.panel-downloads .panel-content > p:last-child, .data-panel .home-content .options .option > div.indicators .panel-content > p:last-child, .home-content .options .data-panel .option > div.indicators .panel-content > p:last-child, .data-panel .budget-intro .indicators.budget-step .panel-content > p:last-child, .budget-intro .data-panel .indicators.budget-step .panel-content > p:last-child, .data-panel .indicators.policies-chart .panel-content > p:last-child, .data-panel .tax-receipt-content .indicators.form-user-incomings .panel-content > p:last-child, .tax-receipt-content .data-panel .indicators.form-user-incomings .panel-content > p:last-child, .data-panel .tax-receipt-content .indicators#tax-amount .panel-content > p:last-child, .tax-receipt-content .data-panel .indicators#tax-amount .panel-content > p:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border: none; }
 .data-panel .icon-question {
   float: left;
   display: block;
@@ -7283,8 +7285,6 @@ header > .container {
   margin-top: 15px; }
 .policies.policy-breakdown .policies-chart {
   margin: 15px 0; }
-.policies.policy-breakdown .policies-chart .treemap-chart rect {
-  cursor: auto; }
 .policies.policy-breakdown .chart-container.stacked-area-chart .popover .popover-content {
   text-align: left; }
 .policies.policy-breakdown .panel-downloads > p {
@@ -7419,9 +7419,12 @@ header > .container {
   padding-top: 30px;
   background: #cce3f9; }
   .tax-receipt-table-content .tax-detail-intro {
-    font-size: 1.125em;
+    font-size: 1.5em;
+    font-weight: 300;
     text-align: center;
     margin-bottom: 30px; }
+  .tax-receipt-table-content .table-grid {
+    background: white; }
 
 @media (min-width: 768px) {
   .tax-receipt-content .form-user-incomings h3 {
