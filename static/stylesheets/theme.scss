@@ -19,8 +19,32 @@
   font-weight: $font-weight-700; 
 }
 
+// Language Selector
+#menu-lang{
+  width: 100%;
+  padding: 6px 0;
+  margin: 0;
+  background: $gray-darker; 
+
+  ul{
+    float: right; 
+
+    li{
+      border-color: $brand-secondary;
+
+      input[type=submit]{
+        color: $brand-secondary;
+        font-size: 0.875em;
+        font-weight: $font-weight-300;
+        //text-transform: uppercase;
+      }
+    }
+  }
+}
+
 // Header
 header{
+  clear: both;
   background: $brand-primary;
 }
 

@@ -7653,7 +7653,22 @@ body.widget .stacked-area-chart-legend {
   color: #222;
   font-weight: 600; }
 
+#menu-lang {
+  width: 100%;
+  padding: 6px 0;
+  margin: 0;
+  background: #222222; }
+  #menu-lang ul {
+    float: right; }
+    #menu-lang ul li {
+      border-color: #E7F2FC; }
+      #menu-lang ul li input[type=submit] {
+        color: #E7F2FC;
+        font-size: 0.875em;
+        font-weight: 300; }
+
 header {
+  clear: both;
   background: #003DF6; }
 
 .main-entity-logo {
