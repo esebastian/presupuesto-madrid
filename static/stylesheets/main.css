@@ -7749,7 +7749,7 @@ header {
     .home-content .expense-examples li a:hover {
       color: #003DF6; }
 .home-content .options .option > div .icon {
-  color: #eeeeee; }
+  color: #003DF6; }
 .home-content .options .option > div .option-title h3 {
   color: #222; }
 .home-content .options .option > div .option-title:hover h3 {
@@ -7848,6 +7848,34 @@ header {
   clear: both; }
   .tax-receipt-content .form-user-incomings .checkbox label {
     line-height: 20px; }
+
+.guidedvisit-content {
+  margin-top: 30px;
+  margin-bottom: 60px; }
+  .guidedvisit-content .lead {
+    font-size: 1.25em;
+    font-style: normal; }
+  .guidedvisit-content h3 {
+    margin: 30px 0 20px; }
+  .guidedvisit-content p {
+    font-size: 1.125em;
+    margin-bottom: 15px; }
+  .guidedvisit-content .img-responsive {
+    margin: 30px 0 30px; }
+
+.guidedvisit-menu {
+  padding: 0;
+  border-top: 1px solid #DEE0E2; }
+  .guidedvisit-menu li {
+    list-style: none;
+    padding: 8px 0;
+    font-size: 1.125em;
+    border-bottom: 1px solid #DEE0E2; }
+    .guidedvisit-menu li a {
+      color: #222; }
+      .guidedvisit-menu li a:hover {
+        color: #003DF6;
+        text-decoration: none; }
 
 .main-footer .footer-menu li {
   margin-bottom: 5px;
