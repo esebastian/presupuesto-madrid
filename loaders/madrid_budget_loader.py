@@ -78,10 +78,11 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             fc_code = line[4]
             ec_code = line[8]
             ic_code = self.get_institution_code(line[0]) + line[2]
+            amount = self._parse_amount(line[15 if is_actual else 12])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2]=='410' or ec_code[:-2]=='710':
-                return None
+                amount = 0
 
             # The department codes are not totally consistent across years. We are a bit
             # flexible with the precise names, but sometimes it's too much and needs fixing.
@@ -110,16 +111,18 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
                 'description': line[9],
-                'amount': self._parse_amount(line[15 if is_actual else 12])
+                'amount': amount
             }
 
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0]) + '00'
+            amount = self._parse_amount(line[9 if is_actual else 8])
+
 
             # Ignore transfers from parent organisation
             if ec_code[:-2]=='400' or ec_code[:-2]=='700':
-                return None
+                amount = 0
 
             return {
                 'is_expense': False,
@@ -128,7 +131,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
                 'description': line[5],
-                'amount': self._parse_amount(line[9 if is_actual else 8])
+                'amount': amount
             }
 
     # We expect the organization code to be one digit, but Madrid has a 3-digit code.
