@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-11 17:16+0100\n"
+"PO-Revision-Date: 2016-10-16 03:03+0200\n"
+"Last-Translator: David Cabo <david@civio.es>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.10\n"
+
+msgid "Presupuestos del Gobierno de Aragón"
+msgstr "Madrid City Council Budget"
+
+msgid "El dinero recaudado localmente se complementa con las transferencias de la Administración General del Estado y del Gobierno de Aragón, que son los encargados de recaudar otros ingresos como el IVA y el IRPF"
+msgstr "The municipal budget receives other revenue, mainly from Spain’s central government and the Madrid regional government, which are responsible for collecting other revenue, e.g. from VAT and income tax"
+
+#: templates/budgets/budgets_intro.html:22
+msgid "El ayuntamiento utiliza el dinero recaudado, junto con otras fuentes de financiación como la deuda, para mantener los servicios públicos y la infraestructura de la ciudad."
+msgstr "The City Council uses the municipal budget to maintain public services and the city’s infrastructures."
+
+msgid "Ingresos y gastos en el Gobierno de Aragón"
+msgstr "Revenue and Expenditure at Madrid City Council"
+
+msgid "Gobierno de Aragón"
+msgstr "Madrid City Council"
+
+msgid "Información presupuestaria del Gobierno de Aragón"
+msgstr "Madrid City Council budgetary information"
+
+msgid "Datos de inflación (Medias anuales de IPC para Aragón)"
+msgstr "Inflation data (annual average CPI for Madrid)"
+
+msgid "Los ingresos y gastos mostrados incluyen únicamente al Gobierno de Aragón"
+msgstr "Income and expenditure shown only refer to Madrid City Council"
+
+msgid "¿Cómo y en qué gasta el Gobierno de Aragón?"
+msgstr "Where does the revenue come from? Where does the expenditure go?"
+
+msgid "Para que tengas una idea general de los ingresos y gastos del Gobierno de Aragón"
+msgstr "So you can get a general idea of Madrid City Council’s revenue and expenditure"
