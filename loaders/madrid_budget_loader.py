@@ -13,62 +13,72 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         # mapping to be constant over time, we are forced to amend budget data prior to 2015.
         programme_mapping = {
             # old programme: new programme
-            '13304': '13402',   # PLANIFICACIÓN DE LA MOVILIDAD
-            '13305': '13403',   # INSTALACIONES DE GESTIÓN DE LA MOVILIDAD
+            '13304': '13402',   # Planificación de la movilidad
+            '13305': '13403',   # Instalaciones de gestión del tráfico
             '13401': '13510',   # SAMUR
-            '13501': '13610',   # BOMBEROS
-            '15201': '15210',   # PROMOCIÓN Y GESTIÓN DE VIVIENDA
-            '15501': '15321',   # VÍAS PÚBLICAS
-            '15502': '15322',   # OTRAS ACTUACIONES EN VÍAS PÚBLICAS
-            '15504': '15340',   # INFRAESTRUCTURAS URBANAS
-            '16101': '16001',   # INGENIERÍA DEL AGUA
-            '16201': '16210',   # GESTIÓN AMBIENTAL URBANA
-            '16202': '16230',   # PARQUE TECNOLÓGICO DE VALDEMINGÓMEZ
-            '17201': '17212',   # CONTROL AMBIENTAL
-            '23000': '23100',   # DIR.Y GEST.ADMVA.EQUIDAD, DCHOS. SOCIALES Y EMPLEO
-            '23301': '23103',   # MAYORES Y ATENCIÓN SOCIAL
-            '23202': '23101',   # IGUALDAD ENTRE MUJERES Y HOMBRES
-            '24000': '24100',   # DIREC. Y GESTIÓN ADMTVA. AG. EMPLEO DE MADRID
-            '31000': '31100',   # DIREC. Y GESTIÓN ADMTVA. MADRID SALUD
-            '31320': '31101',   # SALUD PÚBLICA
-            '31321': '31102',   # ADICCIONES
-            '31401': '49300',   # CONSUMO
-            '32401': '32601',   # SERVICIOS COMPLEMENTARIOS EDUCACIÓN
-            '33201': '33210',   # BIBLIOTECAS PÚBLICAS Y PATRIMONIO BIBLIOGRÁFICO
-            '33403': '33601',   # PATRIMONIO CULTURAL Y PAISAJE URBANO
-            '43310': '43301',   # PROMOCIÓN ECONÓMICA Y DESARROLLO EMPRESARIAL
-            '44101': '44110',   # PROMOCIÓN, CONTROL Y DESARROLLO DEL TRANSPORTE
-            '91101': '91240',   # GRUPOS POLÍTICOS MUNICIPALES
-            '92701': '92202',   # MEDIOS DE COMUNICACIÓN
-            '92301': '92310',   # ESTADÍSTICA
+            '13501': '13610',   # Bomberos
+            '15201': '15210',   # Vivienda
+            '15501': '15321',   # Vías públicas
+            '15502': '15322',   # Otras actuaciones en vías públicas
+            '15504': '15340',   # Infraestructuras públicas
+            '16101': '16001',   # Ingeniería del agua
+            '16201': '16210',   # Gestión ambiental
+            '16202': '16230',   # Valdemingómez
+            '17203': '17211',   # Sostenibilidad
+            '17201': '17212',   # Control ambiental
+            '23000': '23100',   # Gestión de familia
+            '23202': '23101',   # Igualdad de oportunidades
+            '23301': '23103',   # Mayores
+            '24000': '24100',   # Dirección de empleo
+            '31000': '31100',   # Dirección Madrid Salud
+            '31320': '31101',   # Salubridad pública
+            '31321': '31102',   # Adicciones
+            '31401': '49300',   # Consumo
+            '32101': '32301',   # Centros docentes
+            '32401': '32601',   # Servicios de educación
+            '33201': '33210',   # Bibliotecas
+            '33404': '92402',   # Participación empresarial
+            '33403': '33601',   # Patrimonio cultural
+            '43110': '43301',   # Promoción económica
+            '44101': '44110',   # Promoción del transporte
+            '91100': '91230',   # Secretaría del pleno
+            '91101': '91240',   # Grupos municipales
+            '92701': '92202',   # Medios de comunicación
+            '92301': '92310',   # Estadística
         }
         programme_mapping_2011 = {
-            # old programme: new programme
-            '13302': '13392',   # ESTACIONAMIENTO
-            '13303': '13302',   # GESTIÓN Y PLANIFICACIÓN DE APARCAMIENTOS
-            '15104': '15194',   # OFICINA DEL CENTRO
-            '17202': '17211',   # SOSTENIBILIDAD Y AGENDA 21
-            '23201': '23202',   # PROM. IGUALDAD AT. SOCIAL A MUJERES, EMPL.Y CONCIL
-            '23101': '23290',   # COOPERACIÓN AL DESARROLLO
-            '23103': '23193',   # ATENCIÓN A PERSONAS SIN HOGAR
-            '23104': '23106',   # EMERGENCIA SOCIAL
-            '23105': '23107',   # INMIGRACIÓN
-            '91205': '91295',   # ÁREA DE COORDINACIÓN Y RELACIONES EXTERNAS
-            '92201': '92291',   # RELACIONES INSTITUCIONALES
+            '13303': '13302',   # Aparcamientos
+            '17102': '16601',   # Mobiliario urbano
+            '23103': '23106',   # Servicios sociales
+            '23104': '23106',   # Servicios sociales
+            '23105': '23107',   # Inmigración
+            '23201': '23202',   # Igualdad de oportunidades
+            '23101': '23290',   # Cooperación internacional
+            '91203': '91204',   # Área de portavoz
+            '91204': '91203',   # Área de coordinación territorial
+            '91205': '91204',   # Área de portavoz
+            '92202': '92208',   # Relaciones con distritos
         }
         programme_mapping_2012 = {
             # old programme: new programme
-            '91204': '91294',   # ÁREA DE COORDINACIÓN TERRITORIAL
-            '92206': '92296',   # PROTOCOLO Y ACTOS PÚBLICOS
+            '33404': '33403',   # Patrimonio cultural y paisaje urbano
+            '91203': '91204',   # Área de portavoz
+            '91204': '91203',   # Área de coordinación territorial
+            '91205': '91204',   # Área de portavoz
+            '92202': '92208',   # Relaciones con distritos
         }
         programme_mapping_2013 = {
             # old programme: new programme
-            '91202': '91292',   # Vicealcaldía
-            '33404': '33409',   # Calidad del paisaje urbano
+            '33404': '33403',   # Patrimonio cultural y paisaje urbano
+            '91203': '91204',   # Área de portavoz
+            '91205': '91204',   # Área de portavoz
+            '91207': '91205',   # Área de participación ciudadana
         }
         programme_mapping_2015 = {
             # old programme: new programme
-            '23104': '23200'    # Planes de barrio
+            '15341': '15340',   # Infraestructuras urbanas
+            '23104': '23200',   # Planes de barrio
+            '33404': '92402',   # Participación empresarial
         }
 
         is_expense = (filename.find('gastos.csv')!=-1)

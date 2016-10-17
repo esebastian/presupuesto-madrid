@@ -61,7 +61,6 @@
 1,5,3,21,Vías públicas
 1,5,3,22,Otras actuaciones en vías públicas
 1,5,3,40,Infraestructuras urbanas
-1,5,3,41,Infraestructuras eléctricas
 1,5,5,00,Direc. y gest.admtva. de obras y espacios públicos
 1,5,5,03,Proyectos singulares
 1,5,5,05,Planificación urbana
@@ -77,6 +76,7 @@
 1,7,0,00,Dir. y gest. adv. medio ambiente y movilidad
 1,7,1,01,Patrimonio verde
 1,7,1,02,Zonas verdes
+1,7,2,02,Sostenibilidad y Agenda 21
 1,7,2,03,"Coordinación, educación ambiental y bienes urbanos"
 1,7,2,04,"Sostenibilidad, planificación y calidad ambiental"
 1,7,2,11,Sostenibilidad
@@ -118,7 +118,6 @@
 3,3,3,01,Museos
 3,3,4,01,Actividades culturales
 3,3,4,02,Proyectos culturales
-3,3,4,04,Participación empresarial
 3,3,4,05,Banda sinfónica municipal
 3,3,4,09,Calidad del paisaje urbano
 3,3,6,01,Patrimonio cultural y paisaje urbano
@@ -132,6 +131,7 @@
 4,3,1,40,Promoción comercial y emprendimiento
 4,3,2,01,Turismo
 4,3,3,01,Promoción económica y desarrollo empresarial
+4,3,3,10,Economía
 4,3,3,11,Desarrollo empresarial
 4,4,1,10,"Promoción, control y desarrollo del transporte"
 4,6,2,00,Innovación y ciudad inteligente
@@ -142,12 +142,9 @@
 9,1,2,00,Oficina del secretario de la Junta de Gobierno
 9,1,2,01,Alcaldía
 9,1,2,02,Gabinete de la Alcaldía
-9,1,2,92,Vicealcaldía
 9,1,2,03,Área gob. Coordinación Territorial y Asociaciones
 9,1,2,04,"Área gob. Portavoz, Coord. Junta Gob. y Rel. Pleno"
-9,1,2,94,Área de Coordinación Territorial
 9,1,2,05,"Área gob. Particip. Ciudadana, Transparencia y Gobierno Abierto"
-9,1,2,95,Área De Coordinación y Relaciones Externas
 9,1,2,06,Área de gobierno de Desarrollo Urbano Sostenible
 9,1,2,07,Área delegada de Participación Ciudadana
 9,1,2,08,"Área de gob. de Equidad, Derechos Sociales y Empleo"
@@ -179,13 +176,11 @@
 9,2,0,10,Oficina de la Presidencia del Pleno
 9,2,0,11,"Dir. gst. admv. portavoz, coord. junta gob. y rel. Pleno"
 9,2,2,01,Relaciones con el Pleno
-9,2,2,91,Relaciones institucionales
 9,2,2,02,Medios de comunicación
 9,2,2,03,Coordinación general de estudios
 9,2,2,04,Relaciones internacionales y patrocinios
 9,2,2,05,Relaciones administrativas
 9,2,2,06,Coordinación general de la alcaldía
-9,2,2,96,Protocolo y actos públicos
 9,2,2,07,Relaciones institucionales
 9,2,2,08,Relaciones con los distritos
 9,2,2,09,Planif. y desarrollo descentralización municipal
