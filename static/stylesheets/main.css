@@ -6976,7 +6976,7 @@ header > .container {
 .main-footer {
   color: white;
   padding: 30px 0;
-  background: #003DF6;
+  background: #000;
   text-align: center; }
   .main-footer .credit-aragon {
     font-weight: 300;
@@ -7657,7 +7657,7 @@ body.widget .stacked-area-chart-legend {
   width: 100%;
   padding: 6px 0;
   margin: 0;
-  background: #222222; }
+  background: #003DF6; }
   #menu-lang ul {
     float: right; }
     #menu-lang ul li {
@@ -7669,7 +7669,7 @@ body.widget .stacked-area-chart-legend {
 
 header {
   clear: both;
-  background: #003DF6; }
+  background: #000; }
 
 .main-entity-logo {
   margin-top: 15px;
@@ -7679,8 +7679,10 @@ header {
   .main-entity-logo {
     float: right; } }
 .navbar-brand {
-  font-size: 1.75em;
-  font-weight: 500; }
+  font-size: 1.071em;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  line-height: 25px; }
   .navbar-brand a {
     color: white; }
 
@@ -7892,8 +7894,24 @@ header {
         color: #003DF6;
         text-decoration: none; }
 
-.main-footer .footer-menu li {
-  margin-bottom: 5px;
-  font-weight: 300; }
+.main-footer {
+  font-size: 0.929em;
+  letter-spacing: 0.05em;
+  padding: 15px 0; }
+  .main-footer .footer-menu li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 300;
+    border: none; }
+    .main-footer .footer-menu li a {
+      text-decoration: underline; }
+    .main-footer .footer-menu li:first-child a {
+      text-decoration: none; }
+  .main-footer .credit-aragon {
+    margin-bottom: 0; }
+
+.credits-footer {
+  background: #003DF6;
+  padding: 20px 0; }
 
 /*# sourceMappingURL=main.css.map */
