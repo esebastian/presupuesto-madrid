@@ -111,7 +111,7 @@ I,3,9,9,Other miscellaneous income
 I,4,,,Current transfers
 I,4,0,,De la Administración General de la entidad local
 I,4,0,0,De la Administración General de la entidad local
-I,4,1,,Local entity's independent bodies
+I,4,1,,City Council's independent bodies
 I,4,2,,From Spanish central government
 I,4,2,0,From State's General Administration
 I,4,2,1,From autonomous bodies and state agencies
@@ -209,8 +209,8 @@ I,7,3,0,De la Seguridad Social
 I,7,4,,De entes públicos y sociedades mercantiles de la entidad local
 I,7,4,0,De entes públicos
 I,7,4,1,De sociedades mercantiles
-I,7,5,,Regional governments
-I,7,5,0,De la Administración General de las comunidades autónomas
+I,7,5,,From regional governments
+I,7,5,0,From regional governments' General Administrations
 I,7,5,1,De organismos autónomos y agencias de las comunidades autónomas
 I,7,5,2,De fundaciones de las comunidades autónomas
 I,7,5,3,"De sociedades mercantiles, entidades públicas empresariales y otros organismos públicos dependientes de las comunidades autónomas"
@@ -275,120 +275,120 @@ I,9,4,0,Deposits received
 I,9,4,1,Guarantees received
 G,1,,,Staff expenses
 G,1,0,,Government bodies and executive staff
-G,1,0,0,Retribuciones básicas y otras remuneraciones de los miembros de los órganos de gobierno
-G,1,0,1,Retribuciones básicas y otras remuneraciones del personal directivo
+G,1,0,0,Basic salaries and other remuneration of governing bodies' members
+G,1,0,1,Basic salaries and other remuneration of senior management
 G,1,0,7,Contribuciones a planes y fondos de pensiones
 G,1,1,,Temporary staff
-G,1,1,0,Retribuciones básicas y otras remuneraciones
+G,1,1,0,Basic salaries and other remunerations
 G,1,1,7,Contribuciones a planes y fondos de pensiones
 G,1,2,,Civil servants
-G,1,2,0,Retribuciones básicas
-G,1,2,1,Retribuciones complementarias
-G,1,2,2,Retribuciones en especie
-G,1,2,4,Retribuciones de funcionarios en prácticas
+G,1,2,0,Basic salaries
+G,1,2,1,Supplementary remuneration
+G,1,2,2,Compensation in kind
+G,1,2,4,Remuneration of public workers in training
 G,1,2,7,Contribuciones a planes y fondos de pensiones
-G,1,3,,Workers
-G,1,3,0,Laboral fijo
-G,1,3,1,Laboral temporal
-G,1,3,2,Retribuciones en especie
+G,1,3,,Employees
+G,1,3,0,Permanent workforce
+G,1,3,1,Temporary workforce
+G,1,3,2,Compensation in kind
 G,1,3,7,Contribuciones a planes y fondos de pensiones
-G,1,4,,Otro personal
-G,1,4,3,Otro personal
+G,1,4,,Other personnel
+G,1,4,3,Other personnel
 G,1,4,7,Contribuciones a planes y fondos de pensiones
 G,1,5,,Performance incentives
-G,1,5,0,Productividad
-G,1,5,1,Gratificaciones
-G,1,5,2,Otros incentivos al rendimiento
+G,1,5,0,Productivity
+G,1,5,1,Gratifications
+G,1,5,2,Other performance incentives
 G,1,5,3,Complemento de dedicación especial
 G,1,6,,"Social-security contributions, benefits and expenses paid for by the employer"
-G,1,6,0,Cuotas sociales
-G,1,6,1,Prestaciónes sociales
-G,1,6,2,Gastos sociales del personal
+G,1,6,0,Social contributions
+G,1,6,1,Social benefits
+G,1,6,2,Social staff costs
 G,1,6,4,Complemento familiar
 G,2,,,Current expenditure on goods and services
 G,2,0,,Rents and royalties
 G,2,0,0,Terrenos y bienes naturales
-G,2,0,2,Edificios y otras construcciones
-G,2,0,3,"Maquinaria, instalaciones y utillaje"
-G,2,0,4,Material de transporte
-G,2,0,5,Mobiliario y enseres
-G,2,0,6,Equipos para procesos de información
-G,2,0,8,Otro inmovilizado material
-G,2,0,9,Cánones
+G,2,0,2,Buildings and other structures
+G,2,0,3,"Machinery, technical installations and tools"
+G,2,0,4,Transportation equipment
+G,2,0,5,Furniture
+G,2,0,6,Information processing equipment
+G,2,0,8,Other tangible assets
+G,2,0,9,Canons
 G,2,1,,"Maintenance, repairs and conservation"
-G,2,1,0,Infraestructuras y bienes naturales
-G,2,1,2,Edificios y otras construcciones
-G,2,1,3,"Maquinaria, instalaciones técnicas y utillaje"
-G,2,1,4,Elementos de transporte
-G,2,1,5,Mobiliario
-G,2,1,6,Equipos para procesos de información
-G,2,1,9,Otro inmovilizado material
+G,2,1,0,Infrastructure and natural resources
+G,2,1,2,Buildings and other structures
+G,2,1,3,"Machinery, technical installations and tools"
+G,2,1,4,Transportation equipment
+G,2,1,5,Furniture
+G,2,1,6,Information processing equipment
+G,2,1,9,Other tangible assets
 G,2,2,,"Materials, supplies and other"
-G,2,2,0,Material de oficina
-G,2,2,1,Suministros
-G,2,2,2,Comunicaciones
-G,2,2,3,Transportes
-G,2,2,4,Primas de seguros
-G,2,2,5,Tributos
-G,2,2,6,Gastos diversos
-G,2,2,7,Trabajos realizados por otras empresas y profesionales
+G,2,2,0,Office supplies
+G,2,2,1,Supplies
+G,2,2,2,Communications
+G,2,2,3,Transportation
+G,2,2,4,Insurance premiums
+G,2,2,5,Taxes
+G,2,2,6,Miscellaneous expenses
+G,2,2,7,Work performed by other companies and professionals
 G,2,3,,Compensation for services
-G,2,3,0,Dietas
-G,2,3,1,Locomoción
-G,2,3,3,Otras indemnizaciones
-G,2,4,,Gastos de publicaciones
-G,2,4,0,Gastos de edición y distribucion
-G,2,5,,Trabajos realizados por administraciones públicas y otras entidades públicas
-G,2,5,0,Trabajos realizados por administraciones públicas y otras entidades públicas
-G,2,6,,Trabajos realizados por instituciones sin fines de lucro
+G,2,3,0,Subsistence allowance
+G,2,3,1,Transportation allowance
+G,2,3,3,Other compensation
+G,2,4,,Costs of publications
+G,2,4,0,Editing and distribution expenses
+G,2,5,,Work performed by public administrations and other public entities
+G,2,5,0,Work performed by public administrations and other public entities
+G,2,6,,Work performed by non-profit organisations
 G,2,7,,Non-classified and unexpected expenditures
 G,3,,,Financial expenditures (Interests)
-G,3,0,,De deuda pública en euros
-G,3,0,0,Intereses
-G,3,0,1,"Gastos de emisión, modificación y cancelación"
+G,3,0,,Public debt in euros
+G,3,0,0,Interests
+G,3,0,1,"Setup, modification and cancellation expenses"
 G,3,0,9,Otros gastos financieros de deuda pública en euros
 G,3,1,,From loans and other financial operations
-G,3,1,0,Intereses
-G,3,1,1,"Gastos de formalización, modificación y cancelación"
+G,3,1,0,Interests
+G,3,1,1,"Setup, modification and cancellation expenses"
 G,3,1,9,Otros gastos financieros de préstamos y otras operaciones financieras en euros
 G,3,2,,De deuda pública en moneda distinta del euro
-G,3,2,0,Intereses
+G,3,2,0,Interests
 G,3,2,1,"Gastos de emisión, modificación y cancelación"
 G,3,2,2,Diferencias de cambio
 G,3,2,9,Otros gastos financieros de deuda pública en moneda distinta del euro
 G,3,3,,De préstamos y otras operaciones financieras en moneda distinta del euro
-G,3,3,0,Intereses
-G,3,3,1,"Gastos de formalización, modificación y cancelación"
+G,3,3,0,Interests
+G,3,3,1,"Setup, modification and cancellation expenses"
 G,3,3,2,Diferencias de cambio
 G,3,3,9,Otros gastos financieros de préstamos y otras operaciones financieras en moneda distinta del euro
 G,3,4,,"From deposits, guarantees and others"
 G,3,4,0,Interest on deposit
-G,3,4,1,Intereses de fianzas
+G,3,4,1,Interest on guarantees
 G,3,5,,Delay interest and other financial expenditure
-G,3,5,2,Intereses de demora
-G,3,5,3,Operaciones de intercambio financiero
+G,3,5,2,Interest on late payments
+G,3,5,3,Financial exchange operations
 G,3,5,7,Ejecución de avales
 G,3,5,8,Intereses por operaciones de arrendamiento financiero (leasing)
-G,3,5,9,Otros gastos financieros
+G,3,5,9,Other financial expenses
 G,4,,,Current transfers
-G,4,0,,A la Administración General de la entidad local
+G,4,0,,To City Council's General Administration
 G,4,1,,To City Council's independent bodies
-G,4,2,,A la Administración del Estado
-G,4,2,0,A la Administración General del Estado
-G,4,2,1,A organismos autónomos y agencias del Estado
+G,4,2,,To Spanish central government
+G,4,2,0,To State's General Administration
+G,4,2,1,To autonomous bodies and state agencies
 G,4,2,2,A fundaciones estatales
-G,4,2,3,"A sociedades mercantiles estatales, entidades públicas empresariales y otros organismos públicos"
-G,4,3,,A la Seguridad Social
+G,4,2,3,"To state corporations, public business entities and other public bodies"
+G,4,3,,To Social Security
 G,4,4,,To City Council's companies
-G,4,4,0,Subvenciones para fomento del empleo
+G,4,4,0,Grants to promote employment
 G,4,4,1,Subvenciones para bonificacion de intereses y primas de seguros
 G,4,4,2,Subvenciones para reducir el precio a pagar por los consumidores
 G,4,4,9,Otras subvenciones a entes públicos y sociedades mercantiles de la entidad local
 G,4,5,,To regional governments
-G,4,5,0,A la Administración General de las comunidades autónomas
+G,4,5,0,To regional governments' General Administrations
 G,4,5,1,A organismos autónomos y agencias de las comunidades autónomas
 G,4,5,2,A fundaciones de las comunidades autónomas
-G,4,5,3,A sociedades mercantiles entidades públicas empresariales y otros organismos públicos dependientes de las comunidades autónomas
+G,4,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
 G,4,6,,To local entities
 G,4,6,1,"A diputaciones, consejos o cabildos insulares"
 G,4,6,2,A ayuntamientos
@@ -396,73 +396,73 @@ G,4,6,3,A mancomunidades
 G,4,6,4,A áreas metropolitanas
 G,4,6,5,A comarcas
 G,4,6,6,A otras entidades que agrupen municipios
-G,4,6,7,A consorcios
+G,4,6,7,To consortia
 G,4,6,8,A entidades locales menores
 G,4,7,,To private companies
-G,4,7,0,Subvenciones para fomento del empleo
+G,4,7,0,Grants to promote employment
 G,4,7,1,Subvenciones para bonificación de intereses y primas de seguros
 G,4,7,2,Subvenciones para reducir el precio a pagar por los consumidores
-G,4,7,9,Otras subvenciones a empresas privadas
+G,4,7,9,Other grants to private companies
 G,4,8,,To families and non-profit organisations
 G,4,9,,To external organisations
-G,5,,,Contingency fund (Framework Act 2/2012)
-G,5,0,,Contingency fund (Framework Act 2/2012)
-G,5,0,0,Contingency fund (Framework Act 2/2012)
+G,5,,,Contingency fund
+G,5,0,,Contingency fund
+G,5,0,0,Contingency fund
 G,6,,,Other property investments
 G,6,0,,New investment in infrastructures and assets intended for general use
-G,6,0,0,Inversiones en terrenos
-G,6,0,9,Otras inversiones nuevas en infraestructuras y bienes destinados al uso general
+G,6,0,0,Land investments
+G,6,0,9,Other investments in infrastructures and assets intended for general use
 G,6,1,,Replacement investments for infrastructures and assets intended for general use
-G,6,1,0,Inversiones en terrenos
-G,6,1,9,Otras inversiones de reposición en infraestructuras y bienes destinados al uso general
+G,6,1,0,Land investments
+G,6,1,9,Other replacement investments for infrastructures and assets intended for general use
 G,6,2,,New investments associated with the operational running of the services
 G,6,2,1,Terrenos y bienes naturales
-G,6,2,2,Edificios y otras construcciones
-G,6,2,3,"Maquinaria, instalaciones técnicas y utillaje"
-G,6,2,4,Elementos de transporte
-G,6,2,5,Mobiliario
-G,6,2,6,Equipos para procesos de información
-G,6,2,7,Proyectos complejos
-G,6,2,9,Otras inversiones nuevas
+G,6,2,2,Buildings and other structures
+G,6,2,3,"Machinery, technical installations and tools"
+G,6,2,4,Transportation equipment
+G,6,2,5,Furniture
+G,6,2,6,Information processing equipment
+G,6,2,7,Complex projects
+G,6,2,9,Other new investments
 G,6,3,,Replacement investments for operational running of public services
-G,6,3,1,Terrenos y bienes naturales
-G,6,3,2,Edificios y otras construcciones
-G,6,3,3,"Maquinaria, instalaciones técnicas y utillaje"
-G,6,3,4,Elementos de transporte
-G,6,3,5,Mobiliario
-G,6,3,6,Equipos para procesos de información
-G,6,3,7,Proyectos complejos
-G,6,3,9,Otras inversiones de reposición
-G,6,4,,Intangible-investment expenditure
-G,6,4,0,Gastos en inversiones de carácter inmaterial
-G,6,4,1,Gastos en aplicaciones informáticas
+G,6,3,1,Lands and natural resources
+G,6,3,2,Buildings and other structures
+G,6,3,3,"Machinery, technical installations and tools"
+G,6,3,4,Transportation equipment
+G,6,3,5,Furniture
+G,6,3,6,Information processing equipment
+G,6,3,7,Complex projects
+G,6,3,9,Other replacement investments
+G,6,4,,Expenditure on intangible investments
+G,6,4,0,Expenditure on intangible assets
+G,6,4,1,Expenditure on software applications
 G,6,4,8,Cuotas netas de intereses por operaciones de arrendamiento financiero (leasing)
-G,6,5,,Inversiones gestionadas para otros entes públicos
-G,6,5,0,Gastos en inversiones gestionadas para otros entes públicos
-G,6,8,,Gastos en inversiones de bienes patrimoniales
-G,6,8,1,Terrenos y bienes naturales
-G,6,8,2,Edificios y otras construcciones
-G,6,8,9,Otros gastos en inversiones de bienes patrimoniales
+G,6,5,,Investments managed for other public bodies
+G,6,5,0,Expenditure on investments managed for other public bodies
+G,6,8,,Expenditure on asset investments
+G,6,8,1,Land and natural resources
+G,6,8,2,Buildings and other structures
+G,6,8,9,Other expenditure on capital investments
 G,6,9,,Inversiones en bienes comunales
 G,6,9,0,Terrenos y bienes naturales
 G,6,9,2,Inversión en infraestructuras
 G,7,,,Capital transfers
-G,7,0,,A la Administración General de la entidad local
+G,7,0,,To City Council's General Administration
 G,7,1,,To City Council's independent bodies
-G,7,1,0,A organismos autónomos de la entidad local
-G,7,1,1,A organismos autónomos de la entidad local
+G,7,1,0,To City Council's autonomous bodies
+G,7,1,1,To City Council's autonomous bodies
 G,7,2,,A la Administración del Estado
 G,7,2,0,A la Administración General del Estado
 G,7,2,1,A organismos autónomos y agencias
 G,7,2,2,A fundaciones estatales
-G,7,2,3,"A sociedades mercantiles estatales, entidades públicas empresariales y otros organismos públicos"
+G,7,2,3,"To state corporations, public business entities and other public bodies"
 G,7,3,,A la Seguridad Social
 G,7,4,,To City Council's companies
-G,7,5,,A comunidades autónomas
-G,7,5,0,A la Administración General de las comunidades autónomas
+G,7,5,,To regional governments
+G,7,5,0,To regional governments' General Administrations
 G,7,5,1,A organismos autónomos y agencias de las comunidades autónomas
 G,7,5,2,A fundaciones de las comunidades autónomas
-G,7,5,3,"A sociedades mercantiles, entidades públicas empresariales y otros organismos públicos dependientes de las comunidades autónomas"
+G,7,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
 G,7,6,,To local entities
 G,7,6,1,"A diputaciones, consejos o cabildos"
 G,7,6,2,A ayuntamientos
@@ -470,7 +470,7 @@ G,7,6,3,A mancomunidades
 G,7,6,4,A áreas metropolitanas
 G,7,6,5,A comarcas
 G,7,6,6,A entidades que agrupen municipios
-G,7,6,7,A consorcios
+G,7,6,7,To consortia
 G,7,6,8,A entidades locales menores
 G,7,7,,To private companies
 G,7,7,0,To private companies
@@ -491,12 +491,12 @@ G,8,3,,Concesion de préstamos fuera del sector público
 G,8,3,0,Préstamos a corto plazo. Desarrollo por sectores
 G,8,3,1,Préstamos a largo plazo. Desarrollo por sectores
 G,8,4,,Establishing deposits and guarantees
-G,8,4,0,Depósitos
-G,8,4,1,Fianzas
-G,8,5,,Acquisition of public sector shares
-G,8,5,0,Adquisición de acciones y participaciones del sector público
-G,8,6,,Adquisición de acciones y participaciones fuera del sector público
-G,8,6,0,Adquisición de acciones y participaciones fuera del sector público
+G,8,4,0,Deposits
+G,8,4,1,Guarantees
+G,8,5,,Acquisition of public sector shares and participations
+G,8,5,0,Acquisition of public sector shares and participations
+G,8,6,,Acquisition of shares and participations outside the public sector
+G,8,6,0,Acquisition of shares and participations outside the public sector
 G,8,7,,Aportaciones patrimoniales
 G,8,7,0,Aportaciones a fundaciones
 G,8,7,1,Aportaciones a consorcios
@@ -506,10 +506,10 @@ G,9,0,,Amortización de deuda pública en euros
 G,9,0,0,Short term
 G,9,0,1,Long term
 G,9,1,,Debt repayment and operations in euro currency
-G,9,1,0,Short term de entes del sector público
-G,9,1,1,Long term de entes del sector público
-G,9,1,2,Short term de entes de fuera del sector público
-G,9,1,3,Long term de entes de fuera del sector público
+G,9,1,0,Short term from public bodies
+G,9,1,1,Long term from public bodies
+G,9,1,2,Short term from bodies outside the public sector
+G,9,1,3,Long term from bodies outside the public sector
 G,9,2,,Amortización de deuda pública en moneda distinta del euro
 G,9,2,0,Short term
 G,9,2,1,Long term
@@ -517,8 +517,8 @@ G,9,3,,Amortización de préstamos en moneda distinta del euro
 G,9,3,0,Short term
 G,9,3,1,Long term
 G,9,4,,Deposits
-G,9,4,0,Devolución de depósitos
-G,9,4,1,Devolución de fianzas
+G,9,4,0,Repayment of deposits
+G,9,4,1,Repayment of guarantees
 #
 #
 # Conceptos específicos de Madrid
@@ -531,7 +531,7 @@ I,3,1,6,Madrid Planetarium
 I,3,4,6,Cultural services
 I,3,4,7,Works on public roads
 I,3,4,8,Precios públicos extinguidos
-I,4,1,0,From local entity's autonomous bodies
+I,4,1,0,From City Council's autonomous bodies
 I,4,7,0,From private companies
 I,4,8,0,Other transfers from families and non-profit organisations
 I,4,9,8,Other European Union programmes
@@ -539,26 +539,26 @@ I,5,2,0,Interest on deposits
 I,5,4,5,Cesión puestos mercados
 I,6,1,0,From remaining real estate investments
 I,7,0,0,De la Administración General de la entidad local
-I,7,1,0,From local entity's autonomous bodies
+I,7,1,0,From City Council's autonomous bodies
 I,7,7,0,Other transfers from private companies
 I,7,8,0,From families and non-profit organisations
 I,8,5,0,Enajenacion de acciones y participaciones del sector público
-G,2,1,7,Proyectos complejos
-G,2,2,8,Convenios servicios educativos
-G,2,5,1,Trabajos realizados por universidades públicas
-G,2,6,0,Trabajos realizados por instituciones sin fines de lucro
+G,2,1,7,Complex projects
+G,2,2,8,Educational services agreements
+G,2,5,1,Work performed by public universities
+G,2,6,0,Work performed by non-profit organisations
 G,2,7,0,Otros gastos imprevistos y funciones no clasificadas
 G,2,7,1,Fondo de contingencia
-G,4,0,0,A la Administración General de la entidad local
+G,4,0,0,To City Council's General Administration
 G,4,1,0,A organismos autónomos de la entidad local
-G,4,4,5,A sociedades mercantiles de la entidad local
-G,4,4,6,Al Club de Campo Villa de Madrid
-G,4,8,0,A fundaciones
-G,4,8,1,A grupos políticos municipales
-G,4,8,2,"Becas, premios y atenciones benéficas"
-G,4,8,9,Otras transferencias a familias e instituciones sin fines de lucro
+G,4,4,5,To City Council's corporations
+G,4,4,6,To Club de Campo Villa de Madrid
+G,4,8,0,To foundations
+G,4,8,1,To local political groups
+G,4,8,2,"Scholarships, prizes and charity"
+G,4,8,9,Other transfers to families and non-profit organisations
 G,4,9,0,Al exterior
-G,4,9,1,A organismos internacionales públicos
+G,4,9,1,To international public organisations
 G,6,0,1,Señalización vial
 G,6,0,2,Mobiliario urbano
 G,6,0,3,"Hidrantes, fuentes y alcantarillado"
@@ -570,10 +570,10 @@ G,6,1,3,"Hidrantes, fuentes y alcantarillado"
 G,6,1,4,Alumbrado público
 G,6,1,5,Parques y jardines
 G,6,1,6,Urbanización
-G,7,0,0,A la Administración General de la entidad local
-G,7,4,5,A sociedades mercantiles de la entidad local
+G,7,0,0,To City Council's General Administration
+G,7,4,5,To City Council's corporation
 G,7,4,6,Al Club de Campo Villa de Madrid
-G,7,7,9,Otras subvenciones a empresas privadas
-G,7,8,0,A fundaciones
-G,7,8,2,"Becas, premios y atenciones benéficas"
-G,7,8,9,Otras transferencias a familias e instituciones sin fines de lucro
+G,7,7,9,Other grants to private companies
+G,7,8,0,To foundations
+G,7,8,2,"Scholarships, prizes and charity"
+G,7,8,9,Other transfers to families and non-profit organisations
