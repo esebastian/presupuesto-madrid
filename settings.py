@@ -100,7 +100,7 @@ MAIN_ENTITY_WEB_URL     = 'http://www.madrid.es/'
 MAIN_ENTITY_LEGAL_URL   = 'http://www.madrid.es/portales/munimadrid/avisoLegal.html'
 
 # Setup Main Entity Legal Url (if empty we hide the link)
-MAIN_ENTITY_PRIVACY_URL   = 'http://www.madrid.es/portales/munimadrid/es/Inicio/Proteccion-de-datos?vgnextfmt=default&vgnextoid=2c241e7b0f578010VgnVCM100000dc0ca8c0RCRD&vgnextchannel=251f43db40317010VgnVCM100000dc0ca8c0RCRD'
+MAIN_ENTITY_PRIVACY_URL   = 'http://www.madrid.es/portales/munimadrid/proteccionDatos.html'
 
 # External URL for Cookies Policy (if empty we use out template page/cookies.html)
 COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html'
