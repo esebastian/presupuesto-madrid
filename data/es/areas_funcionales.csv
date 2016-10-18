@@ -40,7 +40,6 @@
 1,3,2,01,Seguridad
 1,3,3,01,Tráfico
 1,3,3,02,Gestión de aparcamientos
-1,3,3,92,Estacionamiento
 1,3,4,02,Planificación de la movilidad
 1,3,4,03,Instalaciones de gestión de la movilidad
 1,3,4,04,Gestión de la movilidad
@@ -51,8 +50,7 @@
 1,5,1,02,Gestión urbanística
 1,5,1,03,Ejecución y control de la edificación
 1,5,1,04,Estrategia urbana
-1,5,1,94,Oficina del centro
-1,5,1,05,Gestion del patrimonio municipal del suelo
+1,5,1,05,Gestión del patrimonio municipal del suelo
 1,5,1,08,Revisión del Plan General Ordenación Urbana Madrid
 1,5,1,09,Gestión de licencias de actividades
 1,5,1,10,Programa refuerzo para tramitación de licencias
