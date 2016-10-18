@@ -17,6 +17,10 @@ msgstr ""
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.10\n"
 
+#: templates/shared/header.html:35
+msgid "Presupuestos"
+msgstr "Presupuestos del Ayuntamiento de Madrid"
+
 #: templates/base.html:4 templates/shared/social_sharing.html:5
 msgid "Presupuestos del Gobierno de Aragón"
 msgstr "Presupuestos del Ayuntamiento de Madrid"

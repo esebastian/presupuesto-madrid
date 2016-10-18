@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.10\n"
 
+#: templates/shared/header.html:35
+msgid "Presupuestos"
+msgstr "Madrid City Council Budget"
+
 msgid "Presupuestos del Gobierno de Aragón"
 msgstr "Madrid City Council Budget"
 
