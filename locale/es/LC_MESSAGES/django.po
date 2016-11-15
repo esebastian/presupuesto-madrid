@@ -74,3 +74,10 @@ msgstr "¿En qué se gasta?"
 #: templates/entities/show.html:36 templates/entities/show.html.py:37
 msgid "¿En qué se gasta?"
 msgstr "¿Para qué se gasta?"
+
+# The client prefers 'Detalle del presupuesto' to 'Políticas'
+msgid "Políticas"
+msgstr "Detalle del presupuesto"
+
+msgid "Políticas concretas"
+msgstr "Detalle del presupuesto"

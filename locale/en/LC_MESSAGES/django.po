@@ -106,3 +106,10 @@ msgstr "Another example: in the budget for <a href=\"/en/programas/44110/promoci
 
 msgid "Conceptos como ahorro, tipos de clasificación del presupuesto (según queramos poner el foco en para qué se gasta, quién lo gasta o en qué se gasta) y definiciones de los principales impuestos están en el <a href=\"/es/glosario?page=1\">glosario</a>. Para que no te queden dudas."
 msgstr "Concepts like savings, budget classifications (focusing on who spends the budget, how it does it, and what for) and definitions for the main taxes are available in the <a href=\"/en/glosario?page=1\">glossary</a>. So you can answer all your questions."
+
+# The client prefers 'Detalle del presupuesto' to 'Políticas'
+msgid "Políticas"
+msgstr "Budget detail"
+
+msgid "Políticas concretas"
+msgstr "Budget detail"

@@ -7725,7 +7725,7 @@ header {
       padding: 0; }
       .navbar-default .navbar-nav > li {
         width: auto;
-        margin: 0 30px;
+        margin: 0 25px;
         border-bottom: 2px solid white; }
         .navbar-default .navbar-nav > li > a {
           line-height: 50px;
