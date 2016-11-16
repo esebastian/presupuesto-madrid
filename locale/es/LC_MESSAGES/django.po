@@ -85,3 +85,6 @@ msgstr "Detalle del presupuesto"
 # The client prefers 'Visión Global' to 'El recorrido de mis impuestos'
 msgid "El recorrido de mis impuestos"
 msgstr "Visión Global"
+
+msgid "Se realiza a través de impuestos directos -como el impuesto de bienes inmuebles (IBI) o el de vehículos de tracción mecánica (IVTM)- y de tasas -como la de recogida de basura"
+msgstr "Se realiza a través de impuestos directos -como el impuesto de bienes inmuebles (IBI) o el de vehículos de tracción mecánica (IVTM)- y de tasas"
