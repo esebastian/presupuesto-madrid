@@ -372,6 +372,17 @@ header{
   text-align: center;
 }
 
+.budget-viz .sankey-labels{
+  color: $text-color;
+  font-weight: $font-weight-700;
+}
+
+.stacked-area-chart .nonexecuted-overlay text{
+  fill: $text-color;
+  font-weight: $font-weight-700;
+  font-style: normal;
+}
+
 .body-entities .alert-data-update{
   margin-bottom: 1.5*$grid-gutter-width;
 }

@@ -7871,6 +7871,15 @@ header {
   padding-top: 0;
   text-align: center; }
 
+.budget-viz .sankey-labels {
+  color: #222;
+  font-weight: 600; }
+
+.stacked-area-chart .nonexecuted-overlay text {
+  fill: #222;
+  font-weight: 600;
+  font-style: normal; }
+
 .body-entities .alert-data-update {
   margin-bottom: 45px; }
 
