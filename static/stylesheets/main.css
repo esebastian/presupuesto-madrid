@@ -7765,27 +7765,43 @@ header {
     font-weight: 600; }
     .home-content .expense-examples li a:hover {
       color: #003DF6; }
-.home-content .options .option > div .icon {
-  color: #003DF6; }
-.home-content .options .option > div .option-title h3 {
-  color: #222; }
-.home-content .options .option > div .option-title:hover h3 {
-  color: #003DF6; }
-.home-content .options .option > div .btn {
-  font-size: 1.125em;
-  font-weight: 500;
-  background: #777777;
-  border-color: #777777; }
-  .home-content .options .option > div .btn:hover {
-    background: #003DF6;
-    border-color: #003DF6; }
-  .home-content .options .option > div .btn:before {
-    content: "";
-    display: block;
-    width: 19px;
-    height: 19px;
-    margin-top: 1px;
-    background: url(/static/assets/plus-icon.png) no-repeat 0 0 transparent; }
+.home-content .options .option > div {
+  border: none;
+  padding-top: 0; }
+  .home-content .options .option > div .icon {
+    margin: 0 -15px 20px;
+    padding-bottom: 35%;
+    background: url(/static/assets/resumen-picture.jpg) no-repeat center -4px white;
+    background-size: 100% auto;
+    -webkit-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
+    opacity: 0.7; }
+    .home-content .options .option > div .icon:before {
+      display: none; }
+  .home-content .options .option > div:hover .icon {
+    opacity: 1; }
+  .home-content .options .option > div.option-policies .icon {
+    background-image: url(/static/assets/politicas-picture.jpg); }
+  .home-content .options .option > div .option-title h3 {
+    color: #222; }
+  .home-content .options .option > div .option-title:hover h3 {
+    color: #003DF6; }
+  .home-content .options .option > div .btn {
+    font-size: 1.125em;
+    font-weight: 500;
+    background: #777777;
+    border-color: #777777; }
+    .home-content .options .option > div .btn:hover {
+      background: #003DF6;
+      border-color: #003DF6; }
+    .home-content .options .option > div .btn:before {
+      content: "";
+      display: block;
+      width: 19px;
+      height: 19px;
+      margin-top: 1px;
+      background: url(/static/assets/plus-icon.png) no-repeat 0 0 transparent; }
 
 .budget-intro .budget-step {
   border: none; }

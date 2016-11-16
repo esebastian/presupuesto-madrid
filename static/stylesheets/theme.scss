@@ -215,9 +215,28 @@ header{
 
   .options{
     .option > div{
-
+      border: none;
+      padding-top: 0;
+      
       .icon{
-        color: $brand-primary;
+        margin: 0 -0.5*$grid-gutter-width 2*$grid-gutter-width/3;
+        padding-bottom: 35%;
+        background: url(/static/assets/resumen-picture.jpg) no-repeat center -4px white;
+        background-size: 100% auto;
+        @include transition( opacity 0.3s ease-out );
+        opacity: 0.7;
+
+        &:before{
+          display: none;
+        }
+      }
+
+      &:hover .icon{
+        opacity: 1;
+      }
+
+      &.option-policies .icon{
+        background-image: url(/static/assets/politicas-picture.jpg);
       }
 
       .option-title h3{
