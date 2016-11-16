@@ -49,7 +49,7 @@ msgstr "Datos de inflación (Medias anuales de IPC para la Comunidad de Madrid)"
 
 #: templates/shared/data_sources.html:14
 msgid "Los ingresos y gastos mostrados incluyen únicamente al Gobierno de Aragón"
-msgstr "Los ingresos y gastos mostrados son los presupuestos consolidados del Ayuntamiento de Madrid y sus Organismos Autónomos (Informática del Ayuntamiento de Madrid, Agencia para el Empleo de Madrid, Patronato de Turismo de Madrid, Agencia Tributaria Madrid, Madrid Emprende, Madrid Salud y Agencia de Gestión de Licencias de Actividades)"
+msgstr "Los ingresos y gastos mostrados son los presupuestos consolidados del Ayuntamiento de Madrid y sus Organismos Autónomos (actualmente Informática del Ayuntamiento de Madrid, Agencia para el Empleo de Madrid, Patronato de Turismo de Madrid, Agencia Tributaria Madrid, Madrid Emprende, Madrid Salud y Agencia de Gestión de Licencias de Actividades)"
 
 #: templates/tax_receipt/tax_receipt_form.html:75
 msgid "Contribuyes con un total de <b id=\"tax-amount-paid\"></b> a los presupuestos del Gobierno de Aragón"
