@@ -44,6 +44,9 @@ OVERVIEW_EXPENSE_NODES = ['13', '16', '15', '23', '92', '17', '33', '34', '01']
 # Note: 0.5 usually leaves nodes ordered as defined. 0.95 sorts by size (decreasing).
 OVERVIEW_RELAX_FACTOR = 0.5
 
+# Treemaps minimum height or width to show labels. Default: 70 (Optional)
+TREEMAP_LABELS_MIN_SIZE = 40
+
 # Show Payments section in menu & home options. Default: False.
 # SHOW_PAYMENTS           = True
 
