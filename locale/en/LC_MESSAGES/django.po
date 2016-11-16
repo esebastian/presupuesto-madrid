@@ -113,3 +113,7 @@ msgstr "Budget detail"
 
 msgid "Políticas concretas"
 msgstr "Budget detail"
+
+# The client prefers 'Visión Global' to 'El recorrido de mis impuestos'
+msgid "El recorrido de mis impuestos"
+msgstr "Overview"
