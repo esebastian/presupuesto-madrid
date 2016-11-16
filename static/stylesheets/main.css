@@ -7867,6 +7867,20 @@ header {
   margin-top: 2px;
   background: url(../assets/search-icon.png) no-repeat 0 0 transparent; }
 
+.alert-data-update {
+  padding-top: 0;
+  text-align: center; }
+
+.body-entities .alert-data-update {
+  margin-bottom: 45px; }
+
+@media (min-width: 768px) {
+  .budget-viz .alert-data-update {
+    position: relative;
+    top: 16px;
+    margin: 0;
+    padding-bottom: 0;
+    line-height: 1em; } }
 .tax-receipt-table-content {
   background: white; }
 

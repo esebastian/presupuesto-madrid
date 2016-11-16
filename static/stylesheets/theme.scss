@@ -366,6 +366,28 @@ header{
   background: url(../assets/search-icon.png) no-repeat 0 0 transparent;
 }
 
+// Data Update Alert
+.alert-data-update{
+  padding-top: 0;
+  text-align: center;
+}
+
+.body-entities .alert-data-update{
+  margin-bottom: 1.5*$grid-gutter-width;
+}
+
+@media (min-width: $screen-sm-min) {
+
+  .budget-viz .alert-data-update{
+    position: relative;
+    top: 16px;
+    margin: 0;
+    padding-bottom: 0;
+    line-height: 1em;
+  }
+}
+
+
 // Tax Receipt
 .tax-receipt-table-content{
   background: white;
