@@ -132,9 +132,9 @@
 4,3,3,11,Desarrollo empresarial
 4,4,1,10,"Promoción, control y desarrollo del transporte"
 4,6,2,00,Innovación y ciudad inteligente
-4,9,3,00,Consumo
 4,9,1,01,Servicios informáticos y comunicaciones
 4,9,1,02,Innovación y tecnología
+4,9,3,00,Consumo
 9,1,2,00,Oficina del secretario de la Junta de Gobierno
 9,1,2,01,Alcaldía
 9,1,2,02,Gabinete de la Alcaldía
@@ -165,7 +165,6 @@
 9,2,0,04,Formación de personal
 9,2,0,05,Relaciones laborales
 9,2,0,06,Fomento de la transparencia
-9,2,0,06,Protocolo y actos públicos
 9,2,0,07,Gestión de personal
 9,2,0,08,Planificación interna e inspección de servicios
 9,2,0,09,Asesoría jurídica
