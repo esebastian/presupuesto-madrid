@@ -83,12 +83,12 @@ class MadridBudgetLoader(SimpleBudgetLoader):
 
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
+        year = re.search('municipio/(\d+)/', filename).group(1)
         if is_expense:
-            year = re.search('municipio/(\d+)/', filename).group(1)
             fc_code = line[4]
             ec_code = line[8]
             ic_code = self.get_institution_code(line[0]) + line[2]
-            amount = self._parse_amount(line[15 if is_actual else 12])
+            amount = self._parse_amount(line[15 if is_actual else (10 if year=='2017' else 12)])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2]=='410' or ec_code[:-2]=='710':
@@ -127,8 +127,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0]) + '00'
-            amount = self._parse_amount(line[9 if is_actual else 8])
-
+            amount = self._parse_amount(line[9 if is_actual else (6 if year=='2017' else 8)])
 
             # Ignore transfers from parent organisation
             if ec_code[:-2]=='400' or ec_code[:-2]=='700':
