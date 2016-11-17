@@ -63,7 +63,7 @@ header{
 .navbar-brand{
   font-size: 1.071em;
   font-weight: $font-weight-400;
-  letter-spacing: 0.075em;
+  letter-spacing: 0.05em;
   line-height: 25px;
 
   a{
@@ -138,7 +138,7 @@ header{
 
       > li{
         width: auto;
-        margin: 0 $grid-gutter-width;
+        margin: 0 25px;
         border-bottom: 2px solid white;
 
         > a{
@@ -215,9 +215,28 @@ header{
 
   .options{
     .option > div{
-
+      border: none;
+      padding-top: 0;
+      
       .icon{
-        color: $brand-primary;
+        margin: 0 -0.5*$grid-gutter-width 2*$grid-gutter-width/3;
+        padding-bottom: 35%;
+        background: url(/static/assets/resumen-picture.jpg) no-repeat center -4px white;
+        background-size: 100% auto;
+        @include transition( opacity 0.3s ease-out );
+        opacity: 0.7;
+
+        &:before{
+          display: none;
+        }
+      }
+
+      &:hover .icon{
+        opacity: 1;
+      }
+
+      &.option-policies .icon{
+        background-image: url(/static/assets/politicas-picture.jpg);
       }
 
       .option-title h3{
@@ -346,6 +365,39 @@ header{
   margin-top: 2px;
   background: url(../assets/search-icon.png) no-repeat 0 0 transparent;
 }
+
+// Data Update Alert
+.alert-data-update{
+  padding-top: 0;
+  text-align: center;
+}
+
+.budget-viz .sankey-labels{
+  color: $text-color;
+  font-weight: $font-weight-700;
+}
+
+.stacked-area-chart .nonexecuted-overlay text{
+  fill: $text-color;
+  font-weight: $font-weight-700;
+  font-style: normal;
+}
+
+.body-entities .alert-data-update{
+  margin-bottom: 1.5*$grid-gutter-width;
+}
+
+@media (min-width: $screen-sm-min) {
+
+  .budget-viz .alert-data-update{
+    position: relative;
+    top: 16px;
+    margin: 0;
+    padding-bottom: 0;
+    line-height: 1em;
+  }
+}
+
 
 // Tax Receipt
 .tax-receipt-table-content{

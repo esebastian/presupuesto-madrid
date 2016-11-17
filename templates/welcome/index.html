@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Home Content -->
+<section class="home-content" role="region">
+
+  <!-- Home Intro -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="home-intro">
+          <h2>{{ _('¿Cómo y en qué gasta el Gobierno de Aragón?') }}</h2>
+          <p class="lead">{{ _('Te mostramos de un modo claro cómo se distribuye nuestro presupuesto. De dónde vienen los ingresos y a qué destinamos el gasto') }}.</p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="expense-examples">
+          <p class="title">{{ _('Algunos ejemplos') }}</p>
+          <ul>
+            {% for programme in featured_programmes %}
+            {# Items are initially hidden and shown randomly via Javascript, see below #}
+            <li class="hidden" data='{{ breakdown.subtotals[programme.uid()].total_expense[latest_budget.year] }}'>
+              <a href="{% url 'budget_app.views.programmes_show' programme.uid(), programme.slug() %}">{{ programme.description }}</a>
+              <b></b>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sections -->
+  <div class="options">
+    <div class="container">
+
+      <!-- Section Visión Global -->
+      <div class="option">
+        <div class="option-global">
+          <div data-icon="B" aria-hidden="true" class="icon mega"></div>
+          <a href="{{ url('budget_app.views.budgets') }}" class="option-title" title="{{ _('Visión global') }}"><h3>{{ _('Visión global') }}</h3></a>
+          <p class="desc">{{ _('Para que tengas una idea general de los ingresos y gastos del Gobierno de Aragón') }}.</p>
+          <a href="{{ url('budget_app.views.budgets') }}" class="btn btn-default btn-primary magenta icon-plus" title="{{ _('Visión global') }}">{{ _('Visión global') }}</a>
+        </div>
+      </div>
+
+      <!-- Section Políticas -->
+      <div class="option">
+        <div class="option-policies">
+          <div data-icon="P" aria-hidden="true" class="icon mega"></div>
+          <a href="{{ url('budget_app.views.policies') }}#view=income" class="option-title" title="{{ _('Políticas concretas') }}"><h3>{{ _('Políticas concretas') }}</h3></a>
+          <p class="desc">{{ _('Educación, protección y bienestar social, cultura... ¿Qué área te interesa?') }}</p>
+          <a href="{{ url('budget_app.views.policies') }}#view=income" class="btn btn-default btn-primary blue icon-plus" title="{{ _('Políticas concretas') }}">{{ _('Políticas') }}</a>
+        </div>
+      </div>
+
+      <!-- Section Pagos -->
+     {% if show_payments %}
+      <div class="option">
+        <div class="option-payments">
+          <div data-icon="&#xe604;" aria-hidden="true" class="icon mega"></div>
+          <a href="{{ url('budget_app.views.payments') }}" class="option-title" title="{{ _('Pagos e inversiones') }}"><h3>{{ _('Pagos e inversiones') }}</h3></a>
+          <p class="desc">{{ _('Te mostramos en detalle todos las facturas y pagos efectuados por el Ayuntamiento') }}.</p>
+          <a href="{{ url('budget_app.views.payments') }}" class="btn btn-default btn-primary green icon-plus" title="{{ _('Pagos e inversiones') }}">{{ _('Pagos e inversiones') }}</a>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Section Calculadora -->
+      {% if show_tax_receipt %}
+      <div class="option">
+        <div class="option-tax">
+          <div data-icon="&#x63;" aria-hidden="true" class="icon mega"></div>
+          <a href="{{ url('budget_app.views.tax_receipt') }}" class="option-title" title="{{ _('¿Y qué aporto yo?') }}"><h3>{{ _('¿Y qué aporto yo?') }}</h3></a>
+          <p class="desc">{{ _('Te contamos en qué se invierte el dinero que recaudamos de tus impuestos') }}.</p>
+          <a href="{{ url('budget_app.views.tax_receipt') }}" class="btn btn-default btn-primary green icon-plus" title="{{ _('¿Y qué aporto yo?') }}">{{ _('Lo que tú aportas') }}</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+</section>
+
+<script>
+$(function () {
+  // Show featured programmes, at random.
+  // We used to do the selection on the server, but then the page would be cached, hence not random anymore.
+  for (var i=1; i<={{ number_of_featured_programmes }}; i++) {
+    var hiddenProgrammes = $("div.expense-examples li.hidden"),
+        chosenProgramme = Math.floor(Math.random()*hiddenProgrammes.length);
+    var programme = $(hiddenProgrammes[chosenProgramme]);
+    $(programme).find('b').text( formatAmount($(programme).attr('data')) );
+    $(programme).insertAfter($('.expense-examples ul'));
+    programme.removeClass("hidden");
+  }
+
+  // Make hero boxes react to clicks
+  $('.option-global').click(function(){window.location = '{{ url('budget_app.views.budgets') }}';});
+  $('.option-policies').click(function(){window.location = '{{ url('budget_app.views.policies') }}#view=income';});
+  $('.option-tax').click(function(){window.location = '{{ url('budget_app.views.tax_receipt') }}';});
+});
+</script>
+{% endblock %} 

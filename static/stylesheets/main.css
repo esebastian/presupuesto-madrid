@@ -7681,7 +7681,7 @@ header {
 .navbar-brand {
   font-size: 1.071em;
   font-weight: 400;
-  letter-spacing: 0.075em;
+  letter-spacing: 0.05em;
   line-height: 25px; }
   .navbar-brand a {
     color: white; }
@@ -7725,7 +7725,7 @@ header {
       padding: 0; }
       .navbar-default .navbar-nav > li {
         width: auto;
-        margin: 0 30px;
+        margin: 0 25px;
         border-bottom: 2px solid white; }
         .navbar-default .navbar-nav > li > a {
           line-height: 50px;
@@ -7765,27 +7765,43 @@ header {
     font-weight: 600; }
     .home-content .expense-examples li a:hover {
       color: #003DF6; }
-.home-content .options .option > div .icon {
-  color: #003DF6; }
-.home-content .options .option > div .option-title h3 {
-  color: #222; }
-.home-content .options .option > div .option-title:hover h3 {
-  color: #003DF6; }
-.home-content .options .option > div .btn {
-  font-size: 1.125em;
-  font-weight: 500;
-  background: #777777;
-  border-color: #777777; }
-  .home-content .options .option > div .btn:hover {
-    background: #003DF6;
-    border-color: #003DF6; }
-  .home-content .options .option > div .btn:before {
-    content: "";
-    display: block;
-    width: 19px;
-    height: 19px;
-    margin-top: 1px;
-    background: url(/static/assets/plus-icon.png) no-repeat 0 0 transparent; }
+.home-content .options .option > div {
+  border: none;
+  padding-top: 0; }
+  .home-content .options .option > div .icon {
+    margin: 0 -15px 20px;
+    padding-bottom: 35%;
+    background: url(/static/assets/resumen-picture.jpg) no-repeat center -4px white;
+    background-size: 100% auto;
+    -webkit-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
+    opacity: 0.7; }
+    .home-content .options .option > div .icon:before {
+      display: none; }
+  .home-content .options .option > div:hover .icon {
+    opacity: 1; }
+  .home-content .options .option > div.option-policies .icon {
+    background-image: url(/static/assets/politicas-picture.jpg); }
+  .home-content .options .option > div .option-title h3 {
+    color: #222; }
+  .home-content .options .option > div .option-title:hover h3 {
+    color: #003DF6; }
+  .home-content .options .option > div .btn {
+    font-size: 1.125em;
+    font-weight: 500;
+    background: #777777;
+    border-color: #777777; }
+    .home-content .options .option > div .btn:hover {
+      background: #003DF6;
+      border-color: #003DF6; }
+    .home-content .options .option > div .btn:before {
+      content: "";
+      display: block;
+      width: 19px;
+      height: 19px;
+      margin-top: 1px;
+      background: url(/static/assets/plus-icon.png) no-repeat 0 0 transparent; }
 
 .budget-intro .budget-step {
   border: none; }
@@ -7851,6 +7867,29 @@ header {
   margin-top: 2px;
   background: url(../assets/search-icon.png) no-repeat 0 0 transparent; }
 
+.alert-data-update {
+  padding-top: 0;
+  text-align: center; }
+
+.budget-viz .sankey-labels {
+  color: #222;
+  font-weight: 600; }
+
+.stacked-area-chart .nonexecuted-overlay text {
+  fill: #222;
+  font-weight: 600;
+  font-style: normal; }
+
+.body-entities .alert-data-update {
+  margin-bottom: 45px; }
+
+@media (min-width: 768px) {
+  .budget-viz .alert-data-update {
+    position: relative;
+    top: 16px;
+    margin: 0;
+    padding-bottom: 0;
+    line-height: 1em; } }
 .tax-receipt-table-content {
   background: white; }
 
