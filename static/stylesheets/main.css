@@ -6123,16 +6123,18 @@ label {
 .stacked-area-chart .bkg-rect {
   fill: white;
   cursor: auto; }
-.stacked-area-chart .nonexecuted-overlay rect {
+.stacked-area-chart .overlay rect {
   fill: white;
   opacity: 0.5;
   pointer-events: none; }
-.stacked-area-chart .nonexecuted-overlay text {
+.stacked-area-chart .overlay text {
   display: none;
   font-size: 0.875em;
   fill: #777777;
   text-anchor: middle;
   font-style: italic; }
+.stacked-area-chart .overlay.project-overlay rect {
+  opacity: 0.72; }
 .stacked-area-chart .axis path,
 .stacked-area-chart .axis line {
   fill: none;
@@ -6241,7 +6243,7 @@ label {
   font-weight: 300; }
 
 @media (min-width: 768px) {
-  .stacked-area-chart .nonexecuted-overlay text {
+  .stacked-area-chart .overlay text {
     display: block; } }
 .chosen-container-single .chosen-single {
   border-radius: 0;
@@ -6311,6 +6313,9 @@ label {
     .data-controllers .slider.slider-horizontal .slider-tick-label {
       color: #555555;
       font-size: 0.875em;
+      line-height: 1em;
+      margin-top: 5px;
+      vertical-align: top;
       cursor: pointer; }
     .data-controllers .slider.slider-horizontal .tooltip.top {
       margin-left: -22px;
@@ -7875,7 +7880,7 @@ header {
   color: #222;
   font-weight: 600; }
 
-.stacked-area-chart .nonexecuted-overlay text {
+.stacked-area-chart .overlay text {
   fill: #222;
   font-weight: 600;
   font-style: normal; }
