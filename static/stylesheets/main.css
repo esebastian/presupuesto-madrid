@@ -5925,6 +5925,7 @@ label {
     top: auto;
     pointer-events: none; }
     .chart-container .popover .popover-title {
+      color: #003DF6;
       margin: 0 15px;
       padding: 8px 0;
       background: white;
@@ -6413,6 +6414,8 @@ label {
   height: 22px;
   margin-top: 1px;
   margin-right: 8px;
+  overflow: hidden;
+  text-indent: -9999px;
   border-radius: 11px;
   background: url(../assets/bugget-stream-question.png) no-repeat 6px 3px #777777;
   -webkit-transition: background-color 0.3s ease-out;
