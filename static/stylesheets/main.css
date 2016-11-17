@@ -6311,6 +6311,9 @@ label {
     .data-controllers .slider.slider-horizontal .slider-tick-label {
       color: #555555;
       font-size: 0.875em;
+      line-height: 1em;
+      margin-top: 5px;
+      vertical-align: top;
       cursor: pointer; }
     .data-controllers .slider.slider-horizontal .tooltip.top {
       margin-left: -22px;
