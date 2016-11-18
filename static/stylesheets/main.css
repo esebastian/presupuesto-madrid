@@ -7781,7 +7781,7 @@ header {
   .home-content .options .option > div .icon {
     margin: 0 -15px 20px;
     padding-bottom: 35%;
-    background: url(/static/assets/resumen-picture.jpg) no-repeat center -4px white;
+    background: url(../assets/resumen-picture.jpg) no-repeat center -4px white;
     background-size: 100% auto;
     -webkit-transition: opacity 0.3s ease-out;
     -o-transition: opacity 0.3s ease-out;
@@ -7792,7 +7792,7 @@ header {
   .home-content .options .option > div:hover .icon {
     opacity: 1; }
   .home-content .options .option > div.option-policies .icon {
-    background-image: url(/static/assets/politicas-picture.png); }
+    background-image: url(../assets/politicas-picture.png); }
   .home-content .options .option > div .option-title h3 {
     color: #222; }
   .home-content .options .option > div .option-title:hover h3 {
@@ -7811,7 +7811,7 @@ header {
       width: 19px;
       height: 19px;
       margin-top: 1px;
-      background: url(/static/assets/plus-icon.png) no-repeat 0 0 transparent; }
+      background: url(../assets/plus-icon.png) no-repeat 0 0 transparent; }
 
 .budget-intro .budget-step {
   border: none; }
