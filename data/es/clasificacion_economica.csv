@@ -184,7 +184,7 @@ I,5,9,,Otros ingresos patrimoniales
 I,5,9,1,Beneficios por realización de inversiones financieras
 I,5,9,2,Ingresos por operaciones de intercambio financiero
 I,5,9,9,Otros ingresos patrimoniales
-I,6,,,Enajenacion de inversiones reales
+I,6,,,Enajenación de inversiones reales
 I,6,0,,De terrenos
 I,6,0,0,Venta de solares
 I,6,0,1,Venta de fincas rústicas
@@ -237,10 +237,10 @@ I,7,9,6,Del Fondo Europeo de la Pesca (FEP)
 I,7,9,7,Otras transferencias de la Unión Europea
 I,7,9,9,"Otras transferencias del exterior, excluyendo la Unión Europea"
 I,8,,,Activos financieros
-I,8,0,,Enajenacion de deuda del sector público
+I,8,0,,Enajenación de deuda del sector público
 I,8,0,0,A corto plazo
 I,8,0,1,A largo plazo
-I,8,1,,Enajenacion de obligaciones y bonos fuera del sector público
+I,8,1,,Enajenación de obligaciones y bonos fuera del sector público
 I,8,1,0,A corto plazo
 I,8,1,1,A largo plazo
 I,8,2,,Reintegro de préstamos y anticipos concedidos al sector público
@@ -252,8 +252,8 @@ I,8,3,1,A largo plazo
 I,8,4,,Devolucion de depósitos y fianzas constituidos
 I,8,4,0,Devolucion de depósitos
 I,8,4,1,Devolucion de fianzas
-I,8,5,,Enajenacion de acciones y participaciones del sector público
-I,8,6,,Enajenacion de acciones y participaciones fuera del sector público
+I,8,5,,Enajenación de acciones y participaciones del sector público
+I,8,6,,Enajenación de acciones y participaciones fuera del sector público
 I,8,7,,Remanente de tesoreria
 I,8,7,0,Remanente de tesoreria
 I,9,,,Pasivos financieros
@@ -485,10 +485,10 @@ G,8,0,1,A largo plazo
 G,8,1,,Adquisición de obligaciones y bonos fuera del sector público
 G,8,1,0,A corto plazo. Desarrollo por sectores
 G,8,1,1,A largo plazo. Desarrollo por sectores
-G,8,2,,Concesion de préstamos al sector público
+G,8,2,,Concesión de préstamos al sector público
 G,8,2,0,Préstamos a corto plazo
 G,8,2,1,Préstamos a largo plazo
-G,8,3,,Concesion de préstamos fuera del sector público
+G,8,3,,Concesión de préstamos fuera del sector público
 G,8,3,0,Préstamos a corto plazo. Desarrollo por sectores
 G,8,3,1,Préstamos a largo plazo. Desarrollo por sectores
 G,8,4,,Constitucion de depósitos y fianzas
@@ -543,7 +543,7 @@ I,7,0,0,De la Administración General de la entidad local
 I,7,1,0,De organismos autónomos de la entidad local
 I,7,7,0,Otras transferencias de empresas privadas
 I,7,8,0,De familias e instituciones sin fines de lucro
-I,8,5,0,Enajenacion de acciones y participaciones del sector público
+I,8,5,0,Enajenación de acciones y participaciones del sector público
 G,2,1,7,Proyectos complejos
 G,2,2,8,Convenios servicios educativos
 G,2,5,1,Trabajos realizados por universidades públicas
