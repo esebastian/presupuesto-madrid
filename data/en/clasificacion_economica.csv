@@ -37,7 +37,7 @@ I,2,6,0,Sobre impuestos del Estado
 I,2,6,1,Sobre impuestos de la Comunidad Autónoma
 I,2,7,,Recargos sobre impuestos indirectos de otros entes locales
 I,2,7,0,Sobre impuestos de otros entes locales
-I,2,8,,Impuestos indirectos extinguidos
+I,2,8,,Extinguished indirect taxes
 I,2,9,,Other indirect taxes
 I,2,9,0,"Tax over constructions, installations and works"
 I,2,9,1,"Tax on sumptuous expenses (hunting and fishing preserves)"
@@ -92,7 +92,7 @@ I,3,4,5,Servicio de transporte público urbano
 I,3,4,9,Other public prices
 I,3,5,,Special contributions
 I,3,5,0,Para la ejecución de obras
-I,3,5,1,Para el establecimiento o ampliación de servicios
+I,3,5,1,For the establishment or expansion of services
 I,3,6,,Sales
 I,3,6,0,Sales
 I,3,8,,Repayments
@@ -106,11 +106,11 @@ I,3,9,4,Prestación personal
 I,3,9,5,Prestación de transporte
 I,3,9,6,Income from urbanization activities
 I,3,9,7,Urban land use
-I,3,9,8,Indemnizaciones de seguros de no vida
+I,3,9,8,Non-life insurance indemnities
 I,3,9,9,Other miscellaneous income
 I,4,,,Current transfers
-I,4,0,,De la Administración General de la entidad local
-I,4,0,0,De la Administración General de la entidad local
+I,4,0,,From the General Administration of the local entity
+I,4,0,0,From the General Administration of the local entity
 I,4,1,,City Council's independent bodies
 I,4,2,,From Spanish central government
 I,4,2,0,From State's General Administration
@@ -152,7 +152,7 @@ I,5,,,Property revenues
 I,5,0,,Securities interest
 I,5,0,0,Del Estado
 I,5,0,1,From agencies and autonomous bodies
-I,5,0,4,"De sociedades mercantiles estatales, entidades públicas empresariales y otros organismos públicos"
+I,5,0,4,"From state commercial companies, public business entities and other public bodies"
 I,5,0,5,De comunidades autónomas
 I,5,0,6,De entidades locales
 I,5,0,7,From private companies
@@ -187,7 +187,7 @@ I,6,,,Property investments disposal
 I,6,0,,Lands
 I,6,0,0,Venta de solares
 I,6,0,1,Venta de fincas rústicas
-I,6,0,2,Parcelas sobrantes de la via pública
+I,6,0,2,Left-over public road plots
 I,6,0,3,Public land assets
 I,6,0,9,Other land assets
 I,6,1,,Other property investments
@@ -197,23 +197,23 @@ I,6,1,9,De otras inversiones reales
 I,6,8,,Capital operations repayments
 I,6,8,0,From closed periods
 I,7,,,Capital transfers
-I,7,0,,De la Administración General de la entidad local
+I,7,0,,From the General Administration of the local entity
 I,7,1,,City Council's autonomous public entities
 I,7,2,,From Spanish central government
-I,7,2,0,De la Administración General del Estado
-I,7,2,1,De organismos autónomos y agencias estatales
-I,7,2,2,De fundaciones estatales
+I,7,2,0,From the General State Administration
+I,7,2,1,From autonomous agencies and state agencies
+I,7,2,2,From state foundations
 I,7,2,3,"From state corporations, public business entities and other public bodies"
-I,7,3,,De la Seguridad Social
-I,7,3,0,De la Seguridad Social
-I,7,4,,De entes públicos y sociedades mercantiles de la entidad local
-I,7,4,0,De entes públicos
-I,7,4,1,De sociedades mercantiles
+I,7,3,,From Social Security
+I,7,3,0,From Social Security
+I,7,4,,From public entities and mercantile companies of the local entity
+I,7,4,0,From public entities
+I,7,4,1,From commercial companies
 I,7,5,,From regional governments
 I,7,5,0,From regional governments' General Administrations
 I,7,5,1,De organismos autónomos y agencias de las comunidades autónomas
 I,7,5,2,De fundaciones de las comunidades autónomas
-I,7,5,3,"De sociedades mercantiles, entidades públicas empresariales y otros organismos públicos dependientes de las comunidades autónomas"
+I,7,5,3,"From commercial companies, public business entities and other public bodies dependent on autonomous communities"
 I,7,6,,Local governments
 I,7,6,1,"De diputaciones, consejos o cabildos"
 I,7,6,2,From city councils
@@ -236,7 +236,7 @@ I,7,9,6,Del Fondo Europeo de la Pesca (FEP)
 I,7,9,7,Other European Union transfers
 I,7,9,9,"Other external transfers, excluding the European Union"
 I,8,,,Financial assets
-I,8,0,,Enajenacion de deuda del sector público
+I,8,0,,Disposal of public sector debt
 I,8,0,0,Short term
 I,8,0,1,Long term
 I,8,1,,Enajenacion de obligaciones y bonos fuera del sector público
@@ -260,8 +260,8 @@ I,9,0,,Public debt issuance in euros
 I,9,0,0,Short term
 I,9,0,1,Long term
 I,9,1,,Received loans
-I,9,1,0,Préstamos recibidos a corto plazo de entes del sector público
-I,9,1,1,Préstamos recibidos a largo plazo de entes del sector público
+I,9,1,0,Short-term loans received from public sector entities
+I,9,1,1,Long-term loans received from public sector entities
 I,9,1,2,Préstamos recibidos a corto plazo de entes de fuera del sector público
 I,9,1,3,Préstamos recibidos a largo plazo de entes de fuera del sector público
 I,9,2,,Emision de deuda pública en moneda distinta del euro
@@ -277,24 +277,24 @@ G,1,,,Staff expenses
 G,1,0,,Government bodies and executive staff
 G,1,0,0,Basic salaries and other remuneration of governing bodies' members
 G,1,0,1,Basic salaries and other remuneration of senior management
-G,1,0,7,Contribuciones a planes y fondos de pensiones
+G,1,0,7,Contributions to pension funds and plans
 G,1,1,,Temporary staff
 G,1,1,0,Basic salaries and other remunerations
-G,1,1,7,Contribuciones a planes y fondos de pensiones
+G,1,1,7,Contributions to pension funds and plans
 G,1,2,,Civil servants
 G,1,2,0,Basic salaries
 G,1,2,1,Supplementary remuneration
 G,1,2,2,Compensation in kind
 G,1,2,4,Remuneration of public workers in training
-G,1,2,7,Contribuciones a planes y fondos de pensiones
+G,1,2,7,Contributions to pension funds and plans
 G,1,3,,Employees
 G,1,3,0,Permanent workforce
 G,1,3,1,Temporary workforce
 G,1,3,2,Compensation in kind
-G,1,3,7,Contribuciones a planes y fondos de pensiones
+G,1,3,7,Contributions to pension funds and plans
 G,1,4,,Other personnel
 G,1,4,3,Other personnel
-G,1,4,7,Contribuciones a planes y fondos de pensiones
+G,1,4,7,Contributions to pension funds and plans
 G,1,5,,Performance incentives
 G,1,5,0,Productivity
 G,1,5,1,Gratifications
@@ -382,7 +382,7 @@ G,4,3,,To Social Security
 G,4,4,,To City Council's companies
 G,4,4,0,Grants to promote employment
 G,4,4,1,Subvenciones para bonificacion de intereses y primas de seguros
-G,4,4,2,Subvenciones para reducir el precio a pagar por los consumidores
+G,4,4,2,Subsidies to reduce the price to paid by consumers
 G,4,4,9,Otras subvenciones a entes públicos y sociedades mercantiles de la entidad local
 G,4,5,,To regional governments
 G,4,5,0,To regional governments' General Administrations
@@ -401,7 +401,7 @@ G,4,6,8,A entidades locales menores
 G,4,7,,To private companies
 G,4,7,0,Grants to promote employment
 G,4,7,1,Subvenciones para bonificación de intereses y primas de seguros
-G,4,7,2,Subvenciones para reducir el precio a pagar por los consumidores
+G,4,7,2,Subsidies to reduce the price to paid by consumers
 G,4,7,9,Other grants to private companies
 G,4,8,,To families and non-profit organisations
 G,4,9,,To external organisations
@@ -484,9 +484,9 @@ G,8,0,1,Long term
 G,8,1,,Adquisición de obligaciones y bonos fuera del sector público
 G,8,1,0,Short term. Desarrollo por sectores
 G,8,1,1,Long term. Desarrollo por sectores
-G,8,2,,Concesion de préstamos al sector público
-G,8,2,0,Préstamos a corto plazo
-G,8,2,1,Préstamos a largo plazo
+G,8,2,,Loans granted to the public sector
+G,8,2,0,Short-term loans
+G,8,2,1,Long-term loans
 G,8,3,,Concesion de préstamos fuera del sector público
 G,8,3,0,Préstamos a corto plazo. Desarrollo por sectores
 G,8,3,1,Préstamos a largo plazo. Desarrollo por sectores
@@ -530,24 +530,24 @@ I,3,0,6,Firefighting
 I,3,1,6,Madrid Planetarium
 I,3,4,6,Cultural services
 I,3,4,7,Works on public roads
-I,3,4,8,Precios públicos extinguidos
+I,3,4,8,Extinguished public prices
 I,4,1,0,From City Council's autonomous bodies
 I,4,7,0,From private companies
 I,4,8,0,Other transfers from families and non-profit organisations
 I,4,9,8,Other European Union programmes
 I,5,2,0,Interest on deposits
-I,5,4,5,Cesión puestos mercados
+I,5,4,5,Assignment of market stalls
 I,6,1,0,From remaining real estate investments
-I,7,0,0,De la Administración General de la entidad local
+I,7,0,0,From the General Administration of the local entity
 I,7,1,0,From City Council's autonomous bodies
 I,7,7,0,Other transfers from private companies
 I,7,8,0,From families and non-profit organisations
-I,8,5,0,Enajenacion de acciones y participaciones del sector público
+I,8,5,0,Disposal of public sector shares and participations
 G,2,1,7,Complex projects
 G,2,2,8,Educational services agreements
 G,2,5,1,Work performed by public universities
 G,2,6,0,Work performed by non-profit organisations
-G,2,7,0,Otros gastos imprevistos y funciones no clasificadas
+G,2,7,0,Other unforeseen expenses and unclassified functions
 G,2,7,1,Fondo de contingencia
 G,4,0,0,To City Council's General Administration
 G,4,1,0,A organismos autónomos de la entidad local
@@ -557,22 +557,22 @@ G,4,8,0,To foundations
 G,4,8,1,To local political groups
 G,4,8,2,"Scholarships, prizes and charity"
 G,4,8,9,Other transfers to families and non-profit organisations
-G,4,9,0,Al exterior
+G,4,9,0,To external organisations
 G,4,9,1,To international public organisations
-G,6,0,1,Señalización vial
-G,6,0,2,Mobiliario urbano
-G,6,0,3,"Hidrantes, fuentes y alcantarillado"
-G,6,0,4,Alumbrado público
-G,6,0,5,Parques y jardines
-G,6,0,6,Urbanización
-G,6,1,1,Viales
-G,6,1,3,"Hidrantes, fuentes y alcantarillado"
-G,6,1,4,Alumbrado público
-G,6,1,5,Parques y jardines
-G,6,1,6,Urbanización
+G,6,0,1,Road signs
+G,6,0,2,Street furniture
+G,6,0,3,"Hydrants, fountains and sewers"
+G,6,0,4,Street lighting
+G,6,0,5,Parks and gardens
+G,6,0,6,Urbanization
+G,6,1,1,Vials
+G,6,1,3,"Hydrants, fountains and sewers"
+G,6,1,4,Street lighting
+G,6,1,5,Parks and gardens
+G,6,1,6,Urbanization
 G,7,0,0,To City Council's General Administration
 G,7,4,5,To City Council's corporation
-G,7,4,6,Al Club de Campo Villa de Madrid
+G,7,4,6,To Club de Campo Villa de Madrid
 G,7,7,9,Other grants to private companies
 G,7,8,0,To foundations
 G,7,8,2,"Scholarships, prizes and charity"
