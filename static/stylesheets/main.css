@@ -7784,9 +7784,9 @@ header {
   border: none;
   padding-top: 0; }
   .home-content .options .option > div .icon {
-    margin: 0 -15px 20px;
-    padding-bottom: 35%;
-    background: url(../assets/resumen-picture.jpg) no-repeat center -4px white;
+    margin: 0 -15px 30px;
+    padding-bottom: 50%;
+    background: url(../assets/resumen-picture.png) no-repeat center top white;
     background-size: 100% auto;
     -webkit-transition: opacity 0.3s ease-out;
     -o-transition: opacity 0.3s ease-out;
