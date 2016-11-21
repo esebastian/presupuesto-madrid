@@ -377,6 +377,7 @@ header{
   font-weight: $font-weight-700;
 }
 
+.sankey .legend-item text,
 .stacked-area-chart .overlay text{
   fill: $text-color;
   font-weight: $font-weight-700;
