@@ -6218,7 +6218,8 @@ label {
       .stacked-area-chart-legend .label.inactive span {
         background: none !important; }
 
-.chart-embed-btn span {
+.chart-embed-btn span,
+.chart-embed-btn a {
   display: block;
   position: absolute;
   top: -5px;
@@ -6227,7 +6228,8 @@ label {
   height: 30px;
   background: url(../assets/icon-share.png) no-repeat center center #003DF6;
   cursor: pointer; }
-  .chart-embed-btn span:hover {
+  .chart-embed-btn span:hover,
+  .chart-embed-btn a:hover {
     background-color: #114cff; }
 
 .policy-breakdown .chart-container .popover-content-year {
