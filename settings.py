@@ -59,6 +59,10 @@ TREEMAP_LABELS_MIN_SIZE = 40
 # Show an extra tab with institutional breakdown. Default: True.
 # SHOW_INSTITUTIONAL_TAB  = False
 
+# Are institutional codes consistent along the years. Default: False.
+# Important: We need this to be True for the institutional treemap to work properly.
+CONSISTENT_INSTITUTIONAL_CODES = True
+
 # Show an extra tab with funding breakdown (only applicable to some budgets). Default: False.
 # SHOW_FUNDING_TAB = False
 
