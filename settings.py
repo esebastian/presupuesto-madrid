@@ -66,8 +66,8 @@ SHOW_GLOBAL_INSTITUTIONAL_TREEMAP  = True
 # How many levels to show in the global institutional treemap? Default: 1.
 INSTITUTIONAL_MAX_LEVELS = 2
 
-# Show institutional pages. Still under development, see #347. Default: False.
-SHOW_INSTITUTIONAL_PAGES = True
+# Show section pages. Still under development, see #347. Default: False.
+SHOW_SECTION_PAGES = True
 
 # Are institutional codes consistent along the years. Default: False.
 # Important: We need this to be True for the institutional treemap to work properly.
