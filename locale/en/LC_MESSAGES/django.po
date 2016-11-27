@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-11 17:16+0100\n"
-"PO-Revision-Date: 2016-11-22 16:00+0100\n"
+"PO-Revision-Date: 2016-11-27 15:36+0100\n"
 "Last-Translator: David Cabo <david@civio.es>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -112,6 +112,9 @@ msgid "Políticas"
 msgstr "Budget detail"
 
 msgid "Políticas concretas"
+msgstr "Budget detail"
+
+msgid "Volver a Políticas"
 msgstr "Budget detail"
 
 # The client prefers 'Visión Global' to 'El recorrido de mis impuestos'
