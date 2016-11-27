@@ -59,6 +59,16 @@ TREEMAP_LABELS_MIN_SIZE = 40
 # Show an extra tab with institutional breakdown. Default: True.
 # SHOW_INSTITUTIONAL_TAB  = False
 
+# Show an extra treemap in the Policy page, showing institutional breakdown. Default: False.
+# Important: insitutional codes must be consistent along the years, see CONSISTENT_INSTITUTIONAL_CODES.
+SHOW_GLOBAL_INSTITUTIONAL_TREEMAP  = True
+
+# How many levels to show in the global institutional treemap? Default: 1.
+INSTITUTIONAL_MAX_LEVELS = 2
+
+# Show institutional pages. Still under development, see #347. Default: False.
+SHOW_INSTITUTIONAL_PAGES = True
+
 # Are institutional codes consistent along the years. Default: False.
 # Important: We need this to be True for the institutional treemap to work properly.
 CONSISTENT_INSTITUTIONAL_CODES = True
