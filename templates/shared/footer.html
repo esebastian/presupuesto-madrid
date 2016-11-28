@@ -1,3 +1,38 @@
+<div class="main-footer sitemap-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <strong>{{ _('Visor de presupuestos') }}</strong>
+        <p class="sitemap-title">{{ _('Web dedicada a la visualización de los presupuestos del Ayuntamiento de Madrid') }}</p>
+        <p class="sitemap-more">{{ _('Más sobre presupuestos en www.madrid.es') }}</p>
+      </div>
+      <div class="col-sm-4 internal-links">
+        <ul>
+          <li><a href="{{ url('budget_app.views.budgets') }}">{{ _('Visión global') }}</a></li>
+          <li><a href="{{ url('budget_app.views.policies') }}#view=income">{{ _('Políticas') }}</a></li>
+          <li><a href="{{ url('presupuesto-madrid.views.guidedvisit') }}">{{ _('Visita guiada') }}</a></li>
+          {% if show_payments %}
+          <li><a href="{{ url('budget_app.views.payments') }}">{{ _('Pagos e inversiones') }}</a></li>
+          {% endif %}
+          {% if show_tax_receipt %}
+          <li><a href="{{ url('budget_app.views.tax_receipt') }}">{{ _('Lo que tú aportas') }}</a></li>
+          {% endif %}
+          <li><a href="{{ url('budget_app.views.terms') }}">{{ _('¿Qué significa...?') }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-4 external-links">
+        <strong>{{ _('Otras webs del Ayuntamiento de Madrid') }}</strong>
+        <ul>
+          <li><a href="https://transparencia.madrid.es/" target="_blank">transparencia.madrid.es</a></li>
+          <li><a href="http://datos.madrid.es/portal/site/egob/" target="_blank">datos.madrid.es</a></li>
+          <li><a href="https://decide.madrid.es/" target="_blank">decide.madrid.es</a></li>
+          <li><a href="http://www.madrid.es/portal/site/munimadrid" target="_blank">www.madrid.es</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="main-footer credits-footer">
   <div class="container">
     <p class="credit-aragon">
@@ -8,6 +43,7 @@
     </p>
   </div>
 </div>
+
 <footer class="main-footer">
   <div class="container">
     <ul class="footer-menu">

@@ -145,3 +145,16 @@ msgstr " "
 # Remove panel indicators note
 msgid "El cálculo de los indicadores utiliza las cifras de ejecución para los años cuya liquidación está cerrada, o el presupuesto aprobado en caso contrario."
 msgstr " "
+
+# Footer sitemap
+msgid "Visor de presupuestos"
+msgstr "Budget Explorer"
+
+msgid "Web dedicada a la visualización de los presupuestos del Ayuntamiento de Madrid"
+msgstr "Site about City of Madrid budget visualization"
+
+msgid "Más sobre presupuestos en www.madrid.es"
+msgstr "More about budgets in www.madrid.es"
+
+msgid "Otras webs del Ayuntamiento de Madrid"
+msgstr "City of Madrid sites"

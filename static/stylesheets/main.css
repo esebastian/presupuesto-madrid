@@ -7914,7 +7914,8 @@ header {
     color: white;
     background: #003DF6; }
     .search-content .panel .panel-heading h3, .search-content .panel-downloads .panel-heading h3, .search-content .home-content .options .option > div .panel-heading h3, .home-content .options .search-content .option > div .panel-heading h3, .search-content .budget-intro .budget-step .panel-heading h3, .budget-intro .search-content .budget-step .panel-heading h3, .search-content .policies-chart .panel-heading h3, .search-content .tax-receipt-content .form-user-incomings .panel-heading h3, .tax-receipt-content .search-content .form-user-incomings .panel-heading h3, .search-content .tax-receipt-content #tax-amount .panel-heading h3, .tax-receipt-content .search-content #tax-amount .panel-heading h3 {
-      color: white; }
+      color: white;
+      font-weight: 300; }
 
 .form-search-glossary .btn-default:before,
 .form-search .form-inline .btn:before {
@@ -8002,14 +8003,63 @@ header {
     font-weight: 300;
     border: none; }
     .main-footer .footer-menu li a {
-      text-decoration: underline; }
+      text-decoration: underline;
+      line-height: 1.375em; }
     .main-footer .footer-menu li:first-child a {
       text-decoration: none; }
   .main-footer .credit-aragon {
     margin-bottom: 0; }
 
 .credits-footer {
-  background: #003DF6;
+  background: #2b2b2b;
   padding: 20px 0; }
+
+.sitemap-footer {
+  color: white;
+  background: #444444;
+  font-weight: 300;
+  padding: 30px 0; }
+  .sitemap-footer strong {
+    font-size: 1.25em;
+    font-weight: 500; }
+  .sitemap-footer ul {
+    padding: 0;
+    margin: 0; }
+    .sitemap-footer ul li {
+      list-style: none; }
+      .sitemap-footer ul li a {
+        color: white;
+        font-size: 1.125em;
+        line-height: 2.5em;
+        font-weight: 400; }
+  .sitemap-footer .sitemap-title {
+    margin-top: 20px;
+    padding-right: 30px;
+    line-height: 1.875em; }
+  .sitemap-footer .sitemap-more {
+    font-size: 1.25em;
+    font-weight: 500;
+    line-height: 1.75em;
+    margin-top: 20px; }
+  .sitemap-footer .internal-links,
+  .sitemap-footer .external-links {
+    border-top: 1px solid #777777; }
+  .sitemap-footer .internal-links {
+    padding-top: 20px;
+    margin-top: 30px; }
+  .sitemap-footer .external-links {
+    margin-top: 20px;
+    padding-top: 30px; }
+    .sitemap-footer .external-links ul {
+      margin-top: 15px; }
+
+@media (min-width: 768px) {
+  .sitemap-footer .internal-links,
+  .sitemap-footer .external-links {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0; }
+  .sitemap-footer .external-links {
+    border-left: 1px solid #777777; } }
 
 /*# sourceMappingURL=main.css.map */

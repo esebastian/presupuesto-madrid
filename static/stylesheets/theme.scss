@@ -410,6 +410,7 @@ header{
 
     h3{
       color: white;
+      font-weight: $font-weight-300;
     }
   }
 }
@@ -550,6 +551,7 @@ header{
 
     a{
       text-decoration: underline;
+      line-height: 1.375em;
     }
 
     &:first-child a{
@@ -563,6 +565,81 @@ header{
 }
 
 .credits-footer{
-  background: $brand-primary;
-  padding: 20px 0;
+  background: mix($gray-darker, $gray-dark, 50%);
+  padding: 2*$grid-gutter-width/3 0;
+}
+
+.sitemap-footer{
+  color: white;
+  background: mix($gray, $gray-dark, 50%);
+  font-weight: $font-weight-300;
+  padding: $grid-gutter-width 0;
+
+  strong{
+    font-size: 1.25em;
+    font-weight: $font-weight-600;
+  }
+
+  ul{
+    padding: 0;
+    margin: 0;
+
+    li{
+      list-style: none;
+
+      a{
+        color: white;
+        font-size: 1.125em;
+        line-height: 2.5em;
+        font-weight: $font-weight-400;
+      }
+    }
+  }
+
+  .sitemap-title{
+    margin-top: 2*$grid-gutter-width/3;
+    padding-right: $grid-gutter-width;
+    line-height: 1.875em;
+  }
+
+  .sitemap-more{
+    font-size: 1.25em;
+    font-weight: $font-weight-600;
+    line-height: 1.75em;
+    margin-top: 2*$grid-gutter-width/3;
+  }
+
+  .internal-links,
+  .external-links{
+    border-top: 1px solid $gray-light;
+  }
+
+  .internal-links{
+    padding-top: 2*$grid-gutter-width/3;
+    margin-top: $grid-gutter-width;
+  }
+
+  .external-links{
+    margin-top: 2*$grid-gutter-width/3;
+    padding-top: $grid-gutter-width;
+
+    ul{
+      margin-top: $grid-gutter-width/2;
+    }
+  }
+}
+
+
+@media (min-width: $screen-sm-min) {
+  .sitemap-footer{
+    .internal-links,
+    .external-links{
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .external-links{
+      border-left: 1px solid $gray-light;
+    }
+  }
 }
