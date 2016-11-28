@@ -137,3 +137,11 @@ msgstr "Accesibility"
 
 msgid "Contactar"
 msgstr "Contact"
+
+# Remove budget totals note
+msgid "El cálculo de los subtotales utiliza las cifras de ejecución para los años cuya liquidación está cerrada, o el presupuesto aprobado en caso contrario."
+msgstr " "
+
+# Remove panel indicators note
+msgid "El cálculo de los indicadores utiliza las cifras de ejecución para los años cuya liquidación está cerrada, o el presupuesto aprobado en caso contrario."
+msgstr " "
