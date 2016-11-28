@@ -107,3 +107,7 @@ msgstr " "
 # Remove panel indicators note
 msgid "El cálculo de los indicadores utiliza las cifras de ejecución para los años cuya liquidación está cerrada, o el presupuesto aprobado en caso contrario."
 msgstr " "
+
+# The client prefers 'Presupuestos disponibles en Portal de Datos Abiertos' to 'Datos presupuestarios'
+msgid "Datos presupuestarios"
+msgstr "Presupuestos disponibles en Portal de Datos Abiertos"
