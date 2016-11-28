@@ -130,3 +130,10 @@ msgstr "The amounts that appear as budgeted correspond to those of the initial b
 # TODO: Temporary workaround
 msgid "hasta el segundo trimestre"
 msgstr "up to September"
+
+# Extra footer links
+msgid "Accesibilidad"
+msgstr "Accesibility"
+
+msgid "Contactar"
+msgstr "Contact"

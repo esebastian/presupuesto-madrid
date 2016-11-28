@@ -95,3 +95,7 @@ msgstr "Se realiza a través de impuestos directos -como el impuesto de bienes i
 # TODO: Temporary workaround
 msgid "hasta el segundo trimestre"
 msgstr "hasta septiembre"
+
+# 'Política de Privacidad' refers to 'Protección de datos'
+msgid "Política de Privacidad"
+msgstr "Protección de Datos"
