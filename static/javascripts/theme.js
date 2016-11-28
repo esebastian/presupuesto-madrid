@@ -28,6 +28,9 @@ $(document).ready(function(){
 
   addYearSelectorCustomLabels();
 
+  // Setup lang dropdown
+  $('.dropdown-toggle').dropdown();
+
   addChartsAlert('.policies-chart');
   addChartsAlert('.sankey-container');
 });

@@ -1,23 +1,5 @@
 {% load i18n %}
 
-<!-- Lang Selector -->
-{% if LANGUAGES|length > 1 %}
-<div id="menu-lang">
-  <div class="container">
-    <ul>
-      {% for language in LANGUAGES %}
-        <li>
-          <form id="form_{{language[0]}}" method="get" action="/visorpresupuestos/{{ language[0] }}/">
-            {#<a for="form_{{language[0]}}" href="javascript: document.form_{{language[0]}}.submitform()"{% if language[0].lower() == LANGUAGE_CODE %} class="active"{% endif %}>{{ language[1]|safe }}</a>#}
-            <input type="submit" value="{{ language[1]|safe }}" form="form_{{language[0]}}" {% if language[0].lower() == LANGUAGE_CODE %} class="active"{% endif %}/>
-          </form>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-{% endif %}
-
 <header>
   <div class="container"> 
 
@@ -82,6 +64,34 @@
           <li class="page-glossary {{ 'active' if active_tab == "glossary"}}">
             <a href="{{ url('budget_app.views.terms') }}" class="icon-glossary">{{ _('¿Qué significa...?') }}</a>
           </li>
+
+          <!-- Lang Selector -->
+          {% if LANGUAGES|length > 1 %}
+          <li id="menu-lang">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="lang-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {% for language in LANGUAGES %}
+                  {% if language[0].lower() == LANGUAGE_CODE %}
+                    {{ language[1]|safe }}
+                  {% endif %}
+                {% endfor %}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="lang-dropdown">
+              {% for language in LANGUAGES %}
+                {% if language[0].lower() != LANGUAGE_CODE %}
+                <li>
+                  <form id="form_{{language[0]}}" method="get" action="/visorpresupuestos/{{ language[0] }}/">
+                    <input type="submit" value="{{ language[1]|safe }}" form="form_{{language[0]}}" />
+                  </form>
+                </li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% endif %}
+
         </ul>
       </div>
     </div>

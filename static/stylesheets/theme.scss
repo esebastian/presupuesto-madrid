@@ -21,26 +21,86 @@
 
 // Language Selector
 #menu-lang{
-  width: 100%;
-  padding: 6px 0;
-  margin: 0;
-  background: $brand-primary; 
+  margin-top: 0;
 
-  ul{
-    float: right; 
+  .dropdown .btn{
+    background: none;
+    text-transform: uppercase;
+    padding: 10px 0;
+    line-height: 20px;
+    border: none;
+    color: $gray-light;
+
+    &:hover{
+      color: $text-color;
+    }
+    &:focus {
+      outline: none;
+      @include box-shadow(none);
+    }
+
+    .caret{
+      margin-left: 5px;
+    }
+  }
+
+  ul.dropdown-menu{
+    display: none;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    margin-top: 2px;
+    border: none;
 
     li{
-      border-color: $brand-secondary;
+      float: none;
+      border: none;
+      padding: 12px 25px;
+      border-bottom: 1px solid $gray-lighter;
+      text-transform: uppercase;
+      text-align: center;
 
-      input[type=submit]{
-        color: $brand-secondary;
-        font-size: 0.875em;
-        font-weight: $font-weight-300;
-        //text-transform: uppercase;
+      &:last-child{
+        border: none;
+      }
+
+      input{
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .open ul.dropdown-menu{
+    display: block;
+  }
+}
+
+@media (min-width: $grid-float-breakpoint) {
+
+   #menu-lang{
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 16px;
+      left: -24px;
+      height: 20px;
+      width: 1px;
+      background: $gray-lighter;
+    }
+    .dropdown .btn{
+      padding: 0;
+      line-height: 52px;
+    }
+    ul.dropdown-menu{
+      margin-left: -25px;
+      li{
+        text-align: left;
       }
     }
   }
 }
+
 
 // Header
 header{
@@ -96,9 +156,7 @@ header{
   
   .navbar-nav{
     padding: $grid-gutter-width/3 0;
-
     display: inline-block;
-    width: auto;
 
     [class*="icon-"]:before{
       display: none;
@@ -128,13 +186,14 @@ header{
   }
 }
 
-@media (min-width: $screen-sm-min) {
+@media (min-width: $grid-float-breakpoint) {
   
   .navbar-default{
     height: 54px !important;
 
     .navbar-nav{
       padding: 0;
+      width: auto;
 
       > li{
         width: auto;
