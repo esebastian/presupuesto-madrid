@@ -168,6 +168,7 @@ header{
         color: $text-color;
         font-size: 1.25em;
         font-weight: $font-weight-700;
+        text-transform: none;
 
         &:hover{
           color: $brand-primary;
