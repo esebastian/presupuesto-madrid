@@ -399,22 +399,31 @@ header{
 }
 
 // Search
-.search-content .alert{
-  background: $brand-secondary;
-}
-.search-content .panel{
-  border-color: $brand-primary;
+.search-content{
 
-  .panel-heading{
-    color: white;
-    background: $brand-primary;
+  .alert{
+    background: $brand-secondary;
+  }
+  .panel{
+    border-color: $brand-primary;
 
-    h3{
+    .panel-heading{
       color: white;
-      font-weight: $font-weight-300;
+      background: $brand-primary;
+
+      h3{
+        color: white;
+        font-weight: $font-weight-300;
+      }
     }
   }
+
+  .results-policies td.col-1,
+  .results-concepts .concept{
+    font-weight: $font-weight-700;
+  }
 }
+
 
 // Search Icon
 .form-search-glossary .btn-default:before,
