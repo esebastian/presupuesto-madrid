@@ -576,7 +576,8 @@ header{
   font-weight: $font-weight-300;
   padding: $grid-gutter-width 0;
 
-  strong{
+  a{
+    color: white;
     font-size: 1.25em;
     font-weight: $font-weight-600;
   }
@@ -604,10 +605,14 @@ header{
   }
 
   .sitemap-more{
-    font-size: 1.25em;
-    font-weight: $font-weight-600;
-    line-height: 1.75em;
-    margin-top: 2*$grid-gutter-width/3;
+    font-size: 1.125em;
+    font-weight: $font-weight-300;
+    line-height: 1.5em;
+    margin-top: 25px;
+
+    a{
+      font-size: 1em;
+    }
   }
 
   .internal-links,
