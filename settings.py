@@ -93,8 +93,8 @@ SHOW_OVERVIEW_SUBTOTALS = True
 # grouping by uid?. Default: True. (i.e. group by uid, show all elements)
 BREAKDOWN_BY_UID = False
 
-# Include financial income/expenditures in overview and global policy breakdowns. Default: False.
-INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = True
+# Include financial income/expenditures in overview and global policy breakdowns. Default: True.
+INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = False
 
 # Search in entity names. Default: True.
 SEARCH_ENTITIES = False
