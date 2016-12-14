@@ -120,7 +120,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ec_code': ec_code[:-2],        # First three digits (everything but last two)
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
-                'description': line[9],
+                'description': self._spanish_titlecase(line[9]),
                 'amount': amount
             }
 
@@ -139,7 +139,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ec_code': ec_code[:-2],        # First three digits
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
-                'description': line[5],
+                'description': self._spanish_titlecase(line[5]),
                 'amount': amount
             }
 
