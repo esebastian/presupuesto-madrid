@@ -109,24 +109,24 @@ I,3,9,7,Urban land use
 I,3,9,8,Non-life insurance indemnities
 I,3,9,9,Other miscellaneous income
 I,4,,,Current transfers
-I,4,0,,From the General Administration of the local entity
+I,4,0,,Current transfers from the General Administration of the local entity
 I,4,0,0,From the General Administration of the local entity
-I,4,1,,City Council's independent bodies
-I,4,2,,From Spanish central government
+I,4,1,,Current transfers from City Council's independent bodies
+I,4,2,,Current transfers from Spanish central government
 I,4,2,0,From State's General Administration
 I,4,2,1,From autonomous bodies and state agencies
 I,4,2,2,De fundaciones estatales
 I,4,2,3,"From state corporations, public business entities and other public bodies"
-I,4,3,,From Social Security
-I,4,4,,City Council's public companies
+I,4,3,,Current transfers from Social Security
+I,4,4,,Current transfers from City Council's public companies
 I,4,4,0,From public bodies
 I,4,4,1,From corporations
-I,4,5,,Regional governments
+I,4,5,,Current transfers from regional governments
 I,4,5,0,From regional governments' General Administrations
 I,4,5,1,From regional governments' agencies and autonomous
 I,4,5,2,De fundaciones de las comunidades autónomas
 I,4,5,3,"From corporations, public business entities and other public bodies dependent on regional governments"
-I,4,6,,Local governments
+I,4,6,,Current transfers from local governments
 I,4,6,1,"De diputaciones, consejos o cabildos"
 I,4,6,2,From city councils
 I,4,6,3,De mancomunidades
@@ -135,10 +135,10 @@ I,4,6,5,De comarcas
 I,4,6,6,De otras entidades que agrupen municipios
 I,4,6,7,De consorcios
 I,4,6,8,De entidades locales menores
-I,4,7,,Private companies
-I,4,8,,From families and non-profit organisations
+I,4,7,,Current transfers from private companies
+I,4,8,,Current transfers from families and non-profit organisations
 I,4,8,9,From families and non-profit organisations
-I,4,9,,External
+I,4,9,,Current transfers from abroad
 I,4,9,0,From European Social Fund
 I,4,9,1,From Regional Development Fund
 I,4,9,2,From Cohesion Fund
@@ -197,24 +197,24 @@ I,6,1,9,De otras inversiones reales
 I,6,8,,Capital operations repayments
 I,6,8,0,From closed periods
 I,7,,,Capital transfers
-I,7,0,,From the General Administration of the local entity
-I,7,1,,City Council's autonomous public entities
-I,7,2,,From Spanish central government
+I,7,0,,Capital transfers from the General Administration of the local entity
+I,7,1,,Capital transfers from City Council's autonomous public entities
+I,7,2,,Capital transfers from Spanish central government
 I,7,2,0,From the General State Administration
 I,7,2,1,From autonomous agencies and state agencies
 I,7,2,2,From state foundations
 I,7,2,3,"From state corporations, public business entities and other public bodies"
-I,7,3,,From Social Security
+I,7,3,,Capital transfers from Social Security
 I,7,3,0,From Social Security
-I,7,4,,From public entities and mercantile companies of the local entity
+I,7,4,,Capital transfers from public entities and mercantile companies of the local entity
 I,7,4,0,From public entities
 I,7,4,1,From commercial companies
-I,7,5,,From regional governments
+I,7,5,,Capital transfers from regional governments
 I,7,5,0,From regional governments' General Administrations
 I,7,5,1,De organismos autónomos y agencias de las comunidades autónomas
 I,7,5,2,De fundaciones de las comunidades autónomas
 I,7,5,3,"From commercial companies, public business entities and other public bodies dependent on autonomous communities"
-I,7,6,,Local governments
+I,7,6,,Capital transfers from local governments
 I,7,6,1,"De diputaciones, consejos o cabildos"
 I,7,6,2,From city councils
 I,7,6,3,De mancomunidades
@@ -223,9 +223,9 @@ I,7,6,5,De comarcas
 I,7,6,6,De otras entidades que agrupen municipios
 I,7,6,7,De consorcios
 I,7,6,8,De entidades locales menores
-I,7,7,,Private companies
-I,7,8,,From families and non-profit organisations
-I,7,9,,External
+I,7,7,,Capital transfers from private companies
+I,7,8,,Capital transfers from families and non-profit organisations
+I,7,9,,Capital transfers from abroad
 I,7,9,0,From European Social Fund
 I,7,9,1,From Regional Development Fund
 I,7,9,2,From Cohesion Fund
@@ -371,25 +371,25 @@ G,3,5,7,Ejecución de avales
 G,3,5,8,Intereses por operaciones de arrendamiento financiero (leasing)
 G,3,5,9,Other financial expenses
 G,4,,,Current transfers
-G,4,0,,To City Council's General Administration
-G,4,1,,To City Council's independent bodies
-G,4,2,,To Spanish central government
+G,4,0,,Current transfers to City Council's General Administration
+G,4,1,,Current transfers to City Council's independent bodies
+G,4,2,,Current transfers to Spanish central government
 G,4,2,0,To State's General Administration
 G,4,2,1,To autonomous bodies and state agencies
 G,4,2,2,A fundaciones estatales
 G,4,2,3,"To state corporations, public business entities and other public bodies"
-G,4,3,,To Social Security
-G,4,4,,To City Council's companies
+G,4,3,,Current transfers to Social Security
+G,4,4,,Current transfers to City Council's companies
 G,4,4,0,Grants to promote employment
 G,4,4,1,Subvenciones para bonificacion de intereses y primas de seguros
 G,4,4,2,Subsidies to reduce the price to paid by consumers
 G,4,4,9,Otras subvenciones a entes públicos y sociedades mercantiles de la entidad local
-G,4,5,,To regional governments
+G,4,5,,Current transfers to regional governments
 G,4,5,0,To regional governments' General Administrations
 G,4,5,1,A organismos autónomos y agencias de las comunidades autónomas
 G,4,5,2,A fundaciones de las comunidades autónomas
 G,4,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
-G,4,6,,To local entities
+G,4,6,,Current transfers to local entities
 G,4,6,1,"A diputaciones, consejos o cabildos insulares"
 G,4,6,2,A ayuntamientos
 G,4,6,3,A mancomunidades
@@ -398,13 +398,13 @@ G,4,6,5,A comarcas
 G,4,6,6,A otras entidades que agrupen municipios
 G,4,6,7,To consortia
 G,4,6,8,A entidades locales menores
-G,4,7,,To private companies
+G,4,7,,Current transfers to private companies
 G,4,7,0,Grants to promote employment
 G,4,7,1,Subvenciones para bonificación de intereses y primas de seguros
 G,4,7,2,Subsidies to reduce the price to paid by consumers
 G,4,7,9,Other grants to private companies
-G,4,8,,To families and non-profit organisations
-G,4,9,,To external organisations
+G,4,8,,Current transfers to families and non-profit organisations
+G,4,9,,Current transfers to foreign organisations
 G,5,,,Contingency fund
 G,5,0,,Contingency fund
 G,5,0,0,Contingency fund
@@ -447,23 +447,23 @@ G,6,9,,Inversiones en bienes comunales
 G,6,9,0,Terrenos y bienes naturales
 G,6,9,2,Inversión en infraestructuras
 G,7,,,Capital transfers
-G,7,0,,To City Council's General Administration
-G,7,1,,To City Council's independent bodies
+G,7,0,,Capital transfers to City Council's General Administration
+G,7,1,,Capital transfers to City Council's independent bodies
 G,7,1,0,To City Council's autonomous bodies
 G,7,1,1,To City Council's autonomous bodies
-G,7,2,,A la Administración del Estado
+G,7,2,,Capital transfers to Spanish central government
 G,7,2,0,A la Administración General del Estado
 G,7,2,1,A organismos autónomos y agencias
 G,7,2,2,A fundaciones estatales
 G,7,2,3,"To state corporations, public business entities and other public bodies"
-G,7,3,,A la Seguridad Social
+G,7,3,,Capital transfers to Social Security
 G,7,4,,To City Council's companies
 G,7,5,,To regional governments
 G,7,5,0,To regional governments' General Administrations
 G,7,5,1,A organismos autónomos y agencias de las comunidades autónomas
 G,7,5,2,A fundaciones de las comunidades autónomas
 G,7,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
-G,7,6,,To local entities
+G,7,6,,Capital transfers to local entities
 G,7,6,1,"A diputaciones, consejos o cabildos"
 G,7,6,2,A ayuntamientos
 G,7,6,3,A mancomunidades
@@ -472,11 +472,11 @@ G,7,6,5,A comarcas
 G,7,6,6,A entidades que agrupen municipios
 G,7,6,7,To consortia
 G,7,6,8,A entidades locales menores
-G,7,7,,To private companies
+G,7,7,,Capital transfers to private companies
 G,7,7,0,To private companies
-G,7,8,,To families and non-profit organisations
+G,7,8,,Capital transfers to families and non-profit organisations
 G,7,8,1,To families and non-profit organisations
-G,7,9,,To external organisations
+G,7,9,,Capital transfers to external organisations
 G,8,,,Financial assets
 G,8,0,,Adquisición de deuda del sector público
 G,8,0,0,Short term
