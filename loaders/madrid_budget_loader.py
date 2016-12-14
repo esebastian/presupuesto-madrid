@@ -81,23 +81,43 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             '33404': '92402',   # Participación empresarial
         }
 
+        # The institutional structure of the City of Madrid has changed quite a lot along the
+        # years, es In order to show the evolution of a given section we need to keep codes
+        # consistent.
+        institutional_mapping = {
+            '0085': '0027',     # EQUIDAD, DERECHOS SOCIALES Y EMPLEO
+            '0033': '0037',     # COORDINACIÓN TERRITORIAL Y ASOCIACIONES
+            '0041': '0047',     # PORTAVOZ, COORD. JUNTA GOB. Y RELAC. CON EL PLENO
+            '0025': '0057',     # ECONOMÍA Y HACIENDA
+            '0032': '0067',     # SALUD, SEGURIDAD Y EMERGENCIAS
+            '0071': '0077',     # PARTICIPACIÓN CIUDADANA, TRANSP. Y GOB. ABIERTO
+            '0035': '0087',     # DESARROLLO URBANO SOSTENIBLE
+            '0015': '0097',     # MEDIO AMBIENTE Y MOVILIDAD
+            '0065': '0098',     # CULTURA Y DEPORTES
+        }
+
+
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
         year = re.search('municipio/(\d+)/', filename).group(1)
         if is_expense:
             fc_code = line[4]
             ec_code = line[8]
-            ic_code = self.get_institution_code(line[0]) + line[2]
             amount = self._parse_amount(line[15 if is_actual else (10 if year=='2017' else 12)])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2]=='410' or ec_code[:-2]=='710':
                 amount = 0
 
-            # The department codes are not totally consistent across years. We are a bit
-            # flexible with the precise names, but sometimes it's too much and needs fixing.
-            if year == '2011' and (ic_code=='0013' or ic_code=='0014'):
-                ic_code = ic_code+'b'
+            # Get institutional code. We ignore sections in autonomous bodies,
+            # since they get assigned to different sections in main body but that's
+            # not relevant.
+            institution = self.get_institution_code(line[0])
+            ic_code = institution + (line[2] if institution=='0' else '00')
+
+            # Apply institutional mapping to make codes consistent across years
+            if int(year) <= 2015:
+                ic_code = institutional_mapping.get(ic_code, ic_code)
 
             # Some years require some amendments
             if year == '2011':

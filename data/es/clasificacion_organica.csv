@@ -6,28 +6,17 @@
 0,0,11,Vicealcaldía
 0,0,12,Área de Coordinación General de la Alcaldía
 0,0,13,Área de Comunicación
-0,0,13b,Área de Coordinación Territorial
 0,0,14,Área de Estudios
-0,0,14b,Área de Coordinación de Estudios y Relaciones Externas
-0,0,15,Área de Medio Ambiente y Movilidad
 0,0,16,Área de Gerencia de la Ciudad
-0,0,25,Área de Economía y Hacienda
 0,0,27,"Área de Equidad, Derechos Sociales y Empleo"
-0,0,32,"Área de Salud, Seguridad y Emergencias"
-0,0,33,Área de Coordinación Territorial y Asociaciones
-0,0,35,Área de Desarrollo Urbano Sostenible
 0,0,37,Área de Coordinación Territorial y Asociaciones
-0,0,41,"Área de Portavoz, Coord. Junta Gobierno y Relaciones con el Pleno"
 0,0,45,Área de Seguridad
 0,0,47,"Área de Portavoz, Coord. Junta Gobierno y Relaciones con el Pleno"
 0,0,55,Área de Obras y Espacios Públicos
 0,0,57,Área de Economía y Hacienda
-0,0,65,Área de Cultura y Deportes
 0,0,67,"Área de Salud, Seguridad y Emergencias"
-0,0,71,"Área de Participación Ciudadana, Transparencia y Gobierno Abierto"
 0,0,75,"Área de Economía, Empleo y Participación Ciudadana"
 0,0,77,"Área de Participación Ciudadana, Transparencia y Gobierno Abierto"
-0,0,85,"Área de Equidad, Derechos Sociales y Empleo"
 0,0,87,Área de Desarrollo Urbano Sostenible
 0,0,97,Área de Medio Ambiente y Movilidad
 0,0,98,Área de Cultura y Deportes
@@ -59,32 +48,15 @@
 0,2,21,Distrito de Barajas
 1,,,Informática del Ayuntamiento de Madrid
 1,0,0,Informática del Ayuntamiento de Madrid
-1,0,16,Informática del Ayuntamiento de Madrid
-1,0,25,Informática del Ayuntamiento de Madrid
 3,,,Agencia para el Empleo de Madrid
 3,0,0,Agencia para el Empleo de Madrid
-3,0,27,Agencia para el Empleo de Madrid
-3,0,25,Agencia para el Empleo de Madrid
-3,0,75,Agencia para el Empleo de Madrid
 4,,,Patronato de Turismo de Madrid
 4,0,0,Patronato de Turismo de Madrid
-4,0,75,Patronato de Turismo de Madrid
 6,,,Agencia Tributaria Madrid
 6,0,0,Agencia Tributaria Madrid
-6,0,25,Agencia Tributaria Madrid
-6,0,57,Agencia Tributaria Madrid
 7,,,Madrid Emprende
 7,0,0,Madrid Emprende
-7,0,75,Madrid Emprende
 8,,,Madrid Salud
 8,0,0,Madrid Salud
-8,0,15,Madrid Emprende
-8,0,32,Madrid Emprende
-8,0,67,Madrid Emprende
-8,0,45,Madrid Emprende
 9,,,Agencia de Actividades
 9,0,0,Agencia de Actividades
-9,0,32,Agencia de Actividades
-9,0,75,Agencia de Actividades
-9,0,87,Agencia de Actividades
-9,0,99,Agencia de Actividades
