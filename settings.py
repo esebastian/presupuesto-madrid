@@ -45,7 +45,10 @@ OVERVIEW_EXPENSE_NODES = ['13', '16', '15', '23', '92', '17', '33', '34', '01']
 OVERVIEW_RELAX_FACTOR = 0.5
 
 # Treemaps minimum height or width to show labels. Default: 70 (Optional)
-TREEMAP_LABELS_MIN_SIZE = 40
+TREEMAP_LABELS_MIN_SIZE = 25
+
+# Treemap minimum font size. Default: 11 (Optional)
+TREEMAP_LABELS_FONT_SIZE_MIN = 7
 
 # Show Payments section in menu & home options. Default: False.
 # SHOW_PAYMENTS           = True
