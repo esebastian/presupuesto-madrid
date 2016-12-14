@@ -4,34 +4,34 @@
 0,0,02,Presidencia del Pleno
 0,0,10,Alcaldía
 0,0,11,Vicealcaldía
-0,0,12,Coordinación General de la Alcaldía
-0,0,13,Comunicación
-0,0,13b,Coordinación Territorial
-0,0,14,Estudios
-0,0,14b,Coordinación de Estudios y Relaciones Externas
-0,0,15,Medio Ambiente y Movilidad
-0,0,16,Gerencia de la Ciudad
-0,0,25,Economía y Hacienda
-0,0,27,"Equidad, Derechos Sociales y Empleo"
-0,0,32,"Salud, Seguridad y Emergencias"
-0,0,33,Coordinación Territorial y Asociaciones
-0,0,35,Desarrollo Urbano Sostenible
-0,0,37,Coordinación Territorial y Asociaciones
-0,0,41,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
-0,0,45,Seguridad
-0,0,47,"Portavoz, Coord. Junta Gob. y Rel. Pleno"
-0,0,55,Obras y Espacios Públicos
-0,0,57,Economía y Hacienda
-0,0,65,Cultura y Deportes
-0,0,67,"Salud, Seguridad y Emergencias"
-0,0,71,"Particip. Ciudadana, Transp. y Gob. Abierto"
-0,0,75,"Economía, Empleo y Participación Ciudadana"
-0,0,77,"Particip. Ciudadana, Transp. y Gob. Abierto"
-0,0,85,"Equidad, Derechos Sociales y Empleo"
-0,0,87,Desarrollo Urbano Sostenible
-0,0,97,Medio Ambiente y Movilidad
-0,0,98,Cultura y Deportes
-0,0,99,Licencias de Actividades
+0,0,12,Área de Coordinación General de la Alcaldía
+0,0,13,Área de Comunicación
+0,0,13b,Área de Coordinación Territorial
+0,0,14,Área de Estudios
+0,0,14b,Área de Coordinación de Estudios y Relaciones Externas
+0,0,15,Área de Medio Ambiente y Movilidad
+0,0,16,Área de Gerencia de la Ciudad
+0,0,25,Área de Economía y Hacienda
+0,0,27,"Área de Equidad, Derechos Sociales y Empleo"
+0,0,32,"Área de Salud, Seguridad y Emergencias"
+0,0,33,Área de Coordinación Territorial y Asociaciones
+0,0,35,Área de Desarrollo Urbano Sostenible
+0,0,37,Área de Coordinación Territorial y Asociaciones
+0,0,41,"Área de Portavoz, Coord. Junta Gobierno y Relaciones con el Pleno"
+0,0,45,Área de Seguridad
+0,0,47,"Área de Portavoz, Coord. Junta Gobierno y Relaciones con el Pleno"
+0,0,55,Área de Obras y Espacios Públicos
+0,0,57,Área de Economía y Hacienda
+0,0,65,Área de Cultura y Deportes
+0,0,67,"Área de Salud, Seguridad y Emergencias"
+0,0,71,"Área de Participación Ciudadana, Transparencia y Gobierno Abierto"
+0,0,75,"Área de Economía, Empleo y Participación Ciudadana"
+0,0,77,"Área de Participación Ciudadana, Transparencia y Gobierno Abierto"
+0,0,85,"Área de Equidad, Derechos Sociales y Empleo"
+0,0,87,Área de Desarrollo Urbano Sostenible
+0,0,97,Área de Medio Ambiente y Movilidad
+0,0,98,Área de Cultura y Deportes
+0,0,99,Área de Licencias de Actividades
 0,1,00,Endeudamiento
 0,1,10,Créditos Globales y Fondo Contingencia
 0,1,20,Tribunal Económico-Administrativo
@@ -44,7 +44,7 @@
 0,2,06,Distrito de Tetuán
 0,2,07,Distrito de Chamberí
 0,2,08,Distrito de Fuencarral-El Pardo
-0,2,09,Distrito de Moncloa-aravaca
+0,2,09,Distrito de Moncloa-Aravaca
 0,2,10,Distrito de Latina
 0,2,11,Distrito de Carabanchel
 0,2,12,Distrito de Usera
@@ -55,36 +55,36 @@
 0,2,17,Distrito de Villaverde
 0,2,18,Distrito de Villa de Vallecas
 0,2,19,Distrito de Vicálvaro
-0,2,20,Distrito de San Blas-canillejas
+0,2,20,Distrito de San Blas-Canillejas
 0,2,21,Distrito de Barajas
 1,,,Informática del Ayuntamiento de Madrid
 1,0,0,Informática del Ayuntamiento de Madrid
-1,0,16,Gerencia de la Ciudad
-1,0,25,Economía y Hacienda
+1,0,16,Informática del Ayuntamiento de Madrid
+1,0,25,Informática del Ayuntamiento de Madrid
 3,,,Agencia para el Empleo de Madrid
 3,0,0,Agencia para el Empleo de Madrid
-3,0,27,"Equidad, Derechos Sociales y Empleo"
-3,0,25,Economía y Hacienda
-3,0,75,"Economía, Empleo y Participación Ciudadana"
+3,0,27,Agencia para el Empleo de Madrid
+3,0,25,Agencia para el Empleo de Madrid
+3,0,75,Agencia para el Empleo de Madrid
 4,,,Patronato de Turismo de Madrid
 4,0,0,Patronato de Turismo de Madrid
-4,0,75,"Economía, Empleo y Participación Ciudadana"
+4,0,75,Patronato de Turismo de Madrid
 6,,,Agencia Tributaria Madrid
 6,0,0,Agencia Tributaria Madrid
-6,0,25,Economía y Hacienda
-6,0,57,Economía y Hacienda
+6,0,25,Agencia Tributaria Madrid
+6,0,57,Agencia Tributaria Madrid
 7,,,Madrid Emprende
 7,0,0,Madrid Emprende
-7,0,75,"Economía, Empleo y Participación Ciudadana"
+7,0,75,Madrid Emprende
 8,,,Madrid Salud
 8,0,0,Madrid Salud
-8,0,15,Medio Ambiente y Movilidad
-8,0,32,"Salud, Seguridad y Emergencias"
-8,0,67,"Salud, Seguridad y Emergencias"
-8,0,45,Seguridad
+8,0,15,Madrid Emprende
+8,0,32,Madrid Emprende
+8,0,67,Madrid Emprende
+8,0,45,Madrid Emprende
 9,,,Agencia de Actividades
 9,0,0,Agencia de Actividades
-9,0,32,"Salud, Seguridad y Emergencias"
-9,0,75,"Economía, Empleo y Participación Ciudadana"
-9,0,87,Desarrollo Urbano Sostenible
-9,0,99,Licencias de Actividades
+9,0,32,Agencia de Actividades
+9,0,75,Agencia de Actividades
+9,0,87,Agencia de Actividades
+9,0,99,Agencia de Actividades

@@ -24,9 +24,9 @@
 0,0,57,Department of Economy and the Treasury
 0,0,65,Department of Culture and Sports
 0,0,67,"Department of Health, Safety and Emergencies"
-0,0,71,"Department of Citizen Participation, Transparency and an Open Government"
+0,0,71,"Department of Citizen Participation, Transparency and Open Government"
 0,0,75,"Department of Economy, Employment and Citizen Participation"
-0,0,77,"Department of Citizen Participation, Transparency and an Open Government"
+0,0,77,"Department of Citizen Participation, Transparency and Open Government"
 0,0,85,"Department of Equality, Social Rights and Employment"
 0,0,87,Department of Sustainable Urban Development
 0,0,97,Department of the Environment and Transportation
@@ -44,7 +44,7 @@
 0,2,06,District of Tetuán
 0,2,07,District of Chamberí
 0,2,08,District of Fuencarral-El Pardo
-0,2,09,District of Moncloa-aravaca
+0,2,09,District of Moncloa-Aravaca
 0,2,10,District of Latina
 0,2,11,District of Carabanchel
 0,2,12,District of Usera
@@ -55,36 +55,36 @@
 0,2,17,District of Villaverde
 0,2,18,District of Villa de Vallecas
 0,2,19,District of Vicálvaro
-0,2,20,District of San Blas-canillejas
+0,2,20,District of San Blas-Canillejas
 0,2,21,District of Barajas
 1,,,City of Madrid's IT
 1,0,0,City of Madrid's IT
-1,0,16,City Manager's Office
-1,0,25,Department of Economy and the Treasury
+1,0,16,City of Madrid's IT
+1,0,25,City of Madrid's IT
 3,,,City of Madrid's Employment Agency
 3,0,0,City of Madrid's Employment Agency
-3,0,27,"Department of Equality, Social Rights and Employment"
-3,0,25,Department of Economy and the Treasury
-3,0,75,"Department of Economy, Employment and Citizen Participation"
+3,0,27,City of Madrid's Employment Agency
+3,0,25,City of Madrid's Employment Agency
+3,0,75,City of Madrid's Employment Agency
 4,,,Madrid Tourist Board
 4,0,0,Madrid Tourist Board
-4,0,75,"Department of Economy, Employment and Citizen Participation"
+4,0,75,Madrid Tourist Board
 6,,,Madrid Tax Agency
 6,0,0,Madrid Tax Agency
-6,0,25,Department of Economy and the Treasury
-6,0,57,Department of Economy and the Treasury
+6,0,25,Madrid Tax Agency
+6,0,57,Madrid Tax Agency
 7,,,Madrid Emprende
 7,0,0,Madrid Emprende
-7,0,75,"Department of Economy, Employment and Citizen Participation"
+7,0,75,Madrid Emprende
 8,,,Madrid Health
 8,0,0,Madrid Health
-8,0,15,Department of the Environment and Transportation
-8,0,32,"Department of Health, Safety and Emergencies"
-8,0,67,"Department of Health, Safety and Emergencies"
-8,0,45,Department of Public Safety
+8,0,15,Madrid Emprende
+8,0,32,Madrid Emprende
+8,0,67,Madrid Emprende
+8,0,45,Madrid Emprende
 9,,,Agency for Activity Licenses
 9,0,0,Agency for Activity Licenses
-9,0,32,"Department of Health, Safety and Emergencies"
-9,0,75,"Department of Economy, Employment and Citizen Participation"
-9,0,87,Department of Sustainable Urban Development
-9,0,99,Activity Licenses
+9,0,32,Agency for Activity Licenses
+9,0,75,Agency for Activity Licenses
+9,0,87,Agency for Activity Licenses
+9,0,99,Agency for Activity Licenses
