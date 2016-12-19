@@ -81,7 +81,7 @@
               {% for language in LANGUAGES %}
                 {% if language[0].lower() != LANGUAGE_CODE %}
                 <li>
-                  <form id="form_{{language[0]}}" method="get" action="/visorpresupuestos/{{ language[0] }}/">
+                  <form id="form_{{language[0]}}" method="get" action="/presupuestosabiertos/{{ language[0] }}/">
                     <input type="submit" value="{{ language[1]|safe }}" form="form_{{language[0]}}" />
                   </form>
                 </li>
