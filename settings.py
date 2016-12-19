@@ -97,7 +97,7 @@ SHOW_OVERVIEW_SUBTOTALS = True
 BREAKDOWN_BY_UID = False
 
 # Include financial income/expenditures in overview and global policy breakdowns. Default: True.
-INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = False
+# INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = False
 
 # Search in entity names. Default: True.
 SEARCH_ENTITIES = False
@@ -128,7 +128,7 @@ MAIN_ENTITY_WEB_URL     = 'http://www.madrid.es/'
 MAIN_ENTITY_LEGAL_URL   = 'http://www.madrid.es/portales/munimadrid/avisoLegal.html'
 
 # Setup Main Entity Legal Url (if empty we hide the link)
-MAIN_ENTITY_PRIVACY_URL   = 'http://www.madrid.es/portales/munimadrid/proteccionDatos.html'
+MAIN_ENTITY_PRIVACY_URL = 'http://www.madrid.es/portales/munimadrid/proteccionDatos.html'
 
 # External URL for Cookies Policy (if empty we use out template page/cookies.html)
 COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html'
