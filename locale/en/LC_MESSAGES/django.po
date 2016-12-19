@@ -19,10 +19,10 @@ msgstr ""
 
 #: templates/shared/header.html:35
 msgid "Presupuestos"
-msgstr "City of Madrid Budget Explorer"
+msgstr "City of Madrid Open Budgets"
 
 msgid "Presupuestos del Gobierno de Aragón"
-msgstr "City of Madrid Budget Explorer"
+msgstr "City of Madrid Open Budgets"
 
 msgid "El dinero recaudado localmente se complementa con las transferencias de la Administración General del Estado y del Gobierno de Aragón, que son los encargados de recaudar otros ingresos como el IVA y el IRPF"
 msgstr "The municipal budget receives other revenue, mainly from Spain’s central government and the Madrid regional government, which are responsible for collecting other revenue, e.g. from VAT and income tax"
@@ -55,6 +55,9 @@ msgstr "So you can get a general idea of City of Madrid’s revenue and expendit
 #
 msgid "Visita guiada"
 msgstr "Guided tour"
+
+msgid "Visita guiada por Presupuestos Abiertos"
+msgstr "Guided tour through Open Budgets"
 
 msgid "De las grandes cifras al detalle"
 msgstr "From the big figures to the small amounts"
@@ -148,7 +151,7 @@ msgstr " "
 
 # Footer sitemap
 msgid "Visor de presupuestos"
-msgstr "Budget Explorer"
+msgstr "Open Budgets"
 
 msgid "Web dedicada a la visualización de los presupuestos del Ayuntamiento de Madrid"
 msgstr "Site about City of Madrid budget visualization"

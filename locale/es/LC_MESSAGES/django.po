@@ -19,11 +19,11 @@ msgstr ""
 
 #: templates/shared/header.html:35
 msgid "Presupuestos"
-msgstr "Visor de presupuestos del Ayuntamiento de Madrid"
+msgstr "Presupuestos Abiertos del Ayuntamiento de Madrid"
 
 #: templates/base.html:4 templates/shared/social_sharing.html:5
 msgid "Presupuestos del Gobierno de Aragón"
-msgstr "Visor de presupuestos del Ayuntamiento de Madrid"
+msgstr "Presupuestos Abiertos del Ayuntamiento de Madrid"
 
 #
 msgid "Información presupuestaria del Gobierno de Aragón"
@@ -115,3 +115,7 @@ msgstr "Presupuestos disponibles en Portal de Datos Abiertos"
 # Remove chapter 4/7 postfix
 msgid " (cap. %(chapter)s)"
 msgstr " "
+
+# Footer sitemap
+msgid "Visor de presupuestos"
+msgstr "Presupuestos Abiertos"
