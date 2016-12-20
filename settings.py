@@ -97,7 +97,7 @@ SHOW_OVERVIEW_SUBTOTALS = True
 BREAKDOWN_BY_UID = False
 
 # Include financial income/expenditures in overview and global policy breakdowns. Default: True.
-# INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = False
+INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = True
 
 # Search in entity names. Default: True.
 SEARCH_ENTITIES = False
