@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-11 17:16+0100\n"
-"PO-Revision-Date: 2016-12-14 11:42+0100\n"
+"PO-Revision-Date: 2017-01-13 11:18+0100\n"
 "Last-Translator: David Cabo <david@civio.es>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -132,7 +132,7 @@ msgstr "The amounts that appear as budgeted correspond to those of the initial b
 
 # TODO: Temporary workaround
 msgid "hasta el segundo trimestre"
-msgstr "up to October"
+msgstr "up to November"
 
 # Extra footer links
 msgid "Accesibilidad"

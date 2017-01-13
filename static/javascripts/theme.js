@@ -3,8 +3,8 @@ $(document).ready(function(){
 
   var addChartsAlert = function(selector){
     var str = {
-      'es': 'Datos actualizados a 31 de octubre de 2016',
-      'en': 'Data up to 31st October 2016'
+      'es': 'Datos actualizados a 30 de noviembre de 2016',
+      'en': 'Data up to 30th November 2016'
     };
     var cont = $(selector);
     if( cont.size() > 0 ){
