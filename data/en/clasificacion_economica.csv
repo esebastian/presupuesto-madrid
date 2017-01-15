@@ -69,7 +69,7 @@ I,3,2,3,Tasas por otros servicios urbanísticos
 I,3,2,4,Tasas sobre el juego
 I,3,2,5,Fee for document issuance
 I,3,2,6,Fee for vehicle removal
-I,3,2,7,Licencias de apertura de establecimientos
+I,3,2,7,Opening licenses for establishments
 I,3,2,9,Other fees for activities of local competence
 I,3,3,,Charges for the use of public space or local public property
 I,3,3,0,Parking tax
@@ -78,8 +78,8 @@ I,3,3,2,To companies operating supply services
 I,3,3,3,To companies operating telecommunications services
 I,3,3,4,Fee for opening ditches
 I,3,3,5,Fee for occupation of public roads with terraces
-I,3,3,6,Tasa por ocupación de la via pública con suspensión temporal del trafico rodado
-I,3,3,7,Tasas por aprovechamiento del vuelo
+I,3,3,6,Fee for occupation of public roads with temporary suspension of road traffic
+I,3,3,7,Fee for occupation of public air rights
 I,3,3,8,Compensation to Telefónica de España SA
 I,3,3,9,Other fees for private use of the public domain
 I,3,4,,Public-sector charges for provision of services
@@ -87,7 +87,7 @@ I,3,4,0,Servicios hospitalarios
 I,3,4,1,Welfare services
 I,3,4,2,Education services
 I,3,4,3,Sports services
-I,3,4,4,"Entradas a museos, exposiciones y espectáculos"
+I,3,4,4,"Tickets to museums, exhibitions and shows"
 I,3,4,5,Servicio de transporte público urbano
 I,3,4,9,Other public prices
 I,3,5,,Special contributions
@@ -170,7 +170,7 @@ I,5,4,0,Rentas de bienes inmuebles
 I,5,4,1,Rental of urban plots
 I,5,4,2,Rental of non-residential plots
 I,5,4,4,Censos
-I,5,4,9,Otras rentas de bienes inmuebles
+I,5,4,9,Other income from properties
 I,5,5,,Concession and special-use products
 I,5,5,0,Administrative concessions with periodic compensation
 I,5,5,1,Administrative concessions with non-periodic compensation
@@ -184,7 +184,7 @@ I,5,9,1,Benefits from financial investments
 I,5,9,2,Ingresos por operaciones de intercambio financiero
 I,5,9,9,Other property revenues
 I,6,,,Property investments disposal
-I,6,0,,Lands
+I,6,0,,Land
 I,6,0,0,Venta de solares
 I,6,0,1,Venta de fincas rústicas
 I,6,0,2,Left-over public road plots
@@ -193,7 +193,7 @@ I,6,0,9,Other land assets
 I,6,1,,Other property investments
 I,6,1,1,De inversiones de carácter inmaterial
 I,6,1,2,De objetos valiosos
-I,6,1,9,De otras inversiones reales
+I,6,1,9,From other property investments
 I,6,8,,Capital operations repayments
 I,6,8,0,From closed periods
 I,7,,,Capital transfers
@@ -217,7 +217,7 @@ I,7,5,3,"From commercial companies, public business entities and other public bo
 I,7,6,,Capital transfers from local governments
 I,7,6,1,"De diputaciones, consejos o cabildos"
 I,7,6,2,From city councils
-I,7,6,3,De mancomunidades
+I,7,6,3,From mancomunities
 I,7,6,4,De áreas metropolitanas
 I,7,6,5,De comarcas
 I,7,6,6,De otras entidades que agrupen municipios
@@ -262,8 +262,8 @@ I,9,0,1,Long term
 I,9,1,,Received loans
 I,9,1,0,Short-term loans received from public sector entities
 I,9,1,1,Long-term loans received from public sector entities
-I,9,1,2,Préstamos recibidos a corto plazo de entes de fuera del sector público
-I,9,1,3,Préstamos recibidos a largo plazo de entes de fuera del sector público
+I,9,1,2,Short-term loans received from entities outside the public sector
+I,9,1,3,Long-term loans received from entities outside the public sector
 I,9,2,,Emision de deuda pública en moneda distinta del euro
 I,9,2,0,Short term
 I,9,2,1,Long term
@@ -307,7 +307,7 @@ G,1,6,2,Social staff costs
 G,1,6,4,Complemento familiar
 G,2,,,Current expenditure on goods and services
 G,2,0,,Rents and royalties
-G,2,0,0,Terrenos y bienes naturales
+G,2,0,0,Land and natural assets
 G,2,0,2,Buildings and other structures
 G,2,0,3,"Machinery, technical installations and tools"
 G,2,0,4,Transportation equipment
@@ -416,7 +416,7 @@ G,6,1,,Replacement investments for infrastructures and assets intended for gener
 G,6,1,0,Land investments
 G,6,1,9,Other replacement investments for infrastructures and assets intended for general use
 G,6,2,,New investments associated with the operational running of the services
-G,6,2,1,Terrenos y bienes naturales
+G,6,2,1,Land and natural assets
 G,6,2,2,Buildings and other structures
 G,6,2,3,"Machinery, technical installations and tools"
 G,6,2,4,Transportation equipment
@@ -425,7 +425,7 @@ G,6,2,6,Information processing equipment
 G,6,2,7,Complex projects
 G,6,2,9,Other new investments
 G,6,3,,Replacement investments for operational running of public services
-G,6,3,1,Lands and natural resources
+G,6,3,1,Land and natural resources
 G,6,3,2,Buildings and other structures
 G,6,3,3,"Machinery, technical installations and tools"
 G,6,3,4,Transportation equipment
@@ -444,7 +444,7 @@ G,6,8,1,Land and natural resources
 G,6,8,2,Buildings and other structures
 G,6,8,9,Other expenditure on capital investments
 G,6,9,,Inversiones en bienes comunales
-G,6,9,0,Terrenos y bienes naturales
+G,6,9,0,Land and natural assets
 G,6,9,2,Inversión en infraestructuras
 G,7,,,Capital transfers
 G,7,0,,Capital transfers to City Council's General Administration
@@ -488,8 +488,8 @@ G,8,2,,Loans granted to the public sector
 G,8,2,0,Short-term loans
 G,8,2,1,Long-term loans
 G,8,3,,Concesion de préstamos fuera del sector público
-G,8,3,0,Préstamos a corto plazo. Desarrollo por sectores
-G,8,3,1,Préstamos a largo plazo. Desarrollo por sectores
+G,8,3,0,Short-term loans
+G,8,3,1,Long-term loans
 G,8,4,,Establishing deposits and guarantees
 G,8,4,0,Deposits
 G,8,4,1,Guarantees
