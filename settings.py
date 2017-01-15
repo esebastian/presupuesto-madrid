@@ -15,26 +15,26 @@ OVERVIEW_INCOME_NODES = [
                           {
                             'nodes': [['11', '113']],
                             'label.es': 'Impuesto sobre bienes inmuebles de naturaleza urbana',
-                            'label.en': 'Impuesto sobre bienes inmuebles de naturaleza urbana',
+                            'label.en': 'Tax on urban real estate',
                             'link_id': '11'
                           },
                           '42',
                           {
                             'nodes': [['11', '116']],
                             'label.es': 'Impuesto sobre incremento del valor de terrenos',
-                            'label.en': 'Impuesto sobre incremento del valor de terrenos',
+                            'label.en': 'Tax on land value increases',
                             'link_id': '11'
                           },
                           {
                             'nodes': ['33'],
                             'label.es': 'Tasas por la utilización del dominio público',
-                            'label.en': 'Tasas por la utilización del dominio público',
+                            'label.en': 'Fees for the use of the public domain',
                             'link_id': '33'
                           },
                           {
                             'nodes': [['30', '303']],
                             'label.es': 'Servicio de tratamiento de residuos',
-                            'label.en': 'Servicio de tratamiento de residuos',
+                            'label.en': 'Waste treatment service',
                             'link_id': '30'
                           },
                         ]
