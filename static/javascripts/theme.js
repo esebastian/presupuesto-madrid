@@ -44,6 +44,11 @@ $(document).ready(function(){
     }
   };
 
+  // Swap order of budgeted/actual totals in Overview page
+  var swapTotalsInOverview = function(){
+    $(".total-budgeted").prependTo(".budget-totals .panel-content");
+  }
+
 
   addYearSelectorCustomLabels();
 
@@ -52,6 +57,8 @@ $(document).ready(function(){
 
   addChartsAlert('.policies-chart');
   addChartsAlert('.sankey-container');
+
+  swapTotalsInOverview();
 
   addCustomDescriptions();
 });
