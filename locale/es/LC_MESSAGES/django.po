@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-18 12:14+0100\n"
-"PO-Revision-Date: 2017-01-13 11:18+0100\n"
+"PO-Revision-Date: 2017-02-13 17:24+0100\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,6 +66,9 @@ msgstr "Para que tengas una idea general de los ingresos y gastos del Ayuntamien
 #: templates/shared/data_sources.html:15
 msgid "La tasa de inflación anual es la media de la tasa interanual de los doce meses del año."
 msgstr "La tasa de inflación anual es la tasa interanual de diciembre."
+
+msgid "El ajuste de la inflación se realiza a <strong>1 de enero de %s</strong>."
+msgstr "El ajuste de la inflación se realiza en enero del año siguiente. <span class='hidden'>%s</span>"
 
 #: templates/entities/show.html:31 templates/entities/show.html.py:32
 msgid "¿Cómo se gasta?"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-11 17:16+0100\n"
-"PO-Revision-Date: 2017-02-13 17:03+0100\n"
+"PO-Revision-Date: 2017-02-13 17:22+0100\n"
 "Last-Translator: David Cabo <david@civio.es>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -51,6 +51,13 @@ msgstr "Where does the revenue come from? Where does the expenditure go?"
 
 msgid "Para que tengas una idea general de los ingresos y gastos del Gobierno de Aragón"
 msgstr "So you can get a general idea of City of Madrid’s revenue and expenditure"
+
+#: templates/shared/data_sources.html:15
+msgid "La tasa de inflación anual es la media de la tasa interanual de los doce meses del año."
+msgstr "The annual inflation rate is the year-on-year rate in December."
+
+msgid "El ajuste de la inflación se realiza a <strong>1 de enero de %s</strong>."
+msgstr "Inflation is adjusted in January the following year. <span class='hidden'>%s</span>"
 
 #
 msgid "Visita guiada"
