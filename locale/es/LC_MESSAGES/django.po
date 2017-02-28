@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-18 12:14+0100\n"
-"PO-Revision-Date: 2017-02-13 17:24+0100\n"
+"PO-Revision-Date: 2017-02-28 19:28+0100\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Last-Translator: David Cabo <david@civio.es>\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: templates/shared/header.html:35
 msgid "Presupuestos"
@@ -95,10 +95,6 @@ msgstr "Visión Global"
 msgid "Se realiza a través de impuestos directos -como el impuesto de bienes inmuebles (IBI) o el de vehículos de tracción mecánica (IVTM)- y de tasas -como la de recogida de basura"
 msgstr "Se realiza a través de impuestos directos -como el impuesto de bienes inmuebles (IBI) o el de vehículos de tracción mecánica (IVTM)- y de tasas"
 
-# TODO: Temporary workaround
-msgid "hasta el segundo trimestre"
-msgstr "hasta noviembre"
-
 # 'Política de Privacidad' refers to 'Protección de datos'
 msgid "Política de Privacidad"
 msgstr "Protección de Datos"
@@ -122,3 +118,10 @@ msgstr " "
 # Footer sitemap
 msgid "Visor de presupuestos"
 msgstr "Presupuestos Abiertos"
+
+msgid "Áreas"
+msgstr "Áreas de Gobierno, Distritos y Organismos Autónomos"
+
+# TODO: Temporary workaround
+msgid "hasta el segundo trimestre"
+msgstr "hasta noviembre"

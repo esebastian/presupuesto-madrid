@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-11 17:16+0100\n"
-"PO-Revision-Date: 2017-02-15 11:24+0100\n"
+"PO-Revision-Date: 2017-02-28 19:28+0100\n"
 "Last-Translator: David Cabo <david@civio.es>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: templates/shared/header.html:35
 msgid "Presupuestos"
@@ -137,10 +137,6 @@ msgstr "This is collected through direct taxes (e.g. property tax) and municipal
 msgid "Los importes que aparecen como presupuestados corresponden a los del presupuesto inicial tras las modificaciones que se hayan producido hasta la fecha de actualización de los datos en la aplicación"
 msgstr "The amounts that appear as budgeted correspond to those of the initial budget after the modifications that may have occurred until the date the data was updated in the application"
 
-# TODO: Temporary workaround
-msgid "hasta el segundo trimestre"
-msgstr "up to November"
-
 # Extra footer links
 msgid "Accesibilidad"
 msgstr "Accesibility"
@@ -172,3 +168,10 @@ msgstr "City of Madrid sites"
 # Remove chapter 4/7 postfix
 msgid " (cap. %(chapter)s)"
 msgstr " "
+
+msgid "Áreas"
+msgstr "Areas of Government, Districts and Autonomous Organizations"
+
+# TODO: Temporary workaround
+msgid "hasta el segundo trimestre"
+msgstr "up to November"
