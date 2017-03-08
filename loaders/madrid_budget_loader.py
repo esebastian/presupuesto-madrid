@@ -101,7 +101,9 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         is_actual = (filename.find('/ejecucion_')!=-1)
         year = re.search('municipio/(\d+)/', filename).group(1)
         if is_expense:
-            fc_code = line[4]
+            # Note: in the most recent 2016 data the leading zeros were missing,
+            # so add them back using zfill.
+            fc_code = line[4].zfill(5)
             ec_code = line[8]
             amount = self._parse_amount(line[15 if is_actual else (10 if year=='2017' else 12)])
 
@@ -112,8 +114,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             # Get institutional code. We ignore sections in autonomous bodies,
             # since they get assigned to different sections in main body but that's
             # not relevant.
-            institution = self.get_institution_code(line[0])
-            ic_code = institution + (line[2] if institution=='0' else '00')
+            # Note: in the most recent 2016 data the leading zeros were missing,
+            # so add them back using zfill.
+            institution = self.get_institution_code(line[0].zfill(3))
+            ic_code = institution + (line[2].zfill(3) if institution=='0' else '00')
 
             # Apply institutional mapping to make codes consistent across years
             if int(year) <= 2015:
@@ -146,7 +150,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
 
         else:
             ec_code = line[4]
-            ic_code = self.get_institution_code(line[0]) + '00'
+            ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
             amount = self._parse_amount(line[9 if is_actual else (6 if year=='2017' else 8)])
 
             # Ignore transfers from parent organisation
