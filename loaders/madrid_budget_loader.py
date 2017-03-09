@@ -105,7 +105,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             # so add them back using zfill.
             fc_code = line[4].zfill(5)
             ec_code = line[8]
-            amount = self._parse_amount(line[15 if is_actual else (10 if year=='2017' else 12)])
+            amount = self._parse_amount(line[15 if is_actual else 12])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2] in ['410', '710', '400', '700']:
@@ -151,7 +151,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
-            amount = self._parse_amount(line[9 if is_actual else (6 if year=='2017' else 8)])
+            amount = self._parse_amount(line[9 if is_actual else 8])
 
             # Ignore transfers from parent organisation
             if ec_code[:-2] in ['410', '710', '400', '700']:
