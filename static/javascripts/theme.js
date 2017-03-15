@@ -14,8 +14,8 @@ $(document).ready(function(){
 
   var addYearSelectorCustomLabels = function(){
     var str2017 = {
-      'es': 'proyecto',
-      'en': 'pending approval',
+      'es': 'prórroga 2016',
+      'en': 'extended 2016',
     };
 
     $('.data-controllers .layout-slider .slider .slider-tick-label').each(function(){
@@ -50,7 +50,7 @@ $(document).ready(function(){
   }
 
 
-  // addYearSelectorCustomLabels();
+  addYearSelectorCustomLabels();
 
   // Setup lang dropdown
   $('.dropdown-toggle').dropdown();
