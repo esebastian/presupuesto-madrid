@@ -108,8 +108,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             amount = self._parse_amount(line[15 if is_actual else 12])
 
             # Ignore transfers to dependent organisations
-            if ec_code[:-2] in ['410', '710', '400', '700']:
-                amount = 0
+            # Note: See #435 regarding January 2017 data
+            if year != '2017':
+                if ec_code[:-2] in ['410', '710', '400', '700']:
+                    amount = 0
 
             # Get institutional code. We ignore sections in autonomous bodies,
             # since they get assigned to different sections in main body but that's
