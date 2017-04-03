@@ -7,7 +7,7 @@ $(document).ready(function(){
       'en': 'Data up to 31st January 2017'
     };
     var cont = $(selector);
-    if( cont.size() > 0 ){
+    if( cont.length > 0 ){
       cont.prepend('<div class="alert alert-data-update">'+str[ $('html').attr('lang') ]+'</div>');
     }
   };
@@ -29,10 +29,10 @@ $(document).ready(function(){
   // Custom for descriptions in some programmes
   var addCustomDescriptions = function(){
     var descriptions = {
-      '/presupuestosabiertos/es/politicas/01': {
+      '/es/politicas/01': {
         'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a 992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
       },
-      '/presupuestosabiertos/es/programas/01111': {
+      '/es/programas/01111': {
         'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a 992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
       },
     };
