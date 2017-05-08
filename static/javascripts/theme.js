@@ -3,8 +3,8 @@ $(document).ready(function(){
 
   var addChartsAlert = function(selector){
     var str = {
-      'es': 'Datos actualizados a 28 de febrero de 2017',
-      'en': 'Data up to 28th February 2017'
+      'es': 'Datos actualizados a 31 de marzo de 2017',
+      'en': 'Data up to 30th March 2017'
     };
     var cont = $(selector);
     if( cont.length > 0 ){
