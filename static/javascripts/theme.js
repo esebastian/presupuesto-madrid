@@ -50,7 +50,7 @@ $(document).ready(function(){
   }
 
 
-  addYearSelectorCustomLabels();
+  // addYearSelectorCustomLabels();
 
   // Setup lang dropdown
   $('.dropdown-toggle').dropdown();
