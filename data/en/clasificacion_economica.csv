@@ -2,578 +2,578 @@
 #
 # Áreas de gasto y Políticas, definidas en la Orden EHA/3565/2008 y comunes a todas las EELL.
 # Ver http://www.boe.es/buscar/doc.php?id=BOE-A-2008-19916
-I,1,,,Direct taxes
-I,1,0,,Income Tax
-I,1,0,0,Income Tax of Individuals
-I,1,0,1,Impuesto sobre sociedades
-I,1,0,2,Impuesto sobre la Renta de no residentes
-I,1,1,,Capital Tax
-I,1,1,0,Impuesto sobre sucesiones y donaciones
-I,1,1,1,Impuesto sobre patrimonio
-I,1,1,2,On real estate of non-residential nature
-I,1,1,3,On real estate of urban nature
-I,1,1,4,On real estate with special characteristics
-I,1,1,5,Tax on motor vehicles
-I,1,1,6,Tax on increased value of urban land
-I,1,1,7,Impuesto sobre viviendas desocupadas
-I,1,3,,Economic activity tax
-I,1,3,0,Economic activity tax
-I,1,6,,Recargos sobre impuestos directos del Estado y de la Comunidad Autónoma
-I,1,6,0,Sobre impuestos del Estado
-I,1,6,1,Sobre impuestos de la Comunidad Autónoma
-I,1,7,,Recargos sobre impuestos directos de otros entes locales
-I,1,7,0,En el Impuesto sobre Bienes Inmuebles
-I,1,7,1,Recargo provincial en el impuesto sobre actividades económicas
-I,1,7,9,Otros recargos sobre impuestos directos de otros entes locales
-I,1,8,,Direct taxes paid
-I,1,9,,Other direct taxes
-I,2,,,Indirect taxes
-I,2,1,,Value Added Tax
-I,2,1,0,Value Added Tax
-I,2,2,,Excise duties
-I,2,2,0,Excise duties
-I,2,6,,Recargos sobre impuestos indirectos del Estado y de la Comunidad Autónoma
-I,2,6,0,Sobre impuestos del Estado
-I,2,6,1,Sobre impuestos de la Comunidad Autónoma
-I,2,7,,Recargos sobre impuestos indirectos de otros entes locales
-I,2,7,0,Sobre impuestos de otros entes locales
-I,2,8,,Extinguished indirect taxes
-I,2,9,,Other indirect taxes
-I,2,9,0,"Tax over constructions, installations and works"
-I,2,9,1,"Tax on sumptuous expenses (hunting and fishing preserves)"
-I,2,9,2,Arbitrio sobre importaciones y entregas de mercancias en Canarias (AIEM)
-I,2,9,3,Impuesto general indirecto canario (IGIC)
-I,2,9,4,"Impuesto sobre la producción, los servicios y la importación (IPSI) de Ceuta y Melilla"
-I,2,9,5,Impuesto sobre primas de seguros
-I,2,9,6,Impuesto sobre transmisiones patrimoniales y actos jurídicos documentados
-I,2,9,9,Otros impuestos indirectos
-I,3,,,"Municipal and public-sector charges, sales and other revenues"
-I,3,0,,Charges for provision of basic public services
-I,3,0,0,Servicio de abastecimiento de agua
-I,3,0,1,Servicio de alcantarillado
-I,3,0,2,Garbage collection
-I,3,0,3,Waste treatment
-I,3,0,4,Canon de saneamiento
-I,3,0,9,Other fees for provision of basic public services
-I,3,1,,Charges for the provision of social and preferential public services
-I,3,1,0,Servicios hospitalarios
-I,3,1,1,Welfare services
-I,3,1,2,Education services
-I,3,1,3,Sports services
-I,3,1,9,Other fees for provision of basic public services
-I,3,2,,Charges for local activities
-I,3,2,0,Licencias de caza y pesca
-I,3,2,1,Planning permissions
-I,3,2,2,Certificates of occupancy and first occupation licenses
-I,3,2,3,Tasas por otros servicios urbanísticos
-I,3,2,4,Tasas sobre el juego
-I,3,2,5,Fee for document issuance
-I,3,2,6,Fee for vehicle removal
-I,3,2,7,Opening licenses for establishments
-I,3,2,9,Other fees for activities of local competence
-I,3,3,,Charges for the use of public space or local public property
-I,3,3,0,Parking tax
-I,3,3,1,Vehicle entry fee
-I,3,3,2,To companies operating supply services
-I,3,3,3,To companies operating telecommunications services
-I,3,3,4,Fee for opening ditches
-I,3,3,5,Fee for occupation of public roads with terraces
-I,3,3,6,Fee for occupation of public roads with temporary suspension of road traffic
-I,3,3,7,Fee for occupation of public air rights
-I,3,3,8,Compensation to Telefónica de España SA
-I,3,3,9,Other fees for private use of the public domain
-I,3,4,,Public-sector charges for provision of services
-I,3,4,0,Servicios hospitalarios
-I,3,4,1,Welfare services
-I,3,4,2,Education services
-I,3,4,3,Sports services
-I,3,4,4,"Tickets to museums, exhibitions and shows"
-I,3,4,5,Servicio de transporte público urbano
-I,3,4,9,Other public prices
-I,3,5,,Special contributions
-I,3,5,0,Para la ejecución de obras
-I,3,5,1,For the establishment or expansion of services
-I,3,6,,Sales
-I,3,6,0,Sales
-I,3,8,,Repayments
-I,3,8,0,Reintegro de avales
-I,3,8,9,Other repayments of current operations
-I,3,9,,Other income
-I,3,9,1,Fines
-I,3,9,2,Executive period surcharges and extemporaneous statements without prior request
-I,3,9,3,Interest on late payments
-I,3,9,4,Prestación personal
-I,3,9,5,Prestación de transporte
-I,3,9,6,Income from urbanization activities
-I,3,9,7,Urban land use
-I,3,9,8,Non-life insurance indemnities
-I,3,9,9,Other miscellaneous income
-I,4,,,Current transfers
-I,4,0,,Current transfers from the General Administration of the local entity
-I,4,0,0,From the General Administration of the local entity
-I,4,1,,Current transfers from City Council's independent bodies
-I,4,2,,Current transfers from Spanish central government
-I,4,2,0,From State's General Administration
-I,4,2,1,From autonomous bodies and state agencies
-I,4,2,2,De fundaciones estatales
-I,4,2,3,"From state corporations, public business entities and other public bodies"
-I,4,3,,Current transfers from Social Security
-I,4,4,,Current transfers from City Council's public companies
-I,4,4,0,From public bodies
-I,4,4,1,From corporations
-I,4,5,,Current transfers from regional governments
-I,4,5,0,From regional governments' General Administrations
-I,4,5,1,From regional governments' agencies and autonomous
-I,4,5,2,De fundaciones de las comunidades autónomas
-I,4,5,3,"From corporations, public business entities and other public bodies dependent on regional governments"
-I,4,6,,Current transfers from local governments
-I,4,6,1,"De diputaciones, consejos o cabildos"
-I,4,6,2,From city councils
-I,4,6,3,De mancomunidades
-I,4,6,4,De áreas metropolitanas
-I,4,6,5,De comarcas
-I,4,6,6,De otras entidades que agrupen municipios
-I,4,6,7,De consorcios
-I,4,6,8,De entidades locales menores
-I,4,7,,Current transfers from private companies
-I,4,8,,Current transfers from families and non-profit organisations
-I,4,8,9,From families and non-profit organisations
-I,4,9,,Current transfers from abroad
-I,4,9,0,From European Social Fund
-I,4,9,1,From Regional Development Fund
-I,4,9,2,From Cohesion Fund
-I,4,9,3,Del Fondo Europeo Agrícola de Garantía (FEAGA)
-I,4,9,4,Del Fondo Europeo Agrícola de Desarrollo Rural (FEADER)
-I,4,9,5,Del FEOGA-Orientación
-I,4,9,6,Del Fondo Europeo de la Pesca (FEP)
-I,4,9,7,Other European Union transfers
-I,4,9,9,"Other external transfers, excluding the European Union"
-I,5,,,Property revenues
-I,5,0,,Securities interest
-I,5,0,0,Del Estado
-I,5,0,1,From agencies and autonomous bodies
-I,5,0,4,"From state commercial companies, public business entities and other public bodies"
-I,5,0,5,De comunidades autónomas
-I,5,0,6,De entidades locales
-I,5,0,7,From private companies
-I,5,1,,Intereses de anticipos y préstamos concedidos
-I,5,1,1,From agencies and autonomous bodies
-I,5,1,4,"From corporations, public business entities and other public bodies"
-I,5,1,8,From families and non-profit organisations
-I,5,2,,Interest on deposits
-I,5,3,,Dividends and profit sharing
-I,5,3,1,From agencies and autonomous bodies
-I,5,3,4,"From corporations, public business entities and other public bodies"
-I,5,3,7,From private companies
-I,5,4,,Income from properties
-I,5,4,0,Rentas de bienes inmuebles
-I,5,4,1,Rental of urban plots
-I,5,4,2,Rental of non-residential plots
-I,5,4,4,Censos
-I,5,4,9,Other income from properties
-I,5,5,,Concession and special-use products
-I,5,5,0,Administrative concessions with periodic compensation
-I,5,5,1,Administrative concessions with non-periodic compensation
-I,5,5,2,Leasehold with periodic compensation
-I,5,5,3,Leasehold with non-periodic compensation
-I,5,5,4,Aprovechamientos agrícolas y forestales
-I,5,5,5,Special uses with compensation
-I,5,5,9,Other concessions and uses
-I,5,9,,Other property revenues
-I,5,9,1,Benefits from financial investments
-I,5,9,2,Ingresos por operaciones de intercambio financiero
-I,5,9,9,Other property revenues
-I,6,,,Property investments disposal
-I,6,0,,Land
-I,6,0,0,Venta de solares
-I,6,0,1,Venta de fincas rústicas
-I,6,0,2,Left-over public road plots
-I,6,0,3,Public land assets
-I,6,0,9,Other land assets
-I,6,1,,Other property investments
-I,6,1,1,De inversiones de carácter inmaterial
-I,6,1,2,De objetos valiosos
-I,6,1,9,From other property investments
-I,6,8,,Capital operations repayments
-I,6,8,0,From closed periods
-I,7,,,Capital transfers
-I,7,0,,Capital transfers from the General Administration of the local entity
-I,7,1,,Capital transfers from City Council's autonomous public entities
-I,7,2,,Capital transfers from Spanish central government
-I,7,2,0,From the General State Administration
-I,7,2,1,From autonomous agencies and state agencies
-I,7,2,2,From state foundations
-I,7,2,3,"From state corporations, public business entities and other public bodies"
-I,7,3,,Capital transfers from Social Security
-I,7,3,0,From Social Security
-I,7,4,,Capital transfers from public entities and mercantile companies of the local entity
-I,7,4,0,From public entities
-I,7,4,1,From commercial companies
-I,7,5,,Capital transfers from regional governments
-I,7,5,0,From regional governments' General Administrations
-I,7,5,1,De organismos autónomos y agencias de las comunidades autónomas
-I,7,5,2,De fundaciones de las comunidades autónomas
-I,7,5,3,"From commercial companies, public business entities and other public bodies dependent on autonomous communities"
-I,7,6,,Capital transfers from local governments
-I,7,6,1,"De diputaciones, consejos o cabildos"
-I,7,6,2,From city councils
-I,7,6,3,From mancomunities
-I,7,6,4,De áreas metropolitanas
-I,7,6,5,De comarcas
-I,7,6,6,De otras entidades que agrupen municipios
-I,7,6,7,De consorcios
-I,7,6,8,De entidades locales menores
-I,7,7,,Capital transfers from private companies
-I,7,8,,Capital transfers from families and non-profit organisations
-I,7,9,,Capital transfers from abroad
-I,7,9,0,From European Social Fund
-I,7,9,1,From Regional Development Fund
-I,7,9,2,From Cohesion Fund
-I,7,9,3,Del Fondo Europeo Agrícola de Garantía (FEAGA)
-I,7,9,4,Del Fondo Europeo Agrícola de Desarrollo Rural (FEADER)
-I,7,9,5,Del FEOGA-Orientación
-I,7,9,6,Del Fondo Europeo de la Pesca (FEP)
-I,7,9,7,Other European Union transfers
-I,7,9,9,"Other external transfers, excluding the European Union"
-I,8,,,Financial assets
-I,8,0,,Disposal of public sector debt
-I,8,0,0,Short term
-I,8,0,1,Long term
-I,8,1,,Enajenacion de obligaciones y bonos fuera del sector público
-I,8,1,0,Short term
-I,8,1,1,Long term
-I,8,2,,Repayment of public sector advances and loans
-I,8,2,0,Short term
-I,8,2,1,Long term
-I,8,3,,Repayment of loans outside the public sector
-I,8,3,0,Short term
-I,8,3,1,Long term
-I,8,4,,Deposit and guarantee repayments
-I,8,4,0,Deposit repayments
-I,8,4,1,Guarantee repayments
-I,8,5,,Sales of public sector shares
-I,8,6,,Enajenacion de acciones y participaciones fuera del sector público
-I,8,7,,Treasury surplus
-I,8,7,0,Treasury surplus
-I,9,,,Financial liabilities
-I,9,0,,Public debt issuance in euros
-I,9,0,0,Short term
-I,9,0,1,Long term
-I,9,1,,Received loans
-I,9,1,0,Short-term loans received from public sector entities
-I,9,1,1,Long-term loans received from public sector entities
-I,9,1,2,Short-term loans received from entities outside the public sector
-I,9,1,3,Long-term loans received from entities outside the public sector
-I,9,2,,Emision de deuda pública en moneda distinta del euro
-I,9,2,0,Short term
-I,9,2,1,Long term
-I,9,3,,Préstamos recibidos en moneda distinta del euro
-I,9,3,0,Short term
-I,9,3,1,Long term
-I,9,4,,Deposits and guarantees received
-I,9,4,0,Deposits received
-I,9,4,1,Guarantees received
-G,1,,,Staff expenses
-G,1,0,,Government bodies and executive staff
-G,1,0,0,Basic salaries and other remuneration of governing bodies' members
-G,1,0,1,Basic salaries and other remuneration of senior management
-G,1,0,7,Contributions to pension funds and plans
-G,1,1,,Temporary staff
-G,1,1,0,Basic salaries and other remunerations
-G,1,1,7,Contributions to pension funds and plans
-G,1,2,,Civil servants
-G,1,2,0,Basic salaries
-G,1,2,1,Supplementary remuneration
-G,1,2,2,Compensation in kind
-G,1,2,4,Remuneration of public workers in training
-G,1,2,7,Contributions to pension funds and plans
-G,1,3,,Employees
-G,1,3,0,Permanent workforce
-G,1,3,1,Temporary workforce
-G,1,3,2,Compensation in kind
-G,1,3,7,Contributions to pension funds and plans
-G,1,4,,Other personnel
-G,1,4,3,Other personnel
-G,1,4,7,Contributions to pension funds and plans
-G,1,5,,Performance incentives
-G,1,5,0,Productivity
-G,1,5,1,Gratifications
-G,1,5,2,Other performance incentives
-G,1,5,3,Complemento de dedicación especial
-G,1,6,,"Social-security contributions, benefits and expenses paid for by the employer"
-G,1,6,0,Social contributions
-G,1,6,1,Social benefits
-G,1,6,2,Social staff costs
-G,1,6,4,Complemento familiar
-G,2,,,Current expenditure on goods and services
-G,2,0,,Rents and royalties
-G,2,0,0,Land and natural assets
-G,2,0,2,Buildings and other structures
-G,2,0,3,"Machinery, technical installations and tools"
-G,2,0,4,Transportation equipment
-G,2,0,5,Furniture
-G,2,0,6,Information processing equipment
-G,2,0,8,Other tangible assets
-G,2,0,9,Canons
-G,2,1,,"Maintenance, repairs and conservation"
-G,2,1,0,Infrastructure and natural resources
-G,2,1,2,Buildings and other structures
-G,2,1,3,"Machinery, technical installations and tools"
-G,2,1,4,Transportation equipment
-G,2,1,5,Furniture
-G,2,1,6,Information processing equipment
-G,2,1,9,Other tangible assets
-G,2,2,,"Materials, supplies and other"
-G,2,2,0,Office supplies
-G,2,2,1,Supplies
-G,2,2,2,Communications
-G,2,2,3,Transportation
-G,2,2,4,Insurance premiums
-G,2,2,5,Taxes
-G,2,2,6,Miscellaneous expenses
-G,2,2,7,Work performed by other companies and professionals
-G,2,3,,Compensation for services
-G,2,3,0,Subsistence allowance
-G,2,3,1,Transportation allowance
-G,2,3,3,Other compensation
-G,2,4,,Costs of publications
-G,2,4,0,Editing and distribution expenses
-G,2,5,,Work performed by public administrations and other public entities
-G,2,5,0,Work performed by public administrations and other public entities
-G,2,6,,Work performed by non-profit organisations
-G,2,7,,Non-classified and unexpected expenditures
-G,3,,,Financial expenditures (Interests)
-G,3,0,,Public debt in euros
-G,3,0,0,Interests
-G,3,0,1,"Setup, modification and cancellation expenses"
-G,3,0,9,Otros gastos financieros de deuda pública en euros
-G,3,1,,From loans and other financial operations
-G,3,1,0,Interests
-G,3,1,1,"Setup, modification and cancellation expenses"
-G,3,1,9,Otros gastos financieros de préstamos y otras operaciones financieras en euros
-G,3,2,,De deuda pública en moneda distinta del euro
-G,3,2,0,Interests
-G,3,2,1,"Gastos de emisión, modificación y cancelación"
-G,3,2,2,Diferencias de cambio
-G,3,2,9,Otros gastos financieros de deuda pública en moneda distinta del euro
-G,3,3,,De préstamos y otras operaciones financieras en moneda distinta del euro
-G,3,3,0,Interests
-G,3,3,1,"Setup, modification and cancellation expenses"
-G,3,3,2,Diferencias de cambio
-G,3,3,9,Otros gastos financieros de préstamos y otras operaciones financieras en moneda distinta del euro
-G,3,4,,"From deposits, guarantees and others"
-G,3,4,0,Interest on deposit
-G,3,4,1,Interest on guarantees
-G,3,5,,Delay interest and other financial expenditure
-G,3,5,2,Interest on late payments
-G,3,5,3,Financial exchange operations
-G,3,5,7,Ejecución de avales
-G,3,5,8,Intereses por operaciones de arrendamiento financiero (leasing)
-G,3,5,9,Other financial expenses
-G,4,,,Current transfers
-G,4,0,,Current transfers to City Council's General Administration
-G,4,1,,Current transfers to City Council's independent bodies
-G,4,2,,Current transfers to Spanish central government
-G,4,2,0,To State's General Administration
-G,4,2,1,To autonomous bodies and state agencies
-G,4,2,2,A fundaciones estatales
-G,4,2,3,"To state corporations, public business entities and other public bodies"
-G,4,3,,Current transfers to Social Security
-G,4,4,,Current transfers to City Council's companies
-G,4,4,0,Grants to promote employment
-G,4,4,1,Subvenciones para bonificacion de intereses y primas de seguros
-G,4,4,2,Subsidies to reduce the price to paid by consumers
-G,4,4,9,Otras subvenciones a entes públicos y sociedades mercantiles de la entidad local
-G,4,5,,Current transfers to regional governments
-G,4,5,0,To regional governments' General Administrations
-G,4,5,1,A organismos autónomos y agencias de las comunidades autónomas
-G,4,5,2,A fundaciones de las comunidades autónomas
-G,4,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
-G,4,6,,Current transfers to local entities
-G,4,6,1,"A diputaciones, consejos o cabildos insulares"
-G,4,6,2,A ayuntamientos
-G,4,6,3,A mancomunidades
-G,4,6,4,A áreas metropolitanas
-G,4,6,5,A comarcas
-G,4,6,6,A otras entidades que agrupen municipios
-G,4,6,7,To consortia
-G,4,6,8,A entidades locales menores
-G,4,7,,Current transfers to private companies
-G,4,7,0,Grants to promote employment
-G,4,7,1,Subvenciones para bonificación de intereses y primas de seguros
-G,4,7,2,Subsidies to reduce the price to paid by consumers
-G,4,7,9,Other grants to private companies
-G,4,8,,Current transfers to families and non-profit organisations
-G,4,9,,Current transfers to foreign organisations
-G,5,,,Contingency fund
-G,5,0,,Contingency fund
-G,5,0,0,Contingency fund
-G,6,,,Other property investments
-G,6,0,,New investment in infrastructures and assets intended for general use
-G,6,0,0,Land investments
-G,6,0,9,Other investments in infrastructures and assets intended for general use
-G,6,1,,Replacement investments for infrastructures and assets intended for general use
-G,6,1,0,Land investments
-G,6,1,9,Other replacement investments for infrastructures and assets intended for general use
-G,6,2,,New investments associated with the operational running of the services
-G,6,2,1,Land and natural assets
-G,6,2,2,Buildings and other structures
-G,6,2,3,"Machinery, technical installations and tools"
-G,6,2,4,Transportation equipment
-G,6,2,5,Furniture
-G,6,2,6,Information processing equipment
-G,6,2,7,Complex projects
-G,6,2,9,Other new investments
-G,6,3,,Replacement investments for operational running of public services
-G,6,3,1,Land and natural resources
-G,6,3,2,Buildings and other structures
-G,6,3,3,"Machinery, technical installations and tools"
-G,6,3,4,Transportation equipment
-G,6,3,5,Furniture
-G,6,3,6,Information processing equipment
-G,6,3,7,Complex projects
-G,6,3,9,Other replacement investments
-G,6,4,,Expenditure on intangible investments
-G,6,4,0,Expenditure on intangible assets
-G,6,4,1,Expenditure on software applications
-G,6,4,8,Cuotas netas de intereses por operaciones de arrendamiento financiero (leasing)
-G,6,5,,Investments managed for other public bodies
-G,6,5,0,Expenditure on investments managed for other public bodies
-G,6,8,,Expenditure on asset investments
-G,6,8,1,Land and natural resources
-G,6,8,2,Buildings and other structures
-G,6,8,9,Other expenditure on capital investments
-G,6,9,,Inversiones en bienes comunales
-G,6,9,0,Land and natural assets
-G,6,9,2,Inversión en infraestructuras
-G,7,,,Capital transfers
-G,7,0,,Capital transfers to City Council's General Administration
-G,7,1,,Capital transfers to City Council's independent bodies
-G,7,1,0,To City Council's autonomous bodies
-G,7,1,1,To City Council's autonomous bodies
-G,7,2,,Capital transfers to Spanish central government
-G,7,2,0,A la Administración General del Estado
-G,7,2,1,A organismos autónomos y agencias
-G,7,2,2,A fundaciones estatales
-G,7,2,3,"To state corporations, public business entities and other public bodies"
-G,7,3,,Capital transfers to Social Security
-G,7,4,,To City Council's companies
-G,7,5,,To regional governments
-G,7,5,0,To regional governments' General Administrations
-G,7,5,1,A organismos autónomos y agencias de las comunidades autónomas
-G,7,5,2,A fundaciones de las comunidades autónomas
-G,7,5,3,"To corporations, public business entities and other public bodies dependent on regional governments"
-G,7,6,,Capital transfers to local entities
-G,7,6,1,"A diputaciones, consejos o cabildos"
-G,7,6,2,A ayuntamientos
-G,7,6,3,A mancomunidades
-G,7,6,4,A áreas metropolitanas
-G,7,6,5,A comarcas
-G,7,6,6,A entidades que agrupen municipios
-G,7,6,7,To consortia
-G,7,6,8,A entidades locales menores
-G,7,7,,Capital transfers to private companies
-G,7,7,0,To private companies
-G,7,8,,Capital transfers to families and non-profit organisations
-G,7,8,1,To families and non-profit organisations
-G,7,9,,Capital transfers to external organisations
-G,8,,,Financial assets
-G,8,0,,Adquisición de deuda del sector público
-G,8,0,0,Short term
-G,8,0,1,Long term
-G,8,1,,Adquisición de obligaciones y bonos fuera del sector público
-G,8,1,0,Short term. Desarrollo por sectores
-G,8,1,1,Long term. Desarrollo por sectores
-G,8,2,,Loans granted to the public sector
-G,8,2,0,Short-term loans
-G,8,2,1,Long-term loans
-G,8,3,,Concesion de préstamos fuera del sector público
-G,8,3,0,Short-term loans
-G,8,3,1,Long-term loans
-G,8,4,,Establishing deposits and guarantees
-G,8,4,0,Deposits
-G,8,4,1,Guarantees
-G,8,5,,Acquisition of public sector shares and participations
-G,8,5,0,Acquisition of public sector shares and participations
-G,8,6,,Acquisition of shares and participations outside the public sector
-G,8,6,0,Acquisition of shares and participations outside the public sector
-G,8,7,,Aportaciones patrimoniales
-G,8,7,0,Aportaciones a fundaciones
-G,8,7,1,Aportaciones a consorcios
-G,8,7,2,Aportaciones a otros entes
-G,9,,,Financial liabilities
-G,9,0,,Amortización de deuda pública en euros
-G,9,0,0,Short term
-G,9,0,1,Long term
-G,9,1,,Debt repayment and operations in euro currency
-G,9,1,0,Short term from public bodies
-G,9,1,1,Long term from public bodies
-G,9,1,2,Short term from bodies outside the public sector
-G,9,1,3,Long term from bodies outside the public sector
-G,9,2,,Amortización de deuda pública en moneda distinta del euro
-G,9,2,0,Short term
-G,9,2,1,Long term
-G,9,3,,Amortización de préstamos en moneda distinta del euro
-G,9,3,0,Short term
-G,9,3,1,Long term
-G,9,4,,Deposits
-G,9,4,0,Repayment of deposits
-G,9,4,1,Repayment of guarantees
+I;1;;;Direct taxes
+I;1;0;;Income Tax
+I;1;0;0;Income Tax of Individuals
+I;1;0;1;Impuesto sobre sociedades
+I;1;0;2;Impuesto sobre la Renta de no residentes
+I;1;1;;Capital Tax
+I;1;1;0;Impuesto sobre sucesiones y donaciones
+I;1;1;1;Impuesto sobre patrimonio
+I;1;1;2;On real estate of non-residential nature
+I;1;1;3;On real estate of urban nature
+I;1;1;4;On real estate with special characteristics
+I;1;1;5;Tax on motor vehicles
+I;1;1;6;Tax on increased value of urban land
+I;1;1;7;Impuesto sobre viviendas desocupadas
+I;1;3;;Economic activity tax
+I;1;3;0;Economic activity tax
+I;1;6;;Recargos sobre impuestos directos del Estado y de la Comunidad Autónoma
+I;1;6;0;Sobre impuestos del Estado
+I;1;6;1;Sobre impuestos de la Comunidad Autónoma
+I;1;7;;Recargos sobre impuestos directos de otros entes locales
+I;1;7;0;En el Impuesto sobre Bienes Inmuebles
+I;1;7;1;Recargo provincial en el impuesto sobre actividades económicas
+I;1;7;9;Otros recargos sobre impuestos directos de otros entes locales
+I;1;8;;Direct taxes paid
+I;1;9;;Other direct taxes
+I;2;;;Indirect taxes
+I;2;1;;Value Added Tax
+I;2;1;0;Value Added Tax
+I;2;2;;Excise duties
+I;2;2;0;Excise duties
+I;2;6;;Recargos sobre impuestos indirectos del Estado y de la Comunidad Autónoma
+I;2;6;0;Sobre impuestos del Estado
+I;2;6;1;Sobre impuestos de la Comunidad Autónoma
+I;2;7;;Recargos sobre impuestos indirectos de otros entes locales
+I;2;7;0;Sobre impuestos de otros entes locales
+I;2;8;;Extinguished indirect taxes
+I;2;9;;Other indirect taxes
+I;2;9;0;"Tax over constructions, installations and works"
+I;2;9;1;"Tax on sumptuous expenses (hunting and fishing preserves)"
+I;2;9;2;Arbitrio sobre importaciones y entregas de mercancias en Canarias (AIEM)
+I;2;9;3;Impuesto general indirecto canario (IGIC)
+I;2;9;4;"Impuesto sobre la producción, los servicios y la importación (IPSI) de Ceuta y Melilla"
+I;2;9;5;Impuesto sobre primas de seguros
+I;2;9;6;Impuesto sobre transmisiones patrimoniales y actos jurídicos documentados
+I;2;9;9;Otros impuestos indirectos
+I;3;;;"Municipal and public-sector charges, sales and other revenues"
+I;3;0;;Charges for provision of basic public services
+I;3;0;0;Servicio de abastecimiento de agua
+I;3;0;1;Servicio de alcantarillado
+I;3;0;2;Garbage collection
+I;3;0;3;Waste treatment
+I;3;0;4;Canon de saneamiento
+I;3;0;9;Other fees for provision of basic public services
+I;3;1;;Charges for the provision of social and preferential public services
+I;3;1;0;Servicios hospitalarios
+I;3;1;1;Welfare services
+I;3;1;2;Education services
+I;3;1;3;Sports services
+I;3;1;9;Other fees for provision of basic public services
+I;3;2;;Charges for local activities
+I;3;2;0;Licencias de caza y pesca
+I;3;2;1;Planning permissions
+I;3;2;2;Certificates of occupancy and first occupation licenses
+I;3;2;3;Tasas por otros servicios urbanísticos
+I;3;2;4;Tasas sobre el juego
+I;3;2;5;Fee for document issuance
+I;3;2;6;Fee for vehicle removal
+I;3;2;7;Opening licenses for establishments
+I;3;2;9;Other fees for activities of local competence
+I;3;3;;Charges for the use of public space or local public property
+I;3;3;0;Parking tax
+I;3;3;1;Vehicle entry fee
+I;3;3;2;To companies operating supply services
+I;3;3;3;To companies operating telecommunications services
+I;3;3;4;Fee for opening ditches
+I;3;3;5;Fee for occupation of public roads with terraces
+I;3;3;6;Fee for occupation of public roads with temporary suspension of road traffic
+I;3;3;7;Fee for occupation of public air rights
+I;3;3;8;Compensation to Telefónica de España SA
+I;3;3;9;Other fees for private use of the public domain
+I;3;4;;Public-sector charges for provision of services
+I;3;4;0;Servicios hospitalarios
+I;3;4;1;Welfare services
+I;3;4;2;Education services
+I;3;4;3;Sports services
+I;3;4;4;"Tickets to museums, exhibitions and shows"
+I;3;4;5;Servicio de transporte público urbano
+I;3;4;9;Other public prices
+I;3;5;;Special contributions
+I;3;5;0;Para la ejecución de obras
+I;3;5;1;For the establishment or expansion of services
+I;3;6;;Sales
+I;3;6;0;Sales
+I;3;8;;Repayments
+I;3;8;0;Reintegro de avales
+I;3;8;9;Other repayments of current operations
+I;3;9;;Other income
+I;3;9;1;Fines
+I;3;9;2;Executive period surcharges and extemporaneous statements without prior request
+I;3;9;3;Interest on late payments
+I;3;9;4;Prestación personal
+I;3;9;5;Prestación de transporte
+I;3;9;6;Income from urbanization activities
+I;3;9;7;Urban land use
+I;3;9;8;Non-life insurance indemnities
+I;3;9;9;Other miscellaneous income
+I;4;;;Current transfers
+I;4;0;;Current transfers from the General Administration of the local entity
+I;4;0;0;From the General Administration of the local entity
+I;4;1;;Current transfers from City Council's independent bodies
+I;4;2;;Current transfers from Spanish central government
+I;4;2;0;From State's General Administration
+I;4;2;1;From autonomous bodies and state agencies
+I;4;2;2;De fundaciones estatales
+I;4;2;3;"From state corporations, public business entities and other public bodies"
+I;4;3;;Current transfers from Social Security
+I;4;4;;Current transfers from City Council's public companies
+I;4;4;0;From public bodies
+I;4;4;1;From corporations
+I;4;5;;Current transfers from regional governments
+I;4;5;0;From regional governments' General Administrations
+I;4;5;1;From regional governments' agencies and autonomous
+I;4;5;2;De fundaciones de las comunidades autónomas
+I;4;5;3;"From corporations, public business entities and other public bodies dependent on regional governments"
+I;4;6;;Current transfers from local governments
+I;4;6;1;"De diputaciones, consejos o cabildos"
+I;4;6;2;From city councils
+I;4;6;3;De mancomunidades
+I;4;6;4;De áreas metropolitanas
+I;4;6;5;De comarcas
+I;4;6;6;De otras entidades que agrupen municipios
+I;4;6;7;De consorcios
+I;4;6;8;De entidades locales menores
+I;4;7;;Current transfers from private companies
+I;4;8;;Current transfers from families and non-profit organisations
+I;4;8;9;From families and non-profit organisations
+I;4;9;;Current transfers from abroad
+I;4;9;0;From European Social Fund
+I;4;9;1;From Regional Development Fund
+I;4;9;2;From Cohesion Fund
+I;4;9;3;Del Fondo Europeo Agrícola de Garantía (FEAGA)
+I;4;9;4;Del Fondo Europeo Agrícola de Desarrollo Rural (FEADER)
+I;4;9;5;Del FEOGA-Orientación
+I;4;9;6;Del Fondo Europeo de la Pesca (FEP)
+I;4;9;7;Other European Union transfers
+I;4;9;9;"Other external transfers, excluding the European Union"
+I;5;;;Property revenues
+I;5;0;;Securities interest
+I;5;0;0;Del Estado
+I;5;0;1;From agencies and autonomous bodies
+I;5;0;4;"From state commercial companies, public business entities and other public bodies"
+I;5;0;5;De comunidades autónomas
+I;5;0;6;De entidades locales
+I;5;0;7;From private companies
+I;5;1;;Intereses de anticipos y préstamos concedidos
+I;5;1;1;From agencies and autonomous bodies
+I;5;1;4;"From corporations, public business entities and other public bodies"
+I;5;1;8;From families and non-profit organisations
+I;5;2;;Interest on deposits
+I;5;3;;Dividends and profit sharing
+I;5;3;1;From agencies and autonomous bodies
+I;5;3;4;"From corporations, public business entities and other public bodies"
+I;5;3;7;From private companies
+I;5;4;;Income from properties
+I;5;4;0;Rentas de bienes inmuebles
+I;5;4;1;Rental of urban plots
+I;5;4;2;Rental of non-residential plots
+I;5;4;4;Censos
+I;5;4;9;Other income from properties
+I;5;5;;Concession and special-use products
+I;5;5;0;Administrative concessions with periodic compensation
+I;5;5;1;Administrative concessions with non-periodic compensation
+I;5;5;2;Leasehold with periodic compensation
+I;5;5;3;Leasehold with non-periodic compensation
+I;5;5;4;Aprovechamientos agrícolas y forestales
+I;5;5;5;Special uses with compensation
+I;5;5;9;Other concessions and uses
+I;5;9;;Other property revenues
+I;5;9;1;Benefits from financial investments
+I;5;9;2;Ingresos por operaciones de intercambio financiero
+I;5;9;9;Other property revenues
+I;6;;;Property investments disposal
+I;6;0;;Land
+I;6;0;0;Venta de solares
+I;6;0;1;Venta de fincas rústicas
+I;6;0;2;Left-over public road plots
+I;6;0;3;Public land assets
+I;6;0;9;Other land assets
+I;6;1;;Other property investments
+I;6;1;1;De inversiones de carácter inmaterial
+I;6;1;2;De objetos valiosos
+I;6;1;9;From other property investments
+I;6;8;;Capital operations repayments
+I;6;8;0;From closed periods
+I;7;;;Capital transfers
+I;7;0;;Capital transfers from the General Administration of the local entity
+I;7;1;;Capital transfers from City Council's autonomous public entities
+I;7;2;;Capital transfers from Spanish central government
+I;7;2;0;From the General State Administration
+I;7;2;1;From autonomous agencies and state agencies
+I;7;2;2;From state foundations
+I;7;2;3;"From state corporations, public business entities and other public bodies"
+I;7;3;;Capital transfers from Social Security
+I;7;3;0;From Social Security
+I;7;4;;Capital transfers from public entities and mercantile companies of the local entity
+I;7;4;0;From public entities
+I;7;4;1;From commercial companies
+I;7;5;;Capital transfers from regional governments
+I;7;5;0;From regional governments' General Administrations
+I;7;5;1;De organismos autónomos y agencias de las comunidades autónomas
+I;7;5;2;De fundaciones de las comunidades autónomas
+I;7;5;3;"From commercial companies, public business entities and other public bodies dependent on autonomous communities"
+I;7;6;;Capital transfers from local governments
+I;7;6;1;"De diputaciones, consejos o cabildos"
+I;7;6;2;From city councils
+I;7;6;3;From mancomunities
+I;7;6;4;De áreas metropolitanas
+I;7;6;5;De comarcas
+I;7;6;6;De otras entidades que agrupen municipios
+I;7;6;7;De consorcios
+I;7;6;8;De entidades locales menores
+I;7;7;;Capital transfers from private companies
+I;7;8;;Capital transfers from families and non-profit organisations
+I;7;9;;Capital transfers from abroad
+I;7;9;0;From European Social Fund
+I;7;9;1;From Regional Development Fund
+I;7;9;2;From Cohesion Fund
+I;7;9;3;Del Fondo Europeo Agrícola de Garantía (FEAGA)
+I;7;9;4;Del Fondo Europeo Agrícola de Desarrollo Rural (FEADER)
+I;7;9;5;Del FEOGA-Orientación
+I;7;9;6;Del Fondo Europeo de la Pesca (FEP)
+I;7;9;7;Other European Union transfers
+I;7;9;9;"Other external transfers, excluding the European Union"
+I;8;;;Financial assets
+I;8;0;;Disposal of public sector debt
+I;8;0;0;Short term
+I;8;0;1;Long term
+I;8;1;;Enajenacion de obligaciones y bonos fuera del sector público
+I;8;1;0;Short term
+I;8;1;1;Long term
+I;8;2;;Repayment of public sector advances and loans
+I;8;2;0;Short term
+I;8;2;1;Long term
+I;8;3;;Repayment of loans outside the public sector
+I;8;3;0;Short term
+I;8;3;1;Long term
+I;8;4;;Deposit and guarantee repayments
+I;8;4;0;Deposit repayments
+I;8;4;1;Guarantee repayments
+I;8;5;;Sales of public sector shares
+I;8;6;;Enajenacion de acciones y participaciones fuera del sector público
+I;8;7;;Treasury surplus
+I;8;7;0;Treasury surplus
+I;9;;;Financial liabilities
+I;9;0;;Public debt issuance in euros
+I;9;0;0;Short term
+I;9;0;1;Long term
+I;9;1;;Received loans
+I;9;1;0;Short-term loans received from public sector entities
+I;9;1;1;Long-term loans received from public sector entities
+I;9;1;2;Short-term loans received from entities outside the public sector
+I;9;1;3;Long-term loans received from entities outside the public sector
+I;9;2;;Emision de deuda pública en moneda distinta del euro
+I;9;2;0;Short term
+I;9;2;1;Long term
+I;9;3;;Préstamos recibidos en moneda distinta del euro
+I;9;3;0;Short term
+I;9;3;1;Long term
+I;9;4;;Deposits and guarantees received
+I;9;4;0;Deposits received
+I;9;4;1;Guarantees received
+G;1;;;Staff expenses
+G;1;0;;Government bodies and executive staff
+G;1;0;0;Basic salaries and other remuneration of governing bodies' members
+G;1;0;1;Basic salaries and other remuneration of senior management
+G;1;0;7;Contributions to pension funds and plans
+G;1;1;;Temporary staff
+G;1;1;0;Basic salaries and other remunerations
+G;1;1;7;Contributions to pension funds and plans
+G;1;2;;Civil servants
+G;1;2;0;Basic salaries
+G;1;2;1;Supplementary remuneration
+G;1;2;2;Compensation in kind
+G;1;2;4;Remuneration of public workers in training
+G;1;2;7;Contributions to pension funds and plans
+G;1;3;;Employees
+G;1;3;0;Permanent workforce
+G;1;3;1;Temporary workforce
+G;1;3;2;Compensation in kind
+G;1;3;7;Contributions to pension funds and plans
+G;1;4;;Other personnel
+G;1;4;3;Other personnel
+G;1;4;7;Contributions to pension funds and plans
+G;1;5;;Performance incentives
+G;1;5;0;Productivity
+G;1;5;1;Gratifications
+G;1;5;2;Other performance incentives
+G;1;5;3;Complemento de dedicación especial
+G;1;6;;"Social-security contributions, benefits and expenses paid for by the employer"
+G;1;6;0;Social contributions
+G;1;6;1;Social benefits
+G;1;6;2;Social staff costs
+G;1;6;4;Complemento familiar
+G;2;;;Current expenditure on goods and services
+G;2;0;;Rents and royalties
+G;2;0;0;Land and natural assets
+G;2;0;2;Buildings and other structures
+G;2;0;3;"Machinery, technical installations and tools"
+G;2;0;4;Transportation equipment
+G;2;0;5;Furniture
+G;2;0;6;Information processing equipment
+G;2;0;8;Other tangible assets
+G;2;0;9;Canons
+G;2;1;;"Maintenance, repairs and conservation"
+G;2;1;0;Infrastructure and natural resources
+G;2;1;2;Buildings and other structures
+G;2;1;3;"Machinery, technical installations and tools"
+G;2;1;4;Transportation equipment
+G;2;1;5;Furniture
+G;2;1;6;Information processing equipment
+G;2;1;9;Other tangible assets
+G;2;2;;"Materials, supplies and other"
+G;2;2;0;Office supplies
+G;2;2;1;Supplies
+G;2;2;2;Communications
+G;2;2;3;Transportation
+G;2;2;4;Insurance premiums
+G;2;2;5;Taxes
+G;2;2;6;Miscellaneous expenses
+G;2;2;7;Work performed by other companies and professionals
+G;2;3;;Compensation for services
+G;2;3;0;Subsistence allowance
+G;2;3;1;Transportation allowance
+G;2;3;3;Other compensation
+G;2;4;;Costs of publications
+G;2;4;0;Editing and distribution expenses
+G;2;5;;Work performed by public administrations and other public entities
+G;2;5;0;Work performed by public administrations and other public entities
+G;2;6;;Work performed by non-profit organisations
+G;2;7;;Non-classified and unexpected expenditures
+G;3;;;Financial expenditures (Interests)
+G;3;0;;Public debt in euros
+G;3;0;0;Interests
+G;3;0;1;"Setup, modification and cancellation expenses"
+G;3;0;9;Otros gastos financieros de deuda pública en euros
+G;3;1;;From loans and other financial operations
+G;3;1;0;Interests
+G;3;1;1;"Setup, modification and cancellation expenses"
+G;3;1;9;Otros gastos financieros de préstamos y otras operaciones financieras en euros
+G;3;2;;De deuda pública en moneda distinta del euro
+G;3;2;0;Interests
+G;3;2;1;"Gastos de emisión, modificación y cancelación"
+G;3;2;2;Diferencias de cambio
+G;3;2;9;Otros gastos financieros de deuda pública en moneda distinta del euro
+G;3;3;;De préstamos y otras operaciones financieras en moneda distinta del euro
+G;3;3;0;Interests
+G;3;3;1;"Setup, modification and cancellation expenses"
+G;3;3;2;Diferencias de cambio
+G;3;3;9;Otros gastos financieros de préstamos y otras operaciones financieras en moneda distinta del euro
+G;3;4;;"From deposits, guarantees and others"
+G;3;4;0;Interest on deposit
+G;3;4;1;Interest on guarantees
+G;3;5;;Delay interest and other financial expenditure
+G;3;5;2;Interest on late payments
+G;3;5;3;Financial exchange operations
+G;3;5;7;Ejecución de avales
+G;3;5;8;Intereses por operaciones de arrendamiento financiero (leasing)
+G;3;5;9;Other financial expenses
+G;4;;;Current transfers
+G;4;0;;Current transfers to City Council's General Administration
+G;4;1;;Current transfers to City Council's independent bodies
+G;4;2;;Current transfers to Spanish central government
+G;4;2;0;To State's General Administration
+G;4;2;1;To autonomous bodies and state agencies
+G;4;2;2;A fundaciones estatales
+G;4;2;3;"To state corporations, public business entities and other public bodies"
+G;4;3;;Current transfers to Social Security
+G;4;4;;Current transfers to City Council's companies
+G;4;4;0;Grants to promote employment
+G;4;4;1;Subvenciones para bonificacion de intereses y primas de seguros
+G;4;4;2;Subsidies to reduce the price to paid by consumers
+G;4;4;9;Otras subvenciones a entes públicos y sociedades mercantiles de la entidad local
+G;4;5;;Current transfers to regional governments
+G;4;5;0;To regional governments' General Administrations
+G;4;5;1;A organismos autónomos y agencias de las comunidades autónomas
+G;4;5;2;A fundaciones de las comunidades autónomas
+G;4;5;3;"To corporations, public business entities and other public bodies dependent on regional governments"
+G;4;6;;Current transfers to local entities
+G;4;6;1;"A diputaciones, consejos o cabildos insulares"
+G;4;6;2;A ayuntamientos
+G;4;6;3;A mancomunidades
+G;4;6;4;A áreas metropolitanas
+G;4;6;5;A comarcas
+G;4;6;6;A otras entidades que agrupen municipios
+G;4;6;7;To consortia
+G;4;6;8;A entidades locales menores
+G;4;7;;Current transfers to private companies
+G;4;7;0;Grants to promote employment
+G;4;7;1;Subvenciones para bonificación de intereses y primas de seguros
+G;4;7;2;Subsidies to reduce the price to paid by consumers
+G;4;7;9;Other grants to private companies
+G;4;8;;Current transfers to families and non-profit organisations
+G;4;9;;Current transfers to foreign organisations
+G;5;;;Contingency fund
+G;5;0;;Contingency fund
+G;5;0;0;Contingency fund
+G;6;;;Other property investments
+G;6;0;;New investment in infrastructures and assets intended for general use
+G;6;0;0;Land investments
+G;6;0;9;Other investments in infrastructures and assets intended for general use
+G;6;1;;Replacement investments for infrastructures and assets intended for general use
+G;6;1;0;Land investments
+G;6;1;9;Other replacement investments for infrastructures and assets intended for general use
+G;6;2;;New investments associated with the operational running of the services
+G;6;2;1;Land and natural assets
+G;6;2;2;Buildings and other structures
+G;6;2;3;"Machinery, technical installations and tools"
+G;6;2;4;Transportation equipment
+G;6;2;5;Furniture
+G;6;2;6;Information processing equipment
+G;6;2;7;Complex projects
+G;6;2;9;Other new investments
+G;6;3;;Replacement investments for operational running of public services
+G;6;3;1;Land and natural resources
+G;6;3;2;Buildings and other structures
+G;6;3;3;"Machinery, technical installations and tools"
+G;6;3;4;Transportation equipment
+G;6;3;5;Furniture
+G;6;3;6;Information processing equipment
+G;6;3;7;Complex projects
+G;6;3;9;Other replacement investments
+G;6;4;;Expenditure on intangible investments
+G;6;4;0;Expenditure on intangible assets
+G;6;4;1;Expenditure on software applications
+G;6;4;8;Cuotas netas de intereses por operaciones de arrendamiento financiero (leasing)
+G;6;5;;Investments managed for other public bodies
+G;6;5;0;Expenditure on investments managed for other public bodies
+G;6;8;;Expenditure on asset investments
+G;6;8;1;Land and natural resources
+G;6;8;2;Buildings and other structures
+G;6;8;9;Other expenditure on capital investments
+G;6;9;;Inversiones en bienes comunales
+G;6;9;0;Land and natural assets
+G;6;9;2;Inversión en infraestructuras
+G;7;;;Capital transfers
+G;7;0;;Capital transfers to City Council's General Administration
+G;7;1;;Capital transfers to City Council's independent bodies
+G;7;1;0;To City Council's autonomous bodies
+G;7;1;1;To City Council's autonomous bodies
+G;7;2;;Capital transfers to Spanish central government
+G;7;2;0;A la Administración General del Estado
+G;7;2;1;A organismos autónomos y agencias
+G;7;2;2;A fundaciones estatales
+G;7;2;3;"To state corporations, public business entities and other public bodies"
+G;7;3;;Capital transfers to Social Security
+G;7;4;;To City Council's companies
+G;7;5;;To regional governments
+G;7;5;0;To regional governments' General Administrations
+G;7;5;1;A organismos autónomos y agencias de las comunidades autónomas
+G;7;5;2;A fundaciones de las comunidades autónomas
+G;7;5;3;"To corporations, public business entities and other public bodies dependent on regional governments"
+G;7;6;;Capital transfers to local entities
+G;7;6;1;"A diputaciones, consejos o cabildos"
+G;7;6;2;A ayuntamientos
+G;7;6;3;A mancomunidades
+G;7;6;4;A áreas metropolitanas
+G;7;6;5;A comarcas
+G;7;6;6;A entidades que agrupen municipios
+G;7;6;7;To consortia
+G;7;6;8;A entidades locales menores
+G;7;7;;Capital transfers to private companies
+G;7;7;0;To private companies
+G;7;8;;Capital transfers to families and non-profit organisations
+G;7;8;1;To families and non-profit organisations
+G;7;9;;Capital transfers to external organisations
+G;8;;;Financial assets
+G;8;0;;Adquisición de deuda del sector público
+G;8;0;0;Short term
+G;8;0;1;Long term
+G;8;1;;Adquisición de obligaciones y bonos fuera del sector público
+G;8;1;0;Short term. Desarrollo por sectores
+G;8;1;1;Long term. Desarrollo por sectores
+G;8;2;;Loans granted to the public sector
+G;8;2;0;Short-term loans
+G;8;2;1;Long-term loans
+G;8;3;;Concesion de préstamos fuera del sector público
+G;8;3;0;Short-term loans
+G;8;3;1;Long-term loans
+G;8;4;;Establishing deposits and guarantees
+G;8;4;0;Deposits
+G;8;4;1;Guarantees
+G;8;5;;Acquisition of public sector shares and participations
+G;8;5;0;Acquisition of public sector shares and participations
+G;8;6;;Acquisition of shares and participations outside the public sector
+G;8;6;0;Acquisition of shares and participations outside the public sector
+G;8;7;;Aportaciones patrimoniales
+G;8;7;0;Aportaciones a fundaciones
+G;8;7;1;Aportaciones a consorcios
+G;8;7;2;Aportaciones a otros entes
+G;9;;;Financial liabilities
+G;9;0;;Amortización de deuda pública en euros
+G;9;0;0;Short term
+G;9;0;1;Long term
+G;9;1;;Debt repayment and operations in euro currency
+G;9;1;0;Short term from public bodies
+G;9;1;1;Long term from public bodies
+G;9;1;2;Short term from bodies outside the public sector
+G;9;1;3;Long term from bodies outside the public sector
+G;9;2;;Amortización de deuda pública en moneda distinta del euro
+G;9;2;0;Short term
+G;9;2;1;Long term
+G;9;3;;Amortización de préstamos en moneda distinta del euro
+G;9;3;0;Short term
+G;9;3;1;Long term
+G;9;4;;Deposits
+G;9;4;0;Repayment of deposits
+G;9;4;1;Repayment of guarantees
 #
 #
 # Conceptos específicos de Madrid
 #
-I,1,8,9,Extinguished direct taxes
-I,2,8,9,Extinguished indirect taxes
-I,3,0,5,Hygiene and public health
-I,3,0,6,Firefighting
-I,3,1,6,Madrid Planetarium
-I,3,4,6,Cultural services
-I,3,4,7,Works on public roads
-I,3,4,8,Extinguished public prices
-I,4,1,0,From City Council's autonomous bodies
-I,4,7,0,From private companies
-I,4,8,0,Other transfers from families and non-profit organisations
-I,4,9,8,Other European Union programmes
-I,5,2,0,Interest on deposits
-I,5,4,5,Assignment of market stalls
-I,6,1,0,From remaining real estate investments
-I,7,0,0,From the General Administration of the local entity
-I,7,1,0,From City Council's autonomous bodies
-I,7,7,0,Other transfers from private companies
-I,7,8,0,From families and non-profit organisations
-I,8,5,0,Disposal of public sector shares and participations
-G,2,1,7,Complex projects
-G,2,2,8,Educational services agreements
-G,2,5,1,Work performed by public universities
-G,2,6,0,Work performed by non-profit organisations
-G,2,7,0,Other unforeseen expenses and unclassified functions
-G,2,7,1,Fondo de contingencia
-G,4,0,0,To City Council's General Administration
-G,4,1,0,A organismos autónomos de la entidad local
-G,4,4,5,To City Council's corporations
-G,4,4,6,To Club de Campo Villa de Madrid
-G,4,8,0,To foundations
-G,4,8,1,To local political groups
-G,4,8,2,"Scholarships, prizes and charity"
-G,4,8,9,Other transfers to families and non-profit organisations
-G,4,9,0,To external organisations
-G,4,9,1,To international public organisations
-G,6,0,1,Road signs
-G,6,0,2,Street furniture
-G,6,0,3,"Hydrants, fountains and sewers"
-G,6,0,4,Street lighting
-G,6,0,5,Parks and gardens
-G,6,0,6,Urbanization
-G,6,1,1,Vials
-G,6,1,3,"Hydrants, fountains and sewers"
-G,6,1,4,Street lighting
-G,6,1,5,Parks and gardens
-G,6,1,6,Urbanization
-G,7,0,0,To City Council's General Administration
-G,7,4,5,To City Council's corporation
-G,7,4,6,To Club de Campo Villa de Madrid
-G,7,7,9,Other grants to private companies
-G,7,8,0,To foundations
-G,7,8,2,"Scholarships, prizes and charity"
-G,7,8,9,Other transfers to families and non-profit organisations
+I;1;8;9;Extinguished direct taxes
+I;2;8;9;Extinguished indirect taxes
+I;3;0;5;Hygiene and public health
+I;3;0;6;Firefighting
+I;3;1;6;Madrid Planetarium
+I;3;4;6;Cultural services
+I;3;4;7;Works on public roads
+I;3;4;8;Extinguished public prices
+I;4;1;0;From City Council's autonomous bodies
+I;4;7;0;From private companies
+I;4;8;0;Other transfers from families and non-profit organisations
+I;4;9;8;Other European Union programmes
+I;5;2;0;Interest on deposits
+I;5;4;5;Assignment of market stalls
+I;6;1;0;From remaining real estate investments
+I;7;0;0;From the General Administration of the local entity
+I;7;1;0;From City Council's autonomous bodies
+I;7;7;0;Other transfers from private companies
+I;7;8;0;From families and non-profit organisations
+I;8;5;0;Disposal of public sector shares and participations
+G;2;1;7;Complex projects
+G;2;2;8;Educational services agreements
+G;2;5;1;Work performed by public universities
+G;2;6;0;Work performed by non-profit organisations
+G;2;7;0;Other unforeseen expenses and unclassified functions
+G;2;7;1;Fondo de contingencia
+G;4;0;0;To City Council's General Administration
+G;4;1;0;A organismos autónomos de la entidad local
+G;4;4;5;To City Council's corporations
+G;4;4;6;To Club de Campo Villa de Madrid
+G;4;8;0;To foundations
+G;4;8;1;To local political groups
+G;4;8;2;"Scholarships, prizes and charity"
+G;4;8;9;Other transfers to families and non-profit organisations
+G;4;9;0;To external organisations
+G;4;9;1;To international public organisations
+G;6;0;1;Road signs
+G;6;0;2;Street furniture
+G;6;0;3;"Hydrants, fountains and sewers"
+G;6;0;4;Street lighting
+G;6;0;5;Parks and gardens
+G;6;0;6;Urbanization
+G;6;1;1;Vials
+G;6;1;3;"Hydrants, fountains and sewers"
+G;6;1;4;Street lighting
+G;6;1;5;Parks and gardens
+G;6;1;6;Urbanization
+G;7;0;0;To City Council's General Administration
+G;7;4;5;To City Council's corporation
+G;7;4;6;To Club de Campo Villa de Madrid
+G;7;7;9;Other grants to private companies
+G;7;8;0;To foundations
+G;7;8;2;"Scholarships, prizes and charity"
+G;7;8;9;Other transfers to families and non-profit organisations

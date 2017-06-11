@@ -137,6 +137,8 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             if int(year) < 2015:
                 fc_code = programme_mapping.get(fc_code, fc_code)
 
+            description = self._spanish_titlecase( line[9] )
+
             return {
                 'is_expense': True,
                 'is_actual': is_actual,
@@ -144,7 +146,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
                 'ec_code': ec_code[:-2],        # First three digits (everything but last two)
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
-                'description': self._spanish_titlecase(line[9]),
+                'description': description,
                 'amount': amount
             }
 
@@ -172,3 +174,6 @@ class MadridBudgetLoader(SimpleBudgetLoader):
     def get_institution_code(self, madrid_code):
         institution_code = madrid_code if madrid_code!='001' else '000'
         return institution_code[2]
+
+    def _get_delimiter(self):
+        return ';'

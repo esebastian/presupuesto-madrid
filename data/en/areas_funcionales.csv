@@ -2,203 +2,203 @@
 #
 # Áreas de gasto y Políticas, definidas en la Orden HAP/419/2014 y comunes a todas las EELL.
 # Ver http://www.boe.es/diario_boe/txt.php?id=BOE-A-2014-2922
-0,,,,Public debt
-0,1,,,Public debt
-1,,,,Basic public services
-1,3,,,City security and mobility
-1,5,,,Housing and urban planning
-1,6,,,Community well-being
-1,7,,,Environment
-2,,,,Social protection and promotion activities
-2,1,,,Pensions
-2,2,,,Otras prestaciones económicas a favor de empleados
-2,3,,,Social services and social promotion
-2,4,,,Promoting employment
-3,,,,Production of preferential public goods and services
-3,1,,,Health
-3,2,,,Education
-3,3,,,Culture
-3,4,,,Sport
-4,,,,Economic activities
-4,1,,,Agricultura ganadería y pesca
-4,2,,,Industria y energía
-4,3,,,"Commerce, tourism and small and medium-sized enterprises"
-4,4,,,Public transport
-4,5,,,Infrastructures
-4,6,,,"Investigación, desarrollo e innovación"
-4,9,,,Other economic initiatives
-9,,,,General activities
-9,1,,,Government bodies
-9,2,,,General services
-9,3,,,Financial and tax administration
-9,4,,,Transfers to other public authorities
+0;;;;Public debt
+0;1;;;Public debt
+1;;;;Basic public services
+1;3;;;City security and mobility
+1;5;;;Housing and urban planning
+1;6;;;Community well-being
+1;7;;;Environment
+2;;;;Social protection and promotion activities
+2;1;;;Pensions
+2;2;;;Otras prestaciones económicas a favor de empleados
+2;3;;;Social services and social promotion
+2;4;;;Promoting employment
+3;;;;Production of preferential public goods and services
+3;1;;;Health
+3;2;;;Education
+3;3;;;Culture
+3;4;;;Sport
+4;;;;Economic activities
+4;1;;;Agricultura ganadería y pesca
+4;2;;;Industria y energía
+4;3;;;"Commerce, tourism and small and medium-sized enterprises"
+4;4;;;Public transport
+4;5;;;Infrastructures
+4;6;;;"Investigación, desarrollo e innovación"
+4;9;;;Other economic initiatives
+9;;;;General activities
+9;1;;;Government bodies
+9;2;;;General services
+9;3;;;Financial and tax administration
+9;4;;;Transfers to other public authorities
 #
 # Programas específicos de Madrid
-0,1,1,11,Debt service
-1,3,0,00,"Health, Safety and Emergencies administration and management"
-1,3,0,01,Safety and emergencies training
-1,3,2,01,Safety
-1,3,3,01,Traffic
-1,3,3,02,Parking management
-1,3,4,02,Mobility planning
-1,3,4,03,Mobility facilities management
-1,3,4,04,Mobility management
-1,3,5,10,Civil protection (SAMUR)
-1,3,6,10,Firefighting
-1,5,0,00,Sustainable Urban Development administration and management
-1,5,1,01,Urban planning
-1,5,1,02,Urban management
-1,5,1,03,Building control and execution
-1,5,1,04,Urban strategy
-1,5,1,05,Municipal land management
-1,5,1,08,Madrid's General Urban Plan revision
-1,5,1,09,Activity licenses management
-1,5,1,10,License processing reinforcement programme
-1,5,2,10,Housing promotion and management
-1,5,2,20,Housing conservation and rehabilitation
-1,5,3,21,Public roads
-1,5,3,22,Other activities on public roads
-1,5,3,40,Urban infrastructures
-1,5,5,00,Public Spaces administration and management
-1,5,5,03,Singular projects
-1,5,5,05,Urban planning
-1,5,5,06,Urban evaluation
-1,5,5,07,Urban environment engineering
-1,6,0,01,Water engineering
-1,6,1,02,Water supply
-1,6,2,10,Urban environment management
-1,6,2,30,Valdemingómez Technology Park
-1,6,3,01,Street cleaning
-1,6,5,01,Urban equipments
-1,6,6,01,Street furniture
-1,7,0,00,Mobility and Environment administration and management
-1,7,1,01,Green assets
-1,7,1,02,Parks
-1,7,2,02,Sustainability and Agenda 21
-1,7,2,03,"Coordination, environmental education and urban goods"
-1,7,2,04,"Sustainability, planning and environmental quality"
-1,7,2,11,Sustainability
-1,7,2,12,Environmental control
-2,2,1,01,Social actions for employees
-2,2,1,02,Other benefits
-2,3,1,00,"Equity, Social Rights and Employment administration and management"
-2,3,1,01,Gender equality
-2,3,1,02,Families and children
-2,3,1,03,Elderly people
-2,3,1,93,Homeless people attention
-2,3,1,05,Attention to people with addictions
-2,3,1,06,Social inclusion and emergencies
-2,3,1,07,Attention to immigrants
-2,3,2,00,Neighborhood plans
-2,3,2,01,Territorial rebalancing fund
-2,3,2,90,International cooperation and European funds
-2,3,3,02,Senior centers
-2,4,1,00,Madrid Employment Agency administration and management
-2,4,1,01,Employment
-2,4,1,02,Vocation training for employment
-2,4,1,03,Active employment policies
-2,4,1,04,Proximity Jobs Programme
-2,4,1,05,Employment Promotion - E.U.
-2,4,1,06,Employment workshop mixed programs
-2,4,1,07,Employment Promotion for local corporation
-2,4,1,08,Integrated Employment Program
-2,4,1,09,Labor intermediation
-3,1,1,00,Madrid Health administration and management
-3,1,1,01,Public health
-3,1,1,02,Addictions
-3,2,1,02,Schools
-3,2,3,01,Primary schools and child care
-3,2,5,01,Absenteeism
-3,2,6,01,Complementary education services
-3,3,0,00,Culture and Sports administration and management
-3,3,2,10,Public libraries and bibliographical heritage
-3,3,2,20,Archives
-3,3,3,01,Museums
-3,3,4,01,Cultural activities
-3,3,4,02,Cultural projects
-3,3,4,05,Municipal symphonic band
-3,3,4,09,Urban landscape
-3,3,6,01,Cultural heritage and urban landscape
-3,3,7,01,Youth
-3,4,1,01,Sports activities in districts
-3,4,1,02,Sports coordination and promotion
-3,4,2,01,Sports facilities
-4,3,0,00,"Economy, Employment and Citizen Participation administration and management"
-4,3,1,10,Trade and economic development
-4,3,1,20,Markets and trade
-4,3,1,40,Trade promotion and entrepreneurship
-4,3,2,01,Tourism
-4,3,3,01,Economic promotion and business development
-4,3,3,10,Economy
-4,3,3,11,Business development
-4,4,1,10,"Transportation promotion, control and development"
-4,6,2,00,Smart cities and innovation
-4,9,3,00,Consumer protection
-4,9,1,01,Computer services and communications
-4,9,1,02,Innovation and technology
-9,1,2,00,Executive Board Clerk's Office
-9,1,2,01,Mayor's Office
-9,1,2,02,Mayor's Cabinet
-9,1,2,03,Department of Territorial Coordination and Associations
-9,1,2,04,"Spokesperson for the Coordination of the Governing Board and Assembly Relations"
-9,1,2,05,"Department of Citizen Participation, Transparency and an Open Government"
-9,1,2,06,Department of Sustainable Urban Development
-9,1,2,07,Department of Citizen Participation
-9,1,2,08,"Department of Equality, Social Rights and Employment"
-9,1,2,09,Department of Economy and the Treasury
-9,1,2,10,Department of Economy, Employment and Citizen Participation
-9,1,2,11,Department of Public Safety
-9,1,2,12,Department of the Environment and Transportation
-9,1,2,13,Department of Culture and Sports
-9,1,2,14,Department of Infrastructure and Public Spaces
-9,1,2,15,Department of Activity Licenses
-9,1,2,16,Presidency of the Assembly
-9,1,2,17,Department of Communication
-9,1,2,18,"Department of Health, Safety and Emergencies"
-9,1,2,19,Department of Sports
-9,1,2,20,District Council
-9,1,2,30,General Secretariat of the Assembly
-9,1,2,40,Municipal political groups
-9,2,0,00,City Manager's Office administration
-9,2,0,01,District administration and management
-9,2,0,02,Organization and legal status
-9,2,0,03,Hiring and services
-9,2,0,04,Staff training
-9,2,0,05,Labor relations
-9,2,0,06,Promotion of transparency
-9,2,0,06,Protocol and public events
-9,2,0,07,Personnel management
-9,2,0,08,Internal planning and inspection services
-9,2,0,09,Legal advice
-9,2,0,10,Office of the Presidency of the Assembly
-9,2,0,11,"Administration and management of governing board spokesperson and assembly relations"
-9,2,2,01,Relations with the Plenary
-9,2,2,02,Media
-9,2,2,03,Research general coordination
-9,2,2,04,International relations and sponsorships
-9,2,2,05,Administrative relations
-9,2,2,06,City Hall general coordination
-9,2,2,07,Institutional relations
-9,2,2,08,Relations with districts
-9,2,2,09,Municipal decentralization planning and development
-9,2,3,10,Statistics
-9,2,3,20,Socioeconomic analysis
-9,2,4,01,Citizen participation and volunteering
-9,2,4,02,Business involvement
-9,2,5,01,Citizen support and management improvements
-9,2,9,01,Global credits
-9,2,9,02,Contingency fund
-9,3,1,00,Economy and Treasury administration and management
-9,3,1,01,Budgeting and planning
-9,3,1,02,Internal control and accounting
-9,3,1,03,Accounting
-9,3,1,04,Public-private collaborations
-9,3,1,05,Public sector
-9,3,2,00,Tax management
-9,3,2,01,Economic and administrative claims
-9,3,2,02,Taxpayer management and protection
-9,3,3,01,Heritage management and protection
-9,3,3,02,Buildings
-9,3,3,03,Wealth management
-9,3,4,01,Financial policy
-9,3,4,05,Treasury
+0;1;1;11;Debt service
+1;3;0;00;"Health, Safety and Emergencies administration and management"
+1;3;0;01;Safety and emergencies training
+1;3;2;01;Safety
+1;3;3;01;Traffic
+1;3;3;02;Parking management
+1;3;4;02;Mobility planning
+1;3;4;03;Mobility facilities management
+1;3;4;04;Mobility management
+1;3;5;10;Civil protection (SAMUR)
+1;3;6;10;Firefighting
+1;5;0;00;Sustainable Urban Development administration and management
+1;5;1;01;Urban planning
+1;5;1;02;Urban management
+1;5;1;03;Building control and execution
+1;5;1;04;Urban strategy
+1;5;1;05;Municipal land management
+1;5;1;08;Madrid's General Urban Plan revision
+1;5;1;09;Activity licenses management
+1;5;1;10;License processing reinforcement programme
+1;5;2;10;Housing promotion and management
+1;5;2;20;Housing conservation and rehabilitation
+1;5;3;21;Public roads
+1;5;3;22;Other activities on public roads
+1;5;3;40;Urban infrastructures
+1;5;5;00;Public Spaces administration and management
+1;5;5;03;Singular projects
+1;5;5;05;Urban planning
+1;5;5;06;Urban evaluation
+1;5;5;07;Urban environment engineering
+1;6;0;01;Water engineering
+1;6;1;02;Water supply
+1;6;2;10;Urban environment management
+1;6;2;30;Valdemingómez Technology Park
+1;6;3;01;Street cleaning
+1;6;5;01;Urban equipments
+1;6;6;01;Street furniture
+1;7;0;00;Mobility and Environment administration and management
+1;7;1;01;Green assets
+1;7;1;02;Parks
+1;7;2;02;Sustainability and Agenda 21
+1;7;2;03;"Coordination, environmental education and urban goods"
+1;7;2;04;"Sustainability, planning and environmental quality"
+1;7;2;11;Sustainability
+1;7;2;12;Environmental control
+2;2;1;01;Social actions for employees
+2;2;1;02;Other benefits
+2;3;1;00;"Equity, Social Rights and Employment administration and management"
+2;3;1;01;Gender equality
+2;3;1;02;Families and children
+2;3;1;03;Elderly people
+2;3;1;93;Homeless people attention
+2;3;1;05;Attention to people with addictions
+2;3;1;06;Social inclusion and emergencies
+2;3;1;07;Attention to immigrants
+2;3;2;00;Neighborhood plans
+2;3;2;01;Territorial rebalancing fund
+2;3;2;90;International cooperation and European funds
+2;3;3;02;Senior centers
+2;4;1;00;Madrid Employment Agency administration and management
+2;4;1;01;Employment
+2;4;1;02;Vocation training for employment
+2;4;1;03;Active employment policies
+2;4;1;04;Proximity Jobs Programme
+2;4;1;05;Employment Promotion - E.U.
+2;4;1;06;Employment workshop mixed programs
+2;4;1;07;Employment Promotion for local corporation
+2;4;1;08;Integrated Employment Program
+2;4;1;09;Labor intermediation
+3;1;1;00;Madrid Health administration and management
+3;1;1;01;Public health
+3;1;1;02;Addictions
+3;2;1;02;Schools
+3;2;3;01;Primary schools and child care
+3;2;5;01;Absenteeism
+3;2;6;01;Complementary education services
+3;3;0;00;Culture and Sports administration and management
+3;3;2;10;Public libraries and bibliographical heritage
+3;3;2;20;Archives
+3;3;3;01;Museums
+3;3;4;01;Cultural activities
+3;3;4;02;Cultural projects
+3;3;4;05;Municipal symphonic band
+3;3;4;09;Urban landscape
+3;3;6;01;Cultural heritage and urban landscape
+3;3;7;01;Youth
+3;4;1;01;Sports activities in districts
+3;4;1;02;Sports coordination and promotion
+3;4;2;01;Sports facilities
+4;3;0;00;"Economy, Employment and Citizen Participation administration and management"
+4;3;1;10;Trade and economic development
+4;3;1;20;Markets and trade
+4;3;1;40;Trade promotion and entrepreneurship
+4;3;2;01;Tourism
+4;3;3;01;Economic promotion and business development
+4;3;3;10;Economy
+4;3;3;11;Business development
+4;4;1;10;"Transportation promotion, control and development"
+4;6;2;00;Smart cities and innovation
+4;9;3;00;Consumer protection
+4;9;1;01;Computer services and communications
+4;9;1;02;Innovation and technology
+9;1;2;00;Executive Board Clerk's Office
+9;1;2;01;Mayor's Office
+9;1;2;02;Mayor's Cabinet
+9;1;2;03;Department of Territorial Coordination and Associations
+9;1;2;04;"Spokesperson for the Coordination of the Governing Board and Assembly Relations"
+9;1;2;05;"Department of Citizen Participation, Transparency and an Open Government"
+9;1;2;06;Department of Sustainable Urban Development
+9;1;2;07;Department of Citizen Participation
+9;1;2;08;"Department of Equality, Social Rights and Employment"
+9;1;2;09;Department of Economy and the Treasury
+9;1;2;10;Department of Economy, Employment and Citizen Participation
+9;1;2;11;Department of Public Safety
+9;1;2;12;Department of the Environment and Transportation
+9;1;2;13;Department of Culture and Sports
+9;1;2;14;Department of Infrastructure and Public Spaces
+9;1;2;15;Department of Activity Licenses
+9;1;2;16;Presidency of the Assembly
+9;1;2;17;Department of Communication
+9;1;2;18;"Department of Health, Safety and Emergencies"
+9;1;2;19;Department of Sports
+9;1;2;20;District Council
+9;1;2;30;General Secretariat of the Assembly
+9;1;2;40;Municipal political groups
+9;2;0;00;City Manager's Office administration
+9;2;0;01;District administration and management
+9;2;0;02;Organization and legal status
+9;2;0;03;Hiring and services
+9;2;0;04;Staff training
+9;2;0;05;Labor relations
+9;2;0;06;Promotion of transparency
+9;2;0;06;Protocol and public events
+9;2;0;07;Personnel management
+9;2;0;08;Internal planning and inspection services
+9;2;0;09;Legal advice
+9;2;0;10;Office of the Presidency of the Assembly
+9;2;0;11;"Administration and management of governing board spokesperson and assembly relations"
+9;2;2;01;Relations with the Plenary
+9;2;2;02;Media
+9;2;2;03;Research general coordination
+9;2;2;04;International relations and sponsorships
+9;2;2;05;Administrative relations
+9;2;2;06;City Hall general coordination
+9;2;2;07;Institutional relations
+9;2;2;08;Relations with districts
+9;2;2;09;Municipal decentralization planning and development
+9;2;3;10;Statistics
+9;2;3;20;Socioeconomic analysis
+9;2;4;01;Citizen participation and volunteering
+9;2;4;02;Business involvement
+9;2;5;01;Citizen support and management improvements
+9;2;9;01;Global credits
+9;2;9;02;Contingency fund
+9;3;1;00;Economy and Treasury administration and management
+9;3;1;01;Budgeting and planning
+9;3;1;02;Internal control and accounting
+9;3;1;03;Accounting
+9;3;1;04;Public-private collaborations
+9;3;1;05;Public sector
+9;3;2;00;Tax management
+9;3;2;01;Economic and administrative claims
+9;3;2;02;Taxpayer management and protection
+9;3;3;01;Heritage management and protection
+9;3;3;02;Buildings
+9;3;3;03;Wealth management
+9;3;4;01;Financial policy
+9;3;4;05;Treasury
