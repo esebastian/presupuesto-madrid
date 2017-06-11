@@ -137,7 +137,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             if int(year) < 2015:
                 fc_code = programme_mapping.get(fc_code, fc_code)
 
-            description = self._spanish_titlecase( line[9] )
+            # The input files are encoded in ISO-8859-1, since we want to work with the files
+            # as they're published in the original open data portal. All the text fields are
+            # ignored, as we use the codes instead, but the description one.
+            description = self._spanish_titlecase( line[9].decode("iso-8859-1").encode("utf-8") )
 
             return {
                 'is_expense': True,
@@ -159,13 +162,16 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             if ec_code[:-2] in ['410', '710', '400', '700']:
                 amount = 0
 
+            # See note above
+            description = self._spanish_titlecase( line[5].decode("iso-8859-1").encode("utf-8") )
+
             return {
                 'is_expense': False,
                 'is_actual': is_actual,
                 'ec_code': ec_code[:-2],        # First three digits
                 'ic_code': ic_code,
                 'item_number': ec_code[-2:],    # Last two digits
-                'description': self._spanish_titlecase(line[5]),
+                'description': description,
                 'amount': amount
             }
 
