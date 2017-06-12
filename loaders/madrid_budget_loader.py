@@ -96,6 +96,9 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             '0065': '0098',     # CULTURA Y DEPORTES
         }
 
+        # Skip first line
+        if line[0] == 'Centro':
+            return
 
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
@@ -105,7 +108,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             # so add them back using zfill.
             fc_code = line[4].zfill(5)
             ec_code = line[8]
-            amount = self._parse_amount(line[15 if is_actual else 12])
+            amount = self.parse_amount(line[15 if is_actual else 12])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2] in ['410', '710', '400', '700']:
@@ -156,7 +159,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
-            amount = self._parse_amount(line[9 if is_actual else 8])
+            amount = self.parse_amount(line[9 if is_actual else 8])
 
             # Ignore transfers from parent organisation
             if ec_code[:-2] in ['410', '710', '400', '700']:
@@ -180,6 +183,13 @@ class MadridBudgetLoader(SimpleBudgetLoader):
     def get_institution_code(self, madrid_code):
         institution_code = madrid_code if madrid_code!='001' else '000'
         return institution_code[2]
+
+    # Parse a numerical amount, which can be in English format (for those CSVs generated
+    # from XLS via in2csv) or Spanish.
+    def parse_amount(self, amount):
+        if ',' in amount:
+            amount = amount.replace(',', '.')
+        return self._parse_amount(amount)
 
     def _get_delimiter(self):
         return ';'
