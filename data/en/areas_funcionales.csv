@@ -89,8 +89,10 @@
 2;3;1;05;Attention to people with addictions
 2;3;1;06;Social inclusion and emergencies
 2;3;1;07;Attention to immigrants
+2;3;1;08;Gender violence prevention and care
 2;3;2;00;Neighborhood plans
 2;3;2;01;Territorial rebalancing fund
+2;3;2;70;Promotion of Human Rights Plan
 2;3;2;90;International cooperation and European funds
 2;3;3;02;Senior centers
 2;4;1;00;Madrid Employment Agency administration and management
@@ -157,6 +159,7 @@
 9;1;2;18;"Department of Health, Safety and Emergencies"
 9;1;2;19;Department of Sports
 9;1;2;20;District Council
+9;1;2;21;Area of Gender and Diversity Policies
 9;1;2;30;General Secretariat of the Assembly
 9;1;2;40;Municipal political groups
 9;2;0;00;City Manager's Office administration
