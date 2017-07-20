@@ -4,7 +4,7 @@ $(document).ready(function(){
   var addChartsAlert = function(selector){
     var str = {
       'es': 'Datos actualizados a 30 de junio de 2017',
-      'en': 'Data up to 30th May 2017'
+      'en': 'Data up to 30th June 2017'
     };
     var cont = $(selector);
     if( cont.length > 0 ){
