@@ -11,6 +11,10 @@ PAYMENTS_LOADER = 'MadridPaymentsLoader'
 
 FEATURED_PROGRAMMES = ['13610', '13510', '16301', '15321', '15210', '23103', '23102', '33401', '33210']
 
+
+# Use new Sankey visualization or the old one. Default: False
+OVERVIEW_USE_NEW_VIS = True
+
 OVERVIEW_INCOME_NODES = [
                           {
                             'nodes': [['11', '113']],

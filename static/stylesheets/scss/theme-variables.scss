@@ -193,5 +193,10 @@ $data-sources-color: $brand-terciary;
 // Sankey Viz
 // --------------
 
+// Old Sankey
 $sankey-budget-color:     darken( $brand-terciary, 5% ); //mix( $gray-light, $gray-lighter, 50% );
 $sankey-execution-color:  lighten( $brand-primary-accent, 10% );
+
+// New Sankey
+$sankey-income-color: $brand-primary;
+$sankey-expense-color: complement($sankey-income-color);

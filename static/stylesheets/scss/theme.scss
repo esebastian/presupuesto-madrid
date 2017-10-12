@@ -217,13 +217,14 @@ header{
 
 // Nav Tabs
 .nav-tabs > li{
-  a h3{
+  a,
+  a:hover{
     color: $text-color;
     font-weight: $font-weight-700;
   }
-  &.active > a h3{
+  &.active > a,
+  &.active > a:hover{
     color: $brand-primary;
-    font-weight: $font-weight-700;
   }
 }
 
@@ -442,9 +443,14 @@ header{
   text-align: center;
 }
 
-.budget-viz .sankey-labels{
+.budget-viz .sankey-labels a{
   color: $text-color;
   font-weight: $font-weight-700;
+
+  &:hover{
+    color: $brand-primary;
+    text-decoration: none;
+  }
 }
 
 .sankey .legend-item text,
