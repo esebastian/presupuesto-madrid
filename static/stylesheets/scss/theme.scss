@@ -664,6 +664,13 @@ header{
   }
 }
 
+table.table-grid tr td{
+  .toggle.expand, 
+  .toggle.collapse{
+    line-height: 21px;
+  }
+}
+
 
 @media (min-width: $screen-sm-min) {
   .sitemap-footer{
