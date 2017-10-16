@@ -170,7 +170,8 @@ header{
         font-weight: $font-weight-700;
         text-transform: none;
 
-        &:hover{
+        &:hover,
+        &:focus{
           color: $brand-primary;
         }
       }
@@ -178,7 +179,8 @@ header{
       &.active{
         
         > a,
-        > a:hover{
+        > a:hover,
+        > a:focus{
           color: $brand-primary;
           font-weight: $font-weight-700;
         } 
