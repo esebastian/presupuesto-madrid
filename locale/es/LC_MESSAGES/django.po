@@ -121,3 +121,7 @@ msgstr "Presupuestos Abiertos"
 
 msgid "Áreas"
 msgstr "Áreas de Gobierno, Distritos y Organismos Autónomos"
+
+# Menu lang aria-label
+msgid "Seleccionar idioma"
+msgstr ""

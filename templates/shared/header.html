@@ -69,7 +69,7 @@
           {% if LANGUAGES|length > 1 %}
           <li id="menu-lang">
             <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="lang-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <button class="btn dropdown-toggle" type="button" id="lang-dropdown" data-toggle="dropdown" aria-label="{{ _('Seleccionar idioma') }}" aria-haspopup="true" aria-expanded="true">
                 {% for language in LANGUAGES %}
                   {% if language[0].lower() == LANGUAGE_CODE %}
                     {{ language[1]|safe }}

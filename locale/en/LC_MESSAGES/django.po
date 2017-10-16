@@ -171,3 +171,7 @@ msgstr " "
 
 msgid "Áreas"
 msgstr "Areas of Government, Districts and Autonomous Organizations"
+
+# Menu lang aria-label
+msgid "Seleccionar idioma"
+msgstr "Select language"
