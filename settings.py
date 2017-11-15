@@ -145,4 +145,5 @@ COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html
 # to the project URL patterns list.
 EXTRA_URLS = i18n_patterns('presupuesto-madrid.views',
     url(r'^visita-guiada$', 'guidedvisit', name="guidedvisit"),
+    url(r'^inversiones-por-distritos$', 'investments', name="investments"),
 )
