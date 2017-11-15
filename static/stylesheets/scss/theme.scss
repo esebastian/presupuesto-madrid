@@ -22,6 +22,7 @@
 // Language Selector
 #menu-lang{
   margin-top: 0;
+  margin-right: 0;
 
   .dropdown .btn{
     background: none;
@@ -83,7 +84,7 @@
       display: block;
       position: absolute;
       top: 16px;
-      left: -24px;
+      left: -11px;
       height: 20px;
       width: 1px;
       background: $gray-lighter;
@@ -200,8 +201,12 @@ header{
 
       > li{
         width: auto;
-        margin: 0 25px;
+        margin: 0 12px;
         border-bottom: 2px solid white;
+
+        &:first-child {
+          margin-left: 0;
+        }
 
         > a{
           line-height: 50px;
@@ -214,6 +219,15 @@ header{
         }
       }
     }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .navbar-default .navbar-nav > li{
+    margin: 0 20px;
+  }
+  #menu-lang:before{
+    left: -19px;
   }
 }
 

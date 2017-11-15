@@ -48,6 +48,10 @@
           <li class="page-institutions {{ 'active' if active_tab == "guidedvisit"}}">
             <a href="{{ url('presupuesto-madrid.views.guidedvisit') }}" class="icon-payments">{{ _('Visita guiada') }}</a>
           </li>
+
+          <li class="page-investments {{ 'active' if active_tab == "investments"}}">
+            <a href="{{ url('presupuesto-madrid.views.investments') }}" class="icon-payments">{{ _('Inversiones por distritos') }}</a>
+          </li>
           
           {% if show_payments %}
           <li class="page-payments {{ 'active' if active_tab == "payments"}}">
