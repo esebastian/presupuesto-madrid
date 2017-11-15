@@ -701,3 +701,33 @@ table.table-grid tr td{
     }
   }
 }
+
+// Investments
+#districts-selector{
+
+}
+
+#districts-map{
+  max-width: 600px;
+  margin: 0 auto;
+
+  path{
+    fill: #F1F1F1;
+    stroke: #555555;
+    stroke-width: 1.5;
+    cursor:pointer;
+  }
+
+  circle{
+    fill: $brand-primary;
+  }
+
+  text{
+    font-size: 11px;
+  }
+
+  circle,
+  text{
+    pointer-events: none;
+  }
+}
