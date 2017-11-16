@@ -57,6 +57,9 @@ TREEMAP_LABELS_FONT_SIZE_MIN = 5
 # Show Payments section in menu & home options. Default: False.
 # SHOW_PAYMENTS           = True
 
+# Show Invesments section in menu & home options. Default: False.
+SHOW_INVESTMENTS = True
+
 # Show Tax Receipt section in menu & home options. Default: False.
 # SHOW_TAX_RECEIPT        = True
 
@@ -145,5 +148,4 @@ COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html
 # to the project URL patterns list.
 EXTRA_URLS = i18n_patterns('presupuesto-madrid.views',
     url(r'^visita-guiada$', 'guidedvisit', name="guidedvisit"),
-    url(r'^inversiones-por-distritos$', 'investments', name="investments"),
 )
