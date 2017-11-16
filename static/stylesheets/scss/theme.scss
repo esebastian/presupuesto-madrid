@@ -708,11 +708,8 @@ table.table-grid tr td{
 }
 
 // Investments
-#districts-selector{
-
-}
-
 #districts-map{
+  display: block;
   max-width: 600px;
   margin: 0 auto;
 
@@ -721,6 +718,12 @@ table.table-grid tr td{
     stroke: #555555;
     stroke-width: 1.5;
     cursor:pointer;
+
+    &:hover{
+      fill: #e0e0e0;
+      stroke: #222;
+      stroke-width: 2;
+    }
   }
 
   circle{
