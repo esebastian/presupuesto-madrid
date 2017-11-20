@@ -1,1 +1,2 @@
 from madrid_budget_loader import MadridBudgetLoader
+from madrid_investments_loader import MadridInvestmentsLoader
