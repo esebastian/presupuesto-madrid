@@ -19,7 +19,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
 
         return {
             'is_expense': True,
-            'area': self.clean(line[0]),
+            'gc_code': self.clean(line[0]),
             'amount': self.parse_amount(line[5]),
             'description': description
         }
