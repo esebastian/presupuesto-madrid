@@ -10,18 +10,26 @@ class MadridInvestmentsLoader(InvestmentsLoader):
     def clean(self, s):
         return s.split('.')[0]
 
-    def parse_item(self, filename, line):
-        # Skip subtotal lines
-        if line[0] in ['', '*']:
+    def parse_item(self, budget, line):
+        # Skip empty/header/subtotal lines
+        if line[0] in ['', '*', 'Fondo']:
             return
 
-        description = self._titlecase( line[4] )
+        # 2017 data is in a different format to previous years
+        if budget.year < 2017:
+            description = line[4]
+            gc_code = line[0]
+            amount = line[5]
+        else:
+            description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
+            gc_code = line[9]
+            amount = line[28]
 
         return {
             'is_expense': True,
-            'gc_code': self.clean(line[0]),
-            'amount': self.parse_amount(line[5]),
-            'description': description
+            'gc_code': self.clean(gc_code),
+            'amount': self.parse_amount(amount),
+            'description': self._titlecase(description)
         }
 
 
@@ -31,3 +39,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
         if ',' in amount:
             amount = amount.replace(',', '.')
         return self._read_english_number(amount)
+
+    # Override default input delimiter
+    def _get_delimiter(self):
+        return ';'
