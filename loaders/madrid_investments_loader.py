@@ -21,10 +21,12 @@ class MadridInvestmentsLoader(InvestmentsLoader):
 
         # 2017 data is in a different format to previous years
         if int(year) < 2017:
+            project_id = line[3]
             description = line[4]
             gc_code = line[0]
             amount = line[5]
         else:
+            project_id = line[7]
             description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
             gc_code = line[9]
             amount = line[28 if is_actual else 23]
@@ -33,6 +35,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             'is_actual': is_actual,
             'gc_code': self.clean(gc_code).strip(),
             'amount': self.parse_amount(amount),
+            'project_id': project_id.strip(),
             'description': self._titlecase(description)
         }
 
