@@ -36,7 +36,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             'gc_code': self.clean(gc_code).strip(),
             'amount': self.parse_amount(amount),
             'project_id': project_id.strip(),
-            'description': self._titlecase(description)
+            'description': project_id.strip() + ' ' + self._titlecase(description)
         }
 
 
