@@ -10,24 +10,28 @@ class MadridInvestmentsLoader(InvestmentsLoader):
     def clean(self, s):
         return s.split('.')[0]
 
-    def parse_item(self, budget, line):
+    def parse_item(self, filename, line):
         # Skip empty/header/subtotal lines
         if line[0] in ['', '*', 'Fondo']:
             return
 
+        # Extract metadata from filename
+        year = re.search('municipio/(\d+)/', filename).group(1)
+        is_actual = (filename.find('/ejecucion_')!=-1)
+
         # 2017 data is in a different format to previous years
-        if budget.year < 2017:
+        if int(year) < 2017:
             description = line[4]
             gc_code = line[0]
             amount = line[5]
         else:
             description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
             gc_code = line[9]
-            amount = line[28]
+            amount = line[28 if is_actual else 23]
 
         return {
-            'is_expense': True,
-            'gc_code': self.clean(gc_code),
+            'is_actual': is_actual,
+            'gc_code': self.clean(gc_code).strip(),
             'amount': self.parse_amount(amount),
             'description': self._titlecase(description)
         }
