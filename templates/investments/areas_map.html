@@ -69,7 +69,6 @@
 <script type="text/javascript">
   $(function() {
     $('#districts-map path').click(function(){
-      console.log(this);
       window.location.href = getInvestmentAreaLink($(this).attr('code'), $(this).attr('id'));
     });
     d3.select('#districts-map').selectAll('path').on('mouseover', function(){
