@@ -12,8 +12,11 @@ class MadridInvestmentsLoader(InvestmentsLoader):
         return s.split('.')[0]
 
     def parse_item(self, filename, line):
-        # Skip empty/header/subtotal lines
-        if line[0] in ['', '*', 'Fondo']:
+        # Skip empty/header/subtotal lines.
+        # Careful with 2017 data, first two columns are usually empty
+        if line[0] in ['*', 'Fondo']:
+            return
+        if line[0]=='' and line[2]=='':
             return
 
         # Extract metadata from filename
