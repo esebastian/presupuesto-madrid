@@ -205,3 +205,21 @@
 9;3;3;03;I.F.S. Gestión del patrimonio
 9;3;4;01;Política financiera
 9;3;4;05;Tesorería
+#
+# Líneas de inversión de Madrid
+X;00;;;Inversiones de carácter general
+X;01;;;Protección Civil y seguridad ciudadana
+X;02;;;Tráfico, estacionamiento y transporte público
+X;03;;;Protección y promoción social
+X;04;;;Salud pública
+X;05;;;Educación
+X;06;;;Urbanismo
+X;07;;;Infraestructuras
+X;08;;;Mantenimiento urbano
+X;09;;;Medio ambiente
+X;10;;;Cultura
+X;11;;;Deportes, juventud y esparcimiento
+X;12;;;Otros bienes públicos de carácter social
+X;13;;;Otros bienes públicos de carácter económico
+X;14;;;Sectores productivos
+X;19;;;Imprevistos
