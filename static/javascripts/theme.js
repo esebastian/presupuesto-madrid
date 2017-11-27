@@ -3,8 +3,8 @@ $(document).ready(function(){
 
   var addChartsAlert = function(selector){
     var str = {
-      'es': 'Datos actualizados a 30 de septiembre de 2017',
-      'en': 'Data up to 30th September 2017'
+      'es': 'Datos actualizados a 31 de octubre de 2017',
+      'en': 'Data up to 31st October 2017'
     };
     var cont = $(selector);
     if( cont.length > 0 ){
