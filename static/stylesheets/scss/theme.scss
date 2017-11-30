@@ -291,56 +291,63 @@ header{
   }
 
   .options{
-    .option > div{
-      border: none;
-      padding-top: 0;
-      
-      .icon{
-        margin: 0 -0.5*$grid-gutter-width $grid-gutter-width;
-        padding-bottom: 50%;
-        background: url(../assets/resumen-picture.png) no-repeat center top white;
-        background-size: 100% auto;
-        @include transition( opacity 0.3s ease-out );
-        opacity: 0.7;
+    .option{
+      width: 33.33%;
 
-        &:before{
-          display: none;
-        }
-      }
+      > div{
+        border: none;
+        padding-top: 0;
+        
+        .icon{
+          margin: 0 -0.5*$grid-gutter-width $grid-gutter-width;
+          padding-bottom: 50%;
+          background: url(../assets/resumen-picture.png) no-repeat center top white;
+          background-size: 100% auto;
+          @include transition( opacity 0.3s ease-out );
+          opacity: 0.7;
 
-      &:hover .icon{
-        opacity: 1;
-      }
-
-      &.option-policies .icon{
-        background-image: url(../assets/politicas-picture.png);
-      }
-
-      .option-title h3{
-        color: $text-color;
-      }
-      .option-title:hover h3{
-        color: $brand-primary;
-      }
-
-      .btn{
-        font-size: 1.125em;
-        font-weight: $font-weight-600;
-        background: $gray-light;
-        border-color: $gray-light;
-
-        &:hover{
-          background: $brand-primary;
-          border-color: $brand-primary;
+          &:before{
+            display: none;
+          }
         }
 
-        &:before{
-          content: "";
-          display: block;
-          width: 19px;
-          height: 19px;
-          margin-top: 1px;
-          background: url(../assets/plus-icon.png) no-repeat 0 0 transparent;
+        &:hover .icon{
+          opacity: 1;
+        }
+
+        &.option-policies .icon{
+          background-image: url(../assets/politicas-picture.png);
+        }
+        &.option-investments .icon{
+          background-image: url(../assets/investments-picture.png);
+        }
+
+        .option-title h3{
+          color: $text-color;
+        }
+        .option-title:hover h3{
+          color: $brand-primary;
+        }
+
+        .btn{
+          font-size: 1.125em;
+          font-weight: $font-weight-600;
+          background: $gray-light;
+          border-color: $gray-light;
+
+          &:hover{
+            background: $brand-primary;
+            border-color: $brand-primary;
+          }
+
+          &:before{
+            content: "";
+            display: block;
+            width: 19px;
+            height: 19px;
+            margin-top: 1px;
+            background: url(../assets/plus-icon.png) no-repeat 0 0 transparent;
+          }
         }
       }
     }
