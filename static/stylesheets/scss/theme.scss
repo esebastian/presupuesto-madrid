@@ -292,7 +292,11 @@ header{
 
   .options{
     .option{
-      width: 33.33%;
+      width: 100%;
+      
+      @media (min-width: $grid-float-breakpoint) {
+        width: 33.33%;
+      }
 
       > div{
         border: none;
