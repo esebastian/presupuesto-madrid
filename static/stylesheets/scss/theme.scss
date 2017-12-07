@@ -291,56 +291,67 @@ header{
   }
 
   .options{
-    .option > div{
-      border: none;
-      padding-top: 0;
-      
-      .icon{
-        margin: 0 -0.5*$grid-gutter-width $grid-gutter-width;
-        padding-bottom: 50%;
-        background: url(../assets/resumen-picture.png) no-repeat center top white;
-        background-size: 100% auto;
-        @include transition( opacity 0.3s ease-out );
-        opacity: 0.7;
+    .option{
+      width: 100%;
 
-        &:before{
-          display: none;
-        }
+      @media (min-width: $grid-float-breakpoint) {
+        width: 33.33%;
       }
 
-      &:hover .icon{
-        opacity: 1;
-      }
+      > div{
+        border: none;
+        padding-top: 0;
+        
+        .icon{
+          margin: 0 -0.5*$grid-gutter-width $grid-gutter-width;
+          padding-bottom: 50%;
+          background: url(../assets/resumen-picture.png) no-repeat center top white;
+          background-size: 100% auto;
+          @include transition( opacity 0.3s ease-out );
+          opacity: 0.7;
 
-      &.option-policies .icon{
-        background-image: url(../assets/politicas-picture.png);
-      }
-
-      .option-title h3{
-        color: $text-color;
-      }
-      .option-title:hover h3{
-        color: $brand-primary;
-      }
-
-      .btn{
-        font-size: 1.125em;
-        font-weight: $font-weight-600;
-        background: $gray-light;
-        border-color: $gray-light;
-
-        &:hover{
-          background: $brand-primary;
-          border-color: $brand-primary;
+          &:before{
+            display: none;
+          }
         }
 
-        &:before{
-          content: "";
-          display: block;
-          width: 19px;
-          height: 19px;
-          margin-top: 1px;
-          background: url(../assets/plus-icon.png) no-repeat 0 0 transparent;
+        &:hover .icon{
+          opacity: 1;
+        }
+
+        &.option-policies .icon{
+          background-image: url(../assets/politicas-picture.png);
+        }
+        &.option-investments .icon{
+          background-image: url(../assets/investments-picture.png);
+        }
+
+        .option-title h3{
+          color: $text-color;
+        }
+        .option-title:hover h3{
+          color: $brand-primary;
+        }
+
+        .btn{
+          font-size: 1.125em;
+          font-weight: $font-weight-600;
+          background: $gray-light;
+          border-color: $gray-light;
+
+          &:hover{
+            background: $brand-primary;
+            border-color: $brand-primary;
+          }
+
+          &:before{
+            content: "";
+            display: block;
+            width: 19px;
+            height: 19px;
+            margin-top: 1px;
+            background: url(../assets/plus-icon.png) no-repeat 0 0 transparent;
+          }
         }
       }
     }
@@ -708,21 +719,43 @@ table.table-grid tr td{
 }
 
 // Investments
-#districts-map{
-  display: block;
-  max-width: 600px;
+#districts-map-container{
+  position: relative; 
+  height: 0; 
+  width: 100%; 
+  padding: 0;
   margin: 0 auto;
+  padding-bottom: 119%; 
+
+  @media (min-width: 620px) {
+    width: 600px;
+    padding-bottom: 100%; 
+  }
+  @media (min-width: $screen-md-min) {
+    padding-bottom: 76%; 
+  }
+  @media (min-width: $screen-lg-min) {
+    padding-bottom: 66%; 
+  }
+}
+
+#districts-map{
+  position: absolute; 
+  height: 100%; 
+  width: 100%; 
+  left: 0; 
+  top: 0;
 
   path{
     fill: #F1F1F1;
     stroke: #555555;
-    stroke-width: 1.5;
+    stroke-width: 1px;
     cursor:pointer;
 
     &:hover{
       fill: #e0e0e0;
-      stroke: #222;
-      stroke-width: 2;
+      stroke: $gray-darker;;
+      stroke-width: 1.5px;
     }
   }
 
@@ -732,6 +765,8 @@ table.table-grid tr td{
 
   text{
     font-size: 11px;
+    fill: $gray-darker;
+    text-shadow: 1px 1px 0 #f1f1f1, -1px -1px 0 #f1f1f1;
   }
 
   circle,
