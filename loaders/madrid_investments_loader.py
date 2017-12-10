@@ -47,7 +47,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             'fc_policy': 'X'+investment_line,
             'amount': self.parse_amount(amount),
             'project_id': project_id.strip(),
-            'description': project_id.strip() + ' ' + self._titlecase(description.strip())
+            'description': description.strip()
         }
 
 
