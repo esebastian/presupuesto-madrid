@@ -206,3 +206,21 @@
 9;3;3;03;Wealth management
 9;3;4;01;Financial policy
 9;3;4;05;Treasury
+#
+# Líneas de inversión de Madrid
+X;00;;;General investments
+X;01;;;Civil protection and safety
+X;02;;;Traffic, parking and public transport
+X;03;;;Social protection and promotion
+X;04;;;Public health
+X;05;;;Education
+X;06;;;Urbanism
+X;07;;;Infrastructures
+X;08;;;Urban maintenance
+X;09;;;Environment
+X;10;;;Culture
+X;11;;;Sports, youth and recreation
+X;12;;;Other social public goods
+X;13;;;Other economic public goods
+X;14;;;Productive sectors
+X;19;;;Unexpected
