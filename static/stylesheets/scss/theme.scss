@@ -774,3 +774,7 @@ table.table-grid tr td{
     pointer-events: none;
   }
 }
+
+.investments table.table-grid tr.indent-1 td:first-child{
+  font-size: 1em;
+}
