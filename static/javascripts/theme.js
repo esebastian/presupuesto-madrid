@@ -44,10 +44,19 @@ $(document).ready(function(){
     }
   };
 
+  // Custom description for investments
+  var addInvestmentsDescriptions = function(){
+    var description = '<p>La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba la estructura de los presupuestos de las entidades locales.</p><p>Sin embargo, hay muchas inversiones que se presupuestan en el programa 93301 “Gestión y defensa del patrimonio”, porque es el programa que se encarga de la construcción de nuevos equipamientos municipales. Para completar la información de estas inversiones y para añadir más información y transparencia, a todas las inversiones en general, el Ayuntamiento establece una clasificación de las inversiones según líneas de inversión. </p>';
+
+    if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
+      $('.investments .investments-content .policies-chart').append( '<div class="policy-description">'+description+'</div>' );
+    }
+  };
+
   // Swap order of budgeted/actual totals in Overview page
   var swapTotalsInOverview = function(){
     $(".total-budgeted").prependTo(".budget-totals .panel-content");
-  }
+  };
 
 
   // addYearSelectorCustomLabels();
@@ -61,4 +70,6 @@ $(document).ready(function(){
   swapTotalsInOverview();
 
   addCustomDescriptions();
+
+  addInvestmentsDescriptions();
 });
