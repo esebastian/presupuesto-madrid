@@ -30,10 +30,26 @@ $(document).ready(function(){
   var addCustomDescriptions = function(){
     var descriptions = {
       '/es/politicas/01': {
-        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a 992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
+        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
+          'motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal '+
+          'Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la '+
+          'Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 '+
+          'ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con '+
+          'entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal '+
+          'para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a '+
+          '992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer '+
+          'esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
       },
       '/es/programas/01111': {
-        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a 992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
+        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
+          'motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal '+
+          'Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la '+
+          'Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 '+
+          'ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con '+
+          'entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal '+
+          'para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a '+
+          '992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer '+
+          'esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
       },
     };
 
@@ -46,7 +62,11 @@ $(document).ready(function(){
 
   // Custom description for investments
   var addInvestmentsDescriptions = function(){
-    var description = '<p>La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba la estructura de los presupuestos de las entidades locales.</p><p>Sin embargo, hay muchas inversiones que se presupuestan en el programa 93301 “Gestión y defensa del patrimonio”, porque es el programa que se encarga de la construcción de nuevos equipamientos municipales. Para completar la información de estas inversiones y para añadir más información y transparencia, a todas las inversiones en general, el Ayuntamiento establece una clasificación de las inversiones según líneas de inversión. </p>';
+    var description = '<p>La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
+      'realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba '+
+      'la estructura de los presupuestos de las entidades locales.</p><p>En el Ayuntamiento de Madrid, además, se '+
+      'utiliza una clasificación por Líneas de inversión, herramienta más sencilla y simplificada para analizar y '+
+      'exponer el destino de las inversiones. </p>';
 
     if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
       $('.investments .investments-content .policies-chart').append( '<div class="policy-description">'+description+'</div>' );
