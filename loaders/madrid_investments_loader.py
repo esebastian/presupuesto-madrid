@@ -11,6 +11,15 @@ class MadridInvestmentsLoader(InvestmentsLoader):
     def clean(self, s):
         return s.split('.')[0]
 
+    # Make sure special district codes (many districts, and no districts) match
+    # the special values the application expects.
+    def map_geo_code(self, s):
+        if (s=='998'):
+            return 'NN'
+        if (s=='999'):
+            return 'NA'
+        return s
+
     def parse_item(self, filename, line):
         # Skip empty/header/subtotal lines.
         # Careful with 2017 data, first two columns are usually empty
@@ -28,13 +37,13 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             project_id = line[3]
             description = line[4]
             investment_line = self.clean(line[1])
-            gc_code = self.clean(line[0]).strip()
+            gc_code = self.map_geo_code(self.clean(line[0]).strip())
             amount = line[5]
         else:
             project_id = line[7]
             description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
             investment_line = line[11]
-            gc_code = line[9]
+            gc_code = self.map_geo_code(line[9])
             amount = line[28 if is_actual else 23]
 
         # Note we implement the investment lines as an extension of functional policies.
