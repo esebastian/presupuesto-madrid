@@ -5,10 +5,61 @@
 
 <section class="admin" role="region">
 
-  Hello world.
+  <div class="guidedvisit-header section-header">
+    <div class="container">
+      <h2 class="page-title">{{ _('Administración de Presupuestos Abiertos') }}</h2>
+    </div>
+  </div>
 
-  {{ output }}
+  <div class="guidedvisit-content">
+    <div class="container">
+      <div class="row">
+
+        <h3>Cargar datos</h3>
+
+        <form class="form-inline" id="data-download" action="{{ url('presupuesto-madrid.views.admin_download') }}" method="get">
+          <div class="form-group">
+            <label for="source-path">{{ _('Fuente de datos') }}</label>
+            <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
+          </div>
+          <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
+        </form>
+        <p id="data-download-output"></p>
+
+        <h3>Revisar datos</h3>
+      </div>
+    </div>
+  </div>
 
 </section>
+
+<script>
+  // Setup form submit handler
+  $('#data-download').submit(function(e){
+    e.preventDefault();
+
+    // Show submit loader
+    $(this).find('button[type="submit"]').attr('disabled', true).children('.glyphicon').removeClass('hide');
+
+    $.ajax({
+      url: "admin/download",
+      data: {
+        source_path:  $('#source-path').val(),
+      },
+      contentType:    'application/json; charset=utf-8',
+      success:        onSearchSuccess,
+      error:          onSearchError,
+    });
+  });
+
+  function onSearchSuccess(response) {
+    $("#data-download-output").html(response.download_output);
+    $('#data-download button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+  }
+
+  function onSearchError(response) {
+    $('#data-download button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+  }
+</script>
 
 {% endblock %}

@@ -1,0 +1,3 @@
+{
+  "download_output": "{{ download_output|safe }}"
+}
