@@ -3,12 +3,42 @@ $(document).ready(function(){
 
   var addChartsAlert = function(selector){
     var str = {
-      'es': 'Datos actualizados a 31 de octubre de 2017',
-      'en': 'Data up to 31st October 2017'
+      'es': 'Datos actualizados a ',
+      'en': 'Data up to '
     };
+    var dates = {
+      '1M.es': '31 de enero de ',
+      '1M.en': '31st January ',
+      '2M.es': '28 de febrero de ',
+      '2M.en': '28th February ',
+      '3M.es': '31 de marzo de ',
+      '3M.en': '31st March ',
+      '4M.es': '30 de abril de ',
+      '4M.en': '30th April ',
+      '5M.es': '31 de mayo de ',
+      '5M.en': '31st Mayo ',
+      '6M.es': '30 de junio de ',
+      '6M.en': '30th June ',
+      '7M.es': '31 de julio de ',
+      '7M.en': '31st July ',
+      '8M.es': '31 de agosto de ',
+      '8M.en': '31st August ',
+      '9M.es': '30 de septiembre de ',
+      '9M.en': '31st September ',
+      '10M.es': '31 de octubre de ',
+      '10M.en': '31st October ',
+      '11M.es': '30 de noviembre de ',
+      '11M.en': '30th November ',
+      '12M.es': '31 de diciembre de ',
+      '12M.en': '31st December ',
+      '.es': '31 de diciembre de ',
+      '.en': '31st December ',
+    }
     var cont = $(selector);
-    if( cont.length > 0 ){
-      cont.prepend('<div class="alert alert-data-update">'+str[ $('html').attr('lang') ]+'</div>');
+    if( cont.length > 0 ) {
+      var language = $('html').attr('lang');
+      var message = str[language] + dates[last_budget_status+'.'+language] + last_budget_year;
+      cont.prepend('<div class="alert alert-data-update">' + message + '</div>');
     }
   };
 
