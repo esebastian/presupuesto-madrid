@@ -43,56 +43,83 @@
   var ascendingBisect = bisector(ascending);
   var bisectRight = ascendingBisect.right;
 
-  function extent(array, f) {
-    var i = -1,
-        n = array.length,
-        a,
-        b,
-        c;
+  function extent(values, valueof) {
+    var n = values.length,
+        i = -1,
+        value,
+        min,
+        max;
 
-    if (f == null) {
-      while (++i < n) if ((b = array[i]) != null && b >= b) { a = c = b; break; }
-      while (++i < n) if ((b = array[i]) != null) {
-        if (a > b) a = b;
-        if (c < b) c = b;
+    if (valueof == null) {
+      while (++i < n) { // Find the first comparable value.
+        if ((value = values[i]) != null && value >= value) {
+          min = max = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = values[i]) != null) {
+              if (min > value) min = value;
+              if (max < value) max = value;
+            }
+          }
+        }
       }
     }
 
     else {
-      while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = c = b; break; }
-      while (++i < n) if ((b = f(array[i], i, array)) != null) {
-        if (a > b) a = b;
-        if (c < b) c = b;
+      while (++i < n) { // Find the first comparable value.
+        if ((value = valueof(values[i], i, values)) != null && value >= value) {
+          min = max = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = valueof(values[i], i, values)) != null) {
+              if (min > value) min = value;
+              if (max < value) max = value;
+            }
+          }
+        }
       }
     }
 
-    return [a, c];
-  }
-
-  function sequence(start, stop, step) {
-    start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
-
-    var i = -1,
-        n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
-        range = new Array(n);
-
-    while (++i < n) {
-      range[i] = start + i * step;
-    }
-
-    return range;
+    return [min, max];
   }
 
   var e10 = Math.sqrt(50);
   var e5 = Math.sqrt(10);
   var e2 = Math.sqrt(2);
   function ticks(start, stop, count) {
-    var step = tickStep(start, stop, count);
-    return sequence(
-      Math.ceil(start / step) * step,
-      Math.floor(stop / step) * step + step / 2, // inclusive
-      step
-    );
+    var reverse,
+        i = -1,
+        n,
+        ticks,
+        step;
+
+    stop = +stop, start = +start, count = +count;
+    if (start === stop && count > 0) return [start];
+    if (reverse = stop < start) n = start, start = stop, stop = n;
+    if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+    if (step > 0) {
+      start = Math.ceil(start / step);
+      stop = Math.floor(stop / step);
+      ticks = new Array(n = Math.ceil(stop - start + 1));
+      while (++i < n) ticks[i] = (start + i) * step;
+    } else {
+      start = Math.floor(start * step);
+      stop = Math.ceil(stop * step);
+      ticks = new Array(n = Math.ceil(start - stop + 1));
+      while (++i < n) ticks[i] = (start - i) / step;
+    }
+
+    if (reverse) ticks.reverse();
+
+    return ticks;
+  }
+
+  function tickIncrement(start, stop, count) {
+    var step = (stop - start) / Math.max(0, count),
+        power = Math.floor(Math.log(step) / Math.LN10),
+        error = step / Math.pow(10, power);
+    return power >= 0
+        ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power)
+        : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
   }
 
   function tickStep(start, stop, count) {
@@ -105,59 +132,95 @@
     return stop < start ? -step1 : step1;
   }
 
-  function max(array, f) {
-    var i = -1,
-        n = array.length,
-        a,
-        b;
+  function max(values, valueof) {
+    var n = values.length,
+        i = -1,
+        value,
+        max;
 
-    if (f == null) {
-      while (++i < n) if ((b = array[i]) != null && b >= b) { a = b; break; }
-      while (++i < n) if ((b = array[i]) != null && b > a) a = b;
+    if (valueof == null) {
+      while (++i < n) { // Find the first comparable value.
+        if ((value = values[i]) != null && value >= value) {
+          max = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = values[i]) != null && value > max) {
+              max = value;
+            }
+          }
+        }
+      }
     }
 
     else {
-      while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = b; break; }
-      while (++i < n) if ((b = f(array[i], i, array)) != null && b > a) a = b;
+      while (++i < n) { // Find the first comparable value.
+        if ((value = valueof(values[i], i, values)) != null && value >= value) {
+          max = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = valueof(values[i], i, values)) != null && value > max) {
+              max = value;
+            }
+          }
+        }
+      }
     }
 
-    return a;
+    return max;
   }
 
-  function min(array, f) {
-    var i = -1,
-        n = array.length,
-        a,
-        b;
+  function min(values, valueof) {
+    var n = values.length,
+        i = -1,
+        value,
+        min;
 
-    if (f == null) {
-      while (++i < n) if ((b = array[i]) != null && b >= b) { a = b; break; }
-      while (++i < n) if ((b = array[i]) != null && a > b) a = b;
+    if (valueof == null) {
+      while (++i < n) { // Find the first comparable value.
+        if ((value = values[i]) != null && value >= value) {
+          min = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = values[i]) != null && min > value) {
+              min = value;
+            }
+          }
+        }
+      }
     }
 
     else {
-      while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = b; break; }
-      while (++i < n) if ((b = f(array[i], i, array)) != null && a > b) a = b;
+      while (++i < n) { // Find the first comparable value.
+        if ((value = valueof(values[i], i, values)) != null && value >= value) {
+          min = value;
+          while (++i < n) { // Compare the remaining values.
+            if ((value = valueof(values[i], i, values)) != null && min > value) {
+              min = value;
+            }
+          }
+        }
+      }
     }
 
-    return a;
+    return min;
   }
 
-  function sum(array, f) {
-    var s = 0,
-        n = array.length,
-        a,
-        i = -1;
+  function sum(values, valueof) {
+    var n = values.length,
+        i = -1,
+        value,
+        sum = 0;
 
-    if (f == null) {
-      while (++i < n) if (a = +array[i]) s += a; // Note: zero and null are equivalent.
+    if (valueof == null) {
+      while (++i < n) {
+        if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+      }
     }
 
     else {
-      while (++i < n) if (a = +f(array[i], i, array)) s += a;
+      while (++i < n) {
+        if (value = +valueof(values[i], i, values)) sum += value;
+      }
     }
 
-    return s;
+    return sum;
   }
 
   var prefix = "$";
@@ -242,10 +305,10 @@
         nest;
 
     function apply(array, depth, createResult, setResult) {
-      if (depth >= keys.length) return rollup != null
-          ? rollup(array) : (sortValues != null
-          ? array.sort(sortValues)
-          : array);
+      if (depth >= keys.length) {
+        if (sortValues != null) array.sort(sortValues);
+        return rollup != null ? rollup(array) : array;
+      }
 
       var i = -1,
           n = array.length,
@@ -558,7 +621,7 @@
         this._ += "L" + x0 + "," + y0;
       }
 
-      // Is this arc empty? Weâ€™re done.
+      // Is this arc empty? We’re done.
       if (!r) return;
 
       // Does the angle go the wrong way? Flip the direction.
@@ -1300,7 +1363,7 @@
   }
 
   // According to https://en.wikipedia.org/wiki/Cubic_Hermite_spline#Representations
-  // "you can express cubic Hermite interpolation in terms of cubic BÃ©zier curves
+  // "you can express cubic Hermite interpolation in terms of cubic Bézier curves
   // with respect to the four values p0, p0 + m0 / 3, p1 - m1 / 3, p1".
   function point$3(that, t0, t1) {
     var x0 = that._x0,
@@ -2139,7 +2202,7 @@
         : b instanceof color ? interpolateRgb
         : b instanceof Date ? date
         : Array.isArray(b) ? array$1
-        : isNaN(b) ? object
+        : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
         : interpolateNumber)(a, b);
   }
 
@@ -2291,7 +2354,7 @@
   // significant digits p, where x is positive and p is in [1, 21] or undefined.
   // For example, formatDecimal(1.23) returns ["123", 0].
   function formatDecimal(x, p) {
-    if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, Â±Infinity
+    if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, ±Infinity
     var i, coefficient = x.slice(0, i);
 
     // The string returned by toExponential either has the form \d\.\d+e[-+]\d+
@@ -2449,7 +2512,7 @@
     return x;
   }
 
-  var prefixes = ["y","z","a","f","p","n","Âµ","m","","k","M","G","T","P","E","Z","Y"];
+  var prefixes = ["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"];
 
   function formatLocale(locale) {
     var group = locale.grouping && locale.thousands ? formatGroup(locale.grouping, locale.thousands) : identity$3,
@@ -2511,8 +2574,8 @@
           valuePrefix = (valueNegative ? (sign === "(" ? sign : "-") : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
           valueSuffix = valueSuffix + (type === "s" ? prefixes[8 + prefixExponent / 3] : "") + (valueNegative && sign === "(" ? ")" : "");
 
-          // Break the formatted value into the integer â€œvalueâ€ part that can be
-          // grouped, and fractional or exponential â€œsuffixâ€ part that is not.
+          // Break the formatted value into the integer “value” part that can be
+          // grouped, and fractional or exponential “suffix” part that is not.
           if (maybeSuffix) {
             i = -1, n = value.length;
             while (++i < n) {
@@ -2809,17 +2872,39 @@
     };
 
     scale.nice = function(count) {
-      var d = domain(),
-          i = d.length - 1,
-          n = count == null ? 10 : count,
-          start = d[0],
-          stop = d[i],
-          step = tickStep(start, stop, n);
+      if (count == null) count = 10;
 
-      if (step) {
-        step = tickStep(Math.floor(start / step) * step, Math.ceil(stop / step) * step, n);
-        d[0] = Math.floor(start / step) * step;
-        d[i] = Math.ceil(stop / step) * step;
+      var d = domain(),
+          i0 = 0,
+          i1 = d.length - 1,
+          start = d[i0],
+          stop = d[i1],
+          step;
+
+      if (stop < start) {
+        step = start, start = stop, stop = step;
+        step = i0, i0 = i1, i1 = step;
+      }
+
+      step = tickIncrement(start, stop, count);
+
+      if (step > 0) {
+        start = Math.floor(start / step) * step;
+        stop = Math.ceil(stop / step) * step;
+        step = tickIncrement(start, stop, count);
+      } else if (step < 0) {
+        start = Math.ceil(start * step) / step;
+        stop = Math.floor(stop * step) / step;
+        step = tickIncrement(start, stop, count);
+      }
+
+      if (step > 0) {
+        d[i0] = Math.floor(start / step) * step;
+        d[i1] = Math.ceil(stop / step) * step;
+        domain(d);
+      } else if (step < 0) {
+        d[i0] = Math.ceil(start * step) / step;
+        d[i1] = Math.floor(stop * step) / step;
         domain(d);
       }
 
@@ -2907,7 +2992,13 @@
       return newInterval(function(date) {
         if (date >= date) while (floori(date), !test(date)) date.setTime(date - 1);
       }, function(date, step) {
-        if (date >= date) while (--step >= 0) while (offseti(date, 1), !test(date)) {} // eslint-disable-line no-empty
+        if (date >= date) {
+          if (step < 0) while (++step <= 0) {
+            while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
+          } else while (--step >= 0) {
+            while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
+          }
+        }
       });
     };
 
@@ -3014,6 +3105,7 @@
 
   var timeSunday = weekday(0);
   var timeMonday = weekday(1);
+  var timeThursday = weekday(4);
 
   var month = newInterval(function(date) {
     date.setDate(1);
@@ -3091,6 +3183,7 @@
 
   var utcWeek = utcWeekday(0);
   var utcMonday = utcWeekday(1);
+  var utcThursday = utcWeekday(4);
 
   var utcMonth = newInterval(function(date) {
     date.setUTCDate(1);
@@ -3176,6 +3269,7 @@
       "c": null,
       "d": formatDayOfMonth,
       "e": formatDayOfMonth,
+      "f": formatMicroseconds,
       "H": formatHour24,
       "I": formatHour12,
       "j": formatDayOfYear,
@@ -3183,9 +3277,13 @@
       "m": formatMonthNumber,
       "M": formatMinutes,
       "p": formatPeriod,
+      "Q": formatUnixTimestamp,
+      "s": formatUnixTimestampSeconds,
       "S": formatSeconds,
+      "u": formatWeekdayNumberMonday,
       "U": formatWeekNumberSunday,
-      "w": formatWeekdayNumber,
+      "V": formatWeekNumberISO,
+      "w": formatWeekdayNumberSunday,
       "W": formatWeekNumberMonday,
       "x": null,
       "X": null,
@@ -3203,6 +3301,7 @@
       "c": null,
       "d": formatUTCDayOfMonth,
       "e": formatUTCDayOfMonth,
+      "f": formatUTCMicroseconds,
       "H": formatUTCHour24,
       "I": formatUTCHour12,
       "j": formatUTCDayOfYear,
@@ -3210,9 +3309,13 @@
       "m": formatUTCMonthNumber,
       "M": formatUTCMinutes,
       "p": formatUTCPeriod,
+      "Q": formatUnixTimestamp,
+      "s": formatUnixTimestampSeconds,
       "S": formatUTCSeconds,
+      "u": formatUTCWeekdayNumberMonday,
       "U": formatUTCWeekNumberSunday,
-      "w": formatUTCWeekdayNumber,
+      "V": formatUTCWeekNumberISO,
+      "w": formatUTCWeekdayNumberSunday,
       "W": formatUTCWeekNumberMonday,
       "x": null,
       "X": null,
@@ -3230,6 +3333,7 @@
       "c": parseLocaleDateTime,
       "d": parseDayOfMonth,
       "e": parseDayOfMonth,
+      "f": parseMicroseconds,
       "H": parseHour24,
       "I": parseHour24,
       "j": parseDayOfYear,
@@ -3237,9 +3341,13 @@
       "m": parseMonthNumber,
       "M": parseMinutes,
       "p": parsePeriod,
+      "Q": parseUnixTimestamp,
+      "s": parseUnixTimestampSeconds,
       "S": parseSeconds,
+      "u": parseWeekdayNumberMonday,
       "U": parseWeekNumberSunday,
-      "w": parseWeekdayNumber,
+      "V": parseWeekNumberISO,
+      "w": parseWeekdayNumberSunday,
       "W": parseWeekNumberMonday,
       "x": parseLocaleDate,
       "X": parseLocaleTime,
@@ -3288,18 +3396,40 @@
     function newParse(specifier, newDate) {
       return function(string) {
         var d = newYear(1900),
-            i = parseSpecifier(d, specifier, string += "", 0);
+            i = parseSpecifier(d, specifier, string += "", 0),
+            week, day$$;
         if (i != string.length) return null;
+
+        // If a UNIX timestamp is specified, return it.
+        if ("Q" in d) return new Date(d.Q);
 
         // The am-pm flag is 0 for AM, and 1 for PM.
         if ("p" in d) d.H = d.H % 12 + d.p * 12;
 
         // Convert day-of-week and week-of-year to day-of-year.
-        if ("W" in d || "U" in d) {
-          if (!("w" in d)) d.w = "W" in d ? 1 : 0;
-          var day = "Z" in d ? utcDate(newYear(d.y)).getUTCDay() : newDate(newYear(d.y)).getDay();
+        if ("V" in d) {
+          if (d.V < 1 || d.V > 53) return null;
+          if (!("w" in d)) d.w = 1;
+          if ("Z" in d) {
+            week = utcDate(newYear(d.y)), day$$ = week.getUTCDay();
+            week = day$$ > 4 || day$$ === 0 ? utcMonday.ceil(week) : utcMonday(week);
+            week = utcDay.offset(week, (d.V - 1) * 7);
+            d.y = week.getUTCFullYear();
+            d.m = week.getUTCMonth();
+            d.d = week.getUTCDate() + (d.w + 6) % 7;
+          } else {
+            week = newDate(newYear(d.y)), day$$ = week.getDay();
+            week = day$$ > 4 || day$$ === 0 ? timeMonday.ceil(week) : timeMonday(week);
+            week = day.offset(week, (d.V - 1) * 7);
+            d.y = week.getFullYear();
+            d.m = week.getMonth();
+            d.d = week.getDate() + (d.w + 6) % 7;
+          }
+        } else if ("W" in d || "U" in d) {
+          if (!("w" in d)) d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
+          day$$ = "Z" in d ? utcDate(newYear(d.y)).getUTCDay() : newDate(newYear(d.y)).getDay();
           d.m = 0;
-          d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day + 5) % 7 : d.w + d.U * 7 - (day + 6) % 7;
+          d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day$$ + 5) % 7 : d.w + d.U * 7 - (day$$ + 6) % 7;
         }
 
         // If a time zone is specified, all fields are interpreted as UTC and then
@@ -3441,7 +3571,7 @@
   var pads = {"-": "", "_": " ", "0": "0"};
   var numberRe = /^\s*\d+/;
   var percentRe = /^%/;
-  var requoteRe = /[\\\^\$\*\+\?\|\[\]\(\)\.\{\}]/g;
+  var requoteRe = /[\\^$*+?|[\]().{}]/g;
   function pad(value, fill, width) {
     var sign = value < 0 ? "-" : "",
         string = (sign ? -value : value) + "",
@@ -3463,18 +3593,28 @@
     return map;
   }
 
-  function parseWeekdayNumber(d, string, i) {
+  function parseWeekdayNumberSunday(d, string, i) {
     var n = numberRe.exec(string.slice(i, i + 1));
     return n ? (d.w = +n[0], i + n[0].length) : -1;
   }
 
+  function parseWeekdayNumberMonday(d, string, i) {
+    var n = numberRe.exec(string.slice(i, i + 1));
+    return n ? (d.u = +n[0], i + n[0].length) : -1;
+  }
+
   function parseWeekNumberSunday(d, string, i) {
-    var n = numberRe.exec(string.slice(i));
+    var n = numberRe.exec(string.slice(i, i + 2));
     return n ? (d.U = +n[0], i + n[0].length) : -1;
   }
 
+  function parseWeekNumberISO(d, string, i) {
+    var n = numberRe.exec(string.slice(i, i + 2));
+    return n ? (d.V = +n[0], i + n[0].length) : -1;
+  }
+
   function parseWeekNumberMonday(d, string, i) {
-    var n = numberRe.exec(string.slice(i));
+    var n = numberRe.exec(string.slice(i, i + 2));
     return n ? (d.W = +n[0], i + n[0].length) : -1;
   }
 
@@ -3489,7 +3629,7 @@
   }
 
   function parseZone(d, string, i) {
-    var n = /^(Z)|([+-]\d\d)(?:\:?(\d\d))?/.exec(string.slice(i, i + 6));
+    var n = /^(Z)|([+-]\d\d)(?::?(\d\d))?/.exec(string.slice(i, i + 6));
     return n ? (d.Z = n[1] ? 0 : -(n[2] + (n[3] || "00")), i + n[0].length) : -1;
   }
 
@@ -3528,9 +3668,24 @@
     return n ? (d.L = +n[0], i + n[0].length) : -1;
   }
 
+  function parseMicroseconds(d, string, i) {
+    var n = numberRe.exec(string.slice(i, i + 6));
+    return n ? (d.L = Math.floor(n[0] / 1000), i + n[0].length) : -1;
+  }
+
   function parseLiteralPercent(d, string, i) {
     var n = percentRe.exec(string.slice(i, i + 1));
     return n ? i + n[0].length : -1;
+  }
+
+  function parseUnixTimestamp(d, string, i) {
+    var n = numberRe.exec(string.slice(i));
+    return n ? (d.Q = +n[0], i + n[0].length) : -1;
+  }
+
+  function parseUnixTimestampSeconds(d, string, i) {
+    var n = numberRe.exec(string.slice(i));
+    return n ? (d.Q = (+n[0]) * 1000, i + n[0].length) : -1;
   }
 
   function formatDayOfMonth(d, p) {
@@ -3553,6 +3708,10 @@
     return pad(d.getMilliseconds(), p, 3);
   }
 
+  function formatMicroseconds(d, p) {
+    return formatMilliseconds(d, p) + "000";
+  }
+
   function formatMonthNumber(d, p) {
     return pad(d.getMonth() + 1, p, 2);
   }
@@ -3565,11 +3724,22 @@
     return pad(d.getSeconds(), p, 2);
   }
 
+  function formatWeekdayNumberMonday(d) {
+    var day = d.getDay();
+    return day === 0 ? 7 : day;
+  }
+
   function formatWeekNumberSunday(d, p) {
     return pad(timeSunday.count(year(d), d), p, 2);
   }
 
-  function formatWeekdayNumber(d) {
+  function formatWeekNumberISO(d, p) {
+    var day = d.getDay();
+    d = (day >= 4 || day === 0) ? timeThursday(d) : timeThursday.ceil(d);
+    return pad(timeThursday.count(year(d), d) + (year(d).getDay() === 4), p, 2);
+  }
+
+  function formatWeekdayNumberSunday(d) {
     return d.getDay();
   }
 
@@ -3612,6 +3782,10 @@
     return pad(d.getUTCMilliseconds(), p, 3);
   }
 
+  function formatUTCMicroseconds(d, p) {
+    return formatUTCMilliseconds(d, p) + "000";
+  }
+
   function formatUTCMonthNumber(d, p) {
     return pad(d.getUTCMonth() + 1, p, 2);
   }
@@ -3624,11 +3798,22 @@
     return pad(d.getUTCSeconds(), p, 2);
   }
 
+  function formatUTCWeekdayNumberMonday(d) {
+    var dow = d.getUTCDay();
+    return dow === 0 ? 7 : dow;
+  }
+
   function formatUTCWeekNumberSunday(d, p) {
     return pad(utcWeek.count(utcYear(d), d), p, 2);
   }
 
-  function formatUTCWeekdayNumber(d) {
+  function formatUTCWeekNumberISO(d, p) {
+    var day = d.getUTCDay();
+    d = (day >= 4 || day === 0) ? utcThursday(d) : utcThursday.ceil(d);
+    return pad(utcThursday.count(utcYear(d), d) + (utcYear(d).getUTCDay() === 4), p, 2);
+  }
+
+  function formatUTCWeekdayNumberSunday(d) {
     return d.getUTCDay();
   }
 
@@ -3650,6 +3835,14 @@
 
   function formatLiteralPercent() {
     return "%";
+  }
+
+  function formatUnixTimestamp(d) {
+    return +d;
+  }
+
+  function formatUnixTimestampSeconds(d) {
+    return Math.floor(+d / 1000);
   }
 
   var locale$1;
@@ -4011,7 +4204,7 @@
     };
   }
 
-  var keyPrefix = "$"; // Protect against keys like â€œ__proto__â€.
+  var keyPrefix = "$"; // Protect against keys like “__proto__”.
 
   function bindIndex(parent, group, enter, update, exit, data) {
     var i = 0,
@@ -4031,7 +4224,7 @@
       }
     }
 
-    // Put any non-null nodes that donâ€™t fit into exit.
+    // Put any non-null nodes that don’t fit into exit.
     for (; i < groupLength; ++i) {
       if (node = group[i]) {
         exit[i] = node;
@@ -4286,7 +4479,7 @@
         : (fullname.local ? attrConstantNS : attrConstant)))(fullname, value));
   }
 
-  function window(node) {
+  function defaultView(node) {
     return (node.ownerDocument && node.ownerDocument.defaultView) // node is a Node
         || (node.document && node) // node is a Window
         || node.defaultView; // node is a Document
@@ -4313,15 +4506,17 @@
   }
 
   function selection_style(name, value, priority) {
-    var node;
     return arguments.length > 1
         ? this.each((value == null
               ? styleRemove : typeof value === "function"
               ? styleFunction
               : styleConstant)(name, value, priority == null ? "" : priority))
-        : window(node = this.node())
-            .getComputedStyle(node, null)
-            .getPropertyValue(name);
+        : style(this.node(), name);
+  }
+
+  function style(node, name) {
+    return node.style.getPropertyValue(name)
+        || defaultView(node).getComputedStyle(node, null).getPropertyValue(name);
   }
 
   function propertyRemove(name) {
@@ -4532,13 +4727,13 @@
   }
 
   function dispatchEvent(node, type, params) {
-    var window$$ = window(node),
-        event = window$$.CustomEvent;
+    var window = defaultView(node),
+        event = window.CustomEvent;
 
-    if (event) {
+    if (typeof event === "function") {
       event = new event(type, params);
     } else {
-      event = window$$.document.createEvent("Event");
+      event = window.document.createEvent("Event");
       if (params) event.initEvent(type, params.bubbles, params.cancelable), event.detail = params.detail;
       else event.initEvent(type, false, false);
     }
@@ -4713,7 +4908,7 @@
   var clockNow = 0;
   var clockSkew = 0;
   var clock = typeof performance === "object" && performance.now ? performance : Date;
-  var setFrame = typeof requestAnimationFrame === "function" ? requestAnimationFrame : function(f) { setTimeout(f, 17); };
+  var setFrame = typeof window === "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f) { setTimeout(f, 17); };
   function now() {
     return clockNow || (setFrame(clearNow), clockNow = clock.now() + clockSkew);
   }
@@ -4759,7 +4954,7 @@
 
   function timerFlush() {
     now(); // Get the current time, if not already set.
-    ++frame; // Pretend weâ€™ve set an alarm, if we havenâ€™t already.
+    ++frame; // Pretend we’ve set an alarm, if we haven’t already.
     var t = taskHead, e;
     while (t) {
       if ((e = clockNow - t._time) >= 0) t._call.call(null, e);
@@ -4803,12 +4998,12 @@
   function sleep(time) {
     if (frame) return; // Soonest alarm already set, or will be.
     if (timeout) timeout = clearTimeout(timeout);
-    var delay = time - clockNow;
+    var delay = time - clockNow; // Strictly less than if we recomputed clockNow.
     if (delay > 24) {
-      if (time < Infinity) timeout = setTimeout(wake, delay);
+      if (time < Infinity) timeout = setTimeout(wake, time - clock.now() - clockSkew);
       if (interval) interval = clearInterval(interval);
     } else {
-      if (!interval) clockLast = clockNow, interval = setInterval(poke, pokeDelay);
+      if (!interval) clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
       frame = 1, setFrame(wake);
     }
   }
@@ -5012,7 +5207,7 @@
           tween = schedule.tween;
 
       // If this node shared tween with the previous node,
-      // just assign the updated shared tween and weâ€™re done!
+      // just assign the updated shared tween and we’re done!
       // Otherwise, copy-on-write.
       if (tween !== tween0) {
         tween1 = tween0 = tween;
@@ -5037,7 +5232,7 @@
           tween = schedule.tween;
 
       // If this node shared tween with the previous node,
-      // just assign the updated shared tween and weâ€™re done!
+      // just assign the updated shared tween and we’re done!
       // Otherwise, copy-on-write.
       if (tween !== tween0) {
         tween1 = (tween0 = tween).slice();
@@ -5300,7 +5495,7 @@
           on = schedule.on;
 
       // If this node shared a dispatch with the previous node,
-      // just assign the updated shared dispatch and weâ€™re done!
+      // just assign the updated shared dispatch and we’re done!
       // Otherwise, copy-on-write.
       if (on !== on0) (on1 = (on0 = on).copy()).on(name, listener);
 
@@ -5381,9 +5576,8 @@
         value10,
         interpolate0;
     return function() {
-      var style = window(this).getComputedStyle(this, null),
-          value0 = style.getPropertyValue(name),
-          value1 = (this.style.removeProperty(name), style.getPropertyValue(name));
+      var value0 = style(this, name),
+          value1 = (this.style.removeProperty(name), style(this, name));
       return value0 === value1 ? null
           : value0 === value00 && value1 === value10 ? interpolate0
           : interpolate0 = interpolate(value00 = value0, value10 = value1);
@@ -5400,7 +5594,7 @@
     var value00,
         interpolate0;
     return function() {
-      var value0 = window(this).getComputedStyle(this, null).getPropertyValue(name);
+      var value0 = style(this, name);
       return value0 === value1 ? null
           : value0 === value00 ? interpolate0
           : interpolate0 = interpolate(value00 = value0, value1);
@@ -5412,10 +5606,9 @@
         value10,
         interpolate0;
     return function() {
-      var style = window(this).getComputedStyle(this, null),
-          value0 = style.getPropertyValue(name),
+      var value0 = style(this, name),
           value1 = value(this);
-      if (value1 == null) value1 = (this.style.removeProperty(name), style.getPropertyValue(name));
+      if (value1 == null) value1 = (this.style.removeProperty(name), style(this, name));
       return value0 === value1 ? null
           : value0 === value00 && value1 === value10 ? interpolate0
           : interpolate0 = interpolate(value00 = value0, value10 = value1);
@@ -5610,18 +5803,24 @@
   var left = 4;
   var epsilon$2 = 1e-6;
   function translateX(x) {
-    return "translate(" + x + ",0)";
+    return "translate(" + (x + 0.5) + ",0)";
   }
 
   function translateY(y) {
-    return "translate(0," + y + ")";
+    return "translate(0," + (y + 0.5) + ")";
+  }
+
+  function number$3(scale) {
+    return function(d) {
+      return +scale(d);
+    };
   }
 
   function center(scale) {
-    var offset = scale.bandwidth() / 2;
+    var offset = Math.max(0, scale.bandwidth() - 1) / 2; // Adjust for 0.5px offset.
     if (scale.round()) offset = Math.round(offset);
     return function(d) {
-      return scale(d) + offset;
+      return +scale(d) + offset;
     };
   }
 
@@ -5637,7 +5836,7 @@
         tickSizeOuter = 6,
         tickPadding = 3,
         k = orient === top || orient === left ? -1 : 1,
-        x, y = orient === left || orient === right ? (x = "x", "y") : (x = "y", "x"),
+        x = orient === left || orient === right ? "x" : "y",
         transform = orient === top || orient === bottom ? translateX : translateY;
 
     function axis(context) {
@@ -5645,9 +5844,9 @@
           format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity$5) : tickFormat,
           spacing = Math.max(tickSizeInner, 0) + tickPadding,
           range = scale.range(),
-          range0 = range[0] + 0.5,
-          range1 = range[range.length - 1] + 0.5,
-          position = (scale.bandwidth ? center : identity$5)(scale.copy()),
+          range0 = +range[0] + 0.5,
+          range1 = +range[range.length - 1] + 0.5,
+          position = (scale.bandwidth ? center : number$3)(scale.copy()),
           selection = context.selection ? context.selection() : context,
           path = selection.selectAll(".domain").data([null]),
           tick = selection.selectAll(".tick").data(values, scale).order(),
@@ -5664,14 +5863,11 @@
 
       line = line.merge(tickEnter.append("line")
           .attr("stroke", "#000")
-          .attr(x + "2", k * tickSizeInner)
-          .attr(y + "1", 0.5)
-          .attr(y + "2", 0.5));
+          .attr(x + "2", k * tickSizeInner));
 
       text = text.merge(tickEnter.append("text")
           .attr("fill", "#000")
           .attr(x, k * spacing)
-          .attr(y, 0.5)
           .attr("dy", orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em"));
 
       if (context !== selection) {
@@ -5894,7 +6090,7 @@
   function node_links() {
     var root = this, links = [];
     root.each(function(node) {
-      if (node !== root) { // Donâ€™t include the rootâ€™s parent, if any.
+      if (node !== root) { // Don’t include the root’s parent, if any.
         links.push({source: node.parent, target: node});
       }
     });
@@ -6298,7 +6494,7 @@
   exports.mouse = mouse;
   exports.select = select;
   exports.selectAll = selectAll;
-  exports.window = window;
+  exports.window = defaultView;
   exports.active = active;
   exports.interrupt = interrupt;
   exports.transition = transition;
