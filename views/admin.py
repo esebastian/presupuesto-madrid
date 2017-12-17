@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from django.views.decorators.cache import never_cache
+from django.http import HttpResponse
 from coffin.shortcuts import render_to_response
 from budget_app.views.helpers import *
 
@@ -10,17 +11,17 @@ import urllib
 
 import os
 import datetime
+import subprocess
 import glob
 
 @never_cache
 def admin(request):
-  c = _get_context(request)
-  return render_to_response('admin/index.html', c)
+  return render_to_response('admin/index.html', get_context(request))
 
 
 @never_cache
 def admin_download(request):
-  c = _get_context(request)
+  response = _get_response(request)
 
   # Get input parameters
   source_path = request.GET.get('source_path', '')
@@ -31,7 +32,7 @@ def admin_download(request):
   try:
     page = urllib.urlopen(source_path).read()
   except IOError, err:
-    return _set_download_message(c, "IO ERROR: "+str(err))
+    return _set_download_message(response, "IO ERROR: "+str(err))
 
   # Create the target folder
   temp_folder_path = _get_temp_folder()
@@ -43,18 +44,36 @@ def admin_download(request):
   _download_open_data_file(files[1], temp_folder_path, "gastos.csv")
   _download_open_data_file(files[2], temp_folder_path, "inversiones.csv")
 
+  # FIXME: Populate .budget_status
+
   # Return
   output = "Ficheros descargados de %s.<br/>Disponibles en %s." % (source_path, temp_folder_path)
-  return _set_download_message(c, output)
+  return _set_download_message(response, output)
 
 
 @never_cache
 def admin_load(request):
-  c = _get_context(request)
+  response = _get_response(request)
 
   files = sorted(glob.glob(_get_temp_base_path()+"/*.*"))
-  output = "Vamos a cargar los datos disponibles en %s." % (files[-1], )
-  return _set_load_message(c, output)
+
+  # FIXME: Copy files from temp location
+
+  # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
+  # FIXME: Year is hardcoded
+  cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " \
+          "python manage.py load_budget 2017 --language=es,en && " \
+          "python manage.py load_investments 2017 --language=es,en" % (ROOT_PATH, )
+  subprocess_output = []
+  p = subprocess.Popen(args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+  for byte_line in iter(p.stdout.readline, ''):
+    line = byte_line.decode('utf8', errors='backslashreplace').replace('\r', '')
+    subprocess_output.append(line)
+
+  output = "Vamos a cargar los datos disponibles en %s.<br/>" \
+            "Ejecutando: <pre>%s</pre>" \
+            "Resultado: <pre>%s</pre>" % (files[-1], cmd, " ".join(subprocess_output))
+  return _set_load_message(response, output)
 
 
 def _get_temp_base_path():
@@ -75,16 +94,17 @@ def _download_open_data_file(link, output_folder, output_name):
   file_href = 'http://datos.madrid.es'+link['href']
   urllib.urlretrieve(file_href, os.path.join(output_folder, output_name))
 
-def _set_download_message(c, message):
-  c['download_output'] = message
-  return render_to_response('admin/response.json', c, content_type="application/json")
+def _set_download_message(response, message):
+  response['download_output'] = message
+  # How to return JSON, see https://stackoverflow.com/a/2428119
+  return HttpResponse(json.dumps(response), content_type="application/json")
 
-def _set_load_message(c, message):
-  c['load_output'] = message
-  return render_to_response('admin/response.json', c, content_type="application/json")
+def _set_load_message(response, message):
+  response['load_output'] = message
+  return HttpResponse(json.dumps(response), content_type="application/json")
 
-def _get_context(request):
-  c = get_context(request)
-  c['download_output'] = ''
-  c['load_output'] = ''
-  return c
+def _get_response(request):
+  return {
+    'download_output': '',
+    'load_output': ''
+  }
