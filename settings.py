@@ -148,4 +148,5 @@ COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html
 # to the project URL patterns list.
 EXTRA_URLS = (
     url(r'^visita-guiada$', 'guidedvisit', name="guidedvisit"),
+    url(r'^admin$', 'admin', name="admin"),
 )
