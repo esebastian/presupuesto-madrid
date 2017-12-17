@@ -15,18 +15,24 @@
     <div class="container">
       <div class="row">
 
-        <h3>Cargar datos</h3>
+        <h3>Descargar datos</h3>
 
         <form class="form-inline" id="data-download" action="{{ url('presupuesto-madrid.views.admin_download') }}" method="get">
           <div class="form-group">
             <label for="source-path">{{ _('Fuente de datos') }}</label>
             <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
           </div>
-          <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
+          <button type="submit" class="btn btn-default btn-primary" >{{ _('Descargar') }}</button>
         </form>
         <p id="data-download-output"></p>
 
         <h3>Revisar datos</h3>
+
+        <h3>Cargar datos</h3>
+        <form class="form-inline" id="data-load" action="{{ url('presupuesto-madrid.views.admin_load') }}" method="get">
+          <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
+        </form>
+        <p id="data-load-output"></p>
       </div>
     </div>
   </div>
@@ -34,30 +40,46 @@
 </section>
 
 <script>
-  // Setup form submit handler
-  $('#data-download').submit(function(e){
+  $('#data-download').submit(function(e) {
     e.preventDefault();
-
-    // Show submit loader
-    $(this).find('button[type="submit"]').attr('disabled', true).children('.glyphicon').removeClass('hide');
-
+    disableButtons();
     $.ajax({
       url: "admin/download",
       data: {
         source_path:  $('#source-path').val(),
       },
       contentType:    'application/json; charset=utf-8',
-      success:        onSearchSuccess,
-      error:          onSearchError,
+      success:        onCommandSuccess,
+      error:          onCommandError,
     });
   });
 
-  function onSearchSuccess(response) {
+  $('#data-load').submit(function(e) {
+    e.preventDefault();
+    disableButtons();
+    $.ajax({
+      url: "admin/load",
+      contentType:    'application/json; charset=utf-8',
+      success:        onCommandSuccess,
+      error:          onCommandError,
+    });
+  });
+
+  function onCommandSuccess(response) {
     $("#data-download-output").html(response.download_output);
-    $('#data-download button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+    $("#data-load-output").html(response.load_output);
+    enableButtons();
   }
 
-  function onSearchError(response) {
+  function onCommandError(response) {
+    enableButtons();
+  }
+
+  function disableButtons() {
+    $('#data-download button[type="submit"]').attr('disabled', true).children('.glyphicon').removeClass('hide');
+  }
+
+  function enableButtons() {
     $('#data-download button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
   }
 </script>

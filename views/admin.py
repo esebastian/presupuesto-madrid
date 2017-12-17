@@ -15,9 +15,6 @@ import glob
 @never_cache
 def admin(request):
   c = _get_context(request)
-
-  c['output'] = glob.glob(ROOT_PATH+"/*.*")
-
   return render_to_response('admin/index.html', c)
 
 
@@ -47,12 +44,24 @@ def admin_download(request):
   _download_open_data_file(files[2], temp_folder_path, "inversiones.csv")
 
   # Return
-  message = "Ficheros descargados de %s.<br/>Disponibles en %s." % (source_path, temp_folder_path)
-  return _set_download_message(c, message)
+  output = "Ficheros descargados de %s.<br/>Disponibles en %s." % (source_path, temp_folder_path)
+  return _set_download_message(c, output)
 
+
+@never_cache
+def admin_load(request):
+  c = _get_context(request)
+
+  files = sorted(glob.glob(_get_temp_base_path()+"/*.*"))
+  output = "Vamos a cargar los datos disponibles en %s." % (files[-1], )
+  return _set_load_message(c, output)
+
+
+def _get_temp_base_path():
+  return '/tmp/budget_app'
 
 def _get_temp_folder():
-  base_path = '/tmp/budget_app'
+  base_path = _get_temp_base_path()
   if not os.path.exists(base_path):
     os.makedirs(base_path)
 
@@ -70,7 +79,12 @@ def _set_download_message(c, message):
   c['download_output'] = message
   return render_to_response('admin/response.json', c, content_type="application/json")
 
+def _set_load_message(c, message):
+  c['load_output'] = message
+  return render_to_response('admin/response.json', c, content_type="application/json")
+
 def _get_context(request):
   c = get_context(request)
+  c['download_output'] = ''
   c['load_output'] = ''
   return c
