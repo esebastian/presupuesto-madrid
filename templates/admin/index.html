@@ -5,34 +5,75 @@
 
 <section class="admin" role="region">
 
-  <div class="guidedvisit-header section-header">
+  <div class="admin-header section-header">
     <div class="container">
       <h2 class="page-title">{{ _('Administración de Presupuestos Abiertos') }}</h2>
     </div>
   </div>
 
-  <div class="guidedvisit-content">
+  <div class="admin-content">
     <div class="container">
-      <div class="row">
+      <div class="data-panel">
 
-        <h3>Descargar datos</h3>
+        <div class="panel">
+          <div class="panel-content">
+            <h3>1. Descargar datos</h3>
+            <p>Esta es una explicación sobre lo que puedes hacer en este panel</p>
 
-        <form class="form-inline" id="data-download" action="{{ url('presupuesto-madrid.views.admin_download') }}" method="get">
-          <div class="form-group">
-            <label for="source-path">{{ _('Fuente de datos') }}</label>
-            <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
+            <form id="data-download" action="{{ url('presupuesto-madrid.views.admin_download') }}" method="get">
+              <div class="form-group">
+                <label for="source-path">{{ _('Fuente de datos') }}</label>
+                <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
+              </div>
+              <div class="form-group">
+                <label for="source-path">{{ _('Selecciona mes') }}</label>
+                <select class="form-control">
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-default btn-primary" >{{ _('Descargar') }}</button> 
+            </form>
+            <div id="data-download-output" class="data-output">
+              <div class="loading"><img src="/static/assets/loader.png"> Descargando datos</div>
+              <div class="output"></div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="panel">
+          <div class="panel-content">
+            <h3>2. Revisar datos</h3>
+            <p>Esta es una explicación sobre lo que puedes hacer en este panel</p>
+            <form class="form-inline" id="data-review" action="" method="get">
+              <button type="submit" class="btn btn-default btn-primary" >{{ _('Revisar') }}</button>
+            </form>
           </div>
-          <button type="submit" class="btn btn-default btn-primary" >{{ _('Descargar') }}</button>
-        </form>
-        <p id="data-download-output"></p>
+        </div>
 
-        <h3>Revisar datos</h3>
-
-        <h3>Cargar datos</h3>
-        <form class="form-inline" id="data-load" action="{{ url('presupuesto-madrid.views.admin_load') }}" method="get">
-          <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
-        </form>
-        <p id="data-load-output"></p>
+        <div class="panel">
+          <div class="panel-content">
+            <h3>3. Cargar datos</h3>
+            <p>Esta es una explicación sobre lo que puedes hacer en este panel</p>
+            <form class="form-inline" id="data-load" action="{{ url('presupuesto-madrid.views.admin_load') }}" method="get">
+              <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
+            </form>
+            <div id="data-load-output" class="data-output">
+              <div class="loading"><img src="/static/assets/loader.png"> Cargando datos</div>
+              <div class="output"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -43,6 +84,7 @@
   $('#data-download').submit(function(e) {
     e.preventDefault();
     disableButtons();
+    $("#data-download-output").show().find('.content').html('');
     $.ajax({
       url: "admin/download",
       data: {
@@ -57,6 +99,7 @@
   $('#data-load').submit(function(e) {
     e.preventDefault();
     disableButtons();
+    $("#data-load-output").show().find('.content').html('');
     $.ajax({
       url: "admin/load",
       contentType:    'application/json; charset=utf-8',
@@ -66,8 +109,15 @@
   });
 
   function onCommandSuccess(response) {
-    $("#data-download-output").html(response.download_output);
-    $("#data-load-output").html(response.load_output);
+    console.log(response);
+    if (response.download_output != '') {
+      $("#data-download-output").find('.loading').hide();
+      $("#data-download-output").find('.output').html(response.download_output);
+    }
+    if (response.load_output != '') {
+      $("#data-load-output").find('.loading').hide();
+      $("#data-load-output").find('.output').html(response.load_output);
+    } 
     enableButtons();
   }
 

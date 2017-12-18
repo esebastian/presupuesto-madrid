@@ -801,3 +801,52 @@ table.table-grid tr td{
 .investments table.table-grid tr.indent-1 td:first-child{
   font-size: 1em;
 }
+
+.admin-content {
+
+  .data-panel{
+    margin: $grid-gutter-width 0 0;
+  }
+
+  .panel{
+    background: $brand-secondary;
+    margin-bottom: $grid-gutter-width;
+    border: none;
+
+    h3{
+      margin: $grid-gutter-width/2 auto 2*$grid-gutter-width/3;
+    }
+  }
+
+  .panel-content{
+    text-transform: none;
+    padding-left: 2*$grid-gutter-width/3;
+    padding-right: 2*$grid-gutter-width/3;
+
+    > p{
+      margin-bottom: $grid-gutter-width/2;
+    }
+  }
+
+  #data-download{
+    max-width: 480px;
+  }
+
+  .data-output{
+    display: none;
+    font-size: 1.5rem;
+    padding: $grid-gutter-width/2;
+    background: white;
+    overflow-x: scroll;
+    margin: $grid-gutter-width/3 0;
+
+    .loading img{
+      margin-right: $grid-gutter-width/3;
+    }
+  }
+
+  .btn-primary{
+    font-size: 1.5rem;
+    margin: $grid-gutter-width/3 0;
+  }
+}
