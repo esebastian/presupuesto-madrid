@@ -201,7 +201,7 @@ header{
 
       > li{
         width: auto;
-        margin: 0 12px;
+        margin: 0 7px;
         border-bottom: 2px solid white;
 
         &:first-child {
@@ -224,10 +224,10 @@ header{
 
 @media (min-width: $screen-lg-min) {
   .navbar-default .navbar-nav > li{
-    margin: 0 20px;
+    margin: 0 11px;
   }
   #menu-lang:before{
-    left: -19px;
+    left: -11px;
   }
 }
 
@@ -294,8 +294,8 @@ header{
     .option{
       width: 100%;
 
-      @media (min-width: $grid-float-breakpoint) {
-        width: 33.33%;
+      @media (min-width: $screen-md-min) {
+        width: 50%;
       }
 
       > div{
@@ -545,6 +545,29 @@ header{
       label{
         line-height: 20px;
       }
+    }
+  }
+}
+
+// Payments
+.payments-content{
+  .nav-tabs,
+  .nav-tabs>li.active>a{
+    border-color: $brand-primary;
+  }
+  .nav-tabs>li>a:hover {
+    color: $brand-primary;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .nav-tabs>li>a:hover {
+      background: none;
+      border-bottom-color: transparent;
+    }
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:hover {
+      background: white;
+      border-bottom-color: transparent;
     }
   }
 }
