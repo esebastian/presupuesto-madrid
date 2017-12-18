@@ -131,3 +131,6 @@ msgstr "Gastado"
 
 msgid "Política.Inversiones"
 msgstr "Línea de inversión"
+
+msgid "Pagos e inversiones"
+msgstr "Pagos a terceros"
