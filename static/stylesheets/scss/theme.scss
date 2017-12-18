@@ -549,6 +549,29 @@ header{
   }
 }
 
+// Payments
+.payments-content{
+  .nav-tabs,
+  .nav-tabs>li.active>a{
+    border-color: $brand-primary;
+  }
+  .nav-tabs>li>a:hover {
+    color: $brand-primary;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .nav-tabs>li>a:hover {
+      background: none;
+      border-bottom-color: transparent;
+    }
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:hover {
+      background: white;
+      border-bottom-color: transparent;
+    }
+  }
+}
+
 // Guided Visit
 .guidedvisit-content{
   margin-top: $grid-gutter-width;
