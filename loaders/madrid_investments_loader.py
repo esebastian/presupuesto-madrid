@@ -38,13 +38,13 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             description = line[4]
             investment_line = self.clean(line[1])
             gc_code = self.map_geo_code(self.clean(line[0]).strip())
-            amount = line[5]
+            amount = self._read_english_number(line[5])
         else:
             project_id = line[7]
             description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
             investment_line = line[11]
             gc_code = self.map_geo_code(line[9])
-            amount = line[28 if is_actual else 23]
+            amount = self._read_spanish_number(line[28 if is_actual else 23])
 
         # Note we implement the investment lines as an extension of functional policies.
         # See #527 for further information.
@@ -54,18 +54,10 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             'fc_code': 'X'+investment_line,
             'fc_area': 'X',
             'fc_policy': 'X'+investment_line,
-            'amount': self.parse_amount(amount),
+            'amount': amount,
             'project_id': project_id.strip(),
             'description': description.strip()
         }
-
-
-    # Parse a numerical amount, which can be in English format (for those CSVs generated
-    # from XLS via in2csv) or Spanish.
-    def parse_amount(self, amount):
-        if ',' in amount:
-            amount = amount.replace(',', '.')
-        return self._read_english_number(amount)
 
     # Override default input delimiter
     def _get_delimiter(self):
