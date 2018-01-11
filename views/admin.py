@@ -13,6 +13,7 @@ import os
 import datetime
 import subprocess
 import glob
+import re
 
 @never_cache
 def admin(request):
@@ -25,8 +26,9 @@ def admin_download(request):
 
   # Get input parameters
   source_path = request.GET.get('source_path', '')
-  if ( source_path=='' ):   # FIXME: Temporary
-    source_path = 'http://datos.madrid.es/sites/v/index.jsp?vgnextoid=af62db13cb659410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD'
+  if ( source_path=='' ):
+    # If no URL is given, we have the 2017 page as default, at least for now
+    source_path = 'http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default'
 
   # Download the given page
   try:
@@ -44,7 +46,15 @@ def admin_download(request):
   _download_open_data_file(files[1], temp_folder_path, "gastos.csv")
   _download_open_data_file(files[2], temp_folder_path, "inversiones.csv")
 
-  # FIXME: Populate .budget_status
+  # Find out which year we're working with
+  title = doc.find('h3', class_='summary-title').text
+  match = re.compile('.*presupuestaria (\d+)$').match(title)
+  year = match.group(1)
+  _create_file(temp_folder_path, '.budget_year', year)
+
+  # Keep track of the month of the data
+  month = request.GET.get('month', '0')
+  _create_file(temp_folder_path, '.budget_status', 'M'+month)
 
   # Return
   output = "Ficheros descargados de %s.<br/>Disponibles en %s." % (source_path, temp_folder_path)
@@ -93,6 +103,11 @@ def _get_temp_folder():
 def _download_open_data_file(link, output_folder, output_name):
   file_href = 'http://datos.madrid.es'+link['href']
   urllib.urlretrieve(file_href, os.path.join(output_folder, output_name))
+
+def _create_file(output_folder, output_name, content):
+  file = open(os.path.join(output_folder, output_name), "w")
+  file.write(content)
+  file.close()
 
 def _set_download_message(response, message):
   response['download_output'] = message

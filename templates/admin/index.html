@@ -18,16 +18,16 @@
         <div class="panel">
           <div class="panel-content">
             <h3>1. Descargar datos</h3>
-            <p>Esta es una explicación sobre lo que puedes hacer en este panel</p>
+            <p>El primer paso es descargar los ficheros de datos del portal de Datos Abiertos de Madrid. Para ello, introduce la URL de la página con la información de ejecución del año en curso (como <a href="http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default" target="_blank">ésta</a>, por ejemplo, para 2017), y específica a qué mes corresponden los últimos datos (ya que el Portal actualmente no lo indica). Al pulsar el botón 'Descargar', los datos se bajarán del Portal en unos segundos y se guardarán en el servidor, listos para el siguiente paso.</p>
 
-            <form id="data-download" action="{{ url('presupuesto-madrid.views.admin_download') }}" method="get">
+            <form id="data-download">
               <div class="form-group">
                 <label for="source-path">{{ _('Fuente de datos') }}</label>
                 <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
               </div>
               <div class="form-group">
-                <label for="source-path">{{ _('Selecciona mes') }}</label>
-                <select class="form-control">
+                <label for="month">{{ _('Selecciona mes') }}</label>
+                <select id="month" class="form-control" name="month">
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>
@@ -65,7 +65,7 @@
           <div class="panel-content">
             <h3>3. Cargar datos</h3>
             <p>Esta es una explicación sobre lo que puedes hacer en este panel</p>
-            <form class="form-inline" id="data-load" action="{{ url('presupuesto-madrid.views.admin_load') }}" method="get">
+            <form class="form-inline" id="data-load">
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
             </form>
             <div id="data-load-output" class="data-output">
@@ -86,9 +86,10 @@
     disableButtons();
     $("#data-download-output").show().find('.content').html('');
     $.ajax({
-      url: "admin/download",
+      url: "{{ url('presupuesto-madrid.views.admin_download') }}",
       data: {
         source_path:  $('#source-path').val(),
+        month:  $('#month').val(),
       },
       contentType:    'application/json; charset=utf-8',
       success:        onCommandSuccess,
@@ -101,7 +102,7 @@
     disableButtons();
     $("#data-load-output").show().find('.content').html('');
     $.ajax({
-      url: "admin/load",
+      url: "{{ url('presupuesto-madrid.views.admin_load') }}",
       contentType:    'application/json; charset=utf-8',
       success:        onCommandSuccess,
       error:          onCommandError,
