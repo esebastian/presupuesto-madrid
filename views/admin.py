@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import urllib
 
 import os
+import shutil
 import datetime
 import subprocess
 import glob
@@ -54,7 +55,8 @@ def admin_download(request):
 
   # Keep track of the month of the data
   month = request.GET.get('month', '0')
-  _create_file(temp_folder_path, '.budget_status', 'M'+month)
+  status = month+'M' if month!='12' else '' # 12M means the year is fully executed
+  _create_file(temp_folder_path, '.budget_status', status)
 
   # Return
   output = "Ficheros descargados de %s.<br/>Disponibles en %s." % (source_path, temp_folder_path)
@@ -65,15 +67,20 @@ def admin_download(request):
 def admin_load(request):
   response = _get_response(request)
 
-  files = sorted(glob.glob(_get_temp_base_path()+"/*.*"))
+  # Pick up the most recent downloaded files
+  data_files = sorted(glob.glob(_get_temp_base_path()+"/*.*"))[-1]
 
-  # FIXME: Copy files from temp location
+  # Read the year of the budget data
+  year = _read_file(data_files, '.budget_year')
+
+  # Copy downloaded files to the theme destination
+  _copy_downloaded_files_to_theme(data_files, year, 'es')
+  _copy_downloaded_files_to_theme(data_files, year, 'en')
 
   # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
-  # FIXME: Year is hardcoded
-  cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " \
-          "python manage.py load_budget 2017 --language=es,en && " \
-          "python manage.py load_investments 2017 --language=es,en" % (ROOT_PATH, )
+  cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (ROOT_PATH, )
+  cmd += "python manage.py load_budget "+year+" --language=es,en && "
+  cmd += "python manage.py load_investments "+year+" --language=es,en"
   subprocess_output = []
   p = subprocess.Popen(args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
   for byte_line in iter(p.stdout.readline, ''):
@@ -82,7 +89,7 @@ def admin_load(request):
 
   output = "Vamos a cargar los datos disponibles en %s.<br/>" \
             "Ejecutando: <pre>%s</pre>" \
-            "Resultado: <pre>%s</pre>" % (files[-1], cmd, " ".join(subprocess_output))
+            "Resultado: <pre>%s</pre>" % (data_files, cmd, " ".join(subprocess_output))
   return _set_load_message(response, output)
 
 
@@ -104,10 +111,23 @@ def _download_open_data_file(link, output_folder, output_name):
   file_href = 'http://datos.madrid.es'+link['href']
   urllib.urlretrieve(file_href, os.path.join(output_folder, output_name))
 
+def _copy_downloaded_files_to_theme(data_files, year, language):
+  target_path = os.path.join(ROOT_PATH, settings.THEME, 'data', language, 'municipio', year)
+  shutil.copy(os.path.join(data_files, '.budget_status'), os.path.join(target_path, '.budget_status'))
+  shutil.copy(os.path.join(data_files, 'gastos.csv'), os.path.join(target_path, 'gastos.csv'))
+  shutil.copy(os.path.join(data_files, 'gastos.csv'), os.path.join(target_path, 'ejecucion_gastos.csv'))
+  shutil.copy(os.path.join(data_files, 'ingresos.csv'), os.path.join(target_path, 'ingresos.csv'))
+  shutil.copy(os.path.join(data_files, 'ingresos.csv'), os.path.join(target_path, 'ejecucion_ingresos.csv'))
+  shutil.copy(os.path.join(data_files, 'inversiones.csv'), os.path.join(target_path, 'inversiones.csv'))
+  shutil.copy(os.path.join(data_files, 'inversiones.csv'), os.path.join(target_path, 'ejecucion_inversiones.csv'))
+
 def _create_file(output_folder, output_name, content):
-  file = open(os.path.join(output_folder, output_name), "w")
-  file.write(content)
-  file.close()
+  with open(os.path.join(output_folder, output_name), "w") as file:
+    file.write(content)
+
+def _read_file(output_folder, output_name):
+  with open(os.path.join(output_folder, output_name), "r") as file:
+    return file.read()
 
 def _set_download_message(response, message):
   response['download_output'] = message
