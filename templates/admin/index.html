@@ -58,6 +58,10 @@
             <form class="form-inline" id="data-review" action="" method="get">
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Revisar') }}</button>
             </form>
+            <div id="data-review-output" class="data-output">
+              <div class="loading"><img src="/static/assets/loader.png"> Revisando datos</div>
+              <div class="output"></div>
+            </div>
           </div>
         </div>
 
@@ -97,6 +101,18 @@
     });
   });
 
+  $('#data-review').submit(function(e) {
+    e.preventDefault();
+    disableButtons();
+    $("#data-review-output").show().find('.content').html('');
+    $.ajax({
+      url: "{{ url('presupuesto-madrid.views.admin_review') }}",
+      contentType:    'application/json; charset=utf-8',
+      success:        onCommandSuccess,
+      error:          onCommandError,
+    });
+  });
+
   $('#data-load').submit(function(e) {
     e.preventDefault();
     disableButtons();
@@ -110,10 +126,13 @@
   });
 
   function onCommandSuccess(response) {
-    console.log(response);
     if (response.download_output != '') {
       $("#data-download-output").find('.loading').hide();
       $("#data-download-output").find('.output').html(response.download_output);
+    }
+    if (response.review_output != '') {
+      $("#data-review-output").find('.loading').hide();
+      $("#data-review-output").find('.output').html(response.review_output);
     }
     if (response.load_output != '') {
       $("#data-load-output").find('.loading').hide();

@@ -1,4 +1,5 @@
 {
   "download_output": "{{ download_output|safe }}",
+  "review_output": "{{ review_output|safe }}",
   "load_output": "{{ load_output|safe }}"
 }

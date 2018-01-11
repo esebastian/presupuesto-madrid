@@ -151,5 +151,6 @@ EXTRA_URLS = (
 
     url(r'^admin$', 'admin', name="admin"),
     url(r'^admin/download$', 'admin_download', name="admin-download"),
+    url(r'^admin/review$', 'admin_review', name="admin-review"),
     url(r'^admin/load$', 'admin_load', name="admin-load"),
 )

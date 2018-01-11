@@ -64,11 +64,24 @@ def admin_download(request):
 
 
 @never_cache
+def admin_review(request):
+  response = _get_response(request)
+
+  # Pick up the most recent downloaded files
+  data_files = _get_most_recent_files_in_temp_folder()
+
+  # Return
+  output = "Revisando los datos disponibles en %s.<br/>" \
+            "Resultado: todo correcto." % (data_files, )
+  return _set_review_message(response, output)
+
+
+@never_cache
 def admin_load(request):
   response = _get_response(request)
 
   # Pick up the most recent downloaded files
-  data_files = sorted(glob.glob(_get_temp_base_path()+"/*.*"))[-1]
+  data_files = _get_most_recent_files_in_temp_folder()
 
   # Read the year of the budget data
   year = _read_file(data_files, '.budget_year')
@@ -107,6 +120,9 @@ def _get_temp_folder():
 
   return temp_folder_path
 
+def _get_most_recent_files_in_temp_folder():
+  return sorted(glob.glob(_get_temp_base_path()+"/*.*"))[-1]
+
 def _download_open_data_file(link, output_folder, output_name):
   file_href = 'http://datos.madrid.es'+link['href']
   urllib.urlretrieve(file_href, os.path.join(output_folder, output_name))
@@ -134,6 +150,10 @@ def _set_download_message(response, message):
   # How to return JSON, see https://stackoverflow.com/a/2428119
   return HttpResponse(json.dumps(response), content_type="application/json")
 
+def _set_review_message(response, message):
+  response['review_output'] = message
+  return HttpResponse(json.dumps(response), content_type="application/json")
+
 def _set_load_message(response, message):
   response['load_output'] = message
   return HttpResponse(json.dumps(response), content_type="application/json")
@@ -141,5 +161,6 @@ def _set_load_message(response, message):
 def _get_response(request):
   return {
     'download_output': '',
+    'review_output': '',
     'load_output': ''
   }
