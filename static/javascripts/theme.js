@@ -92,14 +92,18 @@ $(document).ready(function(){
 
   // Custom description for investments
   var addInvestmentsDescriptions = function(){
-    var description = '<p>La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
+    var description = '<p>(*) La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
       'realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba '+
       'la estructura de los presupuestos de las entidades locales.</p><p>En el Ayuntamiento de Madrid, además, se '+
       'utiliza una clasificación por Líneas de inversión, herramienta más sencilla y simplificada para analizar y '+
       'exponer el destino de las inversiones. </p>';
 
+    var investmentLineIntro = '<p>Líneas de inversión desarrolladas en un el distrito <a href="#policy-description-box">(*)</a></p>';
+
     if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
-      $('.investments .investments-content .policies-chart').append( '<div class="policy-description">'+description+'</div>' );
+      $('.alert-data-update').append( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
+      $('.investments .investments-content .policies-chart').append( '<div class="policy-description" id="policy-description-box">'+description+'</div>' );
+      $('.investments .investments-content #myGrid_wrapper').append( '<div class="policy-description">'+description+'</div>' );
     }
   };
 
