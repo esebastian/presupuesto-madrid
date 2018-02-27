@@ -1,0 +1,56 @@
+<!--
+<p><h3 class="page-title">{{ _('Busca pagos a proveedores') }}</h3></p>
+-->
+
+<div class="payments-search-panel data-panel">
+  <div class="panel">
+    <div class="panel-content">
+
+      <h3 class="page-title">{{ _('Busca pagos a proveedores') }}</h3>
+
+      <!-- Payments Search Form -->
+      <form id="payments-search">
+        <div class="form-group">
+          <label for="input-description">{{ _('Descripción') }}</label>
+          <input type="text" id="input-description" class="form-control" placeholder="{{ _('Descripción') }}">
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="input-area">{{ _('Área') }}</label>
+              <select id="input-area" class="form-control">
+                <option value="">{{ _('Todas las áreas') }}</option>
+                {% for area in areas %}
+                <option value="{{ area }}">{{ area }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="input-payee">{{ _('Proveedor') }}</label>
+              <select id="input-payee" class="form-control">
+                <option value="">{{ _('Todos los proveedores') }}</option>
+                {% for payee in payees %}
+                <option value="{{ payee }}">{{ payee }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group data-controllers">
+          <label for="input-date">{{ _('Fecha') }}</label>
+          {% if payments_year_range %}
+          <input  type="text" id="input-date" class="form-control" data-slider-min="{{first_year}}" data-slider-max="{{last_year}}" data-slider-value="[{{first_year}}, {{last_year}}]" />
+          {% else %}
+          <input  type="text" id="input-date" class="form-control" data-value="{{last_year}}" value="{{last_year}}" />
+          {% endif %}
+        </div>
+        <button type="submit" class="btn btn-default btn-primary">
+          <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate hide"></span>
+          {{ _('Buscar') }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
