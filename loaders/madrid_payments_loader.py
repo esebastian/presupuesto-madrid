@@ -11,7 +11,6 @@ class MadridPaymentsLoader(PaymentsLoader):
   def parse_item(self, budget, line):
     # But what we want as area is the programme description
     policy_id = line[1][:2]
-    print policy_id
     policy = Budget.objects.get_all_descriptions(budget.entity)['functional'][policy_id]
 
     # Some descriptions are missing in early years
