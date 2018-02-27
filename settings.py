@@ -58,7 +58,7 @@ TREEMAP_LABELS_FONT_SIZE_MIN = 5
 # SHOW_PAYMENTS           = True
 
 # Show Invesments section in menu & home options. Default: False.
-# SHOW_INVESTMENTS = True
+SHOW_INVESTMENTS = True
 
 # Show Tax Receipt section in menu & home options. Default: False.
 # SHOW_TAX_RECEIPT        = True
