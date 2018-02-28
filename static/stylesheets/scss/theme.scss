@@ -571,7 +571,22 @@ header{
       border-bottom-color: transparent;
     }
   }
+
+  .payments-search-panel .page-title {
+    font-size: 1.25em;
+    margin-bottom: $grid-gutter-width;
+  }
 }
+
+#payments-search .form-group {
+  margin-bottom: 2*$grid-gutter-width/3;
+}
+
+#payments-search .data-controllers {
+  margin-top: $grid-gutter-width/3;
+  margin-bottom: $grid-gutter-width/3;
+}
+
 
 // Guided Visit
 .guidedvisit-content{

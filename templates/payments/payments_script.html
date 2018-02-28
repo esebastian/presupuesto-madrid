@@ -1,0 +1,305 @@
+<script>
+  $(function () {
+
+    var uiState,
+        myGrid,
+        areaBreakdown   = {{ area_breakdown.to_json()|safe }},
+        payeeBreakdown  = {{ payee_breakdown.to_json()|safe }},
+        query           = { description: '', area: '', payee: '', date: '' },
+        years           = {{ years }},
+        showingSummary  = {{ 'true' if is_summary else 'false' }},
+        paymentsCount   = {{ payments_count }},
+        totalAmount     = {{ total_amount }};
+        yearAsRange     = {{ 'true' if payments_year_range else 'false' }};
+
+    function sanitarize(string) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "/": '&#x2F;'
+      };
+      return string.replace(/[&<>/]/ig, function (match) { return map[match]; });
+    }
+
+    // Grid rendering
+    function getColumnDefinition(uiState) {
+      return { 
+        data: getBreakdownValueFunction('expense', 'pagos'),
+        title: '{{ _("Pago") }}',
+        render: Formatter.getFormatter('nominal', null, null)
+      }; 
+    }
+
+    // Render payee name with a link to search for that payee
+    function mainPayeeFormatter(value, type, item) {
+      return "<a href='#view=area&payee="+value.replace("'", "&#39;")+"'>"+value+"</a>";
+    }
+
+    // Render area name with a link to search for that area
+    function areaFormatter(value, type, item) {
+      return "<a href='#view=payee&area="+value.replace("'", "&#39;")+"'>"+value+"</a>";
+    }
+
+    // Display a year range nicely
+    function formatYearRange(from, to) {
+      return from !== to ?
+                '<strong>'+from+'</strong> - <strong>'+to+'</strong>' :
+                '<strong>'+from+'</strong>';
+    }
+
+    //Update Tab
+    function updateTab() {
+      var queryHash = getQueryHash();
+
+      // Update query & send ajax search (if query is not empty)
+      if (!isSameQuery(queryHash)) {
+        query = queryHash;
+        sendSearchQuery();
+
+      } else { // Update tabs
+        // Setup inputs val if needed
+        setupInputs();
+
+        // Update uiState
+        uiState = getUIState();
+
+        // Update tab
+        $('#tabs .active').removeClass('active');
+        $('a[href="#'+uiState.view+'"]').blur().parent().addClass('active');
+        redrawGrid();
+      }
+    }
+
+    // Do all the hard work of drawing the grids
+    function redrawGrid() {
+      var data      = (uiState.view == 'area') ? areaBreakdown : payeeBreakdown;
+      var formatter = showingSummary ?
+                        ((uiState.view == 'area') ? areaFormatter : mainPayeeFormatter) :
+                        rowNameFormatter;
+      var columnDef = getColumnDefinition(uiState);
+      var title     = (uiState.view == 'area') ? '{{ _("Área") }}' : '{{ _("Beneficiario") }}';
+
+      if ( myGrid !== undefined )  myGrid.destroy();
+      myGrid = createBudgetGrid("#myGrid", breakdownToTable(data),
+                        [
+                          {
+                            data: "key",
+                            title: title,
+                            render: formatter
+                          },
+                          columnDef
+                        ]);
+
+      // We don't have (yet) overall dataset statistics when displaying a summary, so we
+      // hide the info box in those cases.
+      if (showingSummary) {
+        $("#payments-info-summary #payments-total").text( Formatter.amount(totalAmount) );
+        $("#payments-info-summary #payments-size").text( Formatter.number(paymentsCount) );
+        if (yearAsRange) {
+          if ( query.date ) {
+            var queryYears = query.date.split(',');
+            $("#payments-info-summary #payments-years").html( formatYearRange(queryYears[0], queryYears[1]) );
+          } else {
+            $("#payments-info-summary #payments-years").html( formatYearRange(years[0], years[years.length-1]) );
+          }
+        } else {
+          $("#payments-info-summary #payments-years").html( (query.date) ? query.date : years[years.length-1] );
+        }
+
+        $('#area-tab').text("{{ _('Desglose por área') }}");
+        $('#payee-tab').text("{{ _('Principales proveedores') }}");
+
+        $('#payments-info-summary').show();
+        $('#payments-info-detailed').hide();
+        $('.payments-query').hide();
+        $('#tabs').show();
+
+      } else {
+        var queryStr = [];
+        if (query.description && query.description !== '')
+          queryStr.push('{{ _("Descripción") }} <strong>'+sanitarize(query.description)+'</strong>');
+        if (query.area)
+          queryStr.push('{{ _("Área") }} <strong>'+sanitarize(query.area)+'</strong>');
+        if (query.payee)
+          queryStr.push('{{ _("Proveedor") }} <strong>'+sanitarize(query.payee)+'</strong>');
+        if (query.date && years.length > 1) {
+          if (yearAsRange) {
+            var queryYears = query.date.split(',');
+            queryStr.push(formatYearRange(sanitarize(queryYears[0]), sanitarize(queryYears[1])));
+          } else {
+            queryStr.push('<strong>'+sanitarize(query.date)+'</strong>');
+          }
+        }
+        $('#query-panel .payments-query').html( queryStr.join(' + ') );
+
+        $("#payments-info-detailed #payments-total").text( Formatter.amount(totalAmount) );
+        $("#payments-info-detailed #payments-size").text( Formatter.number(paymentsCount) );
+
+        $('#payments-info-summary').hide();
+        $('#payments-info-detailed').show();
+        $('.payments-query').show();
+
+        // Show the alternative area/payee tabs only if it makes sense, i.e. only if they show
+        // the data in a different way. Remember that active filters are removed from the output.
+        if ( query.area==='' && query.payee==='' )
+          $('#tabs').show();
+        else
+          $('#tabs').hide();
+
+        $('#area-tab').text("{{ _('Por área') }}");
+        $('#payee-tab').text("{{ _('Por beneficiario') }}");
+      }
+
+      // Update download links
+      var queryString = window.location.hash.replace("#", "");
+      $('.icon-file-excel').each(function() {
+        $(this).attr('href', $(this).attr('data-base-url')+'?'+queryString)
+      });
+
+      $('.payments-content .tab-content').show();
+    }
+
+    function sendSearchQuery(){
+      $.ajax({
+        url: "pagos/search",
+        data: {
+          description:  query.description,
+          payee:        query.payee,
+          area:         query.area,
+          date:         (yearAsRange || query.date=='') ? query.date : query.date+','+query.date
+        },
+        contentType:    'application/json; charset=utf-8',
+        success:        onSearchSuccess,
+        error:          onSearchError,
+      });
+    }
+
+    function onSearchSuccess(response) {
+      // Setup values
+      paymentsCount   = response.totalResults;
+      totalAmount     = response.totalAmount;
+      areaBreakdown   = response.areaBreakdown;
+      payeeBreakdown  = response.payeeBreakdown;
+      showingSummary  = response.isSummary;
+
+      // Hide submit loader
+      $('#payments-search button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+
+      // Update tab & redraw grid
+      updateTab();
+    }
+
+    function onSearchError(response) {
+      //TODO!!! Add error message
+      $('#payments-search button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+    }
+
+    function setupInputs() {
+      if (query.description !== $('#input-description').val().trim()){
+        $('#input-description').val(query.description);
+      }
+      if (query.area !== $('#input-area').val()){
+        $('#input-area').val(query.area).trigger('chosen:updated');
+      }
+      if (query.payee !== $('#input-payee').val()){
+        $('#input-payee').val(query.payee).trigger('chosen:updated');
+      }
+      if (query.date && query.date !== $('#input-date').val()){
+        // Using $().val(value) didn't update the slider appearance
+        if (yearAsRange) {
+          var queryYears = query.date.split(',');
+          $('#input-date').slider('setValue', [parseInt(queryYears[0]), parseInt(queryYears[1])]);
+        }
+        else {
+          $('#input-date').slider('setValue', parseInt(query.date));
+        }
+      }
+    }
+
+    function isSameQuery(_query) {
+      return query.description === _query.description && query.payee === _query.payee && query.area === _query.area && query.date === _query.date;
+    }
+
+    function getQueryHash(){
+      var hash = $.deparam.fragment();
+      var queryHash = {
+        description:  ( hash.description ) ? hash.description : '',
+        date:         ( hash.date ) ? hash.date : '',
+        payee:        ( hash.payee ) ? hash.payee : '',
+        area:         ( hash.area ) ? hash.area : ''
+      };
+      return queryHash;
+    }
+
+    //
+    // SETUP
+    //
+
+    // Setup area, payees & institution selects
+    $('#input-area').chosen({width: '100%'});
+    $('#input-payee').chosen({width: '100%'});
+    $('#input-institution').chosen({width: '100%'});
+
+    // Setup year slider
+    if (yearAsRange) {
+      $('#input-date').slider({
+        ticks: years.map(function(d){ return parseInt(d); }),
+        ticks_labels: years
+      });
+    } else {
+      $('#input-date').slider({
+        value: {{last_year}},
+        tooltip: 'always',
+        ticks: years.map(function(d){ return parseInt(d); }),
+        ticks_labels: years
+      });
+    }
+
+    // Setup amount slider
+    $('#input-amount').slider({
+      formatter: function(value) {
+        if (Array.isArray(value)) {
+          return Formatter.amount(value[0]) + ' : ' + Formatter.amount(value[1]);
+        } else {
+          return Formatter.amount(value);
+        }
+      }
+     });
+
+    // Hide year slider if there's only one year
+    if (years.length <= 1) {
+      $('#payments-search .data-controllers').hide();
+    }
+
+    // Setup form submit handler
+    $('#payments-search').submit(function(e){
+      e.preventDefault();
+
+      // Show submit loader
+      $(this).find('button[type="submit"]').attr('disabled', true).children('.glyphicon').removeClass('hide');
+    
+      var state = {
+        description:  $('#input-description').val().trim(),
+        date:         $('#input-date').val(),
+        payee:        $('#input-payee').val(),
+        area:         $('#input-area').val()
+      }
+
+      // If submit the previous query we hide submit loader & do nothing
+      if (isSameQuery(state)) {
+        $(this).find('button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
+        return;
+      }
+
+      // Select tab based on query params
+      state.view = ( state.area && state.area !== '' ) ? 'payee' : 'area';
+
+      // Setup hashes with search parameters
+      $.bbq.pushState( state );
+    });
+
+    // Setup tabs navigation
+    setRedrawOnTabsChange('#tabs', updateTab);
+  });
+</script>
