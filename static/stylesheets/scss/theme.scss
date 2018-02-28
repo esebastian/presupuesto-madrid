@@ -802,3 +802,19 @@ table.table-grid tr td{
 .investments table.table-grid tr.indent-1 td:first-child{
   font-size: 1em;
 }
+
+.investments-content .alert-data-update {
+  margin-bottom: $grid-gutter-width/6;
+}
+
+.investment-line-intro {
+  font-size: 1.125em;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 $grid-gutter-width/2;
+  margin-bottom: 2*$grid-gutter-width/3;
+
+  a{
+    font-weight: 400;
+  }
+}
