@@ -132,6 +132,9 @@ def _download_open_data_file(link, output_folder, output_name):
 
 def _copy_downloaded_files_to_theme(data_files, year, language):
   target_path = os.path.join(ROOT_PATH, settings.THEME, 'data', language, 'municipio', year)
+  if not os.path.exists(target_path):
+    os.makedirs(target_path)
+
   shutil.copy(os.path.join(data_files, '.budget_status'), os.path.join(target_path, '.budget_status'))
   shutil.copy(os.path.join(data_files, 'gastos.csv'), os.path.join(target_path, 'gastos.csv'))
   shutil.copy(os.path.join(data_files, 'gastos.csv'), os.path.join(target_path, 'ejecucion_gastos.csv'))
