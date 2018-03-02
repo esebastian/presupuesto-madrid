@@ -100,6 +100,9 @@ def admin_load(request):
     line = byte_line.decode('utf8', errors='backslashreplace').replace('\r', '')
     subprocess_output.append(line)
 
+  # Touch project/wsgi.py so the app restarts
+  _touch_file(os.path.join(ROOT_PATH, 'project', 'wsgi.py'))
+
   output = "Vamos a cargar los datos disponibles en %s.<br/>" \
             "Ejecutando: <pre>%s</pre>" \
             "Resultado: <pre>%s</pre>" % (data_files, cmd, " ".join(subprocess_output))
@@ -144,6 +147,11 @@ def _create_file(output_folder, output_name, content):
 def _read_file(output_folder, output_name):
   with open(os.path.join(output_folder, output_name), "r") as file:
     return file.read()
+
+def _touch_file(fname, times=None):
+  # Taken from https://stackoverflow.com/a/1160227
+  with open(fname, 'a'):
+      os.utime(fname, times)
 
 def _set_download_message(response, message):
   response['download_output'] = message
