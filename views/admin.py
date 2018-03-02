@@ -73,7 +73,7 @@ def admin_review(request):
   # Execute a helper script to check the data files
   script_path = os.path.join(ROOT_PATH, settings.THEME, 'loaders')
   cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (script_path, )
-  cmd += "python madrid_check_datafiles.py"
+  cmd += "python madrid_check_datafiles.py "+data_files
   subprocess_output = _execute_cmd(cmd)
 
   # Return
