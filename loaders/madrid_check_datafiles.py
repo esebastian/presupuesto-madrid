@@ -23,7 +23,7 @@ def parse_amount(amount):
     return read_english_number(amount)
 
 def format_number(n):
-  return '{:20,.2f}'.format(n)
+  return '{:18,.0f}'.format(n)+" €"
 
 def get_stats(path, is_expense):
   total_external = 0
