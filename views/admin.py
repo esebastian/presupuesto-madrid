@@ -70,9 +70,15 @@ def admin_review(request):
   # Pick up the most recent downloaded files
   data_files = _get_most_recent_files_in_temp_folder()
 
+  # Execute a helper script to check the data files
+  script_path = os.path.join(ROOT_PATH, settings.THEME, 'loaders')
+  cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (script_path, )
+  cmd += "python madrid_check_datafiles.py"
+  subprocess_output = _execute_cmd(cmd)
+
   # Return
   output = "Revisando los datos disponibles en %s.<br/>" \
-            "Resultado: todo correcto." % (data_files, )
+            "Resultado: <pre>%s</pre>" % (data_files, " ".join(subprocess_output))
   return _set_review_message(response, output)
 
 
@@ -90,15 +96,11 @@ def admin_load(request):
   _copy_downloaded_files_to_theme(data_files, year, 'es')
   _copy_downloaded_files_to_theme(data_files, year, 'en')
 
-  # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
+  # Load the data
   cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (ROOT_PATH, )
   cmd += "python manage.py load_budget "+year+" --language=es,en && "
   cmd += "python manage.py load_investments "+year+" --language=es,en"
-  subprocess_output = []
-  p = subprocess.Popen(args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-  for byte_line in iter(p.stdout.readline, ''):
-    line = byte_line.decode('utf8', errors='backslashreplace').replace('\r', '')
-    subprocess_output.append(line)
+  subprocess_output = _execute_cmd(cmd)
 
   # Touch project/wsgi.py so the app restarts
   _touch_file(os.path.join(ROOT_PATH, 'project', 'wsgi.py'))
@@ -155,6 +157,15 @@ def _touch_file(fname, times=None):
   # Taken from https://stackoverflow.com/a/1160227
   with open(fname, 'a'):
       os.utime(fname, times)
+
+def _execute_cmd(cmd):
+  # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
+  subprocess_output = []
+  p = subprocess.Popen(args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+  for byte_line in iter(p.stdout.readline, ''):
+    line = byte_line.decode('utf8', errors='backslashreplace').replace('\r', '')
+    subprocess_output.append(line)
+  return subprocess_output
 
 def _set_download_message(response, message):
   response['download_output'] = message
