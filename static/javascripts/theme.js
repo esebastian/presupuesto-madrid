@@ -101,7 +101,7 @@ $(document).ready(function(){
     var investmentLineIntro = '<p>Líneas de inversión desarrolladas en un el distrito <a href="#policy-description-box">(*)</a></p>';
 
     if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
-      $('.alert-data-update').append( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
+      $('#policy-chart-container').before( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
       $('.investments .investments-content .policies-chart').append( '<div class="policy-description" id="policy-description-box">'+description+'</div>' );
       $('.investments .investments-content .panel-downloads').before( '<div class="policy-description">'+description+'</div>' );
     }

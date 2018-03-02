@@ -509,9 +509,7 @@ header{
 .policy-description{
   font-size: 1em;
   padding: $grid-gutter-width/2 2*$grid-gutter-width/3 $grid-gutter-width/3;
-  margin-top: $grid-gutter-width/2;
-  margin-right: 2*$grid-gutter-width/3;
-  margin-left: 80px;
+  margin-top: $grid-gutter-width;
   margin-bottom: 0;
   background: $brand-secondary;
 
@@ -573,7 +571,22 @@ header{
       border-bottom-color: transparent;
     }
   }
+
+  .payments-search-panel .page-title {
+    font-size: 1.25em;
+    margin-bottom: $grid-gutter-width;
+  }
 }
+
+#payments-search .form-group {
+  margin-bottom: 2*$grid-gutter-width/3;
+}
+
+#payments-search .data-controllers {
+  margin-top: $grid-gutter-width/3;
+  margin-bottom: $grid-gutter-width/3;
+}
+
 
 // Guided Visit
 .guidedvisit-content{
@@ -851,5 +864,19 @@ table.table-grid tr td{
   .btn-primary{
     font-size: 1.5rem;
     margin: $grid-gutter-width/3 0;
+
+.investments-content .alert-data-update {
+  margin-bottom: $grid-gutter-width/6;
+}
+
+.investment-line-intro {
+  font-size: 1.125em;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 $grid-gutter-width/2;
+  margin-bottom: 2*$grid-gutter-width/3;
+
+  a{
+    font-weight: 400;
   }
 }
