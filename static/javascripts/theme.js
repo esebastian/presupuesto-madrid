@@ -44,13 +44,13 @@ $(document).ready(function(){
 
   var addYearSelectorCustomLabels = function(){
     var str2017 = {
-      'es': 'prórroga 2016',
-      'en': 'extended 2016',
+      'es': 'Prórroga de 2017',
+      'en': 'Extended 2017',
     };
 
     $('.data-controllers .layout-slider .slider .slider-tick-label').each(function(){
       var val = $(this).html();
-      if (val === '2017'){
+      if (val === '2018'){
         $(this).html(val + '<br/><small><i> ('+ str2017[ $('html').attr('lang') ] +')</i></small>');
       }
     });
@@ -113,7 +113,7 @@ $(document).ready(function(){
   };
 
 
-  // addYearSelectorCustomLabels();
+  addYearSelectorCustomLabels();
 
   // Setup lang dropdown
   $('.dropdown-toggle').dropdown();
