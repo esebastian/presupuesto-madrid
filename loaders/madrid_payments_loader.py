@@ -28,6 +28,6 @@ class MadridPaymentsLoader(PaymentsLoader):
       'ec_code': None,
       'date': None,
       'payee': payee,
-      'description': description,
+      'description': description + ' (' + str(budget.year) + ')',
       'amount': self._read_english_number(line[4])
     }
