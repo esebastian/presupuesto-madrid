@@ -27,7 +27,6 @@ class MadridPaymentsLoader(PaymentsLoader):
       'fc_code': None,
       'ec_code': None,
       'date': None,
-      'contract_type': None,
       'payee': payee,
       'description': description,
       'amount': self._read_english_number(line[4])
