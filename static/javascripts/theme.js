@@ -102,7 +102,6 @@ $(document).ready(function(){
 
     if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
       $('#policy-chart-container').before( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
-      $('.investments .investments-content .policies-chart').append( '<div class="policy-description" id="policy-description-box">'+description+'</div>' );
       $('.investments .investments-content .panel-downloads').before( '<div class="policy-description">'+description+'</div>' );
     }
   };
