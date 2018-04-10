@@ -28,13 +28,14 @@ class MadridPaymentsLoader(PaymentsLoader):
     policy_id = line[1][:2]
     policy = Budget.objects.get_all_descriptions(budget.entity)['functional'][policy_id]
 
-    # Some descriptions are missing in early years
-    description = line[2].strip()
+    # Some descriptions are missing in early years. Per #685, we use the heading text then.
+    description = line[3].strip()
     if description=="":
-      description="..."
+      heading_id = line[2][0:3]
+      description = Budget.objects.get_all_descriptions(budget.entity)['expense'][heading_id]
 
     # And some payee names have some trailing punctuation marks: one or two instances of " ."
-    payee = line[3].strip()
+    payee = line[4].strip()
     payee = re.sub(r'( \.)+$', '', payee)
 
     # Get institutional code. See the budget_loader for more details on this process for Madrid.
@@ -53,7 +54,7 @@ class MadridPaymentsLoader(PaymentsLoader):
       'date': None,
       'payee': payee,
       'description': description + ' (' + str(budget.year) + ')',
-      'amount': self._read_english_number(line[4])
+      'amount': self._read_english_number(line[5])
     }
 
   # We expect the organization code to be one digit, but Madrid has a 3-digit code.
