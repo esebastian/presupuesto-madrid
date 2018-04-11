@@ -45,10 +45,6 @@
           </li>
           {% endif %}
 
-          <li class="page-institutions {{ 'active' if active_tab == "guidedvisit"}}">
-            <a href="{{ url('presupuesto-madrid.views.guidedvisit') }}" class="icon-payments">{{ _('Visita guiada') }}</a>
-          </li>
-
           {% if show_investments %}
           <li class="page-investments {{ 'active' if active_tab == "investments"}}">
             <a href="{{ url('budget_app.views.investments') }}" class="icon-investments">{{ _('Inversiones por distritos') }}</a>
@@ -66,6 +62,10 @@
             <a href="{{ url('budget_app.views.tax_receipt') }}" class="icon-aportacion">{{ _('Lo que tú aportas') }}</a>
           </li>
           {% endif %}
+
+          <li class="page-institutions {{ 'active' if active_tab == "guidedvisit"}}">
+            <a href="{{ url('presupuesto-madrid.views.guidedvisit') }}" class="icon-payments">{{ _('Visita guiada') }}</a>
+          </li>
 
           <li class="page-glossary {{ 'active' if active_tab == "glossary"}}">
             <a href="{{ url('budget_app.views.terms') }}" class="icon-glossary">{{ _('¿Qué significa...?') }}</a>
