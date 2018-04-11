@@ -34,9 +34,12 @@ class MadridPaymentsLoader(PaymentsLoader):
       heading_id = line[2][0:3]
       description = Budget.objects.get_all_descriptions(budget.entity)['expense'][heading_id]
 
-    # And some payee names have some trailing punctuation marks: one or two instances of " ."
+    # Get the payee name and clean it up a bit, as some non-ASCII characters are messed up.
     payee = line[4].strip()
-    payee = re.sub(r'( \.)+$', '', payee)
+    payee = payee.replace('Ð', 'Ñ').replace('Ë', 'Ó').replace('\'-', 'Á')
+    # And some payee names have bizarre punctuation marks:
+    payee = re.sub(r'( \.)+$', '', payee)   # trailing 1-2 instances of " ."
+    payee = re.sub(r'^[\. ]+', '', payee)   # leading dot or spaces
 
     # Get institutional code. See the budget_loader for more details on this process for Madrid.
     institution = self.get_institution_code(line[0][0:3])
