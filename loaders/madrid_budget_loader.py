@@ -161,9 +161,11 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
             amount = self.parse_amount(line[9 if is_actual else 8])
 
-            # Ignore transfers from parent organisation
-            if ec_code[:-2] in ['410', '710', '400', '700']:
-                amount = 0
+            # Ignore transfers from parent organisation.
+            # Note that we have a bit of a special organism, which is not independent (see #705)
+            if ic_code != '200':
+                if ec_code[:-2] in ['410', '710', '400', '700']:
+                    amount = 0
 
             # See note above
             description = self._spanish_titlecase( line[5].decode("iso-8859-1").encode("utf-8") )
