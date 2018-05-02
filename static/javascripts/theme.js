@@ -98,7 +98,7 @@ $(document).ready(function(){
       'utiliza una clasificación por Líneas de inversión, herramienta más sencilla y simplificada para analizar y '+
       'exponer el destino de las inversiones. </p>';
 
-    var investmentLineIntro = '<p>Líneas de inversión desarrolladas en el distrito <a href="#policy-description-box">(*)</a></p>';
+    var investmentLineIntro = '<p>Líneas de inversión en el distrito <a href="#policy-description-box">(*)</a></p>';
 
     if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
       $('#policy-chart-container').before( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
