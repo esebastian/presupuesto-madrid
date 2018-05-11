@@ -57,6 +57,9 @@ TREEMAP_LABELS_FONT_SIZE_MIN = 5
 # Show Payments section in menu & home options. Default: False.
 SHOW_PAYMENTS           = True
 
+# Define if payments year slider is a range (True) or a single year (False). Default: True
+PAYMENTS_YEAR_RANGE = False
+
 # Show Invesments section in menu & home options. Default: False.
 SHOW_INVESTMENTS = True
 
