@@ -62,22 +62,22 @@
             </div>
           </div>
         </div>
-<!--
+
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
               <label for="input-amount-min">{{ _('Importe mínimo') }}</label>
-              <input  type="number" id="input-amount-min" class="form-control" value="0" min="0" max="{{max_amount/100}}" />
+              <input  type="number" id="input-amount-min" class="form-control"/>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="input-amount-max">{{ _('Importe máximo') }}</label>
-              <input  type="number" id="input-amount-max" class="form-control" value="{{(max_amount/100) | floatformat}}" min="0" max="{{max_amount/100}}" />
+              <input  type="number" id="input-amount-max" class="form-control"/>
             </div>
           </div>
         </div>
--->
+
         <div id="data-controller-date" class="form-group data-controllers">
           <label for="input-date">{{ _('Fecha') }}</label>
           {% if payments_year_range %}
