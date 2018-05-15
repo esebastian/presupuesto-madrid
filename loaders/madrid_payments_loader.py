@@ -35,7 +35,7 @@ class MadridPaymentsLoader(PaymentsLoader):
       description = Budget.objects.get_all_descriptions(budget.entity)['expense'][heading_id]
 
     # Get the payee name and clean it up a bit, as some non-ASCII characters are messed up.
-    payee = line[4].strip()
+    payee = line[5].strip()
     payee = payee.replace('Ð', 'Ñ').replace('Ë', 'Ó').replace('\'-', 'Á')
     # And some payee names have bizarre punctuation marks:
     payee = re.sub(r'( \.)+$', '', payee)   # trailing 1-2 instances of " ."
@@ -56,8 +56,9 @@ class MadridPaymentsLoader(PaymentsLoader):
       'ic_code': ic_code,
       'date': None,
       'payee': payee,
+      'payee_fiscal_id': line[4],
       'description': description + ' (' + str(budget.year) + ')',
-      'amount': self._read_english_number(line[5])
+      'amount': self._read_english_number(line[6])
     }
 
   # We expect the organization code to be one digit, but Madrid has a 3-digit code.
