@@ -41,6 +41,10 @@ class MadridPaymentsLoader(PaymentsLoader):
     payee = re.sub(r'( \.)+$', '', payee)   # trailing 1-2 instances of " ."
     payee = re.sub(r'^[\. ]+', '', payee)   # leading dot or spaces
 
+    # Madrid wants to include the fiscal id trailing the payee name.
+    fiscal_id = line[4]
+    payee = payee + ' (' + fiscal_id + ')'
+
     # Get institutional code. See the budget_loader for more details on this process for Madrid.
     institution = self.get_institution_code(line[0][0:3])
     ic_code = institution + (line[0][3:6] if institution=='0' else '00')
@@ -56,7 +60,7 @@ class MadridPaymentsLoader(PaymentsLoader):
       'ic_code': ic_code,
       'date': None,
       'payee': payee,
-      'payee_fiscal_id': line[4],
+      'payee_fiscal_id': fiscal_id,
       'description': description + ' (' + str(budget.year) + ')',
       'amount': self._read_english_number(line[6])
     }
