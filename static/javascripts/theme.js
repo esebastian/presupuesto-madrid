@@ -111,6 +111,22 @@ $(document).ready(function(){
     $(".total-budgeted").prependTo(".budget-totals .panel-content");
   };
 
+  var addPaymentsFormValidation = function(){
+    // Format numeric inputs (with thousands separator)
+    $('#input-amount-min, #input-amount-max').keyup(function(e){
+      var value = $(this).val();
+      value = value.replace(/[\D\s\._\-]+/g, '');
+      $(this).val((value) ? Formatter.number(parseInt(value, 10)) : '');
+    });
+
+    // Remove special chars in NIF input
+    $('#input-fiscal-id').keyup(function(e){
+      var value = $(this).val();
+      if (value.match(/[^a-zA-Z0-9]/g)) {
+        $(this).val(value.replace(/[^a-zA-Z0-9]/g, ''));
+      }
+    });
+  };
 
   addYearSelectorCustomLabels();
 
@@ -125,4 +141,6 @@ $(document).ready(function(){
   addCustomDescriptions();
 
   addInvestmentsDescriptions();
+
+  addPaymentsFormValidation();
 });
