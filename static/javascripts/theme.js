@@ -44,8 +44,8 @@ $(document).ready(function(){
 
   var addYearSelectorCustomLabels = function(){
     var str2017 = {
-      'es': 'Prórroga de 2017',
-      'en': 'Extended 2017',
+      'es': 'Proyecto',
+      'en': 'Proposal',
     };
 
     $('.data-controllers .layout-slider .slider .slider-tick-label').each(function(){
