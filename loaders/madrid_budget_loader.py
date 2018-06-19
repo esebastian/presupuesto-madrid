@@ -112,6 +112,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2] in ['410', '710', '400', '700']:
+                print "Eliminando gasto (artículo %s): %s €" % (ec_code, amount)
                 amount = 0
 
             # Get institutional code. We ignore sections in autonomous bodies,
@@ -165,6 +166,7 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             # Note that we have a bit of a special organism, which is not independent (see #705)
             if ic_code != '200':
                 if ec_code[:-2] in ['410', '710', '400', '700']:
+                    print "Eliminando ingreso (artículo %s): %s €" % (ec_code, amount)
                     amount = 0
 
             # See note above
