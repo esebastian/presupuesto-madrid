@@ -1,7 +1,7 @@
 // Theme custom js methods
 $(document).ready(function(){
 
-  var addChartsAlert = function(selector){
+  var addChartsAlert = function(selector) {
     var str = {
       'es': 'Datos actualizados a ',
       'en': 'Data up to '
@@ -42,7 +42,7 @@ $(document).ready(function(){
     }
   };
 
-  var addYearSelectorCustomLabels = function(){
+  var addYearSelectorCustomLabels = function() {
     var str2017 = {
       'es': 'Proyecto',
       'en': 'Proposal',
@@ -57,7 +57,7 @@ $(document).ready(function(){
   };
 
   // Custom for descriptions in some programmes
-  var addCustomDescriptions = function(){
+  var addCustomDescriptions = function() {
     var descriptions = {
       '/es/politicas/01': {
         'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
@@ -91,7 +91,7 @@ $(document).ready(function(){
   };
 
   // Custom description for investments
-  var addInvestmentsDescriptions = function(){
+  var addInvestmentsDescriptions = function() {
     var description = '<p>(*) La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
       'realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba '+
       'la estructura de los presupuestos de las entidades locales.</p><p>En el Ayuntamiento de Madrid, además, se '+
@@ -107,9 +107,19 @@ $(document).ready(function(){
   };
 
   // Swap order of budgeted/actual totals in Overview page
-  var swapTotalsInOverview = function(){
+  var swapTotalsInOverview = function() {
     $(".total-budgeted").prependTo(".budget-totals .panel-content");
   };
+
+  var addIEAdvice = function() {
+    var ua = window.navigator.userAgent;
+    if ($('body').hasClass('body-payments')) {
+      console.log(ua)
+      if (ua.indexOf('MSIE') > 0 || ua.indexOf('Trident/') > 0) {
+        $('.payments-content > .container').first().prepend('<p class="alert alert-danger" style="margin-top: 30px; font-size: 1.5rem;">Su navegador puede presentar problemas de rendimiento en esta sección. Le recomendamos utilizar <a href="https://www.google.es/chrome/" title="Google Chrome" target="_blank" rel="nofollow">Google Chrome</a> o <a href="https://www.mozilla.org/es-ES/firefox/new/" title="Mozilla Firefox" target="_blank" rel="nofollow">Mozilla Firefox</a> para un mejor rendimiento.</p>');
+      }
+    }
+  }
 
   addYearSelectorCustomLabels();
 
@@ -124,4 +134,6 @@ $(document).ready(function(){
   addCustomDescriptions();
 
   addInvestmentsDescriptions();
+
+  addIEAdvice();
 });
