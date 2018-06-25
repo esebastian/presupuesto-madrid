@@ -109,6 +109,7 @@
 3;1;1;01;Salubridad pública
 3;1;1;02;Adicciones
 3;2;1;02;Centros educativos
+3;2;1;10;Creación centros docentes infantil y primaria
 3;2;3;01;Centros docentes enseñanza infantil y primaria
 3;2;5;01;Absentismo
 3;2;6;01;Servicios complementarios educación
@@ -136,6 +137,7 @@
 4;3;3;11;Desarrollo empresarial
 4;4;1;10;"Promoción, control y desarrollo del transporte"
 4;6;2;00;Innovación y ciudad inteligente
+4;6;3;00;"Investigación científica, técnica y aplicada"
 4;9;1;01;Servicios informáticos y comunicaciones
 4;9;1;02;Innovación y tecnología
 4;9;3;00;Consumo

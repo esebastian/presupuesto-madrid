@@ -109,6 +109,7 @@
 3;1;1;01;Public health
 3;1;1;02;Addictions
 3;2;1;02;Schools
+3;2;1;10;Creation of infant and primary schools
 3;2;3;01;Primary schools and child care
 3;2;5;01;Absenteeism
 3;2;6;01;Complementary education services
@@ -136,6 +137,7 @@
 4;3;3;11;Business development
 4;4;1;10;"Transportation promotion, control and development"
 4;6;2;00;Smart cities and innovation
+4;6;3;00;"Scientific, technical and applied research"
 4;9;3;00;Consumer protection
 4;9;1;01;Computer services and communications
 4;9;1;02;Innovation and technology
