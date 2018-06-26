@@ -123,6 +123,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             institution = self.get_institution_code(line[0].zfill(3))
             ic_code = institution + (line[2].zfill(3) if institution=='0' else '00')
 
+            # We've been asked to ignore data for a special department, not really an organism (#756)
+            if ic_code == '200':
+                return
+
             # Apply institutional mapping to make codes consistent across years
             if int(year) <= 2015:
                 ic_code = institutional_mapping.get(ic_code, ic_code)
@@ -162,12 +166,14 @@ class MadridBudgetLoader(SimpleBudgetLoader):
             ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
             amount = self.parse_amount(line[9 if is_actual else 8])
 
+            # We've been asked to ignore data for a special department, not really an organism (#756)
+            if ic_code == '200':
+                return
+
             # Ignore transfers from parent organisation.
-            # Note that we have a bit of a special organism, which is not independent (see #705)
-            if ic_code != '200':
-                if ec_code[:-2] in ['410', '710', '400', '700']:
-                    print "Eliminando ingreso (artículo %s): %s €" % (ec_code, amount)
-                    amount = 0
+            if ec_code[:-2] in ['410', '710', '400', '700']:
+                print "Eliminando ingreso (artículo %s): %s €" % (ec_code, amount)
+                amount = 0
 
             # See note above
             description = self._spanish_titlecase( line[5].decode("iso-8859-1").encode("utf-8") )
