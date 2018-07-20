@@ -74,6 +74,7 @@
 1;7;0;00;Dir. y gest. adv. medio ambiente y movilidad
 1;7;1;01;Patrimonio verde
 1;7;1;02;Zonas verdes
+1;7;1;03;Equipamiento de zonas ajardinadas
 1;7;2;02;Sostenibilidad y Agenda 21
 1;7;2;03;"Coordinación, educación ambiental y bienes urbanos"
 1;7;2;04;"Sostenibilidad, planificación y calidad ambiental"
@@ -117,6 +118,7 @@
 3;3;2;10;Bibliotecas públicas y patrimonio bibliográfico
 3;3;2;20;Archivos
 3;3;3;01;Museos
+3;3;3;03;Otros equipamientos culturales
 3;3;4;01;Actividades culturales
 3;3;4;02;Proyectos culturales
 3;3;4;05;Banda sinfónica municipal
@@ -132,6 +134,7 @@
 4;3;1;20;Mercados y comercio
 4;3;1;40;Promoción comercial y emprendimiento
 4;3;2;01;Turismo
+4;3;2;20;Información y promoción turística
 4;3;3;01;Promoción económica y desarrollo empresarial
 4;3;3;10;Economía
 4;3;3;11;Desarrollo empresarial

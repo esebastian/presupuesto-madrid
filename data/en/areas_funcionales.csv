@@ -74,6 +74,7 @@
 1;7;0;00;Mobility and Environment administration and management
 1;7;1;01;Green assets
 1;7;1;02;Parks
+1;7;1;03;Equipment for landscaped areas
 1;7;2;02;Sustainability and Agenda 21
 1;7;2;03;"Coordination, environmental education and urban goods"
 1;7;2;04;"Sustainability, planning and environmental quality"
@@ -117,6 +118,7 @@
 3;3;2;10;Public libraries and bibliographical heritage
 3;3;2;20;Archives
 3;3;3;01;Museums
+3;3;3;03;Other cultural equipments
 3;3;4;01;Cultural activities
 3;3;4;02;Cultural projects
 3;3;4;05;Municipal symphonic band
@@ -132,6 +134,7 @@
 4;3;1;20;Markets and trade
 4;3;1;40;Trade promotion and entrepreneurship
 4;3;2;01;Tourism
+4;3;2;20;Tourist information and promotion
 4;3;3;01;Economic promotion and business development
 4;3;3;10;Economy
 4;3;3;11;Business development
