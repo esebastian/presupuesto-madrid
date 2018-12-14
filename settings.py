@@ -156,4 +156,5 @@ EXTRA_URLS = (
     url(r'^admin/load$', 'admin_load', name="admin-load"),
 
     url(r'^inflacion\.(?P<format>.+)$', 'inflation_stats'),
+    url(r'^poblacion\.(?P<format>.+)$', 'population_stats'),
 )
