@@ -1,7 +1,7 @@
-# Datos de IPC del INE. Medias anuales de IPC para la Comunidad de Madrid, Índice general: 
-#   http://www.ine.es/jaxiT3/Tabla.htm?t=10019&L=0
-# Las tasas de inflación se refieren a la media de las tasas interanuales durante los 12
-# meses del año. Esta media es calculada por el INE y publicada en la dirección indicada.
+# Datos de IPC del INE. Variación anual del IPC para la Comunidad de Madrid, Índice general:
+#   http://www.ine.es/jaxiT3/Tabla.htm?t=22350&L=0
+# Las tasas de inflación se refieren a la variación interanual en el mes de diciembre.
+# Esta variación es calculada por el INE y publicada en la dirección indicada.
 # La aplicación calcula internamente un índice de inflación a partir de estas tasas, tal que:
 #    Indice Año Actual = 100
 #    Indice Año N-1 = Indice Año N / (1+Inflación Año N)
@@ -16,4 +16,5 @@
 2014,-1.1
 2015,0.0
 2016,1.4
-2017,0
+2017,1.2
+2018,0
