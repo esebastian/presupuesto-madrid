@@ -23,7 +23,7 @@ class MadridInvestmentsLoader(InvestmentsLoader):
     def parse_item(self, filename, line):
         # Skip empty/header/subtotal lines.
         # Careful with 2017 data, first two columns are usually empty
-        if line[0] in ['*', 'Fondo']:
+        if unicode(line[0], encoding='iso-8859-1').encode('utf8') in ['*', 'Fondo', 'Programa de financiación']:
             return
         if line[0]=='' and line[2]=='':
             return
@@ -40,11 +40,21 @@ class MadridInvestmentsLoader(InvestmentsLoader):
             gc_code = self.map_geo_code(self.clean(line[0]).strip())
             amount = self._read_english_number(line[5])
         else:
-            project_id = line[7]
-            description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
-            investment_line = line[11]
-            gc_code = self.map_geo_code(line[9])
-            amount = self._read_spanish_number(line[28 if is_actual else 23])
+            # Investment data comes in two very different formats: when the budget is
+            # approved and when provided as part of an execution update.
+            if len(line) > 12:
+                project_id = line[7]
+                description = unicode(line[8], encoding='iso-8859-1').encode('utf8')
+                investment_line = line[11]
+                gc_code = self.map_geo_code(line[9])
+                amount = self._read_spanish_number(line[28 if is_actual else 23])
+
+            else:
+                project_id = line[0]
+                description = unicode(line[1], encoding='iso-8859-1').encode('utf8')
+                investment_line = line[6]
+                gc_code = self.map_geo_code(line[10])
+                amount = self._read_spanish_number(line[5])
 
         # Note we implement the investment lines as an extension of functional policies.
         # See #527 for further information.
