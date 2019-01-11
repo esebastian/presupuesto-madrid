@@ -100,15 +100,29 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         if line[0] == 'Centro':
             return
 
+        # The format of numbers in data files have changed along the years:
+        # Up to 2016 (included) we converted Excel files using in2csv: English format
+        # From 2017 we use the original CSVs from the open data portal: Spanish format
+        year = re.search('municipio/(\d+)/', filename).group(1)
+        if int(year) < 2017:
+            parse_amount = self._read_english_number
+        else:
+            parse_amount = self.parse_spanish_amount
+
         is_expense = (filename.find('gastos.csv')!=-1)
         is_actual = (filename.find('/ejecucion_')!=-1)
-        year = re.search('municipio/(\d+)/', filename).group(1)
         if is_expense:
             # Note: in the most recent 2016 data the leading zeros were missing,
             # so add them back using zfill.
             fc_code = line[4].zfill(5)
             ec_code = line[8]
-            amount = self.parse_amount(line[15 if is_actual else 12])
+
+            # Select the amount column to use based on whether we are importing execution
+            # or budget data. In the latter case, sometimes we're dealing with the
+            # amended budget, sometimes with the just approved one, in which case
+            # there're less columns
+            budget_position = 12 if len(line) > 11 else 10
+            amount = parse_amount(line[15 if is_actual else budget_position])
 
             # Ignore transfers to dependent organisations
             if ec_code[:-2] in ['410', '710', '400', '700']:
@@ -164,7 +178,10 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         else:
             ec_code = line[4]
             ic_code = self.get_institution_code(line[0].zfill(3)) + '00'
-            amount = self.parse_amount(line[9 if is_actual else 8])
+
+            # Select the column from which to read amounts. See similar comment above.
+            budget_position = 8 if len(line) > 7 else 6
+            amount = parse_amount(line[9 if is_actual else budget_position])
 
             # We've been asked to ignore data for a special department, not really an organism (#756)
             if ic_code == '200':
@@ -194,12 +211,9 @@ class MadridBudgetLoader(SimpleBudgetLoader):
         institution_code = madrid_code if madrid_code!='001' else '000'
         return institution_code[2]
 
-    # Parse a numerical amount, which can be in English format (for those CSVs generated
-    # from XLS via in2csv) or Spanish.
-    def parse_amount(self, amount):
-        if ',' in amount:
-            amount = amount.replace(',', '.')
-        return self._parse_amount(amount)
+    def parse_spanish_amount(self, amount):
+        amount = amount.replace('.', '')    # Remove thousands delimiters, if any
+        return self._read_english_number(amount.replace(',', '.'))
 
     def _get_delimiter(self):
         return ';'
