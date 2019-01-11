@@ -37,8 +37,11 @@ $(document).ready(function(){
     var cont = $(selector);
     if( cont.length > 0 ) {
       var language = $('html').attr('lang');
-      var message = str[language] + dates[last_budget_status+'.'+language] + last_budget_year;
-      cont.prepend('<div class="alert alert-data-update">' + message + '</div>');
+      var date = dates[last_budget_status+'.'+language];
+      if( date != null ) {
+        var message = str[language] + date + last_budget_year;
+        cont.prepend('<div class="alert alert-data-update">' + message + '</div>');
+      }
     }
   };
 
