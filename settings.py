@@ -89,7 +89,6 @@ CONSISTENT_INSTITUTIONAL_CODES = True
 # Show an extra tab with funding breakdown (only applicable to some budgets). Default: False.
 # SHOW_FUNDING_TAB = False
 
-
 # Show Subtotals panel in Overview. Default: False
 SHOW_OVERVIEW_SUBTOTALS = True
 
@@ -109,6 +108,11 @@ INCLUDE_FINANCIAL_CHAPTERS_IN_BREAKDOWNS = True
 
 # Search in entity names. Default: True.
 SEARCH_ENTITIES = False
+
+
+# Number of items per terms page. Default: 10
+TERMS_PAGE_LENGTH = 50
+
 
 # Supported languages. Default: ('es', 'Castellano')
 LANGUAGES = (
