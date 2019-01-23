@@ -32,8 +32,8 @@ class MadridInvestmentsLoader(InvestmentsLoader):
         year = re.search('municipio/(\d+)/', filename).group(1)
         is_actual = (filename.find('/ejecucion_')!=-1)
 
-        # 2017 data is in a different format to previous years
-        if int(year) < 2017:
+        # 2014 data is in a different format to previous years
+        if int(year) < 2014:
             project_id = line[3]
             description = line[4]
             investment_line = self.clean(line[1])
