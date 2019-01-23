@@ -18,11 +18,13 @@
       <div class="row">
         <div class="col-md-3 hidden-xs hidden-sm">
           <ul class="guidedvisit-menu">
+            <li><a href="que-informacion-puedes-encontrar">{{ _('¿Qué información puedes encontrar?') }}</a></li>
             <li><a href="#de-las-grandes-cifras-al-detalle">{{ _('De las grandes cifras al detalle') }}</a></li>
             <li><a href="#no-solo-lo-presupuestado">{{ _('No solo lo presupuestado, también lo gastado') }}</a></li>
             <li><a href="#tambien-los-ingresos">{{ _('También los ingresos') }}</a></li>
             <li><a href="#mas-rapido-usa-el-buscador">{{ _('Más rápido: usa el buscador') }}</a></li>
             <li><a href="#la-evolucion-desde-2011">{{ _('La evolución desde 2011') }}</a></li>
+            <li><a href="#que-tipo-de-cantidades-puedes-ver">{{ _('¿Qué tipo de cantidades puedes ver?') }}</a></li>
             <li><a href="#quien-lo-gasta">{{ _('¿Quién lo gasta?') }}</a></li>
             <li><a href="#en-que-se-gasta">{{ _('¿Cómo se gasta?') }}</a></li>
             <li><a href="#pagos-a-terceros">{{ _('Pagos a terceros') }}</a></li>
@@ -31,7 +33,11 @@
           </ul>
         </div>
         <div class="col-md-9">
-          <p class="lead">{{ _('El objetivo de la página de presupuestos del Ayuntamiento de Madrid es que cualquier ciudadano sea capaz de encontrar, a unos pocos clics, de forma visual y sin tener que revisar páginas y páginas de tablas, cualquier línea de las cuentas de los últimos años. Si es tu primera vez y no sabes por dónde empezar, te acompañamos en un primer paseo.') }}</p>
+          <p class="lead">{{ _('El objetivo de la página de presupuestos del Ayuntamiento de Madrid es que cualquier persona sea capaz de encontrar, a unos pocos clics, de forma visual y sin tener que revisar páginas y páginas de tablas, cualquier línea de las cuentas de los últimos años. Si es tu primera vez y no sabes por dónde empezar, te acompañamos en un primer paseo.') }}</p>
+
+          <h3 id="que-informacion-puedes-encontrar">{{ _('¿Qué información puedes encontrar?') }}</h3>
+
+          <p>{{ _('En esta web se muestran los presupuestos consolidados de ingresos y gastos del Ayuntamiento de Madrid y sus Organismos Autónomos desde el año 2011 hasta el ejercicio actual. En el apartado de <a href="/es/resumen">Visión global</a> puedes ver además los principales indicadores presupuestarios: ahorro bruto y neto así como la capacidad/necesidad de financiación del Ayuntamiento.') | safe }}</p>
 
           <h3 id="de-las-grandes-cifras-al-detalle">{{ _('De las grandes cifras al detalle') }}</h3>
 
@@ -45,19 +51,23 @@
 
           <h3 id="no-solo-lo-presupuestado">{{ _('No solo lo presupuestado, también lo gastado') }}</h3>
 
-          <p>{{ _('La página web de los presupuestos de Madrid no solo informa de forma gráfica del reparto de los presupuestos, sino también del estado de ejecución mensual. Es decir, puedes saber cuánto se ha gastado de cada partida hasta la fecha de actualización. Así, lo gastado aparece junto a lo presupuestado en todas las tablas de la herramienta y, además, de forma gráfica, en las visualizaciones. Las franjas azules de la <a href="/es/resumen">visión global</a>, por ejemplo, muestran cuánto se ha gastado o ingresado, por el momento, del total previsto en los presupuestos (el fondo gris).') | safe }}</p>
+          <p>{{ _('La página web de los presupuestos de Madrid no solo informa de forma gráfica del reparto de los presupuestos, sino también del estado de ejecución mensual. Es decir, puedes saber cuál es la previsión total (previsión inicial más/menos modificaciones) de los gastos y cuánto se ha gastado de cada partida hasta la fecha de actualización. Los datos de ejercicios cerrados corresponden a los presupuestos liquidados.') }}</p>
+
+          <p>{{ _('Así, lo gastado aparece junto a lo presupuestado en todas las tablas de la herramienta y, además, de forma gráfica, en las visualizaciones. Las franjas azules de la <a href="/es/resumen">visión global</a>, por ejemplo, muestran cuánto se ha gastado o ingresado, por el momento, del total previsto en los presupuestos (el fondo gris).') | safe }}</p>
 
           <img src="{% static 'assets/guidedvisit-3.png' %}" class="img-responsive" alt="" />
 
           <h3 id="tambien-los-ingresos">{{ _('También los ingresos') }}</h3>
 
-          <p>{{ _('Esta web también incluye detalles sobre las partidas de ingresos. La <a href="/es/politicas#view=income">visualización</a> muestra el reparto de los grandes bloques y cómo, por ejemplo, los impuestos sobre el capital son la mayor fuente de financiación del ayuntamiento, seguidos por las transferencias de la Administración del Estado, encargada de recaudar el IVA y parte del IRPF.') | safe }}</p>
+          <p>{{ _('Esta web también incluye detalles sobre las partidas de ingresos. La <a href="/es/politicas#view=income">visualización</a> muestra el reparto de los grandes bloques y cómo, por ejemplo, los impuestos sobre el capital son la mayor fuente de financiación del ayuntamiento, seguidos por las transferencias de la Administración del Estado.') | safe }}</p>
 
           <img src="{% static 'assets/guidedvisit-4.png' %}" class="img-responsive" alt="" />
 
           <h3 id="mas-rapido-usa-el-buscador">{{ _('Más rápido: usa el buscador') }}</h3>
 
-          <p>{{ _('Hasta ahora hemos estado navegando, arriba y abajo, para ir al detalle o descubrir los grandes números. Pero, si te interesa un asunto concreto, existe una opción mucho más directa: utilizar el buscador, que rastrea en los presupuestos y en páginas de ayuda como ésta. Introduce, por ejemplo, la palabra &quot;infantil&quot;. La búsqueda te dará <a href="/es/busqueda?q=infantil">tres resultados</a>: uno corresponde a gastos y otros dos a ingresos. Si pinchas en el primer resultado podrás ver el <a href="/es/programas/32301/Centros%20docentes%20ense%C3%B1anza%20infantil%20y%20primaria#view=economic">presupuesto y el gasto en centros docentes de enseñanza infantil y primaria</a>.') | safe }}</p>
+          <p>{{ _('Hasta ahora hemos estado navegando, arriba y abajo, para ir al detalle o descubrir los grandes números. Pero, si te interesa un asunto concreto, existe una opción mucho más directa: utilizar el buscador, que rastrea en los presupuestos y en páginas de ayuda como ésta.') }}</p>
+
+          <p>{{ _('Introduce, por ejemplo, la palabra &quot;infantil&quot;. La búsqueda te dará <a href="/es/busqueda?q=infantil">tres resultados</a>: uno corresponde a gastos y otros dos a ingresos. Si pinchas en el primer resultado podrás ver el <a href="/es/programas/32301/Centros%20docentes%20ense%C3%B1anza%20infantil%20y%20primaria#view=economic">presupuesto y el gasto en centros docentes de enseñanza infantil y primaria</a>.') | safe }}</p>
 
           <h3 id="la-evolucion-desde-2011">{{ _('La evolución desde 2011') }}</h3>
 
@@ -65,13 +75,19 @@
 
           <img src="{% static 'assets/guidedvisit-5.gif' %}" class="img-responsive" alt="" />
 
+          <h3 id="que-tipo-de-cantidades-puedes-ver">{{ _('¿Qué tipo de cantidades puedes ver?') }}</h3>
+
+          <p>{{ _('Podrás ver las cantidades de lo que ingresa, gasta e invierte el Ayuntamiento de distintas formas: nominales, reales (ajustadas a inflación), porcentaje sobre el total y per cápita (real).')  }}</p>
+
           <h3 id="quien-lo-gasta">{{ _('¿Quién lo gasta?') }}</h3>
 
-          <p>{{ _('Hasta ahora nos hemos centrado en la clasificación funcional o por programas, es decir, a qué se destina el dinero. Pero, en algunos casos, es interesante saber qué organismo es el encargado de la gestión. Por ejemplo, en el programa de <a href="/es/politicas/15/vivienda-y-urbanismo#view=institutional">Vivienda y urbanismo</a> puedes ver, desglosado tras abrir el apartado del Ayuntamiento, la parte que gestionan directamente los distritos.') | safe }}</p>
+          <p>{{ _('Hasta ahora nos hemos centrado en la clasificación funcional o por programas, es decir, a qué se destina el dinero. Pero, en algunos casos, es interesante saber qué unidad orgánica se encarga de la gestión. Por ejemplo, en el programa de <a href="/es/politicas/15/vivienda-y-urbanismo#view=institutional">Vivienda y urbanismo</a> puedes ver, desglosado tras abrir el apartado del Ayuntamiento, la parte que gestionan directamente los distritos.') | safe }}</p>
 
           <h3 id="en-que-se-gasta">{{ _('¿Cómo se gasta?') }}</h3>
 
-          <p>{{ _('La tercera pata de un presupuesto de gastos es la clasificación económica o, lo que es lo mismo, ¿en qué se gasta el dinero? Es decir: este punto explica si se trata de gastos de personal, gastos en bienes y servicios, inversiones o transferencias a otras entidades. Por ejemplo, si prestamos atención al detalle del presupuesto de <a href="/es/programas/33210/Bibliotecas%20p%C3%BAblicas%20y%20patrimonio%20bibliogr%C3%A1fico#view=economic">bibliotecas públicas</a> veremos que la franja más destacada, en color azul, es el pago de nóminas. La tabla inferior lo confirma: 21 de los 24 millones presupuestados para 2016 están destinados a los gastos de personal.') | safe }}</p>
+          <p>{{ _('La tercera pata de un presupuesto de gastos es la clasificación económica o, lo que es lo mismo, ¿en qué se gasta el dinero? Es decir: este punto explica si se trata de gastos de personal, gastos en bienes y servicios, inversiones o transferencias a otras entidades.') }}</p>
+
+          <p>{{ _('Por ejemplo, si prestamos atención al detalle del presupuesto de <a href="/es/programas/33210/Bibliotecas%20p%C3%BAblicas%20y%20patrimonio%20bibliogr%C3%A1fico#view=economic">bibliotecas públicas</a> veremos que la franja más destacada, en color azul, es el pago de nóminas. La tabla inferior lo confirma: 21 de los 24 millones presupuestados para 2016 están destinados a los gastos de personal.') | safe }}</p>
 
           <img src="{% static 'assets/guidedvisit-6.png' %}" class="img-responsive" alt="" />
 
@@ -81,15 +97,15 @@
 
           <h3 id="pagos-a-terceros">{{ _('Pagos a terceros') }}</h3>
 
-          <p>{{ _('También puedes explorar, en detalle, todos y cada uno de los pagos a terceros realizados por el Ayuntamiento, 34.848 transacciones que en 2017 sumaron más de 3.280 millones. Así, puedes ver, por ejemplo, los más de 173 millones destinados al Consorcio Regional de Transportes de Madrid, que se encarga de la gestión del Metro.') }}</p>
+          <p>{{ _('También puedes explorar, en detalle, los pagos a terceros: personas jurídicas o físicas con las que el Ayuntamiento tiene relación contractual o convenios, que en 2017 sumaron más de 3.280 millones y 34.848 transacciones. Así, puedes ver, por ejemplo, los más de 173 millones que aportó el Ayuntamiento al Consorcio Regional de Transportes de Madrid, que se encarga de la gestión del Metro.') }}</p>
 
-          <p>{{ _('Además de las cifras generales, puedes buscar por política de gasto (cultura, deporte, educación...), por importe o por qué área del ayuntamiento realiza el pago y qué empresas o entidades lo reciben.') }}</p>
+          <p>{{ _('Además de las cifras generales, puedes buscar por política de gasto (cultura, deporte, educación...), por importe o por qué unidad orgánica del Ayuntamiento realiza el pago y qué empresas o entidades lo reciben.') }}</p>
 
           <img src="{% static 'assets/guidedvisit-8.gif' %}" class="img-responsive" alt="" />
 
           <h3 id="inversiones-por-distritos">{{ _('Inversiones por distritos') }}</h3>
 
-          <p>{{ _('No solo puedes conocer en qué invierte el Ayuntamiento, sino también dónde. En el apartado de <a href="https://presupuestosabiertos.madrid.es/es/inversiones#year=2019">Inversiones por distrito</a> tienes toda la información distribuída en cada uno de los 21 distritos de la ciudad y, para cada uno de ellos, cómo se reparten esas inversiones. Así, puedes saber si las obras en un distrito están más centradas en reformar o edificar polideportivos, centros culturales o en actuaciones urbanísticas, como mejorar las calles, por poner algunos ejemplos. Y, como en toda la página, puedes ver cómo han evolucionado esas inversiones desde 2011.') | safe }}</p>
+          <p>{{ _('No solo puedes conocer en qué invierte el Ayuntamiento, sino también dónde. En el apartado de <a href="https://presupuestosabiertos.madrid.es/es/inversiones#year=2019">Inversiones por distrito</a> tienes información de las inversiones distribuidas en los 21 distritos de la ciudad desde 2011 hasta la fecha actual. Así, en cada distrito puedes consultar las inversiones realizadas y en ejecución, tales como: construcción o reforma de escuelas infantiles, polideportivos, centros culturales, equipamientos para los edificios municipales, actuaciones urbanísticas y en vías públicas, zonas verdes, etc., por poner algunos ejemplos.') | safe }}</p>
 
           <img src="{% static 'assets/guidedvisit-9.png' %}" class="img-responsive" alt="" />
 
