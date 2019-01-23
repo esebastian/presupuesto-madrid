@@ -66,29 +66,38 @@ $(document).ready(function(){
 
   // Custom for descriptions in some programmes
   var addCustomDescriptions = function() {
+    var descriptionText = {
+      'es': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
+            'motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal '+
+            'Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la '+
+            'Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 '+
+            'ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con '+
+            'entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal '+
+            'para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a '+
+            '992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer '+
+            'esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
+      'en': '<p>In 2013, a refinancing of €333,773,499 was carried out due to the subrogation of the City Council ' +
+            'in the debtor position of the municipal company Madrid Espacios y Congresos, S.A. and in part of the debt of the ' +
+            'Empresa Municipal de la Vivienda y Suelo, S.A. This amount, 333.8 million, should not be considered as amortization ' +
+            'for 2013 since it does not represent a real burden for 2013.</p><p>In 2014, the outstanding balance of the transactions ' +
+            'arranged through the state fund Fondo para la Financiación de los pagos a Proveedores was refinanced with private credit ' +
+            'institutions; the amount of such refinancing amounted to €992,333,741.92. As a consequence, in the amortization expenses ' +
+            'for the year it is necessary to deduct these 992.3 million, since they do not represent a real burden for 2014.</p>'
+    }
+
     var descriptions = {
       '/es/politicas/01': {
-        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
-          'motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal '+
-          'Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la '+
-          'Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 '+
-          'ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con '+
-          'entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal '+
-          'para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a '+
-          '992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer '+
-          'esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
+        'text': descriptionText.es
       },
       '/es/programas/01111': {
-        'text': '<p>En el año 2013, se llevó a cabo una refinanciación por importe de 333.773.499 € con '+
-          'motivo de la subrogación del Ayuntamiento en la posición deudora de la empresa municipal '+
-          'Madrid Espacios y Congresos, S.A. y en parte de la deuda de la Empresa Municipal de la '+
-          'Vivienda y Suelo, S.A. Este importe, 333,8 millones, no se debe considerar como amortización de 2013 '+
-          'ya que no supone una carga real de 2013.</p><p>En el año 2014 se procedió a la refinanciación con '+
-          'entidades de crédito privadas del saldo vivo de las operaciones concertadas a través del Fondo estatal '+
-          'para la Financiación de los pagos a Proveedores; el importe de tal refinanciación ascendió a '+
-          '992.333.741,92 €. Como consecuencia de ello, en los gastos por amortización del año es preciso detraer '+
-          'esos 992,3 millones, ya que no suponen carga real de 2014.</p>',
+        'text': descriptionText.es
       },
+      '/en/politicas/01': {
+        'text': descriptionText.en
+      },
+      '/en/programas/01111': {
+        'text': descriptionText.en
+      }
     };
 
     var description = descriptions[ window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/')) ];
@@ -100,17 +109,49 @@ $(document).ready(function(){
 
   // Custom description for investments
   var addInvestmentsDescriptions = function() {
-    var description = '<p>(*) La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
-      'realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba '+
-      'la estructura de los presupuestos de las entidades locales.</p><p>En el Ayuntamiento de Madrid, además, se '+
-      'utiliza una clasificación por Líneas de inversión, herramienta más sencilla y simplificada para analizar y '+
-      'exponer el destino de las inversiones. </p>';
+    var lang = $('html').attr('lang')
 
-    var investmentLineIntro = '<p>Líneas de inversión en el distrito <a href="#policy-description-box">(*)</a></p>';
+    var description = {
+      'es': '<p>(*) La clasificación de las inversiones del Ayuntamiento y de los Organismos Autónomos se '+
+            'realiza siguiendo la estructura que establece la Orden EHA/3565/2008 de 3 de diciembre, por la que se aprueba '+
+            'la estructura de los presupuestos de las entidades locales.</p><p>En el Ayuntamiento de Madrid, además, se '+
+            'utiliza una clasificación por líneas de inversión, herramienta más sencilla y simplificada para analizar y '+
+            'exponer el destino de las inversiones.</p>',
+      'en': '<p>(*) The classification of the investments of the City Council and the Autonomous Bodies is made following ' +
+            'the structure established by Order EHA/3565/2008 of December 3, which approves the structure for the budgets of ' +
+            'local entities.</p><p>In Madrid City Council, a classification by investment lines is also used, a simpler tool ' +
+            'to analyze and expose the destination of investments.</p>'
+    }
 
-    if ($('html').attr('lang') == 'es' && $('section.investment-breakdown').length) {
-      $('#policy-chart-container').before( '<div class="investment-line-intro">'+investmentLineIntro+'</div>' );
-      $('.investments .investments-content .panel-downloads').before( '<div class="policy-description">'+description+'</div>' );
+    var investmentLineIntro = {
+      'es': '<p>Líneas de inversión en el distrito <a href="#policy-description-box">(*)</a></p>',
+      'en': '<p>Investment lines in the district <a href="#policy-description-box">(*)</a></p>'
+    }
+
+    if ($('section.investment-breakdown').length) {
+      $('#policy-chart-container').before('<div class="investment-line-intro">'+investmentLineIntro[lang]+'</div>');
+      $('.investments .investments-content .panel-downloads').before('<div id="policy-description-box" ' +
+        'class="policy-description">'+description[lang]+'</div>');
+    }
+
+    var ifsNote = {
+      'es': '<p>Del total de dinero presupuestado en inversiones, un porcentaje elevado son inversiones financieramente ' +
+            'sostenibles (IFS) que, tal como establece la normativa vigente, se pueden ejecutar en dos ejercicios presupuestarios. En ' +
+            'consecuencia para evaluar la ejecución de estos proyectos habrá que esperar a que transcurra el ejercicio posterior. ' +
+            'Dichas inversiones se distinguen mediante un identificador que aparece al principio del texto descriptivo de los mismos: IFS.</p>' +
+            '<p>Las IFS se habilitan en el presupuesto mediante créditos extraordinarios y suplementos de crédito que exigen los mismos ' +
+            'trámites que la aprobación del presupuesto general, por lo que el período de tramitación es largo y, como consecuencia, la ' +
+            'ejecución del gasto en el primer ejercicio es menor.</p>',
+      'en': '<p>Of the total money budgeted in investments, a high percentage are financially sustainable investments (IFS) that, as ' +
+            'established by current regulations, can be executed in two budgetary years. Consequently, in order to evaluate the execution ' +
+            'of these projects, it will be necessary to wait until the following year. These investments are distinguished by an identifier ' +
+            'that appears at the beginning of the descriptive text of the same: IFS.</p><p>IFSs are enabled in the budget through extraordinary ' +
+            'loans and credit supplements that require the same procedures as the approval of the general budget, so the processing period is ' +
+            'long and, as a consequence, the execution of the expenditure in the first year is lower.</p>'
+    }
+
+    if ($('.investments-content #main-total').length) {
+      $('.investments-content #main-total').after('<div class="policy-description">'+ifsNote[lang]+'</div>');
     }
   };
 

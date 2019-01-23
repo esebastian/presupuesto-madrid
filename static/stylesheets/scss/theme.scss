@@ -115,7 +115,7 @@ header{
 }
 
 @media (min-width: $screen-sm-min) {
-  
+
   .main-entity-logo{
     float: right;
   }
@@ -154,7 +154,7 @@ header{
 
 .navbar-default{
   text-align: center;
-  
+
   .navbar-nav{
     padding: $grid-gutter-width/3 0;
     display: inline-block;
@@ -164,7 +164,7 @@ header{
     }
 
     > li{
-    
+
       > a{
         color: $text-color;
         font-size: 1.25em;
@@ -178,20 +178,20 @@ header{
       }
 
       &.active{
-        
+
         > a,
         > a:hover,
         > a:focus{
           color: $brand-primary;
           font-weight: $font-weight-700;
-        } 
+        }
       }
     }
   }
 }
 
 @media (min-width: $grid-float-breakpoint) {
-  
+
   .navbar-default{
     height: 54px !important;
 
@@ -301,7 +301,7 @@ header{
       > div{
         border: none;
         padding-top: 0;
-        
+
         .icon{
           margin: 0 -0.5*$grid-gutter-width $grid-gutter-width;
           padding-bottom: 50%;
@@ -367,7 +367,7 @@ header{
   .budget-step{
     border: none;
 
-    h3 
+    h3
     span{
       color: $brand-primary;
       font-weight: $font-weight-400;
@@ -399,7 +399,7 @@ header{
 }
 
 .stacked-area-chart-legend .label{
-  
+
   &:hover{
     background: $brand-secondary;
   }
@@ -415,11 +415,11 @@ header{
     border-color: mix( $brand-primary, white, 75% );
   }
 }
-.glossary-terms h3, 
+.glossary-terms h3,
 .glossary-terms h4{
   color: $text-color;
   font-weight: $font-weight-700;
- 
+
   &:before{
     color: darken( $brand-secondary, 20% );
   }
@@ -512,6 +512,7 @@ header{
   margin-top: $grid-gutter-width;
   margin-bottom: 0;
   background: $brand-secondary;
+  text-align: justify;
 
   a{
     font-weight: $font-weight-600;
@@ -531,7 +532,7 @@ header{
   }
 
   .form-user-incomings{
-    
+
     h3{
       color: $gray-light;
     }
@@ -736,7 +737,7 @@ header{
 }
 
 table.table-grid tr td{
-  .toggle.expand, 
+  .toggle.expand,
   .toggle.collapse{
     line-height: 21px;
   }
@@ -759,30 +760,30 @@ table.table-grid tr td{
 
 // Investments
 #districts-map-container{
-  position: relative; 
-  height: 0; 
-  width: 100%; 
+  position: relative;
+  height: 0;
+  width: 100%;
   padding: 0;
   margin: 0 auto;
-  padding-bottom: 119%; 
+  padding-bottom: 119%;
 
   @media (min-width: 620px) {
     width: 600px;
-    padding-bottom: 100%; 
+    padding-bottom: 100%;
   }
   @media (min-width: $screen-md-min) {
-    padding-bottom: 76%; 
+    padding-bottom: 76%;
   }
   @media (min-width: $screen-lg-min) {
-    padding-bottom: 66%; 
+    padding-bottom: 66%;
   }
 }
 
 #districts-map{
-  position: absolute; 
-  height: 100%; 
-  width: 100%; 
-  left: 0; 
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
   top: 0;
 
   path{
