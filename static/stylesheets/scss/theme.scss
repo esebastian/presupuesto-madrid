@@ -883,3 +883,13 @@ table.table-grid tr td{
     font-weight: 400;
   }
 }
+
+.investments-content #totals-panel .total-special{
+    .main-special-label, .not-attributable-special-label{
+      padding-left: $grid-gutter-width;
+    }
+
+    > div, p{
+      font-weight: 200;
+    }
+}
