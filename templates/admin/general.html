@@ -7,7 +7,7 @@
 
   <div class="admin-header section-header">
     <div class="container">
-      <h2 class="page-title">{{ _('Administración de Presupuestos Abiertos') }}</h2>
+      <h2 class="page-title">{{ _('Presupuesto general') }}</h2>
     </div>
   </div>
 
@@ -18,28 +18,25 @@
         <div class="panel">
           <div class="panel-content">
             <h3>1. Descargar datos</h3>
-            <p>El primer paso es descargar los ficheros de datos del portal de Datos Abiertos de Madrid. Para ello, introduce la URL de la página con la información de ejecución del año en curso (como <a href="http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default" target="_blank">ésta</a>, por ejemplo, para 2017), y específica a qué mes corresponden los últimos datos (ya que el Portal actualmente no lo indica). Al pulsar el botón 'Descargar', los datos se bajarán del Portal en unos segundos y se guardarán en el servidor, listos para el siguiente paso.</p>
+            <p>El primer paso es descargar los ficheros de datos del portal de Datos Abiertos de Madrid. Para ello, introduce la URL de la página con la información del presupuesto a cargar (por defecto estamos utilizando la del <a href="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=1f95efc7b8e08610VgnVCM1000001d4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default">ejercicio en curso</a>), y especifica a qué año corresponden los datos en caso de querer actualizar los <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=14f285e4b1204410VgnVCM1000000b205a0aRCRD&vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD">datos históricos</a> (ya que el Portal actualmente enlaza los datos históricos desde la misma página). Al pulsar el botón 'Descargar', los datos se bajarán del Portal en unos segundos y se guardarán en el servidor, listos para el siguiente paso.</p>
 
             <form id="data-download">
               <div class="form-group">
                 <label for="source-path">{{ _('Fuente de datos') }}</label>
-                <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}">
+                <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}" value="https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=1f95efc7b8e08610VgnVCM1000001d4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default">
               </div>
               <div class="form-group">
-                <label for="month">{{ _('Selecciona mes') }}</label>
-                <select id="month" class="form-control" name="month">
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
-                  <option value="4">Abril</option>
-                  <option value="5">Mayo</option>
-                  <option value="6">Junio</option>
-                  <option value="7">Julio</option>
-                  <option value="8">Agosto</option>
-                  <option value="9">Septiembre</option>
-                  <option value="10">Octubre</option>
-                  <option value="11">Noviembre</option>
-                  <option value="12">Diciembre</option>
+                <label for="year">{{ _('Selecciona año') }}</label>
+                <select id="year" class="form-control" name="month">
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019" selected>2019</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Descargar') }}</button>

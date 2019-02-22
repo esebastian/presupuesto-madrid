@@ -185,3 +185,7 @@ msgstr "Organismo"
 
 msgid "Distrito"
 msgstr "Inversiones por distrito"
+
+#: templates/admin/header.html:15
+msgid "Administración de Presupuestos"
+msgstr "Administración de Presupuestos Abiertos del Ayuntamiento de Madrid"

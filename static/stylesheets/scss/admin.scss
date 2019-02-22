@@ -1,0 +1,20 @@
+// Nav
+.nav {
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $nav-link-hover-bg;
+      border-color: $body-bg;
+    }
+  }
+}
+
+// Handsontable
+#handsontable-container {
+  display: table;
+  margin: 3rem auto 3rem auto;
+}
+
+@import url("https://cdn.jsdelivr.net/npm/handsontable@6.2.2/dist/handsontable.full.min.css");

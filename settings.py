@@ -152,13 +152,21 @@ COOKIES_URL             = 'http://www.madrid.es/portales/munimadrid/cookies.html
 # We can define additional URLs applicable only to the theme. These will get added
 # to the project URL patterns list.
 EXTRA_URLS = (
-    url(r'^visita-guiada$', 'guidedvisit', name="guidedvisit"),
-
-    url(r'^admin$', 'admin', name="admin"),
-    url(r'^admin/download$', 'admin_download', name="admin-download"),
-    url(r'^admin/review$', 'admin_review', name="admin-review"),
-    url(r'^admin/load$', 'admin_load', name="admin-load"),
-
-    url(r'^inflacion\.(?P<format>.+)$', 'inflation_stats'),
-    url(r'^poblacion\.(?P<format>.+)$', 'population_stats'),
+    url(r"^visita-guiada$", "guidedvisit", name="guidedvisit"),
+    url(r"^inflacion\.(?P<format>.+)$", "inflation_stats"),
+    url(r"^poblacion\.(?P<format>.+)$", "population_stats"),
+    url(r"^admin$", "admin", name="admin"),
+    url(r"^admin/inflation$", "admin_inflation", name="admin-inflation"),
+    url(r"^admin/inflation/retrieve$", "admin_inflation_retrieve", name="admin-inflation-retrieve"),
+    url(r"^admin/inflation/save$", "admin_inflation_save", name="admin-inflation-save"),
+    url(r"^admin/inflation/load$", "admin_inflation_load", name="admin-inflation-load"),
+    url(r"^admin/glossary$", "admin_glossary", name="admin-glossary"),
+    url(r"^admin/glossary/es$", "admin_glossary_es", name="admin-glossary-es"),
+    url(r"^admin/glossary/es/retrieve$", "admin_glossary_es_retrieve", name="admin-glossary-es-retrieve"),
+    url(r"^admin/glossary/es/save$", "admin_glossary_es_save", name="admin-glossary-es-save"),
+    url(r"^admin/glossary/es/load$", "admin_glossary_es_load", name="admin-glossary-esload"),
+    url(r"^admin/glossary/en$", "admin_glossary_en", name="admin-glossary-en"),
+    url(r"^admin/glossary/en/retrieve$", "admin_glossary_en_retrieve", name="admin-glossary-en-retrieve"),
+    url(r"^admin/glossary/en/save$", "admin_glossary_en_save", name="admin-glossary-en-save"),
+    url(r"^admin/glossary/en/load$", "admin_glossary_en_load", name="admin-glossary-en-load")
 )

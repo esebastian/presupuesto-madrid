@@ -229,3 +229,10 @@ msgstr "All policies"
 
 msgid "Área de Gobierno, Distritos y Organismos Autónomos"
 msgstr "Government Areas, Districts and Autonomous Bodies"
+
+msgid "Distrito"
+msgstr "Investments by district"
+
+#: templates/admin/header.html:15
+msgid "Administración de Presupuestos"
+msgstr "City of Madrid Open Budgets Administration"

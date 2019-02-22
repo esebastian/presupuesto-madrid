@@ -1,14 +1,4 @@
-# Datos de IPC del INE. Variación anual del IPC para la Comunidad de Madrid, Índice general:
-#   http://www.ine.es/jaxiT3/Tabla.htm?t=22350&L=0
-# Las tasas de inflación se refieren a la variación interanual en el mes de diciembre.
-# Esta variación es calculada por el INE y publicada en la dirección indicada.
-# La aplicación calcula internamente un índice de inflación a partir de estas tasas, tal que:
-#    Indice Año Actual = 100
-#    Indice Año N-1 = Indice Año N / (1+Inflación Año N)
-#
-# Nota: los presupuestos de un año X se ajustan con el índice de la inflación del año anterior.
-# Por tanto el índice del año actual no se usa. De hecho sólo se conoce cuando termina el año.
-#
+#Año,#Variación
 2010,3.0
 2011,2.5
 2012,2.5
