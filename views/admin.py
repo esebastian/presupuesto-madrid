@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from bs4 import BeautifulSoup
-from budget_app.views.helpers import get_context
-from coffin.shortcuts import render_to_response, redirect
+from coffin.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
@@ -14,385 +13,142 @@ import glob
 import json
 import os
 import re
-import requests
 import shutil
 import subprocess
 import urllib
+import urllib2
 
 
 @never_cache
 def admin(request):
-    return redirect('admin-inflation')
+    return redirect("admin-inflation")
 
 
 @never_cache
 def admin_general(request):
-    context = get_context(request, title=_(u'Presupuesto general'))
-    context["active_tab"] = "general"
-    return render_to_response("admin/general.html", context)
+    context = {"title_prefix": _(u"Presupuesto general"), "active_tab": "general"}
+    return render(request, "admin/general.html", context)
 
 
 @never_cache
 def admin_execution(request):
-    context = get_context(request, title=_(u'Ejecución mensual'))
-    context["active_tab"] = "execution"
-    return render_to_response("admin/execution.html", context)
+    context = {"title_prefix": _(u"Ejecución mensual"), "active_tab": "execution"}
+    return render(request, "admin/execution.html", context)
 
 
 @never_cache
 def admin_inflation(request):
-    context = get_context(request, title=_(u'Inflación'))
-    context["active_tab"] = "inflation"
-    return render_to_response("admin/inflation.html", context)
+    context = {"title_prefix": _(u"Inflación"), "active_tab": "inflation"}
+    return render(request, "admin/inflation.html", context)
 
 
 @never_cache
 def admin_inflation_retrieve(request):
-    inflation_url = "https://raw.githubusercontent.com/%s/master/data/inflacion.csv?%s" % (THEME_REPO, time())
-    response = requests.get(inflation_url)
-    return _csv_response(response.text)
+    body, status = _read("data/inflacion.csv")
+    return _csv_response(body)
 
 
 @never_cache
 def admin_inflation_save(request):
     content = request.POST.get("content", "")
-    if not content:
-        response = {"result": "error", "message": "Nada que guardar."}
-        return _json_response(response, status=400)
-
-    api_token = GITHUB_TOKEN
-    api_url = "https://api.github.com/repos/%s/contents/data/inflacion.csv" % THEME_REPO
-
-    headers = {"Authorization": "token %s" % api_token}
-
-    # Get the file SHA
-    api_response = requests.get(api_url, headers=headers)
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Se ha producido un error guardando los datos."}
-        return _json_response(response, status=400)
-
-    # Update the file
-    current_sha = api_response.json()["sha"]
-
-    payload = {
-        "message": "Update inflation data\n\nChange performed on the admin console.",
-        "content": content,
-        "sha": current_sha
-    }
-
-    api_response = requests.put(api_url, headers=headers, data=json.dumps(payload))
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Los datos no se ha podido guardar."}
-        return _json_response(response, status=400)
-
-    response = {"result": "success", "message": "Los datos se han guardado correctamente."}
-    return _json_response(response)
+    body, status = _update("data/inflacion.csv", content, "Update inflation data")
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_inflation_load(request):
-    # Pull and load the data
-    core_path = ROOT_PATH
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
-    cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && git pull && " % theme_path
-    cmd += "cd %s && python manage.py load_stats" % core_path
-
-    subprocess_output = _execute_cmd(cmd)
-
-    # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
-
-    message = (
-        u"<p>Vamos a cargar los datos estadísticos.</p>"
-        "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cmd, " ".join(subprocess_output))
-    )
-    response = {"result": "success", "message": message}
-    return _json_response(response)
+    body, status = _load_stats(u"Vamos a cargar los datos estadísticos")
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_population(request):
-    context = get_context(request, title=_(u'Población'))
-    context["active_tab"] = "population"
-    return render_to_response("admin/population.html", context)
+    context = {"title_prefix": _(u"Población"), "active_tab": "population"}
+    return render(request, "admin/population.html", context)
 
 
 @never_cache
 def admin_population_retrieve(request):
-    population_url = "https://raw.githubusercontent.com/%s/master/data/poblacion.csv?%s" % (THEME_REPO, time())
-    response = requests.get(population_url)
-    return _csv_response(response.text)
+    body, status = _read("data/poblacion.csv")
+    return _csv_response(body)
 
 
 @never_cache
 def admin_population_save(request):
     content = request.POST.get("content", "")
-    if not content:
-        response = {"result": "error", "message": "Nada que guardar."}
-        return _json_response(response, status=400)
-
-    api_token = GITHUB_TOKEN
-    api_url = "https://api.github.com/repos/%scontents/data/poblacion.csv" % THEME_REPO
-
-    headers = {"Authorization": "token %s" % api_token}
-
-    # Get the file SHA
-    api_response = requests.get(api_url, headers=headers)
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Se ha producido un error guardando los datos."}
-        return _json_response(response, status=400)
-
-    # Update the file
-    current_sha = api_response.json()["sha"]
-
-    payload = {
-        "message": "Update population data\n\nChange performed on the admin console.",
-        "content": content,
-        "sha": current_sha
-    }
-
-    api_response = requests.put(api_url, headers=headers, data=json.dumps(payload))
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Los datos no se ha podido guardar."}
-        return _json_response(response, status=400)
-
-    response = {"result": "success", "message": "Los datos se han guardado correctamente."}
-    return _json_response(response)
+    body, status = _update("data/poblacion.csv", content, "Update population data")
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_population_load(request):
-    # Pull and load the data
-    core_path = ROOT_PATH
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
-    cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && git pull && " % theme_path
-    cmd += "cd %s && python manage.py load_stats" % core_path
-
-    subprocess_output = _execute_cmd(cmd)
-
-    # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
-
-    message = (
-        u"<p>Vamos a cargar los datos estadísticos.</p>"
-        "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cmd, " ".join(subprocess_output))
-    )
-    response = {"result": "success", "message": message}
-    return _json_response(response)
+    body, status = _load_stats(u"Vamos a cargar los datos estadísticos")
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_payments(request):
-    context = get_context(request, title=_(u'Pagos a terceros'))
-    context["active_tab"] = "payments"
-    return render_to_response("admin/payments.html", context)
+    context = {"title_prefix": _(u"Pagos a terceros"), "active_tab": "payments"}
+    return render(request, "admin/payments.html", context)
 
 
 @never_cache
 def admin_glossary(request):
-    return redirect('admin-glossary-es')
+    return redirect("admin-glossary-es")
 
 
 @never_cache
 def admin_glossary_es(request):
-    context = get_context(request, title=_(u'Glosario'))
-    context["active_tab"] = "glossary"
-    return render_to_response("admin/glossary_es.html", context)
+    context = {"title_prefix": _(u"Glosario"), "active_tab": "glossary"}
+    return render(request, "admin/glossary_es.html", context)
 
 
 @never_cache
 def admin_glossary_es_retrieve(request):
-    glossary_es_url = "https://raw.githubusercontent.com/%s/master/data/glosario_es.csv?%s" % (THEME_REPO, time())
-    response = requests.get(glossary_es_url)
-    return _csv_response(response.text)
+    body, status = _read("data/glosario_es.csv")
+    return _csv_response(body)
 
 
 @never_cache
 def admin_glossary_es_save(request):
     content = request.POST.get("content", "")
-    if not content:
-        response = {"result": "error", "message": "Nada que guardar."}
-        return _json_response(response, status=400)
-
-    api_token = GITHUB_TOKEN
-    api_url = "https://api.github.com/repos/%s/contents/data/glosario_es.csv" % THEME_REPO
-
-    headers = {"Authorization": "token %s" % api_token}
-
-    # Get the file SHA
-    api_response = requests.get(api_url, headers=headers)
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Se ha producido un error guardando los datos."}
-        return _json_response(response, status=400)
-
-    # Update the file
-    current_sha = api_response.json()["sha"]
-
-    payload = {
-        "message": "Update spanish glossary data\n\nChange performed on the admin console.",
-        "content": content,
-        "sha": current_sha
-    }
-
-    api_response = requests.put(api_url, headers=headers, data=json.dumps(payload))
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Los datos no se ha podido guardar."}
-        return _json_response(response, status=400)
-
-    response = {"result": "success", "message": "Los datos se han guardado correctamente."}
-    return _json_response(response)
+    body, status = _update(
+        "data/glosario_es.csv", content, "Update spanish glossary data"
+    )
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_glossary_es_load(request):
-    # Pull and load the data
-    core_path = ROOT_PATH
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
-    cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && git pull && " % theme_path
-    cmd += "cd %s && python manage.py load_glossary --language=es" % core_path
-
-    subprocess_output = _execute_cmd(cmd)
-
-    # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
-
-    message = (
-        u"<p>Vamos a cargar los datos del glosario en español.</p>"
-        "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cmd, " ".join(subprocess_output))
-    )
-    response = {"result": "success", "message": message}
-    return _json_response(response)
+    body, status = _load_glossary_es(u"Vamos a cargar los datos del glosario en español")
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_glossary_en(request):
-    context = get_context(request, title=_(u'Glosario'))
-    context["active_tab"] = "glossary"
-    return render_to_response("admin/glossary_en.html", context)
+    context = {"title_prefix": _(u"Glosario"), "active_tab": "glossary"}
+    return render(request, "admin/glossary_en.html", context)
 
 
 @never_cache
 def admin_glossary_en_retrieve(request):
-    glossary_en_url = "https://raw.githubusercontent.com/%s/master/data/glosario_en.csv?%s" % (THEME_REPO, time())
-    response = requests.get(glossary_en_url)
-    return _csv_response(response.text)
+    body, status = _read("data/glosario_en.csv")
+    return _csv_response(body)
 
 
 @never_cache
 def admin_glossary_en_save(request):
     content = request.POST.get("content", "")
-    if not content:
-        response = {"result": "error", "message": "Nada que guardar."}
-        return _json_response(response, status=400)
-
-    api_token = GITHUB_TOKEN
-    api_url = "https://api.github.com/repos/%s/contents/data/glosario_en.csv" % THEME_REPO
-
-    headers = {"Authorization": "token %s" % api_token}
-
-    # Get the file SHA
-    api_response = requests.get(api_url, headers=headers)
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Se ha producido un error guardando los datos."}
-        return _json_response(response, status=400)
-
-    # Update the file
-    current_sha = api_response.json()["sha"]
-
-    payload = {
-        "message": "Update english glossary data\n\nChange performed on the admin console.",
-        "content": content,
-        "sha": current_sha
-    }
-
-    api_response = requests.put(api_url, headers=headers, data=json.dumps(payload))
-
-    if not api_response.ok:
-        response = {"result": "error", "message": "Los datos no se ha podido guardar."}
-        return _json_response(response, status=400)
-
-    response = {"result": "success", "message": "Los datos se han guardado correctamente."}
-    return _json_response(response)
+    body, status = _update(
+        "data/glosario_en.csv", content, "Update english glossary data"
+    )
+    return _json_response(body, status)
 
 
 @never_cache
 def admin_glossary_en_load(request):
-    # Pull and load the data
-    core_path = ROOT_PATH
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
-    cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && git pull && " % theme_path
-    cmd += "cd %s && python manage.py load_glossary --language=en" % core_path
-
-    subprocess_output = _execute_cmd(cmd)
-
-    # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
-
-    message = (
-        u"<p>Vamos a cargar los datos del glosario en inglés.</p>"
-        "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cmd, " ".join(subprocess_output))
-    )
-    response = {"result": "success", "message": message}
-    return _json_response(response)
-
-
-@never_cache
-def admin_save(request):
-    response = _get_response(request)
-
-    content = request.POST.get("content", "")
-    if not content:
-        return _set_download_message(response, "No content to save")
-
-    file_path = request.GET.get("file_path", "")
-    if not file_path:
-        return _set_download_message(response, "No file path provided")
-
-    api_token = GITHUB_TOKEN
-    api_url = "https://api.github.com/repos/%s/contents/%s" % (THEME_REPO, file_path)
-
-    headers = {"Authorization": "token %s" % api_token}
-
-    api_response = requests.get(api_url, headers=headers)
-
-    if not response.ok:
-        return _set_download_message(response, "The file couldn't be saved")
-
-    current_sha = api_response.json["sha"]
-
-    payload = {
-        "message": "File %s updated from admin console" % file_path,
-        "content": content,
-        "sha": current_sha
-    }
-
-    api_response = requests.put(api_url, headers=headers, data=json.dumps(payload))
-
-    if not response.ok:
-        return _set_download_message(response, "The file couldn't be saved")
-
-    output = "Ficheros %s correctamente guardado." % file_path
-
-    return _set_save_message(response, output)
+    body, status = _load_glossary_en(u"Vamos a cargar los datos del glosario en inglés")
+    return _json_response(body, status)
 
 
 @never_cache
@@ -520,9 +276,7 @@ def _download_open_data_file(link, output_folder, output_name):
 
 
 def _copy_downloaded_files_to_theme(data_files, year, language):
-    target_path = os.path.join(
-        ROOT_PATH, THEME, "data", language, "municipio", year
-    )
+    target_path = os.path.join(ROOT_PATH, THEME, "data", language, "municipio", year)
     if not os.path.exists(target_path):
         os.makedirs(target_path)
 
@@ -612,8 +366,129 @@ def _get_response(request):
     return {"download_output": "", "review_output": "", "load_output": ""}
 
 
+def _load_stats(cue):
+    return _execute("load_stats", cue)
+
+
+def _load_glossary_es(cue):
+    return _execute("load_glossary --language=es", cue)
+
+
+def _load_glossary_en(cue):
+    return _execute("load_glossary --language=en", cue)
+
+
+def _read(file_path):
+    file_url = "https://raw.githubusercontent.com/%s/master/%s?%s" % (
+        THEME_REPO,
+        file_path,
+        time(),
+    )
+    response = __get(file_url)
+    return (response["body"], response["status"])
+
+
+def _update(file_path, content, message):
+    if not content:
+        body = {"result": "error", "message": "Nada que guardar."}
+        status = 400
+        return (body, status)
+
+    url = "https://api.github.com/repos/%s/contents/%s" % (THEME_REPO, file_path)
+    headers = {"Authorization": "token %s" % GITHUB_TOKEN}
+
+    # Get the file SHA
+    response = __get(url, headers=headers)
+
+    if not response["status"] == 200:
+        body = {
+            "result": "error",
+            "message": "Se ha producido un error guardando los datos.",
+        }
+        status = 400
+        return (body, status)
+
+    # Update the file
+    current_sha = json.loads(response["body"])["sha"]
+
+    payload = {
+        "message": "%s\n\nChange performed on the admin console." % message,
+        "content": content,
+        "sha": current_sha,
+    }
+
+    response = __put(url, headers=headers, data=payload)
+
+    if not response["status"] == 200:
+        body = {"result": "error", "message": "Los datos no se ha podido guardar."}
+        status = 400
+        return (body, status)
+
+    body = {"result": "success", "message": "Los datos se han guardado correctamente."}
+    status = 200
+    return (body, status)
+
+
+def _execute(management_command, cue):
+    # Pull and load the data
+    core_path = ROOT_PATH
+    theme_path = os.path.join(ROOT_PATH, THEME)
+
+    cmd = "export PYTHONIOENCODING=utf-8 && "
+    cmd += "cd %s && git pull && " % theme_path
+    cmd += "cd %s && python manage.py %s" % (core_path, management_command)
+
+    subprocess_output = _execute_cmd(cmd)
+
+    # Touch project/wsgi.py so the app restarts
+    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
+
+    message = (
+        u"<p>%s.</p>"
+        "<p>Ejecutando: <pre>%s</pre></p>"
+        "<p>Resultado: <pre>%s</pre></p>" % (cue, cmd, " ".join(subprocess_output))
+    )
+    body = {"result": "success", "message": message}
+    status = 200
+    return (body, status)
+
+
+def __get(url, headers={}):
+    opener = urllib2.build_opener(urllib2.HTTPHandler)
+    request = urllib2.Request(url)
+
+    for header, value in headers.items():
+        request.add_header(header, value)
+
+    response = opener.open(request)
+
+    status = response.getcode()
+    body = response.read()
+
+    return {"body": body, "status": status}
+
+
+def __put(url, headers={}, data={}):
+    opener = urllib2.build_opener(urllib2.HTTPHandler)
+    request = urllib2.Request(url, data=json.dumps(data))
+
+    for header, value in headers.items():
+        request.add_header(header, value)
+
+    request.get_method = lambda: "PUT"
+
+    response = opener.open(request)
+
+    status = response.getcode()
+    body = response.read()
+
+    return {"body": body, "status": status}
+
+
 def _json_response(data, status=200):
-    return HttpResponse(json.dumps(data), content_type="application/json; charset=utf-8", status=status)
+    return HttpResponse(
+        json.dumps(data), content_type="application/json; charset=utf-8", status=status
+    )
 
 
 def _csv_response(data):

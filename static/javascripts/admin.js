@@ -1,15 +1,3 @@
-function exportAsString(table) {
-  var data = [table.getColHeader()].concat(table.getData());
-
-  var joinWithComma = function (array) {
-    return array.join(',');
-  }
-
-  var result = data.map(joinWithComma).join('\n') + '\n';
-
-  return result;
-}
-
 function getButton(button_name) {
   var button_selector = '#data-' + button_name + ' button[type="submit"]';
   return $(button_selector);
