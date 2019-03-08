@@ -1,11 +1,6 @@
 // Theme custom js methods
 $(document).ready(function(){
 
-  // TODO: Temporary hack to show the execution status message until execution
-  // data exists for 2019
-  var last_budget_year = '2018';
-  var last_budget_status = '11M';
-
   var addChartsAlert = function(selector) {
     var str = {
       'es': 'Datos actualizados a ',
