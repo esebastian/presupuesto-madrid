@@ -334,7 +334,7 @@ def _execute_cmd(cmd):
     )
 
     for byte_line in iter(p.stdout.readline, ""):
-        line = byte_line.decode("utf8", errors="backslashreplace").replace(r"\r", "")
+        line = byte_line.decode("utf8", "backslashreplace").replace(r"\r", "")
         subprocess_output.append(line)
 
     return subprocess_output
