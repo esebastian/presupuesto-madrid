@@ -1,6 +1,7 @@
 *.pyc
 .DS_Store
-/node_modules
+node_modules/
 npm-debug.log
+scripts/
 static/stylesheets/main.css.map
 copy_csv.sh
