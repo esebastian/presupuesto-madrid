@@ -319,10 +319,13 @@ def _read_file(output_folder, output_name):
         return file.read()
 
 
-def _touch_file(fname, times=None):
-    # Taken from https://stackoverflow.com/a/1160227
-    with open(fname, "a"):
-        os.utime(fname, times)
+def _touch_file(file_path):
+    theme_path = os.path.join(ROOT_PATH, THEME)
+
+    # The scripts/touch executable must be manually deployed and setuid'ed
+    cmd = "cd %s && scripts/touch %s" % (theme_path, file_path)
+
+    _execute_cmd(cmd)
 
 
 def _execute_cmd(cmd):
@@ -431,12 +434,12 @@ def _update(file_path, content, message):
 
 def _execute(management_command, cue):
     # Pull and load the data
-    core_path = ROOT_PATH
     theme_path = os.path.join(ROOT_PATH, THEME)
 
+    # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
     cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && git pull && " % theme_path
-    cmd += "cd %s && python manage.py %s" % (core_path, management_command)
+    cmd += "cd %s && scripts/git fetch && scripts/git reset --hard origin/master && " % theme_path
+    cmd += "cd %s && python manage.py %s" % (ROOT_PATH, management_command)
 
     subprocess_output = _execute_cmd(cmd)
 
@@ -454,16 +457,20 @@ def _execute(management_command, cue):
 
 
 def __get(url, headers={}):
-    opener = urllib2.build_opener(urllib2.HTTPHandler)
-    request = urllib2.Request(url)
+    theme_path = os.path.join(ROOT_PATH, THEME)
+
+    # The scripts/curl executable must be manually deployed and setuid'ed
+    cmd = "cd %s && scripts/curl -L" % theme_path
 
     for header, value in headers.items():
-        request.add_header(header, value)
+        cmd += " -H %s: %s" % (header, value)
 
-    response = opener.open(request)
+    cmd += " %s" % url
 
-    status = response.getcode()
-    body = response.read()
+    subprocess_output = _execute_cmd(cmd)
+
+    status = 200
+    body = subprocess_output
 
     return {"body": body, "status": status}
 
