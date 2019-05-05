@@ -5,8 +5,9 @@ from coffin.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
-from project.settings import ROOT_PATH, THEME_PATH, THEME_REPO, GITHUB_TOKEN
+from project.settings import ROOT_PATH, THEME_PATH
 
+import base64
 import datetime
 import glob
 import json
@@ -15,26 +16,33 @@ import re
 import shutil
 import subprocess
 import urllib
-import urllib2
 
 
+class AdminException(Exception):
+    pass
+
+
+# Main
 @never_cache
 def admin(request):
     return redirect("admin-inflation")
 
 
+# General budget
 @never_cache
 def admin_general(request):
     context = {"title_prefix": _(u"Presupuesto general"), "active_tab": "general"}
     return render(request, "admin/general.html", context)
 
 
+# Execution budget
 @never_cache
 def admin_execution(request):
     context = {"title_prefix": _(u"Ejecución mensual"), "active_tab": "execution"}
     return render(request, "admin/execution.html", context)
 
 
+# Inflation
 @never_cache
 def admin_inflation(request):
     context = {"title_prefix": _(u"Inflación"), "active_tab": "inflation"}
@@ -43,23 +51,24 @@ def admin_inflation(request):
 
 @never_cache
 def admin_inflation_retrieve(request):
-    body = _read("data/inflacion.csv")
-    return _csv_response(body)
+    body, status = _retrieve_inflation()
+    return _csv_response(body, status)
 
 
 @never_cache
 def admin_inflation_save(request):
-    content = request.POST.get("content", "")
-    body, status = _update("data/inflacion.csv", content, "Update inflation data")
+    content = _get_content(request.POST)
+    body, status = _save_inflation(content)
     return _json_response(body, status)
 
 
 @never_cache
 def admin_inflation_load(request):
-    body, status = _load_stats(u"Vamos a cargar los datos estadísticos")
+    body, status = _load_stats()
     return _json_response(body, status)
 
 
+# Population
 @never_cache
 def admin_population(request):
     context = {"title_prefix": _(u"Población"), "active_tab": "population"}
@@ -68,29 +77,38 @@ def admin_population(request):
 
 @never_cache
 def admin_population_retrieve(request):
-    body = _read("data/poblacion.csv")
-    return _csv_response(body)
+    body, status = _retrieve_population()
+    return _csv_response(body, status)
 
 
 @never_cache
 def admin_population_save(request):
-    content = request.POST.get("content", "")
-    body, status = _update("data/poblacion.csv", content, "Update population data")
+    content = _get_content(request.POST)
+    body, status = _save_population(content)
     return _json_response(body, status)
 
 
 @never_cache
 def admin_population_load(request):
-    body, status = _load_stats(u"Vamos a cargar los datos estadísticos")
+    body, status = _load_stats()
     return _json_response(body, status)
 
 
+# Investments
+@never_cache
+def admin_investments(request):
+    context = {"title_prefix": _(u"Inversiones"), "active_tab": "investments"}
+    return render(request, "admin/investments.html", context)
+
+
+# Third party payments
 @never_cache
 def admin_payments(request):
     context = {"title_prefix": _(u"Pagos a terceros"), "active_tab": "payments"}
     return render(request, "admin/payments.html", context)
 
 
+# Glossary
 @never_cache
 def admin_glossary(request):
     return redirect("admin-glossary-es")
@@ -104,22 +122,20 @@ def admin_glossary_es(request):
 
 @never_cache
 def admin_glossary_es_retrieve(request):
-    body = _read("data/glosario_es.csv")
-    return _csv_response(body)
+    body, status = _retrieve_glossary_es()
+    return _csv_response(body, status)
 
 
 @never_cache
 def admin_glossary_es_save(request):
-    content = request.POST.get("content", "")
-    body, status = _update(
-        "data/glosario_es.csv", content, "Update spanish glossary data"
-    )
+    content = _get_content(request.POST)
+    body, status = _save_glossary_es(content)
     return _json_response(body, status)
 
 
 @never_cache
 def admin_glossary_es_load(request):
-    body, status = _load_glossary_es(u"Vamos a cargar los datos del glosario en español")
+    body, status = _load_glossary_es()
     return _json_response(body, status)
 
 
@@ -131,25 +147,24 @@ def admin_glossary_en(request):
 
 @never_cache
 def admin_glossary_en_retrieve(request):
-    body = _read("data/glosario_en.csv")
-    return _csv_response(body)
+    body, status = _retrieve_glossary_en()
+    return _csv_response(body, status)
 
 
 @never_cache
 def admin_glossary_en_save(request):
-    content = request.POST.get("content", "")
-    body, status = _update(
-        "data/glosario_en.csv", content, "Update english glossary data"
-    )
+    content = _get_content(request.POST)
+    body, status = _save_glossary_en(content)
     return _json_response(body, status)
 
 
 @never_cache
 def admin_glossary_en_load(request):
-    body, status = _load_glossary_en(u"Vamos a cargar los datos del glosario en inglés")
+    body, status = _load_glossary_en()
     return _json_response(body, status)
 
 
+# Old controllers
 @never_cache
 def admin_download(request):
     response = _get_response(request)
@@ -208,7 +223,7 @@ def admin_review(request):
     script_path = os.path.join(THEME_PATH, "loaders")
     cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (script_path,)
     cmd += "python madrid_check_datafiles.py " + data_files
-    subprocess_output = _execute_cmd(cmd)
+    subprocess_output, _ = _execute_cmd(cmd)
 
     # Return
     output = (
@@ -236,7 +251,7 @@ def admin_load(request):
     cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (ROOT_PATH,)
     cmd += "python manage.py load_budget " + year + " --language=es,en && "
     cmd += "python manage.py load_investments " + year + " --language=es,en"
-    subprocess_output = _execute_cmd(cmd)
+    subprocess_output, _ = _execute_cmd(cmd)
 
     # Touch project/wsgi.py so the app restarts
     _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
@@ -249,6 +264,7 @@ def admin_load(request):
     return _set_load_message(response, output)
 
 
+# Old helpers
 def _get_temp_base_path():
     return "/tmp/budget_app"
 
@@ -318,28 +334,6 @@ def _read_file(output_folder, output_name):
         return file.read()
 
 
-def _touch_file(file_path):
-    # The scripts/touch executable must be manually deployed and setuid'ed
-    cmd = "cd %s && scripts/touch %s" % (THEME_PATH, file_path)
-
-    _execute_cmd(cmd)
-
-
-def _execute_cmd(cmd):
-    # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
-    subprocess_output = []
-
-    p = subprocess.Popen(
-        args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-    )
-
-    for byte_line in iter(p.stdout.readline, ""):
-        line = byte_line.decode("utf8", "backslashreplace").replace(r"\r", "")
-        subprocess_output.append(line)
-
-    return "".join(subprocess_output)
-
-
 def _set_save_message(response, message):
     response["save_output"] = message
     # How to return JSON, see https://stackoverflow.com/a/2428119
@@ -366,132 +360,191 @@ def _get_response(request):
     return {"download_output": "", "review_output": "", "load_output": ""}
 
 
-def _load_stats(cue):
-    return _execute("load_stats", cue)
+# Actions
+def _retrieve_inflation():
+    return _retrieve("data/inflacion.csv")
 
 
-def _load_glossary_es(cue):
-    return _execute("load_glossary --language=es", cue)
+def _retrieve_population():
+    return _retrieve("data/poblacion.csv")
 
 
-def _load_glossary_en(cue):
-    return _execute("load_glossary --language=en", cue)
+def _retrieve_glossary_es():
+    return _retrieve("data/glosario_es.csv")
 
 
-def _read(file_path):
-    # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
-    cmd = (
-        "cd %s "
-        "&& scripts/git fetch"
-        "&& scripts/git show origin/master:%s "
-    ) % (THEME_PATH, file_path)
-
-    subprocess_output = _execute_cmd(cmd)
-
-    return subprocess_output
+def _retrieve_glossary_en():
+    return _retrieve("data/glosario_en.csv")
 
 
-def _update(file_path, content, message):
+def _save_inflation(content):
+    return _save("data/inflacion.csv", content, "Update inflation data")
+
+
+def _save_population(content):
+    return _save("data/poblacion.csv", content, "Update population data")
+
+
+def _save_glossary_es(content):
+    return _save("data/glosario_es.csv", content, "Update spanish glossary data")
+
+
+def _save_glossary_en(content):
+    return _save("data/glosario_en.csv", content, "Update english glossary data")
+
+
+def _load_stats():
+    return _execute("load_stats", u"Vamos a cargar los datos estadísticos")
+
+
+def _load_glossary_es():
+    return _execute("load_glossary --language=es", u"Vamos a cargar los datos del glosario en español")
+
+
+def _load_glossary_en():
+    return _execute("load_glossary --language=en", u"Vamos a cargar los datos del glosario en inglés")
+
+
+# Action helpers
+def _retrieve(file_path):
+    try:
+        body = _read(file_path)
+        status = 200
+        return (body, status)
+    except AdminException as error:
+        raise Exception(error)
+
+
+def _save(file_path, content, commit_message):
     if not content:
         body = {"result": "error", "message": "Nada que guardar."}
         status = 400
         return (body, status)
 
-    url = "https://api.github.com/repos/%s/contents/%s" % (THEME_REPO, file_path)
-    headers = {"Authorization": "token %s" % GITHUB_TOKEN}
+    try:
+        _write(file_path, content)
+        _commit(file_path, commit_message)
 
-    # Get the file SHA
-    response = __get(url, headers=headers)
+        body = {"result": "success", "message": "Los datos se han guardado correctamente."}
+        status = 200
+    except AdminException:
+        body = {"result": "error", "message": "Se ha producido un error guardando los datos."}
+        status = 500
 
-    if not response["status"] == 200:
-        body = {
-            "result": "error",
-            "message": "Se ha producido un error guardando los datos.",
-        }
-        status = 400
-        return (body, status)
-
-    # Update the file
-    current_sha = json.loads(response["body"])["sha"]
-
-    payload = {
-        "message": "%s\n\nChange performed on the admin console." % message,
-        "content": content,
-        "sha": current_sha,
-    }
-
-    response = __put(url, headers=headers, data=payload)
-
-    if not response["status"] == 200:
-        body = {"result": "error", "message": "Los datos no se ha podido guardar."}
-        status = 400
-        return (body, status)
-
-    body = {"result": "success", "message": "Los datos se han guardado correctamente."}
-    status = 200
     return (body, status)
 
 
 def _execute(management_command, cue):
+    # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
     # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
     cmd = "export PYTHONIOENCODING=utf-8 && "
     cmd += "cd %s && scripts/git fetch && scripts/git reset --hard origin/master && " % THEME_PATH
     cmd += "cd %s && python manage.py %s" % (ROOT_PATH, management_command)
 
-    subprocess_output = _execute_cmd(cmd)
+    output, error = _execute_cmd(cmd)
+
+    if error:
+        message = "No se ha podido ejecutar el comando '%s'." % management_command
+        body = {"result": "error", "message": message}
+        status = 500
+        return (body, status)
 
     # Touch project/wsgi.py so the app restarts
     _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
 
     message = (
         u"<p>%s.</p>"
-        "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cue, cmd, subprocess_output)
+        "<p>Ejecutado: <pre>%s</pre></p>"
+        "<p>Resultado: <pre>%s</pre></p>" % (cue, cmd, output)
     )
     body = {"result": "success", "message": message}
     status = 200
     return (body, status)
 
 
-def __get(url, headers={}):
-    # The scripts/curl executable must be manually deployed and setuid'ed
-    cmd = "cd %s && scripts/curl -L" % THEME_PATH
+# Filesystem helpers
+def _touch_file(file_path):
+    # The scripts/touch executable must be manually deployed and setuid'ed
+    cmd = "cd %s && scripts/touch %s" % (THEME_PATH, file_path)
 
-    for header, value in headers.items():
-        cmd += " -H %s: %s" % (header, value)
+    _, error = _execute_cmd(cmd)
 
-    cmd += " %s" % url
-
-    subprocess_output = _execute_cmd(cmd)
-
-    status = 200
-    body = subprocess_output
-
-    return {"body": body, "status": status}
+    if error:
+        raise AdminException("File '%s' couldn't be touched" % file_path)
 
 
-def __put(url, headers={}, data={}):
-    opener = urllib2.build_opener(urllib2.HTTPHandler)
-    request = urllib2.Request(url, data=json.dumps(data))
+def _read(file_path):
+    # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
+    cmd = (
+        "cd %s "
+        "&& scripts/git fetch "
+        "&& scripts/git show origin/master:%s"
+    ) % (THEME_PATH, file_path)
 
-    for header, value in headers.items():
-        request.add_header(header, value)
+    output, error = _execute_cmd(cmd)
 
-    request.get_method = lambda: "PUT"
+    if error:
+        raise AdminException("File %s couldn't be read." % file_path)
 
-    response = opener.open(request)
+    return output
 
-    status = response.getcode()
-    body = response.read()
 
-    return {"body": body, "status": status}
+def _write(file_path, content):
+    # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
+    # The scripts/cat executable must be manually deployed and setuid'ed
+    cmd = (
+        "export PYTHONIOENCODING=utf-8 "
+        "&& cd %s "
+        "&& cat <<EOF | scripts/tee %s\n"
+        "%s"
+        "\nEOF"
+    ) % (THEME_PATH, file_path, content)
+
+    _, error = _execute_cmd(cmd)
+
+    if error:
+        raise AdminException("File %s couldn't be written." % file_path)
+
+
+def _commit(file_path, commit_message):
+    # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
+    cmd = (
+        "cd %s "
+        "&& scripts/git fetch "
+        "&& scripts/git reset origin/master "
+        "&& scripts/git add %s "
+        "&& scripts/git commit -m \"%s\n\nChange performed on the admin console.\" "
+        "&& scripts/git push"
+    ) % (THEME_PATH, file_path, commit_message)
+
+    _, error = _execute_cmd(cmd)
+
+    if error:
+        raise AdminException("File %s couldn't be commited." % file_path)
+
+
+# Utility helpers
+def _get_content(params):
+    content = params.get("content", "")
+    return base64.b64decode(content)
+
+
+def _execute_cmd(cmd):
+    # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, universal_newlines=True)
+
+    output, _ = process.communicate()
+    return_code = process.poll()
+
+    output = output.decode("utf8", "backslashreplace")
+    error = return_code != 0
+
+    return (output, error)
 
 
 def _json_response(data, status=200):
-    return HttpResponse(
-        json.dumps(data), content_type="application/json; charset=utf-8", status=status
-    )
+    return HttpResponse(json.dumps(data), content_type="application/json; charset=utf-8", status=status)
 
 
-def _csv_response(data):
-    return HttpResponse(data, content_type="text/csv; charset=utf-8")
+def _csv_response(data, status=200):
+    return HttpResponse(data, content_type="text/csv; charset=utf-8", status=status)
