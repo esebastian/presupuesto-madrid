@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
 from project.settings import ROOT_PATH, THEME_PATH, THEME_REPO, GITHUB_TOKEN
-from time import time
 
 import datetime
 import glob
@@ -44,7 +43,7 @@ def admin_inflation(request):
 
 @never_cache
 def admin_inflation_retrieve(request):
-    body, status = _read("data/inflacion.csv")
+    body = _read("data/inflacion.csv")
     return _csv_response(body)
 
 
@@ -69,7 +68,7 @@ def admin_population(request):
 
 @never_cache
 def admin_population_retrieve(request):
-    body, status = _read("data/poblacion.csv")
+    body = _read("data/poblacion.csv")
     return _csv_response(body)
 
 
@@ -105,7 +104,7 @@ def admin_glossary_es(request):
 
 @never_cache
 def admin_glossary_es_retrieve(request):
-    body, status = _read("data/glosario_es.csv")
+    body = _read("data/glosario_es.csv")
     return _csv_response(body)
 
 
@@ -132,7 +131,7 @@ def admin_glossary_en(request):
 
 @never_cache
 def admin_glossary_en_retrieve(request):
-    body, status = _read("data/glosario_en.csv")
+    body = _read("data/glosario_en.csv")
     return _csv_response(body)
 
 
@@ -214,7 +213,7 @@ def admin_review(request):
     # Return
     output = (
         "Revisando los datos disponibles en %s.<br/>"
-        "Resultado: <pre>%s</pre>" % (data_files, " ".join(subprocess_output))
+        "Resultado: <pre>%s</pre>" % (data_files, subprocess_output)
     )
     return _set_review_message(response, output)
 
@@ -245,7 +244,7 @@ def admin_load(request):
     output = (
         "Vamos a cargar los datos disponibles en %s.<br/>"
         "Ejecutando: <pre>%s</pre>"
-        "Resultado: <pre>%s</pre>" % (data_files, cmd, " ".join(subprocess_output))
+        "Resultado: <pre>%s</pre>" % (data_files, cmd, subprocess_output)
     )
     return _set_load_message(response, output)
 
@@ -338,7 +337,7 @@ def _execute_cmd(cmd):
         line = byte_line.decode("utf8", "backslashreplace").replace(r"\r", "")
         subprocess_output.append(line)
 
-    return subprocess_output
+    return "".join(subprocess_output)
 
 
 def _set_save_message(response, message):
@@ -380,13 +379,16 @@ def _load_glossary_en(cue):
 
 
 def _read(file_path):
-    file_url = "https://raw.githubusercontent.com/%s/master/%s?%s" % (
-        THEME_REPO,
-        file_path,
-        time(),
-    )
-    response = __get(file_url)
-    return (response["body"], response["status"])
+    # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
+    cmd = (
+        "cd %s "
+        "&& scripts/git fetch"
+        "&& scripts/git show origin/master:%s "
+    ) % (THEME_PATH, file_path)
+
+    subprocess_output = _execute_cmd(cmd)
+
+    return subprocess_output
 
 
 def _update(file_path, content, message):
@@ -444,7 +446,7 @@ def _execute(management_command, cue):
     message = (
         u"<p>%s.</p>"
         "<p>Ejecutando: <pre>%s</pre></p>"
-        "<p>Resultado: <pre>%s</pre></p>" % (cue, cmd, " ".join(subprocess_output))
+        "<p>Resultado: <pre>%s</pre></p>" % (cue, cmd, subprocess_output)
     )
     body = {"result": "success", "message": message}
     status = 200
