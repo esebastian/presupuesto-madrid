@@ -5,7 +5,7 @@ from coffin.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
-from project.settings import ROOT_PATH, THEME, THEME_REPO, GITHUB_TOKEN
+from project.settings import ROOT_PATH, THEME_PATH, THEME_REPO, GITHUB_TOKEN
 from time import time
 
 import datetime
@@ -206,7 +206,7 @@ def admin_review(request):
     data_files = _get_most_recent_files_in_temp_folder()
 
     # Execute a helper script to check the data files
-    script_path = os.path.join(ROOT_PATH, THEME, "loaders")
+    script_path = os.path.join(THEME_PATH, "loaders")
     cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (script_path,)
     cmd += "python madrid_check_datafiles.py " + data_files
     subprocess_output = _execute_cmd(cmd)
@@ -276,7 +276,7 @@ def _download_open_data_file(link, output_folder, output_name):
 
 
 def _copy_downloaded_files_to_theme(data_files, year, language):
-    target_path = os.path.join(ROOT_PATH, THEME, "data", language, "municipio", year)
+    target_path = os.path.join(THEME_PATH, "data", language, "municipio", year)
     if not os.path.exists(target_path):
         os.makedirs(target_path)
 
@@ -320,10 +320,8 @@ def _read_file(output_folder, output_name):
 
 
 def _touch_file(file_path):
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
     # The scripts/touch executable must be manually deployed and setuid'ed
-    cmd = "cd %s && scripts/touch %s" % (theme_path, file_path)
+    cmd = "cd %s && scripts/touch %s" % (THEME_PATH, file_path)
 
     _execute_cmd(cmd)
 
@@ -433,12 +431,9 @@ def _update(file_path, content, message):
 
 
 def _execute(management_command, cue):
-    # Pull and load the data
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
     # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
     cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && scripts/git fetch && scripts/git reset --hard origin/master && " % theme_path
+    cmd += "cd %s && scripts/git fetch && scripts/git reset --hard origin/master && " % THEME_PATH
     cmd += "cd %s && python manage.py %s" % (ROOT_PATH, management_command)
 
     subprocess_output = _execute_cmd(cmd)
@@ -457,10 +452,8 @@ def _execute(management_command, cue):
 
 
 def __get(url, headers={}):
-    theme_path = os.path.join(ROOT_PATH, THEME)
-
     # The scripts/curl executable must be manually deployed and setuid'ed
-    cmd = "cd %s && scripts/curl -L" % theme_path
+    cmd = "cd %s && scripts/curl -L" % THEME_PATH
 
     for header, value in headers.items():
         cmd += " -H %s: %s" % (header, value)
