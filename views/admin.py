@@ -5,7 +5,7 @@ from coffin.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
-from project.settings import ROOT_PATH, THEME_PATH
+from project.settings import ROOT_PATH, THEME_PATH, HTTPS_PROXY, HTTP_PROXY
 
 import base64
 import datetime
@@ -558,7 +558,15 @@ def _get_content(params):
 
 def _execute_cmd(cmd):
     # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, universal_newlines=True)
+    env = os.environ.copy()
+
+    if HTTP_PROXY:
+        env["http_proxy"] = HTTP_PROXY
+
+    if HTTPS_PROXY:
+        env["https_proxy"] = HTTPS_PROXY
+
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, env=env, universal_newlines=True)
 
     output, _ = process.communicate()
     return_code = process.poll()
