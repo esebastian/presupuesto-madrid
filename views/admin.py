@@ -366,7 +366,21 @@ def _retrieve_inflation():
 
 
 def _retrieve_population():
-    return _retrieve("data/poblacion.csv")
+    content, status = _retrieve("data/poblacion.csv")
+
+    content = content.split("\n")
+
+    # We assume a constant file format, newline terminated
+    headers = ",".join(content[0].split(",")[2:])
+    rows = content[1:-1]
+
+    data = [headers]
+    data.extend([",".join(row.split(",")[2:]) for row in rows if row.lstrip('"').startswith("1")])
+    data.extend(content[-1:])
+
+    data = "\n".join(data)
+
+    return data, status
 
 
 def _retrieve_glossary_es():
@@ -382,7 +396,20 @@ def _save_inflation(content):
 
 
 def _save_population(content):
-    return _save("data/poblacion.csv", content, "Update population data")
+    content = content.split("\n")
+
+    # We assume a constant file format, newline terminated
+    headers = '"#Id","#Entidad",%s' % content[0]
+    rows = content[1:-1]
+
+    data = [headers]
+    data.extend(['"1","Madrid",%s' % row for row in rows])
+    data.extend(['"2","Madrid",%s' % row for row in rows])
+    data.extend(content[-1:])
+
+    data = "\n".join(data)
+
+    return _save("data/poblacion.csv", data, "Update population data")
 
 
 def _save_glossary_es(content):
