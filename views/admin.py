@@ -524,7 +524,7 @@ def _write(file_path, content):
         "&& cd %s "
         "&& cat <<EOF | scripts/tee %s\n"
         "%s"
-        "\nEOF"
+        "EOF"
     ) % (THEME_PATH, file_path, content)
 
     _, error = _execute_cmd(cmd)
