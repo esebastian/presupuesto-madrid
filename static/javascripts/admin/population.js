@@ -6,7 +6,7 @@ $(document).ready(function () {
       { data: '#Población', type: 'numeric', numericFormat: { pattern: '0,000', culture: 'es-ES' } }
     ],
     width: 300,
-    height: 300
+    height: 250
   }
 
   renderTable('population', config)
