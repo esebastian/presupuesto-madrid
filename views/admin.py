@@ -2,20 +2,27 @@
 
 from bs4 import BeautifulSoup
 from coffin.shortcuts import render, redirect
+from datetime import datetime
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
 from project.settings import ROOT_PATH, THEME_PATH, HTTPS_PROXY, HTTP_PROXY
 
 import base64
-import datetime
 import glob
 import json
 import os
-import re
-import shutil
 import subprocess
 import urllib
+
+
+EXECUTION_URL = {
+    2019: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=93bf1b7ba1939610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
+    2018: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
+    2017: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b404f67f5b35b410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD"
+}
+
+TEMP_BASE_PATH = "/tmp/budget_app"
 
 
 class AdminException(Exception):
@@ -25,7 +32,7 @@ class AdminException(Exception):
 # Main
 @never_cache
 def admin(request):
-    return redirect("admin-inflation")
+    return redirect("admin-execution")
 
 
 # General budget
@@ -35,11 +42,40 @@ def admin_general(request):
     return render(request, "admin/general.html", context)
 
 
-# Execution budget
+# Execution
 @never_cache
 def admin_execution(request):
-    context = {"title_prefix": _(u"Ejecución mensual"), "active_tab": "execution"}
+    current_year = datetime.today().year
+    previous_years = [year for year in range(2011, current_year)]
+
+    context = {
+        "title_prefix": _(u"Ejecución mensual"),
+        "active_tab": "execution",
+        "current_year": current_year,
+        "previous_years": previous_years
+    }
+
     return render(request, "admin/execution.html", context)
+
+
+@never_cache
+def admin_execution_retrieve(request):
+    month = _get_month(request.GET)
+    year = _get_year(request.GET)
+    body, status = _retrieve_execution(month, year)
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_execution_review(request):
+    body, status = _review_execution()
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_execution_load(request):
+    body, status = _load_execution()
+    return _json_response(body, status)
 
 
 # Inflation
@@ -92,13 +128,6 @@ def admin_population_save(request):
 def admin_population_load(request):
     body, status = _load_stats()
     return _json_response(body, status)
-
-
-# Investments
-@never_cache
-def admin_investments(request):
-    context = {"title_prefix": _(u"Inversiones"), "active_tab": "investments"}
-    return render(request, "admin/investments.html", context)
 
 
 # Third party payments
@@ -164,203 +193,38 @@ def admin_glossary_en_load(request):
     return _json_response(body, status)
 
 
-# Old controllers
-@never_cache
-def admin_download(request):
-    response = _get_response(request)
-
-    # Get input parameters
-    source_path = request.GET.get("source_path", "")
-    if source_path == "":
-        # If no URL is given, we have the current annuality page as default
-        source_path = "https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default"
-
-    # Download the given page
-    try:
-        page = urllib.urlopen(source_path).read()
-    except IOError as err:
-        return _set_download_message(response, "IO ERROR: " + str(err))
-
-    # Create the target folder
-    temp_folder_path = _get_temp_folder()
-
-    # Download the linked files
-    doc = BeautifulSoup(page, "html.parser")
-    files = doc.find_all("a", class_="ico-csv")
-    _download_open_data_file(files[0], temp_folder_path, "ingresos.csv")
-    _download_open_data_file(files[1], temp_folder_path, "gastos.csv")
-    _download_open_data_file(files[2], temp_folder_path, "inversiones.csv")
-
-    # Find out which year we're working with
-    title = doc.find("h3", class_="summary-title").text
-    match = re.compile(r".*presupuestaria (\d+)$").match(title)
-    year = match.group(1)
-    _create_file(temp_folder_path, ".budget_year", year)
-
-    # Keep track of the month of the data
-    month = request.GET.get("month", "0")
-    status = (
-        month + "M" if month != "12" else ""
-    )  # 12M means the year is fully executed
-    _create_file(temp_folder_path, ".budget_status", status)
-
-    # Return
-    output = "Ficheros descargados de %s.<br/>Disponibles en %s." % (
-        source_path,
-        temp_folder_path,
-    )
-    return _set_download_message(response, output)
+# Actions
+def _retrieve_execution(month, year):
+    data_url = _get_url(year)
+    return _scrape(data_url, month, year)
 
 
-@never_cache
-def admin_review(request):
-    response = _get_response(request)
-
+def _review_execution():
     # Pick up the most recent downloaded files
-    data_files = _get_most_recent_files_in_temp_folder()
-
-    # Execute a helper script to check the data files
-    script_path = os.path.join(THEME_PATH, "loaders")
-    cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (script_path,)
-    cmd += "python madrid_check_datafiles.py " + data_files
-    subprocess_output, _ = _execute_cmd(cmd)
-
-    # Return
-    output = (
-        "Revisando los datos disponibles en %s.<br/>"
-        "Resultado: <pre>%s</pre>" % (data_files, subprocess_output)
-    )
-    return _set_review_message(response, output)
+    data_files_path = _get_most_recent_temp_folder()
+    return _review(data_files_path)
 
 
-@never_cache
-def admin_load(request):
-    response = _get_response(request)
-
+def _load_execution():
     # Pick up the most recent downloaded files
-    data_files = _get_most_recent_files_in_temp_folder()
+    data_files_path = _get_most_recent_temp_folder()
 
-    # Read the year of the budget data
-    year = _read_file(data_files, ".budget_year")
+    if not data_files_path:
+        body = {"result": "error", "message": "<p>No hay  ficheros que cargar.</p>"}
+        status = 400
+        return (body, status)
 
     # Copy downloaded files to the theme destination
-    _copy_downloaded_files_to_theme(data_files, year, "es")
-    _copy_downloaded_files_to_theme(data_files, year, "en")
+    month, year = _arrange(data_files_path)
 
-    # Load the data
-    cmd = u"cd %s && export PYTHONIOENCODING=utf-8 && " % (ROOT_PATH,)
-    cmd += "python manage.py load_budget " + year + " --language=es,en && "
-    cmd += "python manage.py load_investments " + year + " --language=es,en"
-    subprocess_output, _ = _execute_cmd(cmd)
+    cue = u"Vamos a cargar los datos disponibles en <b>%s</b> para %s" % (data_files_path, year)
+    if month:
+        cue = cue.replace(" para ", "para %s de " % month)
 
-    # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
-
-    output = (
-        "Vamos a cargar los datos disponibles en %s.<br/>"
-        "Ejecutando: <pre>%s</pre>"
-        "Resultado: <pre>%s</pre>" % (data_files, cmd, subprocess_output)
-    )
-    return _set_load_message(response, output)
+    management_commands = ("load_budget %s --language=es,en" % year, "load_investments %s --language=es,en" % year)
+    return _execute(cue, *management_commands)
 
 
-# Old helpers
-def _get_temp_base_path():
-    return "/tmp/budget_app"
-
-
-def _get_temp_folder():
-    base_path = _get_temp_base_path()
-    if not os.path.exists(base_path):
-        os.makedirs(base_path)
-
-    temp_folder_path = os.path.join(base_path, str(datetime.datetime.now().isoformat()))
-    if not os.path.exists(temp_folder_path):
-        os.makedirs(temp_folder_path)
-
-    return temp_folder_path
-
-
-def _get_most_recent_files_in_temp_folder():
-    return sorted(glob.glob(_get_temp_base_path() + "/*.*"))[-1]
-
-
-def _download_open_data_file(link, output_folder, output_name):
-    file_href = "http://datos.madrid.es" + link["href"]
-    urllib.urlretrieve(file_href, os.path.join(output_folder, output_name))
-
-
-def _copy_downloaded_files_to_theme(data_files, year, language):
-    target_path = os.path.join(THEME_PATH, "data", language, "municipio", year)
-    if not os.path.exists(target_path):
-        os.makedirs(target_path)
-
-    shutil.copy(
-        os.path.join(data_files, ".budget_status"),
-        os.path.join(target_path, ".budget_status"),
-    )
-    shutil.copy(
-        os.path.join(data_files, "gastos.csv"), os.path.join(target_path, "gastos.csv")
-    )
-    shutil.copy(
-        os.path.join(data_files, "gastos.csv"),
-        os.path.join(target_path, "ejecucion_gastos.csv"),
-    )
-    shutil.copy(
-        os.path.join(data_files, "ingresos.csv"),
-        os.path.join(target_path, "ingresos.csv"),
-    )
-    shutil.copy(
-        os.path.join(data_files, "ingresos.csv"),
-        os.path.join(target_path, "ejecucion_ingresos.csv"),
-    )
-    shutil.copy(
-        os.path.join(data_files, "inversiones.csv"),
-        os.path.join(target_path, "inversiones.csv"),
-    )
-    shutil.copy(
-        os.path.join(data_files, "inversiones.csv"),
-        os.path.join(target_path, "ejecucion_inversiones.csv"),
-    )
-
-
-def _create_file(output_folder, output_name, content):
-    with open(os.path.join(output_folder, output_name), "w") as file:
-        file.write(content)
-
-
-def _read_file(output_folder, output_name):
-    with open(os.path.join(output_folder, output_name), "r") as file:
-        return file.read()
-
-
-def _set_save_message(response, message):
-    response["save_output"] = message
-    # How to return JSON, see https://stackoverflow.com/a/2428119
-    return HttpResponse(json.dumps(response), content_type="application/json")
-
-
-def _set_download_message(response, message):
-    response["download_output"] = message
-    # How to return JSON, see https://stackoverflow.com/a/2428119
-    return HttpResponse(json.dumps(response), content_type="application/json")
-
-
-def _set_review_message(response, message):
-    response["review_output"] = message
-    return HttpResponse(json.dumps(response), content_type="application/json")
-
-
-def _set_load_message(response, message):
-    response["load_output"] = message
-    return HttpResponse(json.dumps(response), content_type="application/json")
-
-
-def _get_response(request):
-    return {"download_output": "", "review_output": "", "load_output": ""}
-
-
-# Actions
 def _retrieve_inflation():
     return _retrieve("data/inflacion.csv")
 
@@ -421,18 +285,102 @@ def _save_glossary_en(content):
 
 
 def _load_stats():
-    return _execute("load_stats", u"Vamos a cargar los datos estadísticos")
+    return _execute(u"Vamos a cargar los datos estadísticos", "load_stats")
 
 
 def _load_glossary_es():
-    return _execute("load_glossary --language=es", u"Vamos a cargar los datos del glosario en español")
+    return _execute(u"Vamos a cargar los datos del glosario en español", "load_glossary --language=es")
 
 
 def _load_glossary_en():
-    return _execute("load_glossary --language=en", u"Vamos a cargar los datos del glosario en inglés")
+    return _execute(u"Vamos a cargar los datos del glosario en inglés", "load_glossary --language=en")
 
 
 # Action helpers
+def _scrape(url, month,  year):
+    month = str(month)
+    year = str(year)
+
+    if not url:
+        body = {"result": "error", "message": "<p>Nada que descargar.</p>"}
+        status = 400
+        return (body, status)
+
+    try:
+        # Read the given page
+        page = _fetch(url)
+
+        # Build the list of linked files
+        files = _get_files(page)
+
+        # Create the target folder
+        temp_folder_path = _create_temp_folder()
+
+        # We assume a constant page layout: ingresos, gastos, inversiones
+        _download(files[0], temp_folder_path, "ingresos.csv")
+        _download(files[1], temp_folder_path, "gastos.csv")
+        _download(files[2], temp_folder_path, "inversiones.csv")
+
+        _write_temp(temp_folder_path, ".budget_month", month)
+        _write_temp(temp_folder_path, ".budget_year", year)
+
+        # Keep track of the month of the data
+        status = (month + "M" if month != "12" else "")  # 12M means the year is fully executed
+
+        _write_temp(temp_folder_path, ".budget_status", status)
+
+        message = (
+            "<p>Los datos se han descargado correctamente.</p>"
+            "<p>Puedes ver la página desde la que hemos hecho la descarga <a href='%s' target='_blank'>aquí</a>, "
+            "y para tu referencia los ficheros han sido almacenados en <b>%s</b>.</p>" % (url, temp_folder_path)
+        )
+        body = {"result": "success", "message": message}
+        status = 200
+    except AdminException:
+        message = (
+            "<p>Se ha producido un error descargado los datos.</p>"
+            "<p>Puedes ver la página desde la que hemos intentado hacer la descarga "
+            "<a href='%s' target='_blank'>aquí</a>.</p>" % url
+        )
+        body = {"result": "error", "message": message}
+        status = 500
+
+    return (body, status)
+
+
+def _review(data_files_path):
+    if not data_files_path:
+        body = {"result": "error", "message": "<p>No hay  ficheros que revisar.</p>"}
+        status = 400
+        return (body, status)
+
+    # Execute a helper script to check the data files
+    script_path = os.path.join(THEME_PATH, "loaders")
+
+    cmd = "export PYTHONIOENCODING=utf-8 && "
+    cmd += "cd %s && " % script_path
+    cmd += "python madrid_check_datafiles.py %s" % data_files_path
+
+    output, error = _execute_cmd(cmd)
+
+    if error:
+        message = (
+            u"<p>Se ha producido un error revisando los ficheros descargados: "
+            "<pre>%s</pre></p>" % output
+        )
+        body = {"result": "error", "message": message}
+        status = 500
+        return (body, status)
+
+    message = (
+        u"<p>Los ficheros descargados se han revisado correctamente: "
+        "<pre>%s</pre></p>" % (output)
+    )
+    body = {"result": "success", "message": message}
+    status = 200
+    return (body, status)
+
+
 def _retrieve(file_path):
     try:
         body = _read(file_path)
@@ -444,7 +392,7 @@ def _retrieve(file_path):
 
 def _save(file_path, content, commit_message):
     if not content:
-        body = {"result": "error", "message": "Nada que guardar."}
+        body = {"result": "error", "message": "<p>Nada que guardar.</p>"}
         status = 400
         return (body, status)
 
@@ -452,32 +400,42 @@ def _save(file_path, content, commit_message):
         _write(file_path, content)
         _commit(file_path, commit_message)
 
-        body = {"result": "success", "message": "Los datos se han guardado correctamente."}
+        body = {"result": "success", "message": "<p>Los datos se han guardado correctamente.</p>"}
         status = 200
     except AdminException:
-        body = {"result": "error", "message": "Se ha producido un error guardando los datos."}
+        body = {"result": "error", "message": "<p>Se ha producido un error guardando los datos.</p>"}
         status = 500
 
     return (body, status)
 
 
-def _execute(management_command, cue):
+def _execute(cue, *management_commands):
     # IO encoding is a nightmare. See https://stackoverflow.com/a/4027726
     # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
-    cmd = "export PYTHONIOENCODING=utf-8 && "
-    cmd += "cd %s && scripts/git fetch && scripts/git reset --hard origin/master && " % THEME_PATH
-    cmd += "cd %s && python manage.py %s" % (ROOT_PATH, management_command)
+    cmd = (
+        "export PYTHONIOENCODING=utf-8 "
+        "&& cd %s "
+        "&& scripts/git fetch "
+        "&& scripts/git reset --hard origin/master "
+        "&& cd %s"
+    ) % (THEME_PATH, ROOT_PATH)
+
+    for management_command in management_commands:
+        cmd += "&& python manage.py %s " % management_command
 
     output, error = _execute_cmd(cmd)
 
     if error:
-        message = "No se ha podido ejecutar el comando '%s'." % management_command
+        message = (
+            "<p>No se han podido ejecutar los comandos <code>%s</code>:"
+            "<pre>%s</pre></p>"
+        ) % (" && ".join(management_commands), output)
         body = {"result": "error", "message": message}
         status = 500
         return (body, status)
 
     # Touch project/wsgi.py so the app restarts
-    _touch_file(os.path.join(ROOT_PATH, "project", "wsgi.py"))
+    _touch(os.path.join(ROOT_PATH, "project", "wsgi.py"))
 
     message = (
         u"<p>%s.</p>"
@@ -489,8 +447,81 @@ def _execute(management_command, cue):
     return (body, status)
 
 
+# Orchestration helpers
+def _arrange(data_files_path):
+    # Read the year and month of the budget data
+    month = _read_temp(data_files_path, ".budget_month")
+    year = _read_temp(data_files_path, ".budget_year")
+
+    # Copy files around
+    try:
+        for language in ["es", "en"]:
+            target_path = os.path.join(THEME_PATH, "data", language, "municipio", year)
+
+            source = data_files_path
+            destination = target_path
+
+            _copy(source, destination, ".budget_status")
+            _copy(source, destination, "gastos.csv")
+            _copy(source, destination, "gastos.csv", "ejecucion_gastos.csv")
+            _copy(source, destination, "ingresos.csv")
+            _copy(source, destination, "ingresos.csv", "ejecucion_ingresos.csv")
+            _copy(source, destination, "inversiones.csv")
+            _copy(source, destination, "inversiones.csv", "ejecucion_inversiones.csv")
+
+        data_path = os.path.join(THEME_PATH, "data")
+        _commit(data_path, "Update %s execution data" % year)
+    except AdminException as error:
+        raise Exception(error)
+
+    return (month, year)
+
+
+# Network helpers
+def _fetch(url):
+    try:
+        page = urllib.urlopen(url).read()
+    except IOError as error:
+        raise AdminException("Page at '%s' couldn't be fetched: %s" % (url, str(error)))
+
+    return page
+
+
+def _download(url, temp_folder_path, filename):
+    file_path = os.path.join(temp_folder_path, filename)
+
+    try:
+        urllib.urlretrieve(url, file_path)
+    except IOError as error:
+        raise AdminException("File at '%s' couldn't be downloaded: %s" % (url, str(error)))
+
+
 # Filesystem helpers
-def _touch_file(file_path):
+def _create_temp_folder():
+    base_path = TEMP_BASE_PATH
+    temp_folder_path = os.path.join(base_path, str(datetime.now().isoformat()))
+
+    if not os.path.exists(temp_folder_path):
+        os.makedirs(temp_folder_path)
+
+    return temp_folder_path
+
+
+def _read_temp(temp_folder_path, filename):
+    file_path = os.path.join(temp_folder_path, filename)
+
+    with open(file_path, "r") as file:
+        return file.read()
+
+
+def _write_temp(temp_folder_path, filename, content):
+    file_path = os.path.join(temp_folder_path, filename)
+
+    with open(file_path, "w") as file:
+        file.write(content)
+
+
+def _touch(file_path):
     # The scripts/touch executable must be manually deployed and setuid'ed
     cmd = "cd %s && scripts/touch %s" % (THEME_PATH, file_path)
 
@@ -533,7 +564,29 @@ def _write(file_path, content):
         raise AdminException("File %s couldn't be written." % file_path)
 
 
-def _commit(file_path, commit_message):
+def _copy(source_path, destination_path, source_filename, destination_filename=None):
+    if not destination_filename:
+        destination_filename = source_filename
+
+    source = os.path.join(source_path, source_filename)
+    destination = os.path.join(destination_path, destination_filename)
+
+    if not os.path.exists(destination_path):
+        os.makedirs(destination_path)
+
+    # The scripts/cp executable must be manually deployed and setuid'ed
+    cmd = (
+        "cd %s "
+        "&& scripts/cp -f %s %s"
+    ) % (THEME_PATH, source, destination)
+
+    _, error = _execute_cmd(cmd)
+
+    if error:
+        raise AdminException("File %s couldn't be copied." % source_filename)
+
+
+def _commit(path, commit_message):
     # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
     cmd = (
         "cd %s "
@@ -542,18 +595,58 @@ def _commit(file_path, commit_message):
         "&& scripts/git add %s "
         "&& scripts/git commit -m \"%s\n\nChange performed on the admin console.\" "
         "&& scripts/git push"
-    ) % (THEME_PATH, file_path, commit_message)
+    ) % (THEME_PATH, path, commit_message)
 
     _, error = _execute_cmd(cmd)
 
     if error:
-        raise AdminException("File %s couldn't be commited." % file_path)
+        raise AdminException("Path %s couldn't be commited." % path)
 
 
 # Utility helpers
 def _get_content(params):
     content = params.get("content", "")
     return base64.b64decode(content)
+
+
+def _get_month(params):
+    return int(params.get("month", "0"))
+
+
+def _get_year(params):
+    current_year = datetime.today().year
+    return int(params.get("year", current_year))
+
+
+def _get_url(year):
+    url = None
+
+    if (year <= 2019 and year >= 2018):
+        url = EXECUTION_URL[year]
+
+    if year <= 2017 and year >= 2011:
+        url = EXECUTION_URL[2017]
+
+    return url
+
+
+def _get_files(page):
+    doc = BeautifulSoup(page, "html.parser")
+    links = doc.find_all("a", class_="ico-csv")
+
+    base_url = "https://datos.madrid.es"
+    return [base_url + link["href"] for link in links]
+
+
+def _get_most_recent_temp_folder():
+    temp_folder = None
+
+    temp_folders = sorted(glob.glob("%s/*.*" % TEMP_BASE_PATH))
+
+    if temp_folders:
+        temp_folder = temp_folders[-1]
+
+    return temp_folder
 
 
 def _execute_cmd(cmd):
