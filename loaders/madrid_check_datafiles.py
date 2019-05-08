@@ -25,7 +25,8 @@ def parse_amount(amount):
 
 
 def format_number(n):
-    return '{:18,.0f}'.format(n) + " €"
+    formatted_number = re.sub(r"(\d)(?=(\d{3})+(?!\d))", r"\1,", "%18.0f" % n)
+    return formatted_number + " €"
 
 
 def get_stats(path, is_expense):
