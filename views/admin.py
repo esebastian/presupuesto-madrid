@@ -593,7 +593,8 @@ def _commit(path, commit_message):
         "&& scripts/git fetch "
         "&& scripts/git reset origin/master "
         "&& scripts/git add %s "
-        "&& scripts/git commit -m \"%s\n\nChange performed on the admin console.\" "
+        "&& git diff-index --quiet HEAD "
+        "|| scripts/git commit -m \"%s\n\nChange performed on the admin console.\" "
         "&& scripts/git push"
     ) % (THEME_PATH, path, commit_message)
 
