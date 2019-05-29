@@ -5,3 +5,6 @@ npm-debug.log
 scripts/
 static/stylesheets/main.css.map
 copy_csv.sh
+consolidate_identical_payments.rb
+generate_csv.sh
+generate_payments_csv.sh
