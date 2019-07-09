@@ -19,8 +19,16 @@ def read_english_number(s):
 # Parse a numerical amount, which can be in English format (for those CSVs generated
 # from XLS via in2csv) or Spanish.
 def parse_amount(amount):
-    if ',' in amount:
-        amount = amount.replace(',', '.')
+    amount = amount.strip()
+
+    separators = re.sub(r"\d", "", amount)
+
+    for sep in separators[:-1]:
+        amount = amount.replace(sep, "")
+
+    if separators:
+        amount = amount.replace(separators[-1], ".")
+
     return read_english_number(amount)
 
 
@@ -47,10 +55,21 @@ def get_stats(path, is_expense):
 
         if is_expense:
             ec_code = line[8]
-            amount = parse_amount(line[15])
+
+            # Select the amount column to use based on whether we are importing execution
+            # or budget data. In the latter case, sometimes we're dealing with the
+            # amended budget, sometimes with the just approved one, in which case
+            # there're less columns
+            amount_column = 12 if len(line) > 11 else 10  # in case we're importing budget data
+            amount_column = 15 if len(line) > 12 else amount_column  # in case we're importing execution data
+            amount = parse_amount(line[amount_column])
         else:
             ec_code = line[4]
-            amount = parse_amount(line[9])
+
+            # Select the column from which to read amounts. See similar comment above.
+            amount_column = 8 if len(line) > 7 else 6  # in case we're importing budget data
+            amount_column = 9 if len(line) > 8 else amount_column  # in case we're importing execution data
+            amount = parse_amount(line[amount_column])
 
         if ec_code[:-2] in ['410', '710', '400', '700']:
             total_internal_transfer += amount

@@ -27,7 +27,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="admin-general {{ 'active' if active_tab == 'general'}}">
-            <a href="#">{{ _('Presupuesto general') }}</a>
+            <a href="{{ url('presupuesto-madrid.views.admin_general') }}">{{ _('Presupuesto general') }}</a>
           </li>
 
           <li class="admin-execution {{ 'active' if active_tab == 'execution'}}">

@@ -15,11 +15,15 @@ import os
 import subprocess
 import urllib
 
+GENERAL_URL = {
+    2019: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=1f95efc7b8e08610VgnVCM1000001d4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
+    2018: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=14f285e4b1204410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
+}
 
 EXECUTION_URL = {
     2019: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=93bf1b7ba1939610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
     2018: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
-    2017: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b404f67f5b35b410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD"
+    2017: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b404f67f5b35b410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
 }
 
 TEMP_BASE_PATH = "/tmp/budget_app"
@@ -38,9 +42,36 @@ def admin(request):
 # General budget
 @never_cache
 def admin_general(request):
-    context = {"title_prefix": _(u"Presupuesto general"), "active_tab": "general"}
+    current_year = datetime.today().year
+    previous_years = [year for year in range(2011, current_year)]
+
+    context = {
+        "title_prefix": _(u"Presupuesto general"),
+        "active_tab": "general",
+        "current_year": current_year,
+        "previous_years": previous_years,
+    }
+
     return render(request, "admin/general.html", context)
 
+
+@never_cache
+def admin_general_retrieve(request):
+    year = _get_year(request.GET)
+    body, status = _retrieve_general(year)
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_general_review(request):
+    body, status = _review_general()
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_general_load(request):
+    body, status = _load_general()
+    return _json_response(body, status)
 
 # Execution
 @never_cache
@@ -52,7 +83,7 @@ def admin_execution(request):
         "title_prefix": _(u"Ejecución mensual"),
         "active_tab": "execution",
         "current_year": current_year,
-        "previous_years": previous_years
+        "previous_years": previous_years,
     }
 
     return render(request, "admin/execution.html", context)
@@ -194,9 +225,45 @@ def admin_glossary_en_load(request):
 
 
 # Actions
+def _retrieve_general(year):
+    data_url = _get_general_url(year)
+    return _scrape_general(data_url, year)
+
+
+def _review_general():
+    # Pick up the most recent downloaded files
+    data_files_path = _get_most_recent_temp_folder()
+    return _review(data_files_path)
+
+
+def _load_general():
+    # Pick up the most recent downloaded files
+    data_files_path = _get_most_recent_temp_folder()
+
+    if not data_files_path:
+        body = {"result": "error", "message": "<p>No hay  ficheros que cargar.</p>"}
+        status = 400
+        return (body, status)
+
+    # Copy downloaded files to the theme destination
+    year = _arrange_general(data_files_path)
+
+    cue = u"Vamos a cargar los datos disponibles en <b>%s</b> para %s" % (
+        data_files_path,
+        year,
+    )
+
+    management_commands = (
+        "load_budget %s --language=es,en" % year,
+        "load_investments %s --language=es,en" % year,
+    )
+
+    return _execute(cue, *management_commands)
+
+
 def _retrieve_execution(month, year):
-    data_url = _get_url(year)
-    return _scrape(data_url, month, year)
+    data_url = _get_execution_url(year)
+    return _scrape_execution(data_url, month, year)
 
 
 def _review_execution():
@@ -215,13 +282,19 @@ def _load_execution():
         return (body, status)
 
     # Copy downloaded files to the theme destination
-    month, year = _arrange(data_files_path)
+    month, year = _arrange_execution(data_files_path)
 
-    cue = u"Vamos a cargar los datos disponibles en <b>%s</b> para %s" % (data_files_path, year)
+    cue = u"Vamos a cargar los datos disponibles en <b>%s</b> para %s" % (
+        data_files_path,
+        year,
+    )
     if month:
         cue = cue.replace(" para ", "para %s de " % month)
 
-    management_commands = ("load_budget %s --language=es,en" % year, "load_investments %s --language=es,en" % year)
+    management_commands = (
+        "load_budget %s --language=es,en" % year,
+        "load_investments %s --language=es,en" % year,
+    )
     return _execute(cue, *management_commands)
 
 
@@ -239,7 +312,13 @@ def _retrieve_population():
     rows = content[1:-1]
 
     data = [headers]
-    data.extend([",".join(row.split(",")[2:]) for row in rows if row.lstrip('"').startswith("1")])
+    data.extend(
+        [
+            ",".join(row.split(",")[2:])
+            for row in rows
+            if row.lstrip('"').startswith("1")
+        ]
+    )
     data.extend(content[-1:])
 
     data = "\n".join(data)
@@ -289,15 +368,71 @@ def _load_stats():
 
 
 def _load_glossary_es():
-    return _execute(u"Vamos a cargar los datos del glosario en español", "load_glossary --language=es")
+    return _execute(
+        u"Vamos a cargar los datos del glosario en español",
+        "load_glossary --language=es",
+    )
 
 
 def _load_glossary_en():
-    return _execute(u"Vamos a cargar los datos del glosario en inglés", "load_glossary --language=en")
+    return _execute(
+        u"Vamos a cargar los datos del glosario en inglés",
+        "load_glossary --language=en",
+    )
 
 
 # Action helpers
-def _scrape(url, month,  year):
+def _scrape_general(url, year):
+    year = str(year)
+
+    if not url:
+        body = {"result": "error", "message": "<p>Nada que descargar.</p>"}
+        status = 400
+        return (body, status)
+
+    try:
+        # Read the given page
+        page = _fetch(url)
+
+        # Build the list of linked files
+        files = _get_files(page)
+
+        # Create the target folder
+        temp_folder_path = _create_temp_folder()
+
+        # We assume a constant page layout: ingresos, gastos, inversiones
+        _download(files[0], temp_folder_path, "ingresos.csv")
+        _download(files[1], temp_folder_path, "gastos.csv")
+        _download(files[2], temp_folder_path, "inversiones.csv")
+
+        _write_temp(temp_folder_path, ".budget_year", year)
+
+        # State that no execution data is present
+        status = "0M"  # 0M means the year has no execution data
+
+        _write_temp(temp_folder_path, ".budget_status", status)
+
+        message = (
+            "<p>Los datos se han descargado correctamente.</p>"
+            "<p>Puedes ver la página desde la que hemos hecho la descarga <a href='%s' target='_blank'>aquí</a>, "
+            "y para tu referencia los ficheros han sido almacenados en <b>%s</b>.</p>"
+            % (url, temp_folder_path)
+        )
+        body = {"result": "success", "message": message}
+        status = 200
+    except AdminException:
+        message = (
+            "<p>Se ha producido un error descargado los datos.</p>"
+            "<p>Puedes ver la página desde la que hemos intentado hacer la descarga "
+            "<a href='%s' target='_blank'>aquí</a>.</p>" % url
+        )
+        body = {"result": "error", "message": message}
+        status = 500
+
+    return (body, status)
+
+
+def _scrape_execution(url, month, year):
     month = str(month)
     year = str(year)
 
@@ -325,14 +460,17 @@ def _scrape(url, month,  year):
         _write_temp(temp_folder_path, ".budget_year", year)
 
         # Keep track of the month of the data
-        status = (month + "M" if month != "12" else "")  # 12M means the year is fully executed
+        status = (
+            month + "M" if month != "12" else ""
+        )  # 12M means the year is fully executed
 
         _write_temp(temp_folder_path, ".budget_status", status)
 
         message = (
             "<p>Los datos se han descargado correctamente.</p>"
             "<p>Puedes ver la página desde la que hemos hecho la descarga <a href='%s' target='_blank'>aquí</a>, "
-            "y para tu referencia los ficheros han sido almacenados en <b>%s</b>.</p>" % (url, temp_folder_path)
+            "y para tu referencia los ficheros han sido almacenados en <b>%s</b>.</p>"
+            % (url, temp_folder_path)
         )
         body = {"result": "success", "message": message}
         status = 200
@@ -400,10 +538,16 @@ def _save(file_path, content, commit_message):
         _write(file_path, content)
         _commit(file_path, commit_message)
 
-        body = {"result": "success", "message": "<p>Los datos se han guardado correctamente.</p>"}
+        body = {
+            "result": "success",
+            "message": "<p>Los datos se han guardado correctamente.</p>",
+        }
         status = 200
     except AdminException:
-        body = {"result": "error", "message": "<p>Se ha producido un error guardando los datos.</p>"}
+        body = {
+            "result": "error",
+            "message": "<p>Se ha producido un error guardando los datos.</p>",
+        }
         status = 500
 
     return (body, status)
@@ -448,7 +592,36 @@ def _execute(cue, *management_commands):
 
 
 # Orchestration helpers
-def _arrange(data_files_path):
+def _arrange_general(data_files_path):
+    # Read the year of the budget data
+    year = _read_temp(data_files_path, ".budget_year")
+
+    # Copy files around
+    try:
+        for language in ["es", "en"]:
+            target_path = os.path.join(THEME_PATH, "data", language, "municipio", year)
+
+            source = data_files_path
+            destination = target_path
+
+            _copy(source, destination, ".budget_status")
+            _copy(source, destination, "gastos.csv")
+            _copy(source, destination, "ingresos.csv")
+            _copy(source, destination, "inversiones.csv")
+
+            _remove(destination, "ejecucion_gastos.csv")
+            _remove(destination, "ejecucion_ingresos.csv")
+            _remove(destination, "ejecucion_inversiones.csv")
+
+        data_path = os.path.join(THEME_PATH, "data")
+        _commit(data_path, "Add %s budget data" % year)
+    except AdminException as error:
+        raise Exception(error)
+
+    return year
+
+
+def _arrange_execution(data_files_path):
     # Read the year and month of the budget data
     month = _read_temp(data_files_path, ".budget_month")
     year = _read_temp(data_files_path, ".budget_year")
@@ -493,7 +666,9 @@ def _download(url, temp_folder_path, filename):
     try:
         urllib.urlretrieve(url, file_path)
     except IOError as error:
-        raise AdminException("File at '%s' couldn't be downloaded: %s" % (url, str(error)))
+        raise AdminException(
+            "File at '%s' couldn't be downloaded: %s" % (url, str(error))
+        )
 
 
 # Filesystem helpers
@@ -533,11 +708,10 @@ def _touch(file_path):
 
 def _read(file_path):
     # The scripts/git and scripts/git-* executables must be manually deployed and setuid'ed
-    cmd = (
-        "cd %s "
-        "&& scripts/git fetch "
-        "&& scripts/git show origin/master:%s"
-    ) % (THEME_PATH, file_path)
+    cmd = ("cd %s " "&& scripts/git fetch " "&& scripts/git show origin/master:%s") % (
+        THEME_PATH,
+        file_path,
+    )
 
     output, error = _execute_cmd(cmd)
 
@@ -564,6 +738,18 @@ def _write(file_path, content):
         raise AdminException("File %s couldn't be written." % file_path)
 
 
+def _remove(folder_path, filename):
+    target = os.path.join(folder_path, filename)
+
+    # The scripts/rm executable must be manually deployed and setuid'ed
+    cmd = ("cd %s " "&& scripts/rm -f %s") % (THEME_PATH, target)
+
+    _, error = _execute_cmd(cmd)
+
+    if error:
+        raise AdminException("File %s couldn't be removed." % target)
+
+
 def _copy(source_path, destination_path, source_filename, destination_filename=None):
     if not destination_filename:
         destination_filename = source_filename
@@ -575,10 +761,7 @@ def _copy(source_path, destination_path, source_filename, destination_filename=N
         os.makedirs(destination_path)
 
     # The scripts/cp executable must be manually deployed and setuid'ed
-    cmd = (
-        "cd %s "
-        "&& scripts/cp -f %s %s"
-    ) % (THEME_PATH, source, destination)
+    cmd = ("cd %s " "&& scripts/cp -f %s %s") % (THEME_PATH, source, destination)
 
     _, error = _execute_cmd(cmd)
 
@@ -592,7 +775,7 @@ def _commit(path, commit_message):
         "cd %s "
         "&& scripts/git fetch "
         "&& scripts/git reset origin/master "
-        "&& scripts/git add %s "
+        "&& scripts/git add -A %s "
         "&& git diff-index --quiet HEAD "
         "|| scripts/git commit -m \"%s\n\nChange performed on the admin console.\" "
         "&& scripts/git push"
@@ -619,10 +802,22 @@ def _get_year(params):
     return int(params.get("year", current_year))
 
 
-def _get_url(year):
+def _get_general_url(year):
     url = None
 
-    if (year <= 2019 and year >= 2018):
+    if year == 2019:
+        url = GENERAL_URL[year]
+
+    if year <= 2018 and year >= 2011:
+        url = GENERAL_URL[2019]
+
+    return url
+
+
+def _get_execution_url(year):
+    url = None
+
+    if year <= 2019 and year >= 2018:
         url = EXECUTION_URL[year]
 
     if year <= 2017 and year >= 2011:
@@ -660,7 +855,14 @@ def _execute_cmd(cmd):
     if HTTPS_PROXY:
         env["https_proxy"] = HTTPS_PROXY
 
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, env=env, universal_newlines=True)
+    process = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        shell=True,
+        env=env,
+        universal_newlines=True,
+    )
 
     output, _ = process.communicate()
     return_code = process.poll()
@@ -672,7 +874,9 @@ def _execute_cmd(cmd):
 
 
 def _json_response(data, status=200):
-    return HttpResponse(json.dumps(data), content_type="application/json; charset=utf-8", status=status)
+    return HttpResponse(
+        json.dumps(data), content_type="application/json; charset=utf-8", status=status
+    )
 
 
 def _csv_response(data, status=200):
