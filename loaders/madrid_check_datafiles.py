@@ -22,9 +22,9 @@ def parse_spanish_amount(amount):
     return read_english_number(amount.replace(',', '.'))
 
 
-def format_number(n):
-    formatted_number = re.sub(r"(\d)(?=(\d{3})+(?!\d))", r"\1,", "%18.0f" % n)
-    return formatted_number + " €"
+def format_number_as_spanish(n):
+    formatted_number = re.sub(r"(\d)(?=(\d{3})+(?!\d))", r"\1.", "%18.0f" % n)
+    return formatted_number
 
 
 # We expect the organization code to be one digit, but Madrid has a 3-digit code.
@@ -67,7 +67,7 @@ def get_stats(path, is_expense, is_actual):
             # amended budget, sometimes with the just approved one, in which case
             # there're less columns
             budget_position = 12 if len(line) > 11 else 10
-            amount = parse_amount(line[15 if is_actual else budget_position])
+            amount = parse_spanish_amount(line[15 if is_actual else budget_position])
         else:
             ec_code = line[4]
 
@@ -75,7 +75,7 @@ def get_stats(path, is_expense, is_actual):
 
             # Select the column from which to read amounts. See similar comment above.
             budget_position = 8 if len(line) > 7 else 6
-            amount = parse_amount(line[9 if is_actual else budget_position])
+            amount = parse_spanish_amount(line[9 if is_actual else budget_position])
 
         # We've been asked to ignore data for a special department, not really an organism (#756)
         if ic_code == '200':
@@ -99,21 +99,14 @@ path = sys.argv[1]
 year = open(os.path.join(path, '.budget_year'), 'r').read()
 is_actual = (open(os.path.join(path, '.budget_type'), 'r').read() == "execution")
 
-# Define how to parse a numerical amount, which can be in English format (for those CSVs
-# generated from XLS via in2csv) or Spanish.
-if int(year) < 2017:
-    parse_amount = read_english_number
-else:
-    parse_amount = parse_spanish_amount
-
 # Open data files and get some basic stats
 incoming_revenues, internal_revenues = get_stats(path, False, is_actual)  # stats for revenues
 outgoing_expenses, internal_expenses = get_stats(path, True, is_actual)  # stats for expenses
 
 print "Datos de %s (tras descontar eliminaciones)" % ("ejecución" if is_actual else "presupuesto")
-print "  Ingresos: %s" % format_number(incoming_revenues / 100.0)
-print "  Gastos  : %s" % format_number(outgoing_expenses / 100.0)
+print "  Ingresos: %s euros" % format_number_as_spanish(incoming_revenues / 100.0)
+print "  Gastos  : %s euros" % format_number_as_spanish(outgoing_expenses / 100.0)
 print " "
 print "Eliminaciones"
-print "  Ingresos: %s" % format_number(internal_revenues / 100.0)
-print "  Gastos  : %s" % format_number(internal_expenses / 100.0)
+print "  Ingresos: %s euros" % format_number_as_spanish(internal_revenues / 100.0)
+print "  Gastos  : %s euros" % format_number_as_spanish(internal_expenses / 100.0)
