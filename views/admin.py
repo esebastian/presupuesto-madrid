@@ -9,9 +9,12 @@ from django.views.decorators.cache import never_cache
 from project.settings import ROOT_PATH, THEME_PATH, HTTPS_PROXY, HTTP_PROXY
 
 import base64
+import csv
+import collections
 import glob
 import json
 import os
+import re
 import subprocess
 import urllib
 
@@ -25,6 +28,8 @@ EXECUTION_URL = {
     2018: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b278b3e4a564c410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
     2017: "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=b404f67f5b35b410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD",
 }
+
+PAYMENTS_URL = "https://datos.madrid.es/sites/v/index.jsp?vgnextoid=2fd903751cd56610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD"
 
 TEMP_BASE_PATH = "/tmp/budget_app"
 
@@ -164,8 +169,36 @@ def admin_population_load(request):
 # Third party payments
 @never_cache
 def admin_payments(request):
-    context = {"title_prefix": _(u"Pagos a terceros"), "active_tab": "payments"}
+    last_year = datetime.today().year - 1
+    previous_years = [year for year in range(2011, last_year)]
+
+    context = {
+        "title_prefix": _(u"Pagos a terceros"),
+        "active_tab": "payments",
+        "last_year": last_year,
+        "previous_years": previous_years,
+    }
+
     return render(request, "admin/payments.html", context)
+
+
+@never_cache
+def admin_payments_retrieve(request):
+    year = _get_year(request.GET)
+    body, status = _retrieve_payments(year)
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_payments_review(request):
+    body, status = _review_payments()
+    return _json_response(body, status)
+
+
+@never_cache
+def admin_payments_load(request):
+    body, status = _load_payments()
+    return _json_response(body, status)
 
 
 # Glossary
@@ -298,6 +331,41 @@ def _load_execution():
     return _execute(cue, *management_commands)
 
 
+def _retrieve_payments(year):
+    data_url = _get_payments_url(year)
+    return _scrape_payments(data_url, year)
+
+
+def _review_payments():
+    # Pick up the most recent downloaded files
+    data_files_path = _get_most_recent_temp_folder()
+    return _review_payments_data(data_files_path)
+
+
+def _load_payments():
+    # Pick up the most recent downloaded files
+    data_files_path = _get_most_recent_temp_folder()
+
+    if not data_files_path:
+        body = {"result": "error", "message": "<p>No hay  ficheros que cargar.</p>"}
+        status = 400
+        return (body, status)
+
+    # Copy downloaded files to the theme destination
+    year = _arrange_payments(data_files_path)
+
+    cue = u"Vamos a cargar los datos disponibles en <b>%s</b> para %s" % (
+        data_files_path,
+        year,
+    )
+
+    management_commands = (
+        "load_payments %s --language=es,en" % year,
+    )
+
+    return _execute(cue, *management_commands)
+
+
 def _retrieve_inflation():
     return _retrieve("data/inflacion.csv")
 
@@ -326,14 +394,6 @@ def _retrieve_population():
     return data, status
 
 
-def _retrieve_glossary_es():
-    return _retrieve("data/glosario_es.csv")
-
-
-def _retrieve_glossary_en():
-    return _retrieve("data/glosario_en.csv")
-
-
 def _save_inflation(content):
     return _save("data/inflacion.csv", content, "Update inflation data")
 
@@ -355,16 +415,24 @@ def _save_population(content):
     return _save("data/poblacion.csv", data, "Update population data")
 
 
+def _load_stats():
+    return _execute(u"Vamos a cargar los datos estadísticos", "load_stats")
+
+
+def _retrieve_glossary_es():
+    return _retrieve("data/glosario_es.csv")
+
+
+def _retrieve_glossary_en():
+    return _retrieve("data/glosario_en.csv")
+
+
 def _save_glossary_es(content):
     return _save("data/glosario_es.csv", content, "Update spanish glossary data")
 
 
 def _save_glossary_en(content):
     return _save("data/glosario_en.csv", content, "Update english glossary data")
-
-
-def _load_stats():
-    return _execute(u"Vamos a cargar los datos estadísticos", "load_stats")
 
 
 def _load_glossary_es():
@@ -488,6 +556,50 @@ def _scrape_execution(url, month, year):
     return (body, status)
 
 
+def _scrape_payments(url, year):
+    year = str(year)
+
+    if not url:
+        body = {"result": "error", "message": "<p>Nada que descargar.</p>"}
+        status = 400
+        return (body, status)
+
+    try:
+        # Read the given page
+        page = _fetch(url)
+
+        # Build the list of linked files
+        files = _get_files(page)
+
+        # Create the target folder
+        temp_folder_path = _create_temp_folder()
+
+        # We assume a constant page layout: areas y distritos, organismos autónomos
+        _download(files[0], temp_folder_path, "areas_y_distritos.csv")
+        _download(files[1], temp_folder_path, "organismos.csv")
+
+        _write_temp(temp_folder_path, ".budget_year", year)
+
+        message = (
+            "<p>Los datos se han descargado correctamente.</p>"
+            "<p>Puedes ver la página desde la que hemos hecho la descarga <a href='%s' target='_blank'>aquí</a>, "
+            "y para tu referencia los ficheros han sido almacenados en <b>%s</b>.</p>"
+            % (url, temp_folder_path)
+        )
+        body = {"result": "success", "message": message}
+        status = 200
+    except AdminException:
+        message = (
+            "<p>Se ha producido un error descargado los datos.</p>"
+            "<p>Puedes ver la página desde la que hemos intentado hacer la descarga "
+            "<a href='%s' target='_blank'>aquí</a>.</p>" % url
+        )
+        body = {"result": "error", "message": message}
+        status = 500
+
+    return (body, status)
+
+
 def _review(data_files_path):
     if not data_files_path:
         body = {"result": "error", "message": "<p>No hay  ficheros que revisar.</p>"}
@@ -507,6 +619,100 @@ def _review(data_files_path):
         message = (
             u"<p>Se ha producido un error revisando los ficheros descargados: "
             "<pre>%s</pre></p>" % output
+        )
+        body = {"result": "error", "message": message}
+        status = 500
+        return (body, status)
+
+    message = (
+        u"<p>Los ficheros descargados se han revisado correctamente: "
+        "<pre>%s</pre></p>" % (output)
+    )
+    body = {"result": "success", "message": message}
+    status = 200
+    return (body, status)
+
+
+def _review_payments_data(data_files_path):
+    if not data_files_path:
+        body = {"result": "error", "message": "<p>No hay  ficheros que revisar.</p>"}
+        status = 400
+        return (body, status)
+
+    columns_for = {
+        "areas_y_distritos.csv": [1, 3, 4, 7, 9, 10, 11],
+        "organismos.csv": [1, 3, 4, 6, 8, 9, 10]
+    }
+
+    error = None
+
+    try:
+        # Read the year of the payments data to process
+        year = _read_temp(data_files_path, ".budget_year")
+
+        number_of_payments = 0
+        amount_of_payments = 0
+
+        target_filename = os.path.join(data_files_path, "pagos.csv")
+
+        payments = collections.OrderedDict()
+
+        for data_file in ["areas_y_distritos.csv", "organismos.csv"]:
+            data_filename = os.path.join(data_files_path, data_file)
+            with open(data_filename, "rb") as source:
+                reader = csv.reader(source, delimiter=';')
+
+                for index, line in enumerate(reader):
+                    if re.match("^#", line[0]):  # Ignore comments
+                        continue
+
+                    if re.match("^ *$", ''.join(line)):  # Ignore empty lines
+                        continue
+
+                    if line[0] == 'Centro':  # Ignore header
+                        continue
+
+                    if line[0] != year:  # Ignore not target year
+                        continue
+
+                    columns_to_write = [line[c].decode("iso-8859-1").encode("utf-8") for c in columns_for[data_file]]
+
+                    # we split the data into the amount and the other fields (which we'll use as key)
+                    # and we accumulate the amounts
+                    key = tuple(columns_to_write[:-1])
+                    amount = _parse_spanish_number(columns_to_write[-1])
+
+                    payments[key] = payments.get(key, 0.0) + amount
+
+        with open(target_filename, "ab") as target:
+            target.truncate(0)
+            writer = csv.writer(target, delimiter=',')
+
+            for key, amount in payments.items():
+                row_data = list(key)
+                row_data.append(amount)
+                writer.writerow(row_data)
+
+        with open(target_filename, "rb") as target:
+            reader = csv.reader(target, delimiter=',')
+
+            for index, line in enumerate(reader):
+                number_of_payments += 1
+                amount_of_payments += float(line[6])
+
+    except Exception as e:
+        error = str(e)
+
+    output = "Hay %s pagos que suman un total de %s euros en %s" % (
+        _format_number_as_spanish(number_of_payments),
+        _format_number_as_spanish(amount_of_payments),
+        year
+    )
+
+    if error:
+        message = (
+            u"<p>Se ha producido un error revisando los ficheros descargados: "
+            "<pre>%s</pre></p>" % error
         )
         body = {"result": "error", "message": message}
         status = 500
@@ -617,6 +823,7 @@ def _arrange_general(data_files_path):
 
         data_path = os.path.join(THEME_PATH, "data")
         _commit(data_path, "Add %s budget data" % year)
+
     except AdminException as error:
         raise Exception(error)
 
@@ -646,10 +853,38 @@ def _arrange_execution(data_files_path):
 
         data_path = os.path.join(THEME_PATH, "data")
         _commit(data_path, "Update %s execution data" % year)
+
     except AdminException as error:
         raise Exception(error)
 
     return (month, year)
+
+
+def _arrange_payments(data_files_path):
+    # Read the year of the payments data
+    year = _read_temp(data_files_path, ".budget_year")
+
+    action = "Add"
+
+    # Copy files around
+    try:
+        for language in ["es", "en"]:
+            target_path = os.path.join(THEME_PATH, "data", language, "municipio", year)
+
+            source = data_files_path
+            destination = target_path
+
+            action = "Update" if _exists_temp(destination, "pagos.csv") else action
+
+            _copy(source, destination, "pagos.csv")
+
+        data_path = os.path.join(THEME_PATH, "data")
+        _commit(data_path, "%s %s payments data" % (action, year))
+
+    except AdminException as error:
+        raise Exception(error)
+
+    return year
 
 
 # Network helpers
@@ -684,10 +919,16 @@ def _create_temp_folder():
     return temp_folder_path
 
 
+def _exists_temp(temp_folder_path, filename):
+    file_path = os.path.join(temp_folder_path, filename)
+
+    return os.path.exists(file_path)
+
+
 def _read_temp(temp_folder_path, filename):
     file_path = os.path.join(temp_folder_path, filename)
 
-    with open(file_path, "r") as file:
+    with open(file_path, "rb") as file:
         return file.read()
 
 
@@ -790,6 +1031,16 @@ def _commit(path, commit_message):
 
 
 # Utility helpers
+def _format_number_as_spanish(number):
+    formatted_number = re.sub(r"(\d)(?=(\d{3})+(?!\d))", r"\1.", "%18.0f" % number)
+    return formatted_number.strip()
+
+
+def _parse_spanish_number(number):
+    # Read number in Spanish format (123.456,78), and return it as English format
+    return float(number.strip().replace('.', '').replace(',', '.'))
+
+
 def _get_content(params):
     content = params.get("content", "")
     return base64.b64decode(content)
@@ -824,6 +1075,12 @@ def _get_execution_url(year):
 
     if year <= 2017 and year >= 2011:
         url = EXECUTION_URL[2017]
+
+    return url
+
+
+def _get_payments_url(year):
+    url = PAYMENTS_URL
 
     return url
 

@@ -1,10 +1,9 @@
 {% extends 'admin.html' %}
-{% block content %}
 
 {% load static %}
 
+{% block content %}
 <section class="admin" role="region">
-
   <div class="admin-header section-header">
     <div class="container">
       <h2 class="page-title">{{ _('Pagos e inversiones') }}</h2>
@@ -18,29 +17,22 @@
         <div class="panel">
           <div class="panel-content">
             <h3>1. Descargar datos</h3>
-            <p>El primer paso es descargar el fichero de datos del portal de Datos Abiertos de Madrid. Para ello, introduce la URL de la página con la información de pagos a cargar (por defecto estamos utilizando la del histórico de <a href="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=2fd903751cd56610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD">pagos a terceros</a>), y especifica a qué año corresponden los datos que quieres cargar (ya que el Portal actualmente enlaza a un único fichero con los datos de todos los ejercicios disponibles). Al pulsar el botón 'Descargar', los datos se bajarán del Portal en unos segundos y se guardarán en el servidor, listos para el siguiente paso.</p>
+            <p>El primer paso es descargar los ficheros de datos del portal de Datos Abiertos de Madrid (<a href="#">aquí</a> puedes revisar y editar la URL de la página que estamos utilizando para el histórico de pagos). Para ello, especifica el año de los datos que quieres descargar (por defecto estamos utilizando el ejercicio anterior al ejercicio en curso). Al pulsar el botón 'Descargar', los datos se bajarán del Portal y se guardarán en el servidor, listos para el siguiente paso.</p>
 
             <form id="data-download">
               <div class="form-group">
-                <label for="source-path">{{ _('Fuente de datos') }}</label>
-                <input type="text" id="source-path" class="form-control" name="source-path" placeholder="{{ _('Escribe aquí la dirección de la página') }}" value="https://datos.madrid.es/sites/v/index.jsp?vgnextoid=2fd903751cd56610VgnVCM2000001f4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD">
-              </div>
-              <div class="form-group">
                 <label for="year">{{ _('Selecciona año') }}</label>
-                <select id="year" class="form-control" name="month">
-                  <option value="2011">2011</option>
-                  <option value="2012">2012</option>
-                  <option value="2013">2013</option>
-                  <option value="2014">2014</option>
-                  <option value="2015">2015</option>
-                  <option value="2016">2016</option>
-                  <option value="2017" selected>2017</option>
+                <select id="year" class="form-control" name="year">
+                  {% for year in previous_years %}
+                  <option value="{{year}}">{{year}}</option>
+                  {% endfor %}
+                  <option value="{{last_year}}" selected>{{last_year}}</option>
                 </select>
               </div>
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Descargar') }}</button>
             </form>
             <div id="data-download-output" class="data-output">
-              <div class="loading"><img src="/static/assets/loader.png"> Descargando datos</div>
+              <div class="loading"><img src="{% static 'assets/loader.png' %}"> Descargando datos</div>
               <div class="output"></div>
             </div>
           </div>
@@ -49,12 +41,12 @@
         <div class="panel">
           <div class="panel-content">
             <h3>2. Revisar datos</h3>
-            <p>Una vez descargados, podemos revisar los datos para comprobar que las eliminaciones (flujos internos entre organismos del Ayuntamiento de Madrid) coinciden con lo esperado.</p>
+            <p>Una vez descargados, podemos revisar los datos para comprobar que los importes coinciden con lo esperado.</p>
             <form class="form-inline" id="data-review" action="" method="get">
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Revisar') }}</button>
             </form>
             <div id="data-review-output" class="data-output">
-              <div class="loading"><img src="/static/assets/loader.png"> Revisando datos</div>
+              <div class="loading"><img src="{% static 'assets/loader.png' %}"> Revisando datos</div>
               <div class="output"></div>
             </div>
           </div>
@@ -68,7 +60,7 @@
               <button type="submit" class="btn btn-default btn-primary" >{{ _('Cargar') }}</button>
             </form>
             <div id="data-load-output" class="data-output">
-              <div class="loading"><img src="/static/assets/loader.png"> Cargando datos</div>
+              <div class="loading"><img src="{% static 'assets/loader.png' %}"> Cargando datos</div>
               <div class="output"></div>
             </div>
           </div>
@@ -76,77 +68,10 @@
       </div>
     </div>
   </div>
-
 </section>
+{% endblock %}
 
-<script>
-  $('#data-download').submit(function(e) {
-    e.preventDefault();
-    disableButtons();
-    $("#data-download-output").show().find('.content').html('');
-    $.ajax({
-      url: "{{ url('presupuesto-madrid.views.admin_download') }}",
-      data: {
-        source_path:  $('#source-path').val(),
-        month:  $('#month').val(),
-      },
-      contentType:    'application/json; charset=utf-8',
-      success:        onCommandSuccess,
-      error:          onCommandError,
-    });
-  });
-
-  $('#data-review').submit(function(e) {
-    e.preventDefault();
-    disableButtons();
-    $("#data-review-output").show().find('.content').html('');
-    $.ajax({
-      url: "{{ url('presupuesto-madrid.views.admin_review') }}",
-      contentType:    'application/json; charset=utf-8',
-      success:        onCommandSuccess,
-      error:          onCommandError,
-    });
-  });
-
-  $('#data-load').submit(function(e) {
-    e.preventDefault();
-    disableButtons();
-    $("#data-load-output").show().find('.content').html('');
-    $.ajax({
-      url: "{{ url('presupuesto-madrid.views.admin_load') }}",
-      contentType:    'application/json; charset=utf-8',
-      success:        onCommandSuccess,
-      error:          onCommandError,
-    });
-  });
-
-  function onCommandSuccess(response) {
-    if (response.download_output != '') {
-      $("#data-download-output").find('.loading').hide();
-      $("#data-download-output").find('.output').html(response.download_output);
-    }
-    if (response.review_output != '') {
-      $("#data-review-output").find('.loading').hide();
-      $("#data-review-output").find('.output').html(response.review_output);
-    }
-    if (response.load_output != '') {
-      $("#data-load-output").find('.loading').hide();
-      $("#data-load-output").find('.output').html(response.load_output);
-    }
-    enableButtons();
-  }
-
-  function onCommandError(response) {
-    enableButtons();
-  }
-
-  function disableButtons() {
-    $('#data-download button[type="submit"]').attr('disabled', true).children('.glyphicon').removeClass('hide');
-  }
-
-  function enableButtons() {
-    $('#data-download button[type="submit"]').attr('disabled', false).children('.glyphicon').addClass('hide');
-  }
-</script>
-
+{% block extra_javascript %}
+<script src="{% static 'javascripts/admin/csv_download.js' %}"></script>
+<script src="{% static 'javascripts/admin/payments.js' %}"></script>
 {% endblock %}
