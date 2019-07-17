@@ -406,6 +406,7 @@ def _scrape_general(url, year):
         _download(files[2], temp_folder_path, "inversiones.csv")
 
         _write_temp(temp_folder_path, ".budget_year", year)
+        _write_temp(temp_folder_path, ".budget_type", "general")
 
         # State that no execution data is present
         status = "0M"  # 0M means the year has no execution data
@@ -458,6 +459,7 @@ def _scrape_execution(url, month, year):
 
         _write_temp(temp_folder_path, ".budget_month", month)
         _write_temp(temp_folder_path, ".budget_year", year)
+        _write_temp(temp_folder_path, ".budget_type", "execution")
 
         # Keep track of the month of the data
         status = (
